@@ -7,13 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9C1995231E9F0F5400AC34DB /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C1995221E9F0F5400AC34DB /* MainViewController.m */; };
-		9C1995271E9F149C00AC34DB /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C1995261E9F149C00AC34DB /* LoginViewController.m */; };
-		9C19952D1E9F177F00AC34DB /* FirstLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C19952C1E9F177F00AC34DB /* FirstLoginViewController.m */; };
-		9C1995341E9F1AB000AC34DB /* StatisticalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C1995331E9F1AB000AC34DB /* StatisticalViewController.m */; };
-		9C1995391E9F4BF000AC34DB /* TaskListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C1995381E9F4BF000AC34DB /* TaskListCell.m */; };
 		A861B3181E9DD3FB002D61F0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A861B3171E9DD3FB002D61F0 /* main.m */; };
 		A861B31B1E9DD3FB002D61F0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A861B31A1E9DD3FB002D61F0 /* AppDelegate.m */; };
+		A861B31E1E9DD3FB002D61F0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A861B31D1E9DD3FB002D61F0 /* ViewController.m */; };
 		A861B3211E9DD3FB002D61F0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A861B31F1E9DD3FB002D61F0 /* Main.storyboard */; };
 		A861B3231E9DD3FB002D61F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A861B3221E9DD3FB002D61F0 /* Assets.xcassets */; };
 		A861B3261E9DD3FB002D61F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A861B3241E9DD3FB002D61F0 /* LaunchScreen.storyboard */; };
@@ -37,20 +33,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		9C1995211E9F0F5400AC34DB /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainViewController.h; path = waiter/MainViewController.h; sourceTree = SOURCE_ROOT; };
-		9C1995221E9F0F5400AC34DB /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainViewController.m; path = waiter/MainViewController.m; sourceTree = SOURCE_ROOT; };
-		9C1995251E9F149C00AC34DB /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
-		9C1995261E9F149C00AC34DB /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
-		9C19952B1E9F177F00AC34DB /* FirstLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstLoginViewController.h; sourceTree = "<group>"; };
-		9C19952C1E9F177F00AC34DB /* FirstLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstLoginViewController.m; sourceTree = "<group>"; };
-		9C1995321E9F1AB000AC34DB /* StatisticalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatisticalViewController.h; sourceTree = "<group>"; };
-		9C1995331E9F1AB000AC34DB /* StatisticalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatisticalViewController.m; sourceTree = "<group>"; };
-		9C1995371E9F4BF000AC34DB /* TaskListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskListCell.h; sourceTree = "<group>"; };
-		9C1995381E9F4BF000AC34DB /* TaskListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskListCell.m; sourceTree = "<group>"; };
 		A861B3131E9DD3FB002D61F0 /* waiter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = waiter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A861B3171E9DD3FB002D61F0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A861B3191E9DD3FB002D61F0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A861B31A1E9DD3FB002D61F0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		A861B31C1E9DD3FB002D61F0 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		A861B31D1E9DD3FB002D61F0 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		A861B3201E9DD3FB002D61F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A861B3221E9DD3FB002D61F0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A861B3251E9DD3FB002D61F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -106,38 +94,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		9C1995241E9F148D00AC34DB /* Login */ = {
-			isa = PBXGroup;
-			children = (
-				9C1995251E9F149C00AC34DB /* LoginViewController.h */,
-				9C1995261E9F149C00AC34DB /* LoginViewController.m */,
-				9C19952B1E9F177F00AC34DB /* FirstLoginViewController.h */,
-				9C19952C1E9F177F00AC34DB /* FirstLoginViewController.m */,
-			);
-			path = Login;
-			sourceTree = "<group>";
-		};
-		9C19952E1E9F1A7F00AC34DB /* statisticalTask */ = {
-			isa = PBXGroup;
-			children = (
-				9C1995321E9F1AB000AC34DB /* StatisticalViewController.h */,
-				9C1995331E9F1AB000AC34DB /* StatisticalViewController.m */,
-			);
-			name = statisticalTask;
-			path = Login/statisticalTask;
-			sourceTree = "<group>";
-		};
-		9C1995361E9F4BD100AC34DB /* Main */ = {
-			isa = PBXGroup;
-			children = (
-				9C1995211E9F0F5400AC34DB /* MainViewController.h */,
-				9C1995221E9F0F5400AC34DB /* MainViewController.m */,
-				9C1995371E9F4BF000AC34DB /* TaskListCell.h */,
-				9C1995381E9F4BF000AC34DB /* TaskListCell.m */,
-			);
-			path = Main;
-			sourceTree = "<group>";
-		};
 		A861B30A1E9DD3FB002D61F0 = {
 			isa = PBXGroup;
 			children = (
@@ -164,10 +120,9 @@
 				D5865EF11E9F552900E070D4 /* DataBase */,
 				A861B3191E9DD3FB002D61F0 /* AppDelegate.h */,
 				A861B31A1E9DD3FB002D61F0 /* AppDelegate.m */,
+				A861B31C1E9DD3FB002D61F0 /* ViewController.h */,
+				A861B31D1E9DD3FB002D61F0 /* ViewController.m */,
 				A861B31F1E9DD3FB002D61F0 /* Main.storyboard */,
-				9C1995241E9F148D00AC34DB /* Login */,
-				9C19952E1E9F1A7F00AC34DB /* statisticalTask */,
-				9C1995361E9F4BD100AC34DB /* Main */,
 				A861B3221E9DD3FB002D61F0 /* Assets.xcassets */,
 				A861B3241E9DD3FB002D61F0 /* LaunchScreen.storyboard */,
 				A861B3271E9DD3FB002D61F0 /* Info.plist */,
@@ -345,7 +300,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-<<<<<<< HEAD
 				D5865EFE1E9F55C500E070D4 /* DBUserInfo+CoreDataProperties.m in Sources */,
 				D5865EE31E9F520C00E070D4 /* NetWorkingMain.m in Sources */,
 				D5865ED91E9F51F700E070D4 /* AFURLSessionManager.m in Sources */,
@@ -358,14 +312,6 @@
 				D5865EFF1E9F55C500E070D4 /* DBStatistical+CoreDataClass.m in Sources */,
 				D5865EEE1E9F523100E070D4 /* Util.m in Sources */,
 				D5865ED51E9F51F700E070D4 /* AFNetworkReachabilityManager.m in Sources */,
-=======
-				9C1995341E9F1AB000AC34DB /* StatisticalViewController.m in Sources */,
-				9C1995271E9F149C00AC34DB /* LoginViewController.m in Sources */,
-				A861B31B1E9DD3FB002D61F0 /* AppDelegate.m in Sources */,
-				9C1995391E9F4BF000AC34DB /* TaskListCell.m in Sources */,
-				9C19952D1E9F177F00AC34DB /* FirstLoginViewController.m in Sources */,
-				9C1995231E9F0F5400AC34DB /* MainViewController.m in Sources */,
->>>>>>> yadong
 				A861B3181E9DD3FB002D61F0 /* main.m in Sources */,
 				D5865ED61E9F51F700E070D4 /* AFSecurityPolicy.m in Sources */,
 				D5865EFD1E9F55C500E070D4 /* DBUserInfo+CoreDataClass.m in Sources */,
