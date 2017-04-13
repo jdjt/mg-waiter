@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16D32" minimumToolsVersion="Xcode 8.0" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
+    <entity name="DBStatistical" representedClassName="DBStatistical" syncable="YES"/>
+    <entity name="DBUserInfo" representedClassName="DBUserInfo" syncable="YES"/>
+    <elements>
+        <element name="DBUserInfo" positionX="-45" positionY="0" width="128" height="45"/>
+        <element name="DBStatistical" positionX="-18" positionY="27" width="128" height="45"/>
+    </elements>
+</model>
