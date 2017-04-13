@@ -24,7 +24,7 @@
 + (NSString*) macaddress;
 
 /**
- * @abstract 获取当前时间
+ * @abstract 获取当前时间戳
  */
 + (NSTimeInterval)timestamp;
 
@@ -93,6 +93,9 @@
  * @abstract 获取当前网络状态
  */
 + (int)getCurrentNetworkStatus;
+/**
+ * @abstract 获取当前时间
+ */
 +(NSString *)getTimeNow;
 
 
