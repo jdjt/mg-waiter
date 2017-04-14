@@ -12,7 +12,13 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+    self.borderView.layer.borderWidth = 1;
+    self.borderView.layer.borderColor = [UIColor grayColor].CGColor;
+    self.borderView.layer.cornerRadius = 10.0f;
+    
+    self.pickSingleButton.layer.borderWidth = 0.3f;
+    self.pickSingleButton.layer.borderColor = [UIColor grayColor].CGColor;
+    self.pickSingleButton.layer.cornerRadius = 5.0f;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
