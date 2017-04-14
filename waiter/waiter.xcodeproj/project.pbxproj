@@ -12,6 +12,7 @@
 		9C19952D1E9F177F00AC34DB /* FirstLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C19952C1E9F177F00AC34DB /* FirstLoginViewController.m */; };
 		9C1995341E9F1AB000AC34DB /* StatisticalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C1995331E9F1AB000AC34DB /* StatisticalViewController.m */; };
 		9C1995391E9F4BF000AC34DB /* TaskListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C1995381E9F4BF000AC34DB /* TaskListCell.m */; };
+		9C6F201E1EA0659300778094 /* FootCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C6F201D1EA0659300778094 /* FootCell.m */; };
 		A861B3181E9DD3FB002D61F0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A861B3171E9DD3FB002D61F0 /* main.m */; };
 		A861B31B1E9DD3FB002D61F0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A861B31A1E9DD3FB002D61F0 /* AppDelegate.m */; };
 		A861B3211E9DD3FB002D61F0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A861B31F1E9DD3FB002D61F0 /* Main.storyboard */; };
@@ -61,6 +62,8 @@
 		9C1995331E9F1AB000AC34DB /* StatisticalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatisticalViewController.m; sourceTree = "<group>"; };
 		9C1995371E9F4BF000AC34DB /* TaskListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskListCell.h; sourceTree = "<group>"; };
 		9C1995381E9F4BF000AC34DB /* TaskListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskListCell.m; sourceTree = "<group>"; };
+		9C6F201C1EA0659300778094 /* FootCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FootCell.h; sourceTree = "<group>"; };
+		9C6F201D1EA0659300778094 /* FootCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FootCell.m; sourceTree = "<group>"; };
 		A861B3131E9DD3FB002D61F0 /* waiter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = waiter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A861B3171E9DD3FB002D61F0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A861B3191E9DD3FB002D61F0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -178,6 +181,8 @@
 				9C1995221E9F0F5400AC34DB /* MainViewController.m */,
 				9C1995371E9F4BF000AC34DB /* TaskListCell.h */,
 				9C1995381E9F4BF000AC34DB /* TaskListCell.m */,
+				9C6F201C1EA0659300778094 /* FootCell.h */,
+				9C6F201D1EA0659300778094 /* FootCell.m */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -446,6 +451,7 @@
 				9C1995341E9F1AB000AC34DB /* StatisticalViewController.m in Sources */,
 				D59E62471EA0984400DFDE85 /* CalendarReusableViewCell.m in Sources */,
 				9C1995271E9F149C00AC34DB /* LoginViewController.m in Sources */,
+				9C6F201E1EA0659300778094 /* FootCell.m in Sources */,
 				A861B31B1E9DD3FB002D61F0 /* AppDelegate.m in Sources */,
 				D5865EE41E9F520C00E070D4 /* NetworkRequestManager.m in Sources */,
 				D5865F001E9F55C500E070D4 /* DBStatistical+CoreDataProperties.m in Sources */,
