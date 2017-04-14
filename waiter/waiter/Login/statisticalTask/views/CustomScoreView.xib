@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CustomScoreView">
+            <connections>
+                <outlet property="imageView1" destination="bs8-wm-NLt" id="NPv-Gx-EWG"/>
+                <outlet property="imageView2" destination="FXl-nd-q1d" id="5FQ-WK-tMf"/>
+                <outlet property="imageView3" destination="aDI-oB-Ez6" id="gIF-Ng-WrR"/>
+                <outlet property="imageView4" destination="A3r-GP-ntb" id="8oi-wP-G8v"/>
+                <outlet property="imageView5" destination="YHC-oe-OBE" id="wM8-mc-sHD"/>
+                <outlet property="scoreView" destination="rST-MW-QqY" id="aPu-mr-miI"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="rST-MW-QqY">
+            <rect key="frame" x="0.0" y="0.0" width="369" height="127"/>
+            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bs8-wm-NLt" userLabel="Image View1">
+                    <rect key="frame" x="0.0" y="0.0" width="74" height="127"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aDI-oB-Ez6" userLabel="Image View3">
+                    <rect key="frame" x="147.5" y="0.0" width="74" height="127"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="A3r-GP-ntb" userLabel="Image View4">
+                    <rect key="frame" x="221.5" y="0.0" width="73.5" height="127"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FXl-nd-q1d" userLabel="Image View2">
+                    <rect key="frame" x="74" y="0.0" width="73.5" height="127"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YHC-oe-OBE" userLabel="Image View5">
+                    <rect key="frame" x="295" y="0.0" width="74" height="127"/>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="A3r-GP-ntb" firstAttribute="leading" secondItem="aDI-oB-Ez6" secondAttribute="trailing" id="11q-Lr-61Y"/>
+                <constraint firstItem="A3r-GP-ntb" firstAttribute="width" secondItem="bs8-wm-NLt" secondAttribute="width" id="9kG-j2-smB"/>
+                <constraint firstAttribute="bottom" secondItem="YHC-oe-OBE" secondAttribute="bottom" id="9td-D2-SP1"/>
+                <constraint firstItem="bs8-wm-NLt" firstAttribute="leading" secondItem="rST-MW-QqY" secondAttribute="leading" id="APP-9c-tF9"/>
+                <constraint firstItem="YHC-oe-OBE" firstAttribute="top" secondItem="rST-MW-QqY" secondAttribute="top" id="Gr0-dx-d7t"/>
+                <constraint firstItem="FXl-nd-q1d" firstAttribute="width" secondItem="bs8-wm-NLt" secondAttribute="width" id="JYD-BZ-KOY"/>
+                <constraint firstItem="aDI-oB-Ez6" firstAttribute="leading" secondItem="FXl-nd-q1d" secondAttribute="trailing" id="JbB-CE-DpA"/>
+                <constraint firstItem="FXl-nd-q1d" firstAttribute="leading" secondItem="bs8-wm-NLt" secondAttribute="trailing" id="KRl-Fp-i3J"/>
+                <constraint firstItem="A3r-GP-ntb" firstAttribute="top" secondItem="rST-MW-QqY" secondAttribute="top" id="O55-NS-BTe"/>
+                <constraint firstAttribute="bottom" secondItem="A3r-GP-ntb" secondAttribute="bottom" id="SlG-sJ-Zgd"/>
+                <constraint firstAttribute="bottom" secondItem="FXl-nd-q1d" secondAttribute="bottom" id="Uwf-8d-X4g"/>
+                <constraint firstItem="YHC-oe-OBE" firstAttribute="leading" secondItem="A3r-GP-ntb" secondAttribute="trailing" id="XHS-HQ-I72"/>
+                <constraint firstAttribute="bottom" secondItem="bs8-wm-NLt" secondAttribute="bottom" id="Zub-hi-S2h"/>
+                <constraint firstAttribute="bottom" secondItem="aDI-oB-Ez6" secondAttribute="bottom" id="bMz-uY-sXN"/>
+                <constraint firstItem="YHC-oe-OBE" firstAttribute="width" secondItem="bs8-wm-NLt" secondAttribute="width" id="bgQ-NU-UXt"/>
+                <constraint firstItem="aDI-oB-Ez6" firstAttribute="width" secondItem="bs8-wm-NLt" secondAttribute="width" id="ip7-Aa-kM4"/>
+                <constraint firstItem="FXl-nd-q1d" firstAttribute="top" secondItem="rST-MW-QqY" secondAttribute="top" id="l1x-fX-wmH"/>
+                <constraint firstAttribute="trailing" secondItem="YHC-oe-OBE" secondAttribute="trailing" id="nTc-eo-X4p"/>
+                <constraint firstItem="aDI-oB-Ez6" firstAttribute="top" secondItem="rST-MW-QqY" secondAttribute="top" id="shP-Oq-I8Q"/>
+                <constraint firstItem="bs8-wm-NLt" firstAttribute="top" secondItem="rST-MW-QqY" secondAttribute="top" id="xsG-Vx-qKE"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="30.5" y="-96.5"/>
+        </view>
+    </objects>
+</document>
