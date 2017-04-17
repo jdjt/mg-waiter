@@ -8,7 +8,6 @@
 
 #import "FMIndoorMapVC.h"
 #import "ChooseFloorScrollView.h"
-
 @interface FMIndoorMapVC ()<FMKMapViewDelegate,FMKLocationServiceManagerDelegate,ChooseFloorScrollViewDelegate,FMKLayerDelegate,FMLocationManagerDelegate>
 
 @property (nonatomic, strong) FMMangroveMapView * mapView;

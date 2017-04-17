@@ -12,9 +12,6 @@
 
 /* 宏文件 */
 
-#define kScreenHeight   ([UIScreen mainScreen].bounds.size.height)
-#define kScreenWidth    ([UIScreen mainScreen].bounds.size.width)
-
 //根据6注释，等比例缩放
 #define kAdapterWith(x) kScreenWidth/375*x
 #define kAdapterheight(y) kScreenHeight/667*y

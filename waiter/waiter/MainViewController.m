@@ -97,6 +97,7 @@
 //开始接单和停止接单切换
 - (IBAction)workingStateButtonAction:(id)sender
 {
+    
 #warning 测试进入地图入口
     MapViewController *map = [[MapViewController alloc] init];
     [self.navigationController pushViewController:map animated:YES];
@@ -113,6 +114,8 @@
         [self.stateButton setTitle:@"开始接单" forState:UIControlStateNormal];
         self.isWorkingState = NO;
     }
+     
+    
 }
 
 //抢单按钮

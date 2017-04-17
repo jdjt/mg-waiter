@@ -19,8 +19,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+   
+    
 }
+-(void)load{
 
+   
+
+
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -51,7 +58,22 @@
     
     return cell;
 }
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 
+    static int i = 0;
+    
+    if (i == 0) {
+        i = 1;
+        [JDMBProressHUD addJdHud];
+        [self performSelector:@selector(ssss) withObject:nil afterDelay:5];
+    }else{
+    
+        i = 0;
+    }
+}
+-(void)ssss{
+    [JDMBProressHUD removeJdHud];
+}
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
