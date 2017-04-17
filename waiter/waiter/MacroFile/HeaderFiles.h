@@ -22,3 +22,4 @@
 #import "UIViewExt.h"
 #import "MySingleton.h"
 #import "NetworkRequestManager.h"
+#import "FMMapKit.h"

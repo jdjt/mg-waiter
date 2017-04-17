@@ -9,6 +9,8 @@
 #import "MainViewController.h"
 #import "TaskListCell.h"
 #import "FootCell.h"
+#import "MapViewController.h"
+
 @interface MainViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (strong, nonatomic) TaskListCell * taskListCell;
 @property (strong, nonatomic) FootCell * footcCell;
@@ -95,6 +97,10 @@
 //开始接单和停止接单切换
 - (IBAction)workingStateButtonAction:(id)sender
 {
+#warning 测试进入地图入口
+    MapViewController *map = [[MapViewController alloc] init];
+    [self.navigationController pushViewController:map animated:YES];
+    return;
     if (self.isWorkingState == NO)
     {
         self.stateButton.backgroundColor = [UIColor redColor];
