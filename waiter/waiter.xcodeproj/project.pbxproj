@@ -18,6 +18,238 @@
 		A861B3211E9DD3FB002D61F0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A861B31F1E9DD3FB002D61F0 /* Main.storyboard */; };
 		A861B3231E9DD3FB002D61F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A861B3221E9DD3FB002D61F0 /* Assets.xcassets */; };
 		A861B3261E9DD3FB002D61F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A861B3241E9DD3FB002D61F0 /* LaunchScreen.storyboard */; };
+		A8E130011EA45E2300644161 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A8E130001EA45E2300644161 /* libresolv.tbd */; };
+		A8E130031EA45E4900644161 /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A8E130021EA45E4900644161 /* libstdc++.6.0.9.tbd */; };
+		A8E130051EA45E5000644161 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8E130041EA45E5000644161 /* OpenGLES.framework */; };
+		A8E130071EA45E5C00644161 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8E130061EA45E5C00644161 /* CoreLocation.framework */; };
+		A8E130091EA45E6A00644161 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A8E130081EA45E6A00644161 /* libsqlite3.0.tbd */; };
+		A8E1300B1EA45E7400644161 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A8E1300A1EA45E7400644161 /* libc++.tbd */; };
+		A8E1300D1EA45E7C00644161 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A8E1300C1EA45E7C00644161 /* libxml2.tbd */; };
+		A8E130E91EA4600900644161 /* 0.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130101EA4600900644161 /* 0.fmi */; };
+		A8E130EA1EA4600900644161 /* 100000.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130111EA4600900644161 /* 100000.fmi */; };
+		A8E130EB1EA4600900644161 /* 100001.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130121EA4600900644161 /* 100001.fmi */; };
+		A8E130EC1EA4600900644161 /* 100002.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130131EA4600900644161 /* 100002.fmi */; };
+		A8E130ED1EA4600900644161 /* 100003.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130141EA4600900644161 /* 100003.fmi */; };
+		A8E130EE1EA4600900644161 /* 100004.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130151EA4600900644161 /* 100004.fmi */; };
+		A8E130EF1EA4600900644161 /* 100005.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130161EA4600900644161 /* 100005.fmi */; };
+		A8E130F01EA4600900644161 /* 100006.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130171EA4600900644161 /* 100006.fmi */; };
+		A8E130F11EA4600900644161 /* 100007.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130181EA4600900644161 /* 100007.fmi */; };
+		A8E130F21EA4600900644161 /* 110000.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130191EA4600900644161 /* 110000.fmi */; };
+		A8E130F31EA4600900644161 /* 110001.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E1301A1EA4600900644161 /* 110001.fmi */; };
+		A8E130F41EA4600900644161 /* 110002.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E1301B1EA4600900644161 /* 110002.fmi */; };
+		A8E130F51EA4600900644161 /* 110003.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E1301C1EA4600900644161 /* 110003.fmi */; };
+		A8E130F61EA4600900644161 /* 110004.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E1301D1EA4600900644161 /* 110004.fmi */; };
+		A8E130F71EA4600900644161 /* 110005.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E1301E1EA4600900644161 /* 110005.fmi */; };
+		A8E130F81EA4600900644161 /* 120000.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E1301F1EA4600900644161 /* 120000.fmi */; };
+		A8E130F91EA4600900644161 /* 120001.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130201EA4600900644161 /* 120001.fmi */; };
+		A8E130FA1EA4600900644161 /* 120002.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130211EA4600900644161 /* 120002.fmi */; };
+		A8E130FB1EA4600900644161 /* 120003.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130221EA4600900644161 /* 120003.fmi */; };
+		A8E130FC1EA4600900644161 /* 120004.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130231EA4600900644161 /* 120004.fmi */; };
+		A8E130FD1EA4600900644161 /* 120005.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130241EA4600900644161 /* 120005.fmi */; };
+		A8E130FE1EA4600900644161 /* 120006.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130251EA4600900644161 /* 120006.fmi */; };
+		A8E130FF1EA4600900644161 /* 120007.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130261EA4600900644161 /* 120007.fmi */; };
+		A8E131001EA4600900644161 /* 120008.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130271EA4600900644161 /* 120008.fmi */; };
+		A8E131011EA4600900644161 /* 120009.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130281EA4600900644161 /* 120009.fmi */; };
+		A8E131021EA4600900644161 /* 120010.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130291EA4600900644161 /* 120010.fmi */; };
+		A8E131031EA4600900644161 /* 130000.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E1302A1EA4600900644161 /* 130000.fmi */; };
+		A8E131041EA4600900644161 /* 130001.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E1302B1EA4600900644161 /* 130001.fmi */; };
+		A8E131051EA4600900644161 /* 130002.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E1302C1EA4600900644161 /* 130002.fmi */; };
+		A8E131061EA4600900644161 /* 130003.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E1302D1EA4600900644161 /* 130003.fmi */; };
+		A8E131071EA4600900644161 /* 130004.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E1302E1EA4600900644161 /* 130004.fmi */; };
+		A8E131081EA4600900644161 /* 130005.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E1302F1EA4600900644161 /* 130005.fmi */; };
+		A8E131091EA4600900644161 /* 140000.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130301EA4600900644161 /* 140000.fmi */; };
+		A8E1310A1EA4600900644161 /* 140001.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130311EA4600900644161 /* 140001.fmi */; };
+		A8E1310B1EA4600900644161 /* 140002.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130321EA4600900644161 /* 140002.fmi */; };
+		A8E1310C1EA4600900644161 /* 140003.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130331EA4600900644161 /* 140003.fmi */; };
+		A8E1310D1EA4600900644161 /* 140004.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130341EA4600900644161 /* 140004.fmi */; };
+		A8E1310E1EA4600900644161 /* 140005.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130351EA4600900644161 /* 140005.fmi */; };
+		A8E1310F1EA4600900644161 /* 140006.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130361EA4600900644161 /* 140006.fmi */; };
+		A8E131101EA4600900644161 /* 140007.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130371EA4600900644161 /* 140007.fmi */; };
+		A8E131111EA4600900644161 /* 140008.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130381EA4600900644161 /* 140008.fmi */; };
+		A8E131121EA4600900644161 /* 140009.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130391EA4600900644161 /* 140009.fmi */; };
+		A8E131131EA4600900644161 /* 140010.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E1303A1EA4600900644161 /* 140010.fmi */; };
+		A8E131141EA4600900644161 /* 140011.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E1303B1EA4600900644161 /* 140011.fmi */; };
+		A8E131151EA4600900644161 /* 140012.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E1303C1EA4600900644161 /* 140012.fmi */; };
+		A8E131161EA4600900644161 /* 140013.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E1303D1EA4600900644161 /* 140013.fmi */; };
+		A8E131171EA4600900644161 /* 140014.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E1303E1EA4600900644161 /* 140014.fmi */; };
+		A8E131181EA4600900644161 /* 140015.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E1303F1EA4600900644161 /* 140015.fmi */; };
+		A8E131191EA4600900644161 /* 140016.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130401EA4600900644161 /* 140016.fmi */; };
+		A8E1311A1EA4600900644161 /* 140017.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130411EA4600900644161 /* 140017.fmi */; };
+		A8E1311B1EA4600900644161 /* 140018.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130421EA4600900644161 /* 140018.fmi */; };
+		A8E1311C1EA4600900644161 /* 140019.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130431EA4600900644161 /* 140019.fmi */; };
+		A8E1311D1EA4600900644161 /* 140020.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130441EA4600900644161 /* 140020.fmi */; };
+		A8E1311E1EA4600900644161 /* 140021.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130451EA4600900644161 /* 140021.fmi */; };
+		A8E1311F1EA4600900644161 /* 140022.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130461EA4600900644161 /* 140022.fmi */; };
+		A8E131201EA4600900644161 /* 140023.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130471EA4600900644161 /* 140023.fmi */; };
+		A8E131211EA4600900644161 /* 140024.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130481EA4600900644161 /* 140024.fmi */; };
+		A8E131221EA4600900644161 /* 140025.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130491EA4600900644161 /* 140025.fmi */; };
+		A8E131231EA4600900644161 /* 140026.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E1304A1EA4600900644161 /* 140026.fmi */; };
+		A8E131241EA4600900644161 /* 140027.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E1304B1EA4600900644161 /* 140027.fmi */; };
+		A8E131251EA4600900644161 /* 140028.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E1304C1EA4600900644161 /* 140028.fmi */; };
+		A8E131261EA4600900644161 /* 140100.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E1304D1EA4600900644161 /* 140100.fmi */; };
+		A8E131271EA4600900644161 /* 140200.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E1304E1EA4600900644161 /* 140200.fmi */; };
+		A8E131281EA4600900644161 /* 140300.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E1304F1EA4600900644161 /* 140300.fmi */; };
+		A8E131291EA4600900644161 /* 140400.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130501EA4600900644161 /* 140400.fmi */; };
+		A8E1312A1EA4600900644161 /* 140500.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130511EA4600900644161 /* 140500.fmi */; };
+		A8E1312B1EA4600900644161 /* 140600.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130521EA4600900644161 /* 140600.fmi */; };
+		A8E1312C1EA4600900644161 /* 140700.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130531EA4600900644161 /* 140700.fmi */; };
+		A8E1312D1EA4600900644161 /* 150000.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130541EA4600900644161 /* 150000.fmi */; };
+		A8E1312E1EA4600900644161 /* 150001.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130551EA4600900644161 /* 150001.fmi */; };
+		A8E1312F1EA4600900644161 /* 150002.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130561EA4600900644161 /* 150002.fmi */; };
+		A8E131301EA4600900644161 /* 150003.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130571EA4600900644161 /* 150003.fmi */; };
+		A8E131311EA4600900644161 /* 150004.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130581EA4600900644161 /* 150004.fmi */; };
+		A8E131321EA4600900644161 /* 150005.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130591EA4600900644161 /* 150005.fmi */; };
+		A8E131331EA4600900644161 /* 150006.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E1305A1EA4600900644161 /* 150006.fmi */; };
+		A8E131341EA4600900644161 /* 150007.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E1305B1EA4600900644161 /* 150007.fmi */; };
+		A8E131351EA4600900644161 /* 150008.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E1305C1EA4600900644161 /* 150008.fmi */; };
+		A8E131361EA4600900644161 /* 150009.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E1305D1EA4600900644161 /* 150009.fmi */; };
+		A8E131371EA4600900644161 /* 150010.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E1305E1EA4600900644161 /* 150010.fmi */; };
+		A8E131381EA4600900644161 /* 150011.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E1305F1EA4600900644161 /* 150011.fmi */; };
+		A8E131391EA4600900644161 /* 150012.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130601EA4600900644161 /* 150012.fmi */; };
+		A8E1313A1EA4600900644161 /* 150013.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130611EA4600900644161 /* 150013.fmi */; };
+		A8E1313B1EA4600900644161 /* 150014.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130621EA4600900644161 /* 150014.fmi */; };
+		A8E1313C1EA4600900644161 /* 160000.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130631EA4600900644161 /* 160000.fmi */; };
+		A8E1313D1EA4600900644161 /* 160001.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130641EA4600900644161 /* 160001.fmi */; };
+		A8E1313E1EA4600900644161 /* 160002.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130651EA4600900644161 /* 160002.fmi */; };
+		A8E1313F1EA4600900644161 /* 160003.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130661EA4600900644161 /* 160003.fmi */; };
+		A8E131401EA4600900644161 /* 160004.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130671EA4600900644161 /* 160004.fmi */; };
+		A8E131411EA4600900644161 /* 160005.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130681EA4600900644161 /* 160005.fmi */; };
+		A8E131421EA4600900644161 /* 160006.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130691EA4600900644161 /* 160006.fmi */; };
+		A8E131431EA4600900644161 /* 160007.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E1306A1EA4600900644161 /* 160007.fmi */; };
+		A8E131441EA4600900644161 /* 160008.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E1306B1EA4600900644161 /* 160008.fmi */; };
+		A8E131451EA4600900644161 /* 170000.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E1306C1EA4600900644161 /* 170000.fmi */; };
+		A8E131461EA4600900644161 /* 170001.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E1306D1EA4600900644161 /* 170001.fmi */; };
+		A8E131471EA4600900644161 /* 170002.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E1306E1EA4600900644161 /* 170002.fmi */; };
+		A8E131481EA4600900644161 /* 170003.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E1306F1EA4600900644161 /* 170003.fmi */; };
+		A8E131491EA4600900644161 /* 170004.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130701EA4600900644161 /* 170004.fmi */; };
+		A8E1314A1EA4600900644161 /* 170005.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130711EA4600900644161 /* 170005.fmi */; };
+		A8E1314B1EA4600900644161 /* 170006.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130721EA4600900644161 /* 170006.fmi */; };
+		A8E1314C1EA4600900644161 /* 180000.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130731EA4600900644161 /* 180000.fmi */; };
+		A8E1314D1EA4600900644161 /* 180001.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130741EA4600900644161 /* 180001.fmi */; };
+		A8E1314E1EA4600900644161 /* 180002.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130751EA4600900644161 /* 180002.fmi */; };
+		A8E1314F1EA4600900644161 /* 180003.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130761EA4600900644161 /* 180003.fmi */; };
+		A8E131501EA4600900644161 /* 180004.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130771EA4600900644161 /* 180004.fmi */; };
+		A8E131511EA4600900644161 /* 180005.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130781EA4600900644161 /* 180005.fmi */; };
+		A8E131521EA4600900644161 /* 190000.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130791EA4600900644161 /* 190000.fmi */; };
+		A8E131531EA4600900644161 /* 200000.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E1307A1EA4600900644161 /* 200000.fmi */; };
+		A8E131541EA4600900644161 /* 2002.theme in Resources */ = {isa = PBXBuildFile; fileRef = A8E1307B1EA4600900644161 /* 2002.theme */; };
+		A8E131551EA4600900644161 /* ad.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E1307C1EA4600900644161 /* ad.fmi */; };
+		A8E131561EA4600900644161 /* Arcteryx.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E1307D1EA4600900644161 /* Arcteryx.fmi */; };
+		A8E131571EA4600900644161 /* babudou.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E1307E1EA4600900644161 /* babudou.fmi */; };
+		A8E131581EA4600900644161 /* baxikaorou.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E1307F1EA4600900644161 /* baxikaorou.fmi */; };
+		A8E131591EA4600900644161 /* bbl.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130801EA4600900644161 /* bbl.fmi */; };
+		A8E1315A1EA4600900644161 /* BeachStyle.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130811EA4600900644161 /* BeachStyle.fmi */; };
+		A8E1315B1EA4600900644161 /* bentu.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130821EA4600900644161 /* bentu.fmi */; };
+		A8E1315C1EA4600900644161 /* Borida.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130831EA4600900644161 /* Borida.fmi */; };
+		A8E1315D1EA4600900644161 /* boshiyanjing.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130841EA4600900644161 /* boshiyanjing.fmi */; };
+		A8E1315E1EA4600900644161 /* botebafang.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130851EA4600900644161 /* botebafang.fmi */; };
+		A8E1315F1EA4600900644161 /* bufeitai.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130861EA4600900644161 /* bufeitai.fmi */; };
+		A8E131601EA4600900644161 /* chaotianmentietu.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130871EA4600900644161 /* chaotianmentietu.fmi */; };
+		A8E131611EA4600900644161 /* coco.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130881EA4600900644161 /* coco.fmi */; };
+		A8E131621EA4600900644161 /* Columbia.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130891EA4600900644161 /* Columbia.fmi */; };
+		A8E131631EA4600900644161 /* compass.png in Resources */ = {isa = PBXBuildFile; fileRef = A8E1308A1EA4600900644161 /* compass.png */; };
+		A8E131641EA4600900644161 /* CRZ.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E1308B1EA4600900644161 /* CRZ.fmi */; };
+		A8E131651EA4600900644161 /* daliangcang.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E1308C1EA4600900644161 /* daliangcang.fmi */; };
+		A8E131661EA4600900644161 /* dawangzongcanting.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E1308D1EA4600900644161 /* dawangzongcanting.fmi */; };
+		A8E131671EA4600900644161 /* dianyinggongfang.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E1308E1EA4600900644161 /* dianyinggongfang.fmi */; };
+		A8E131681EA4600900644161 /* dianyinggongfangba.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E1308F1EA4600900644161 /* dianyinggongfangba.fmi */; };
+		A8E131691EA4600900644161 /* dome.png in Resources */ = {isa = PBXBuildFile; fileRef = A8E130901EA4600900644161 /* dome.png */; };
+		A8E1316A1EA4600900644161 /* EHANG.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130911EA4600900644161 /* EHANG.fmi */; };
+		A8E1316B1EA4600900644161 /* ESSECHIC.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130921EA4600900644161 /* ESSECHIC.fmi */; };
+		A8E1316C1EA4600900644161 /* EVEBYEVE.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130931EA4600900644161 /* EVEBYEVE.fmi */; };
+		A8E1316D1EA4600900644161 /* Eves.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130941EA4600900644161 /* Eves.fmi */; };
+		A8E1316E1EA4600900644161 /* fenghuanghong.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130951EA4600900644161 /* fenghuanghong.fmi */; };
+		A8E1316F1EA4600900644161 /* fengmap.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130961EA4600900644161 /* fengmap.fmi */; };
+		A8E131701EA4600900644161 /* GUESS.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130971EA4600900644161 /* GUESS.fmi */; };
+		A8E131711EA4600900644161 /* hainanshouxin.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130981EA4600900644161 /* hainanshouxin.fmi */; };
+		A8E131721EA4600900644161 /* hake9d.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130991EA4600900644161 /* hake9d.fmi */; };
+		A8E131731EA4600900644161 /* handm.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E1309A1EA4600900644161 /* handm.fmi */; };
+		A8E131741EA4600900644161 /* hdl.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E1309B1EA4600900644161 /* hdl.fmi */; };
+		A8E131751EA4600900644161 /* hefengge.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E1309C1EA4600900644161 /* hefengge.fmi */; };
+		A8E131761EA4600900644161 /* hns.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E1309D1EA4600900644161 /* hns.fmi */; };
+		A8E131771EA4600900644161 /* hongmofang.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E1309E1EA4600900644161 /* hongmofang.fmi */; };
+		A8E131781EA4600900644161 /* hongmofangcanting.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E1309F1EA4600900644161 /* hongmofangcanting.fmi */; };
+		A8E131791EA4600900644161 /* hongshulinfilm.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130A01EA4600900644161 /* hongshulinfilm.fmi */; };
+		A8E1317A1EA4600900644161 /* jackjones.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130A11EA4600900644161 /* jackjones.fmi */; };
+		A8E1317B1EA4600900644161 /* jinrishuwu.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130A21EA4600900644161 /* jinrishuwu.fmi */; };
+		A8E1317C1EA4600900644161 /* jinriweilai.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130A31EA4600900644161 /* jinriweilai.fmi */; };
+		A8E1317D1EA4600900644161 /* jinriweilaiguan.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130A41EA4600900644161 /* jinriweilaiguan.fmi */; };
+		A8E1317E1EA4600900644161 /* jinriyishuhui.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130A51EA4600900644161 /* jinriyishuhui.fmi */; };
+		A8E1317F1EA4600900644161 /* jiweijiuba.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130A61EA4600900644161 /* jiweijiuba.fmi */; };
+		A8E131801EA4600900644161 /* jiweijiulang.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130A71EA4600900644161 /* jiweijiulang.fmi */; };
+		A8E131811EA4600900644161 /* jixiangzhai.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130A81EA4600900644161 /* jixiangzhai.fmi */; };
+		A8E131821EA4600900644161 /* jpjp.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130A91EA4600900644161 /* jpjp.fmi */; };
+		A8E131831EA4600900644161 /* juyage.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130AA1EA4600900644161 /* juyage.fmi */; };
+		A8E131841EA4600900644161 /* kfc.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130AB1EA4600900644161 /* kfc.fmi */; };
+		A8E131851EA4600900644161 /* laoshanghai.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130AC1EA4600900644161 /* laoshanghai.fmi */; };
+		A8E131861EA4600900644161 /* logo.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130AD1EA4600900644161 /* logo.fmi */; };
+		A8E131871EA4600900644161 /* Maisonmin.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130AE1EA4600900644161 /* Maisonmin.fmi */; };
+		A8E131881EA4600900644161 /* MariaLuisa.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130AF1EA4600900644161 /* MariaLuisa.fmi */; };
+		A8E131891EA4600900644161 /* mdl.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130B01EA4600900644161 /* mdl.fmi */; };
+		A8E1318A1EA4600900644161 /* mingsalon.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130B11EA4600900644161 /* mingsalon.fmi */; };
+		A8E1318B1EA4600900644161 /* mlyh.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130B21EA4600900644161 /* mlyh.fmi */; };
+		A8E1318C1EA4600900644161 /* mothercare.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130B31EA4600900644161 /* mothercare.fmi */; };
+		A8E1318D1EA4600900644161 /* moxige.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130B41EA4600900644161 /* moxige.fmi */; };
+		A8E1318E1EA4600900644161 /* mystyle.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130B51EA4600900644161 /* mystyle.fmi */; };
+		A8E1318F1EA4600900644161 /* ONEILL.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130B61EA4600900644161 /* ONEILL.fmi */; };
+		A8E131901EA4600900644161 /* only.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130B71EA4600900644161 /* only.fmi */; };
+		A8E131911EA4600900644161 /* plate.png in Resources */ = {isa = PBXBuildFile; fileRef = A8E130B81EA4600900644161 /* plate.png */; };
+		A8E131921EA4600900644161 /* pointer.png in Resources */ = {isa = PBXBuildFile; fileRef = A8E130B91EA4600900644161 /* pointer.png */; };
+		A8E131931EA4600900644161 /* psk.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130BA1EA4600900644161 /* psk.fmi */; };
+		A8E131941EA4600900644161 /* putiduogongneng.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130BB1EA4600900644161 /* putiduogongneng.fmi */; };
+		A8E131951EA4600900644161 /* putiyanhui.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130BC1EA4600900644161 /* putiyanhui.fmi */; };
+		A8E131961EA4600900644161 /* riguan.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130BD1EA4600900644161 /* riguan.fmi */; };
+		A8E131971EA4600900644161 /* selected.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130BE1EA4600900644161 /* selected.fmi */; };
+		A8E131981EA4600900644161 /* senchang.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130BF1EA4600900644161 /* senchang.fmi */; };
+		A8E131991EA4600900644161 /* shatanshui.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130C01EA4600900644161 /* shatanshui.fmi */; };
+		A8E1319A1EA4600900644161 /* shechipin.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130C11EA4600900644161 /* shechipin.fmi */; };
+		A8E1319B1EA4600900644161 /* t100kids.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130C21EA4600900644161 /* t100kids.fmi */; };
+		A8E1319C1EA4600900644161 /* tanxianwangguo.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130C31EA4600900644161 /* tanxianwangguo.fmi */; };
+		A8E1319D1EA4600900644161 /* tianyuan.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130C41EA4600900644161 /* tianyuan.fmi */; };
+		A8E1319E1EA4600900644161 /* timg.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130C51EA4600900644161 /* timg.fmi */; };
+		A8E1319F1EA4600900644161 /* track.png in Resources */ = {isa = PBXBuildFile; fileRef = A8E130C61EA4600900644161 /* track.png */; };
+		A8E131A01EA4600900644161 /* upjingpindian.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130C71EA4600900644161 /* upjingpindian.fmi */; };
+		A8E131A11EA4600900644161 /* UR.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130C81EA4600900644161 /* UR.fmi */; };
+		A8E131A21EA4600900644161 /* Vancasa.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130C91EA4600900644161 /* Vancasa.fmi */; };
+		A8E131A31EA4600900644161 /* veromoda.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130CA1EA4600900644161 /* veromoda.fmi */; };
+		A8E131A41EA4600900644161 /* weilaiyishu.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130CB1EA4600900644161 /* weilaiyishu.fmi */; };
+		A8E131A51EA4600900644161 /* wq.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130CC1EA4600900644161 /* wq.fmi */; };
+		A8E131A61EA4600900644161 /* xbk.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130CD1EA4600900644161 /* xbk.fmi */; };
+		A8E131A71EA4600900644161 /* xiangjutietu.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130CE1EA4600900644161 /* xiangjutietu.fmi */; };
+		A8E131A81EA4600900644161 /* xianhengjiudian.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130CF1EA4600900644161 /* xianhengjiudian.fmi */; };
+		A8E131A91EA4600900644161 /* xls.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130D01EA4600900644161 /* xls.fmi */; };
+		A8E131AA1EA4600900644161 /* yimiangongfangtietu.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130D11EA4600900644161 /* yimiangongfangtietu.fmi */; };
+		A8E131AB1EA4600900644161 /* yuyuege.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130D21EA4600900644161 /* yuyuege.fmi */; };
+		A8E131AC1EA4600900644161 /* zhenzhuba.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130D31EA4600900644161 /* zhenzhuba.fmi */; };
+		A8E131AD1EA4600900644161 /* zxj.fmi in Resources */ = {isa = PBXBuildFile; fileRef = A8E130D41EA4600900644161 /* zxj.fmi */; };
+		A8E131AE1EA4600900644161 /* 70144.fmap in Resources */ = {isa = PBXBuildFile; fileRef = A8E130D51EA4600900644161 /* 70144.fmap */; };
+		A8E131AF1EA4600900644161 /* 70145.fmap in Resources */ = {isa = PBXBuildFile; fileRef = A8E130D61EA4600900644161 /* 70145.fmap */; };
+		A8E131B01EA4600900644161 /* 70146.fmap in Resources */ = {isa = PBXBuildFile; fileRef = A8E130D71EA4600900644161 /* 70146.fmap */; };
+		A8E131B11EA4600900644161 /* 70147.fmap in Resources */ = {isa = PBXBuildFile; fileRef = A8E130D81EA4600900644161 /* 70147.fmap */; };
+		A8E131B21EA4600900644161 /* 70148.fmap in Resources */ = {isa = PBXBuildFile; fileRef = A8E130D91EA4600900644161 /* 70148.fmap */; };
+		A8E131B31EA4600900644161 /* 79980.fmap in Resources */ = {isa = PBXBuildFile; fileRef = A8E130DA1EA4600900644161 /* 79980.fmap */; };
+		A8E131B41EA4600900644161 /* 79981.fmap in Resources */ = {isa = PBXBuildFile; fileRef = A8E130DB1EA4600900644161 /* 79981.fmap */; };
+		A8E131B51EA4600900644161 /* 79982.fmap in Resources */ = {isa = PBXBuildFile; fileRef = A8E130DC1EA4600900644161 /* 79982.fmap */; };
+		A8E131B61EA4600900644161 /* acts.json in Resources */ = {isa = PBXBuildFile; fileRef = A8E130DD1EA4600900644161 /* acts.json */; };
+		A8E131B71EA4600900644161 /* facility.json in Resources */ = {isa = PBXBuildFile; fileRef = A8E130DE1EA4600900644161 /* facility.json */; };
+		A8E131B81EA4600900644161 /* food.json in Resources */ = {isa = PBXBuildFile; fileRef = A8E130DF1EA4600900644161 /* food.json */; };
+		A8E131B91EA4600900644161 /* indoorMapInfo.json in Resources */ = {isa = PBXBuildFile; fileRef = A8E130E01EA4600900644161 /* indoorMapInfo.json */; };
+		A8E131BA1EA4600900644161 /* jiantou.png in Resources */ = {isa = PBXBuildFile; fileRef = A8E130E11EA4600900644161 /* jiantou.png */; };
+		A8E131BB1EA4600900644161 /* locatio.png in Resources */ = {isa = PBXBuildFile; fileRef = A8E130E21EA4600900644161 /* locatio.png */; };
+		A8E131BC1EA4600900644161 /* mangrove.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = A8E130E31EA4600900644161 /* mangrove.sqlite */; };
+		A8E131BD1EA4600900644161 /* nodeassociation.json in Resources */ = {isa = PBXBuildFile; fileRef = A8E130E41EA4600900644161 /* nodeassociation.json */; };
+		A8E131BE1EA4600900644161 /* route_food_1.json in Resources */ = {isa = PBXBuildFile; fileRef = A8E130E51EA4600900644161 /* route_food_1.json */; };
+		A8E131BF1EA4600900644161 /* route_relax_1.json in Resources */ = {isa = PBXBuildFile; fileRef = A8E130E61EA4600900644161 /* route_relax_1.json */; };
+		A8E131C01EA4600900644161 /* shop.json in Resources */ = {isa = PBXBuildFile; fileRef = A8E130E71EA4600900644161 /* shop.json */; };
+		A8E131C11EA4600900644161 /* shop1.json in Resources */ = {isa = PBXBuildFile; fileRef = A8E130E81EA4600900644161 /* shop1.json */; };
+		A8E132231EA4603F00644161 /* FMBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A8E132221EA4603F00644161 /* FMBundle.bundle */; };
+		A8E132831EA4605400644161 /* libFMMapKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A8E132821EA4605400644161 /* libFMMapKit.a */; };
+		A8E132851EA4607700644161 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8E132841EA4607700644161 /* GLKit.framework */; };
+		A8E132871EA4608100644161 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8E132861EA4608100644161 /* ImageIO.framework */; };
+		A8E132891EA461B400644161 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A8E132881EA461B400644161 /* libz.tbd */; };
+		A8E132911EA461D400644161 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E1328B1EA461D400644161 /* MapViewController.m */; };
+		A8E132921EA461D400644161 /* ChooseFloorScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E1328D1EA461D400644161 /* ChooseFloorScrollView.m */; };
+		A8E132931EA461D400644161 /* FMIndoorMapVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E132901EA461D400644161 /* FMIndoorMapVC.m */; };
 		D5865ED41E9F51F700E070D4 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D5865EC81E9F51F700E070D4 /* AFHTTPSessionManager.m */; };
 		D5865ED51E9F51F700E070D4 /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D5865ECB1E9F51F700E070D4 /* AFNetworkReachabilityManager.m */; };
 		D5865ED61E9F51F700E070D4 /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = D5865ECD1E9F51F700E070D4 /* AFSecurityPolicy.m */; };
@@ -72,6 +304,332 @@
 		A861B3221E9DD3FB002D61F0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A861B3251E9DD3FB002D61F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A861B3271E9DD3FB002D61F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A8E130001EA45E2300644161 /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
+		A8E130021EA45E4900644161 /* libstdc++.6.0.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.0.9.tbd"; path = "usr/lib/libstdc++.6.0.9.tbd"; sourceTree = SDKROOT; };
+		A8E130041EA45E5000644161 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		A8E130061EA45E5C00644161 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		A8E130081EA45E6A00644161 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		A8E1300A1EA45E7400644161 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		A8E1300C1EA45E7C00644161 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
+		A8E130101EA4600900644161 /* 0.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 0.fmi; sourceTree = "<group>"; };
+		A8E130111EA4600900644161 /* 100000.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 100000.fmi; sourceTree = "<group>"; };
+		A8E130121EA4600900644161 /* 100001.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 100001.fmi; sourceTree = "<group>"; };
+		A8E130131EA4600900644161 /* 100002.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 100002.fmi; sourceTree = "<group>"; };
+		A8E130141EA4600900644161 /* 100003.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 100003.fmi; sourceTree = "<group>"; };
+		A8E130151EA4600900644161 /* 100004.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 100004.fmi; sourceTree = "<group>"; };
+		A8E130161EA4600900644161 /* 100005.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 100005.fmi; sourceTree = "<group>"; };
+		A8E130171EA4600900644161 /* 100006.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 100006.fmi; sourceTree = "<group>"; };
+		A8E130181EA4600900644161 /* 100007.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 100007.fmi; sourceTree = "<group>"; };
+		A8E130191EA4600900644161 /* 110000.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 110000.fmi; sourceTree = "<group>"; };
+		A8E1301A1EA4600900644161 /* 110001.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 110001.fmi; sourceTree = "<group>"; };
+		A8E1301B1EA4600900644161 /* 110002.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 110002.fmi; sourceTree = "<group>"; };
+		A8E1301C1EA4600900644161 /* 110003.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 110003.fmi; sourceTree = "<group>"; };
+		A8E1301D1EA4600900644161 /* 110004.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 110004.fmi; sourceTree = "<group>"; };
+		A8E1301E1EA4600900644161 /* 110005.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 110005.fmi; sourceTree = "<group>"; };
+		A8E1301F1EA4600900644161 /* 120000.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 120000.fmi; sourceTree = "<group>"; };
+		A8E130201EA4600900644161 /* 120001.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 120001.fmi; sourceTree = "<group>"; };
+		A8E130211EA4600900644161 /* 120002.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 120002.fmi; sourceTree = "<group>"; };
+		A8E130221EA4600900644161 /* 120003.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 120003.fmi; sourceTree = "<group>"; };
+		A8E130231EA4600900644161 /* 120004.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 120004.fmi; sourceTree = "<group>"; };
+		A8E130241EA4600900644161 /* 120005.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 120005.fmi; sourceTree = "<group>"; };
+		A8E130251EA4600900644161 /* 120006.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 120006.fmi; sourceTree = "<group>"; };
+		A8E130261EA4600900644161 /* 120007.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 120007.fmi; sourceTree = "<group>"; };
+		A8E130271EA4600900644161 /* 120008.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 120008.fmi; sourceTree = "<group>"; };
+		A8E130281EA4600900644161 /* 120009.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 120009.fmi; sourceTree = "<group>"; };
+		A8E130291EA4600900644161 /* 120010.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 120010.fmi; sourceTree = "<group>"; };
+		A8E1302A1EA4600900644161 /* 130000.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 130000.fmi; sourceTree = "<group>"; };
+		A8E1302B1EA4600900644161 /* 130001.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 130001.fmi; sourceTree = "<group>"; };
+		A8E1302C1EA4600900644161 /* 130002.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 130002.fmi; sourceTree = "<group>"; };
+		A8E1302D1EA4600900644161 /* 130003.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 130003.fmi; sourceTree = "<group>"; };
+		A8E1302E1EA4600900644161 /* 130004.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 130004.fmi; sourceTree = "<group>"; };
+		A8E1302F1EA4600900644161 /* 130005.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 130005.fmi; sourceTree = "<group>"; };
+		A8E130301EA4600900644161 /* 140000.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 140000.fmi; sourceTree = "<group>"; };
+		A8E130311EA4600900644161 /* 140001.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 140001.fmi; sourceTree = "<group>"; };
+		A8E130321EA4600900644161 /* 140002.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 140002.fmi; sourceTree = "<group>"; };
+		A8E130331EA4600900644161 /* 140003.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 140003.fmi; sourceTree = "<group>"; };
+		A8E130341EA4600900644161 /* 140004.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 140004.fmi; sourceTree = "<group>"; };
+		A8E130351EA4600900644161 /* 140005.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 140005.fmi; sourceTree = "<group>"; };
+		A8E130361EA4600900644161 /* 140006.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 140006.fmi; sourceTree = "<group>"; };
+		A8E130371EA4600900644161 /* 140007.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 140007.fmi; sourceTree = "<group>"; };
+		A8E130381EA4600900644161 /* 140008.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 140008.fmi; sourceTree = "<group>"; };
+		A8E130391EA4600900644161 /* 140009.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 140009.fmi; sourceTree = "<group>"; };
+		A8E1303A1EA4600900644161 /* 140010.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 140010.fmi; sourceTree = "<group>"; };
+		A8E1303B1EA4600900644161 /* 140011.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 140011.fmi; sourceTree = "<group>"; };
+		A8E1303C1EA4600900644161 /* 140012.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 140012.fmi; sourceTree = "<group>"; };
+		A8E1303D1EA4600900644161 /* 140013.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 140013.fmi; sourceTree = "<group>"; };
+		A8E1303E1EA4600900644161 /* 140014.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 140014.fmi; sourceTree = "<group>"; };
+		A8E1303F1EA4600900644161 /* 140015.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 140015.fmi; sourceTree = "<group>"; };
+		A8E130401EA4600900644161 /* 140016.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 140016.fmi; sourceTree = "<group>"; };
+		A8E130411EA4600900644161 /* 140017.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 140017.fmi; sourceTree = "<group>"; };
+		A8E130421EA4600900644161 /* 140018.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 140018.fmi; sourceTree = "<group>"; };
+		A8E130431EA4600900644161 /* 140019.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 140019.fmi; sourceTree = "<group>"; };
+		A8E130441EA4600900644161 /* 140020.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 140020.fmi; sourceTree = "<group>"; };
+		A8E130451EA4600900644161 /* 140021.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 140021.fmi; sourceTree = "<group>"; };
+		A8E130461EA4600900644161 /* 140022.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 140022.fmi; sourceTree = "<group>"; };
+		A8E130471EA4600900644161 /* 140023.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 140023.fmi; sourceTree = "<group>"; };
+		A8E130481EA4600900644161 /* 140024.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 140024.fmi; sourceTree = "<group>"; };
+		A8E130491EA4600900644161 /* 140025.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 140025.fmi; sourceTree = "<group>"; };
+		A8E1304A1EA4600900644161 /* 140026.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 140026.fmi; sourceTree = "<group>"; };
+		A8E1304B1EA4600900644161 /* 140027.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 140027.fmi; sourceTree = "<group>"; };
+		A8E1304C1EA4600900644161 /* 140028.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 140028.fmi; sourceTree = "<group>"; };
+		A8E1304D1EA4600900644161 /* 140100.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 140100.fmi; sourceTree = "<group>"; };
+		A8E1304E1EA4600900644161 /* 140200.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 140200.fmi; sourceTree = "<group>"; };
+		A8E1304F1EA4600900644161 /* 140300.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 140300.fmi; sourceTree = "<group>"; };
+		A8E130501EA4600900644161 /* 140400.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 140400.fmi; sourceTree = "<group>"; };
+		A8E130511EA4600900644161 /* 140500.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 140500.fmi; sourceTree = "<group>"; };
+		A8E130521EA4600900644161 /* 140600.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 140600.fmi; sourceTree = "<group>"; };
+		A8E130531EA4600900644161 /* 140700.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 140700.fmi; sourceTree = "<group>"; };
+		A8E130541EA4600900644161 /* 150000.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 150000.fmi; sourceTree = "<group>"; };
+		A8E130551EA4600900644161 /* 150001.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 150001.fmi; sourceTree = "<group>"; };
+		A8E130561EA4600900644161 /* 150002.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 150002.fmi; sourceTree = "<group>"; };
+		A8E130571EA4600900644161 /* 150003.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 150003.fmi; sourceTree = "<group>"; };
+		A8E130581EA4600900644161 /* 150004.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 150004.fmi; sourceTree = "<group>"; };
+		A8E130591EA4600900644161 /* 150005.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 150005.fmi; sourceTree = "<group>"; };
+		A8E1305A1EA4600900644161 /* 150006.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 150006.fmi; sourceTree = "<group>"; };
+		A8E1305B1EA4600900644161 /* 150007.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 150007.fmi; sourceTree = "<group>"; };
+		A8E1305C1EA4600900644161 /* 150008.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 150008.fmi; sourceTree = "<group>"; };
+		A8E1305D1EA4600900644161 /* 150009.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 150009.fmi; sourceTree = "<group>"; };
+		A8E1305E1EA4600900644161 /* 150010.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 150010.fmi; sourceTree = "<group>"; };
+		A8E1305F1EA4600900644161 /* 150011.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 150011.fmi; sourceTree = "<group>"; };
+		A8E130601EA4600900644161 /* 150012.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 150012.fmi; sourceTree = "<group>"; };
+		A8E130611EA4600900644161 /* 150013.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 150013.fmi; sourceTree = "<group>"; };
+		A8E130621EA4600900644161 /* 150014.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 150014.fmi; sourceTree = "<group>"; };
+		A8E130631EA4600900644161 /* 160000.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 160000.fmi; sourceTree = "<group>"; };
+		A8E130641EA4600900644161 /* 160001.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 160001.fmi; sourceTree = "<group>"; };
+		A8E130651EA4600900644161 /* 160002.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 160002.fmi; sourceTree = "<group>"; };
+		A8E130661EA4600900644161 /* 160003.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 160003.fmi; sourceTree = "<group>"; };
+		A8E130671EA4600900644161 /* 160004.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 160004.fmi; sourceTree = "<group>"; };
+		A8E130681EA4600900644161 /* 160005.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 160005.fmi; sourceTree = "<group>"; };
+		A8E130691EA4600900644161 /* 160006.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 160006.fmi; sourceTree = "<group>"; };
+		A8E1306A1EA4600900644161 /* 160007.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 160007.fmi; sourceTree = "<group>"; };
+		A8E1306B1EA4600900644161 /* 160008.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 160008.fmi; sourceTree = "<group>"; };
+		A8E1306C1EA4600900644161 /* 170000.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 170000.fmi; sourceTree = "<group>"; };
+		A8E1306D1EA4600900644161 /* 170001.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 170001.fmi; sourceTree = "<group>"; };
+		A8E1306E1EA4600900644161 /* 170002.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 170002.fmi; sourceTree = "<group>"; };
+		A8E1306F1EA4600900644161 /* 170003.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 170003.fmi; sourceTree = "<group>"; };
+		A8E130701EA4600900644161 /* 170004.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 170004.fmi; sourceTree = "<group>"; };
+		A8E130711EA4600900644161 /* 170005.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 170005.fmi; sourceTree = "<group>"; };
+		A8E130721EA4600900644161 /* 170006.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 170006.fmi; sourceTree = "<group>"; };
+		A8E130731EA4600900644161 /* 180000.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 180000.fmi; sourceTree = "<group>"; };
+		A8E130741EA4600900644161 /* 180001.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 180001.fmi; sourceTree = "<group>"; };
+		A8E130751EA4600900644161 /* 180002.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 180002.fmi; sourceTree = "<group>"; };
+		A8E130761EA4600900644161 /* 180003.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 180003.fmi; sourceTree = "<group>"; };
+		A8E130771EA4600900644161 /* 180004.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 180004.fmi; sourceTree = "<group>"; };
+		A8E130781EA4600900644161 /* 180005.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 180005.fmi; sourceTree = "<group>"; };
+		A8E130791EA4600900644161 /* 190000.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 190000.fmi; sourceTree = "<group>"; };
+		A8E1307A1EA4600900644161 /* 200000.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = 200000.fmi; sourceTree = "<group>"; };
+		A8E1307B1EA4600900644161 /* 2002.theme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 2002.theme; sourceTree = "<group>"; };
+		A8E1307C1EA4600900644161 /* ad.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = ad.fmi; sourceTree = "<group>"; };
+		A8E1307D1EA4600900644161 /* Arcteryx.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = Arcteryx.fmi; sourceTree = "<group>"; };
+		A8E1307E1EA4600900644161 /* babudou.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = babudou.fmi; sourceTree = "<group>"; };
+		A8E1307F1EA4600900644161 /* baxikaorou.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = baxikaorou.fmi; sourceTree = "<group>"; };
+		A8E130801EA4600900644161 /* bbl.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = bbl.fmi; sourceTree = "<group>"; };
+		A8E130811EA4600900644161 /* BeachStyle.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = BeachStyle.fmi; sourceTree = "<group>"; };
+		A8E130821EA4600900644161 /* bentu.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = bentu.fmi; sourceTree = "<group>"; };
+		A8E130831EA4600900644161 /* Borida.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = Borida.fmi; sourceTree = "<group>"; };
+		A8E130841EA4600900644161 /* boshiyanjing.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = boshiyanjing.fmi; sourceTree = "<group>"; };
+		A8E130851EA4600900644161 /* botebafang.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = botebafang.fmi; sourceTree = "<group>"; };
+		A8E130861EA4600900644161 /* bufeitai.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = bufeitai.fmi; sourceTree = "<group>"; };
+		A8E130871EA4600900644161 /* chaotianmentietu.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = chaotianmentietu.fmi; sourceTree = "<group>"; };
+		A8E130881EA4600900644161 /* coco.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = coco.fmi; sourceTree = "<group>"; };
+		A8E130891EA4600900644161 /* Columbia.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = Columbia.fmi; sourceTree = "<group>"; };
+		A8E1308A1EA4600900644161 /* compass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = compass.png; sourceTree = "<group>"; };
+		A8E1308B1EA4600900644161 /* CRZ.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = CRZ.fmi; sourceTree = "<group>"; };
+		A8E1308C1EA4600900644161 /* daliangcang.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = daliangcang.fmi; sourceTree = "<group>"; };
+		A8E1308D1EA4600900644161 /* dawangzongcanting.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = dawangzongcanting.fmi; sourceTree = "<group>"; };
+		A8E1308E1EA4600900644161 /* dianyinggongfang.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = dianyinggongfang.fmi; sourceTree = "<group>"; };
+		A8E1308F1EA4600900644161 /* dianyinggongfangba.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = dianyinggongfangba.fmi; sourceTree = "<group>"; };
+		A8E130901EA4600900644161 /* dome.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dome.png; sourceTree = "<group>"; };
+		A8E130911EA4600900644161 /* EHANG.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = EHANG.fmi; sourceTree = "<group>"; };
+		A8E130921EA4600900644161 /* ESSECHIC.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = ESSECHIC.fmi; sourceTree = "<group>"; };
+		A8E130931EA4600900644161 /* EVEBYEVE.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = EVEBYEVE.fmi; sourceTree = "<group>"; };
+		A8E130941EA4600900644161 /* Eves.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = Eves.fmi; sourceTree = "<group>"; };
+		A8E130951EA4600900644161 /* fenghuanghong.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = fenghuanghong.fmi; sourceTree = "<group>"; };
+		A8E130961EA4600900644161 /* fengmap.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = fengmap.fmi; sourceTree = "<group>"; };
+		A8E130971EA4600900644161 /* GUESS.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = GUESS.fmi; sourceTree = "<group>"; };
+		A8E130981EA4600900644161 /* hainanshouxin.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = hainanshouxin.fmi; sourceTree = "<group>"; };
+		A8E130991EA4600900644161 /* hake9d.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = hake9d.fmi; sourceTree = "<group>"; };
+		A8E1309A1EA4600900644161 /* handm.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = handm.fmi; sourceTree = "<group>"; };
+		A8E1309B1EA4600900644161 /* hdl.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = hdl.fmi; sourceTree = "<group>"; };
+		A8E1309C1EA4600900644161 /* hefengge.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = hefengge.fmi; sourceTree = "<group>"; };
+		A8E1309D1EA4600900644161 /* hns.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = hns.fmi; sourceTree = "<group>"; };
+		A8E1309E1EA4600900644161 /* hongmofang.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = hongmofang.fmi; sourceTree = "<group>"; };
+		A8E1309F1EA4600900644161 /* hongmofangcanting.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = hongmofangcanting.fmi; sourceTree = "<group>"; };
+		A8E130A01EA4600900644161 /* hongshulinfilm.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = hongshulinfilm.fmi; sourceTree = "<group>"; };
+		A8E130A11EA4600900644161 /* jackjones.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = jackjones.fmi; sourceTree = "<group>"; };
+		A8E130A21EA4600900644161 /* jinrishuwu.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = jinrishuwu.fmi; sourceTree = "<group>"; };
+		A8E130A31EA4600900644161 /* jinriweilai.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = jinriweilai.fmi; sourceTree = "<group>"; };
+		A8E130A41EA4600900644161 /* jinriweilaiguan.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = jinriweilaiguan.fmi; sourceTree = "<group>"; };
+		A8E130A51EA4600900644161 /* jinriyishuhui.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = jinriyishuhui.fmi; sourceTree = "<group>"; };
+		A8E130A61EA4600900644161 /* jiweijiuba.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = jiweijiuba.fmi; sourceTree = "<group>"; };
+		A8E130A71EA4600900644161 /* jiweijiulang.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = jiweijiulang.fmi; sourceTree = "<group>"; };
+		A8E130A81EA4600900644161 /* jixiangzhai.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = jixiangzhai.fmi; sourceTree = "<group>"; };
+		A8E130A91EA4600900644161 /* jpjp.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = jpjp.fmi; sourceTree = "<group>"; };
+		A8E130AA1EA4600900644161 /* juyage.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = juyage.fmi; sourceTree = "<group>"; };
+		A8E130AB1EA4600900644161 /* kfc.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = kfc.fmi; sourceTree = "<group>"; };
+		A8E130AC1EA4600900644161 /* laoshanghai.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = laoshanghai.fmi; sourceTree = "<group>"; };
+		A8E130AD1EA4600900644161 /* logo.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = logo.fmi; sourceTree = "<group>"; };
+		A8E130AE1EA4600900644161 /* Maisonmin.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = Maisonmin.fmi; sourceTree = "<group>"; };
+		A8E130AF1EA4600900644161 /* MariaLuisa.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = MariaLuisa.fmi; sourceTree = "<group>"; };
+		A8E130B01EA4600900644161 /* mdl.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = mdl.fmi; sourceTree = "<group>"; };
+		A8E130B11EA4600900644161 /* mingsalon.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = mingsalon.fmi; sourceTree = "<group>"; };
+		A8E130B21EA4600900644161 /* mlyh.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = mlyh.fmi; sourceTree = "<group>"; };
+		A8E130B31EA4600900644161 /* mothercare.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = mothercare.fmi; sourceTree = "<group>"; };
+		A8E130B41EA4600900644161 /* moxige.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = moxige.fmi; sourceTree = "<group>"; };
+		A8E130B51EA4600900644161 /* mystyle.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = mystyle.fmi; sourceTree = "<group>"; };
+		A8E130B61EA4600900644161 /* ONEILL.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = ONEILL.fmi; sourceTree = "<group>"; };
+		A8E130B71EA4600900644161 /* only.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = only.fmi; sourceTree = "<group>"; };
+		A8E130B81EA4600900644161 /* plate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plate.png; sourceTree = "<group>"; };
+		A8E130B91EA4600900644161 /* pointer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pointer.png; sourceTree = "<group>"; };
+		A8E130BA1EA4600900644161 /* psk.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = psk.fmi; sourceTree = "<group>"; };
+		A8E130BB1EA4600900644161 /* putiduogongneng.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = putiduogongneng.fmi; sourceTree = "<group>"; };
+		A8E130BC1EA4600900644161 /* putiyanhui.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = putiyanhui.fmi; sourceTree = "<group>"; };
+		A8E130BD1EA4600900644161 /* riguan.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = riguan.fmi; sourceTree = "<group>"; };
+		A8E130BE1EA4600900644161 /* selected.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = selected.fmi; sourceTree = "<group>"; };
+		A8E130BF1EA4600900644161 /* senchang.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = senchang.fmi; sourceTree = "<group>"; };
+		A8E130C01EA4600900644161 /* shatanshui.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = shatanshui.fmi; sourceTree = "<group>"; };
+		A8E130C11EA4600900644161 /* shechipin.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = shechipin.fmi; sourceTree = "<group>"; };
+		A8E130C21EA4600900644161 /* t100kids.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = t100kids.fmi; sourceTree = "<group>"; };
+		A8E130C31EA4600900644161 /* tanxianwangguo.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = tanxianwangguo.fmi; sourceTree = "<group>"; };
+		A8E130C41EA4600900644161 /* tianyuan.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = tianyuan.fmi; sourceTree = "<group>"; };
+		A8E130C51EA4600900644161 /* timg.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = timg.fmi; sourceTree = "<group>"; };
+		A8E130C61EA4600900644161 /* track.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = track.png; sourceTree = "<group>"; };
+		A8E130C71EA4600900644161 /* upjingpindian.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = upjingpindian.fmi; sourceTree = "<group>"; };
+		A8E130C81EA4600900644161 /* UR.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = UR.fmi; sourceTree = "<group>"; };
+		A8E130C91EA4600900644161 /* Vancasa.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = Vancasa.fmi; sourceTree = "<group>"; };
+		A8E130CA1EA4600900644161 /* veromoda.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = veromoda.fmi; sourceTree = "<group>"; };
+		A8E130CB1EA4600900644161 /* weilaiyishu.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = weilaiyishu.fmi; sourceTree = "<group>"; };
+		A8E130CC1EA4600900644161 /* wq.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = wq.fmi; sourceTree = "<group>"; };
+		A8E130CD1EA4600900644161 /* xbk.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = xbk.fmi; sourceTree = "<group>"; };
+		A8E130CE1EA4600900644161 /* xiangjutietu.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = xiangjutietu.fmi; sourceTree = "<group>"; };
+		A8E130CF1EA4600900644161 /* xianhengjiudian.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = xianhengjiudian.fmi; sourceTree = "<group>"; };
+		A8E130D01EA4600900644161 /* xls.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = xls.fmi; sourceTree = "<group>"; };
+		A8E130D11EA4600900644161 /* yimiangongfangtietu.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = yimiangongfangtietu.fmi; sourceTree = "<group>"; };
+		A8E130D21EA4600900644161 /* yuyuege.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = yuyuege.fmi; sourceTree = "<group>"; };
+		A8E130D31EA4600900644161 /* zhenzhuba.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = zhenzhuba.fmi; sourceTree = "<group>"; };
+		A8E130D41EA4600900644161 /* zxj.fmi */ = {isa = PBXFileReference; lastKnownFileType = file; path = zxj.fmi; sourceTree = "<group>"; };
+		A8E130D51EA4600900644161 /* 70144.fmap */ = {isa = PBXFileReference; lastKnownFileType = file; path = 70144.fmap; sourceTree = "<group>"; };
+		A8E130D61EA4600900644161 /* 70145.fmap */ = {isa = PBXFileReference; lastKnownFileType = file; path = 70145.fmap; sourceTree = "<group>"; };
+		A8E130D71EA4600900644161 /* 70146.fmap */ = {isa = PBXFileReference; lastKnownFileType = file; path = 70146.fmap; sourceTree = "<group>"; };
+		A8E130D81EA4600900644161 /* 70147.fmap */ = {isa = PBXFileReference; lastKnownFileType = file; path = 70147.fmap; sourceTree = "<group>"; };
+		A8E130D91EA4600900644161 /* 70148.fmap */ = {isa = PBXFileReference; lastKnownFileType = file; path = 70148.fmap; sourceTree = "<group>"; };
+		A8E130DA1EA4600900644161 /* 79980.fmap */ = {isa = PBXFileReference; lastKnownFileType = file; path = 79980.fmap; sourceTree = "<group>"; };
+		A8E130DB1EA4600900644161 /* 79981.fmap */ = {isa = PBXFileReference; lastKnownFileType = file; path = 79981.fmap; sourceTree = "<group>"; };
+		A8E130DC1EA4600900644161 /* 79982.fmap */ = {isa = PBXFileReference; lastKnownFileType = file; path = 79982.fmap; sourceTree = "<group>"; };
+		A8E130DD1EA4600900644161 /* acts.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = acts.json; sourceTree = "<group>"; };
+		A8E130DE1EA4600900644161 /* facility.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = facility.json; sourceTree = "<group>"; };
+		A8E130DF1EA4600900644161 /* food.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = food.json; sourceTree = "<group>"; };
+		A8E130E01EA4600900644161 /* indoorMapInfo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = indoorMapInfo.json; sourceTree = "<group>"; };
+		A8E130E11EA4600900644161 /* jiantou.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jiantou.png; sourceTree = "<group>"; };
+		A8E130E21EA4600900644161 /* locatio.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = locatio.png; sourceTree = "<group>"; };
+		A8E130E31EA4600900644161 /* mangrove.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = mangrove.sqlite; sourceTree = "<group>"; };
+		A8E130E41EA4600900644161 /* nodeassociation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = nodeassociation.json; sourceTree = "<group>"; };
+		A8E130E51EA4600900644161 /* route_food_1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = route_food_1.json; sourceTree = "<group>"; };
+		A8E130E61EA4600900644161 /* route_relax_1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = route_relax_1.json; sourceTree = "<group>"; };
+		A8E130E71EA4600900644161 /* shop.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = shop.json; sourceTree = "<group>"; };
+		A8E130E81EA4600900644161 /* shop1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = shop1.json; sourceTree = "<group>"; };
+		A8E132221EA4603F00644161 /* FMBundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = FMBundle.bundle; sourceTree = "<group>"; };
+		A8E132281EA4605400644161 /* DevicePositionInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DevicePositionInfo.h; sourceTree = "<group>"; };
+		A8E132291EA4605400644161 /* FMActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMActivity.h; sourceTree = "<group>"; };
+		A8E1322A1EA4605400644161 /* FMActivityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMActivityManager.h; sourceTree = "<group>"; };
+		A8E1322B1EA4605400644161 /* FMBaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMBaseModel.h; sourceTree = "<group>"; };
+		A8E1322C1EA4605400644161 /* FMDHCPNetService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDHCPNetService.h; sourceTree = "<group>"; };
+		A8E1322D1EA4605400644161 /* FMKAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMKAnimator.h; sourceTree = "<group>"; };
+		A8E1322E1EA4605400644161 /* FMKAnimatorEnableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMKAnimatorEnableController.h; sourceTree = "<group>"; };
+		A8E1322F1EA4605400644161 /* FMKAnimatorPool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMKAnimatorPool.h; sourceTree = "<group>"; };
+		A8E132301EA4605400644161 /* FMKBounceInterpolator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMKBounceInterpolator.h; sourceTree = "<group>"; };
+		A8E132311EA4605400644161 /* FMKBubbleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMKBubbleView.h; sourceTree = "<group>"; };
+		A8E132321EA4605400644161 /* FMKCubicInterpolator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMKCubicInterpolator.h; sourceTree = "<group>"; };
+		A8E132331EA4605400644161 /* FMKDataDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMKDataDownloader.h; sourceTree = "<group>"; };
+		A8E132341EA4605400644161 /* FMKEnableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMKEnableController.h; sourceTree = "<group>"; };
+		A8E132351EA4605400644161 /* FMKExtentLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMKExtentLayer.h; sourceTree = "<group>"; };
+		A8E132361EA4605400644161 /* FMKExternalModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMKExternalModel.h; sourceTree = "<group>"; };
+		A8E132371EA4605400644161 /* FMKExternalModelLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMKExternalModelLayer.h; sourceTree = "<group>"; };
+		A8E132381EA4605400644161 /* FMKFacility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMKFacility.h; sourceTree = "<group>"; };
+		A8E132391EA4605400644161 /* FMKFacilityLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMKFacilityLayer.h; sourceTree = "<group>"; };
+		A8E1323A1EA4605400644161 /* FMKGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMKGeometry.h; sourceTree = "<group>"; };
+		A8E1323B1EA4605400644161 /* FMKGroundLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMKGroundLayer.h; sourceTree = "<group>"; };
+		A8E1323C1EA4605400644161 /* FMKGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMKGroup.h; sourceTree = "<group>"; };
+		A8E1323D1EA4605400644161 /* FMKGroupAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMKGroupAnimator.h; sourceTree = "<group>"; };
+		A8E1323E1EA4605400644161 /* FMKGroupBorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMKGroupBorder.h; sourceTree = "<group>"; };
+		A8E1323F1EA4605400644161 /* FMKGroupInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMKGroupInfo.h; sourceTree = "<group>"; };
+		A8E132401EA4605400644161 /* FMKHeatBorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMKHeatBorder.h; sourceTree = "<group>"; };
+		A8E132411EA4605400644161 /* FMKHeatColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMKHeatColor.h; sourceTree = "<group>"; };
+		A8E132421EA4605400644161 /* FMKHeatFactor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMKHeatFactor.h; sourceTree = "<group>"; };
+		A8E132431EA4605400644161 /* FMKHeatMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMKHeatMap.h; sourceTree = "<group>"; };
+		A8E132441EA4605400644161 /* FMKHttpRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMKHttpRequest.h; sourceTree = "<group>"; };
+		A8E132451EA4605400644161 /* FMKImageLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMKImageLayer.h; sourceTree = "<group>"; };
+		A8E132461EA4605400644161 /* FMKImageMarker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMKImageMarker.h; sourceTree = "<group>"; };
+		A8E132471EA4605400644161 /* FMKInterpolator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMKInterpolator.h; sourceTree = "<group>"; };
+		A8E132481EA4605400644161 /* FMKKalman.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMKKalman.h; sourceTree = "<group>"; };
+		A8E132491EA4605400644161 /* FMKLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMKLabel.h; sourceTree = "<group>"; };
+		A8E1324A1EA4605400644161 /* FMKLabelLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMKLabelLayer.h; sourceTree = "<group>"; };
+		A8E1324B1EA4605400644161 /* FMKLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMKLayer.h; sourceTree = "<group>"; };
+		A8E1324C1EA4605400644161 /* FMKLayerAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMKLayerAnimator.h; sourceTree = "<group>"; };
+		A8E1324D1EA4605400644161 /* FMKLayerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMKLayerDelegate.h; sourceTree = "<group>"; };
+		A8E1324E1EA4605400644161 /* FMKLinearInterpolator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMKLinearInterpolator.h; sourceTree = "<group>"; };
+		A8E1324F1EA4605400644161 /* FMKLineLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMKLineLayer.h; sourceTree = "<group>"; };
+		A8E132501EA4605400644161 /* FMKLineMarker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMKLineMarker.h; sourceTree = "<group>"; };
+		A8E132511EA4605400644161 /* FMKLocationBorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMKLocationBorder.h; sourceTree = "<group>"; };
+		A8E132521EA4605400644161 /* FMKLocationLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMKLocationLayer.h; sourceTree = "<group>"; };
+		A8E132531EA4605400644161 /* FMKLocationMarker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMKLocationMarker.h; sourceTree = "<group>"; };
+		A8E132541EA4605400644161 /* FMKLocationService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMKLocationService.h; sourceTree = "<group>"; };
+		A8E132551EA4605400644161 /* FMKLocationServiceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMKLocationServiceManager.h; sourceTree = "<group>"; };
+		A8E132561EA4605400644161 /* FMKMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMKMap.h; sourceTree = "<group>"; };
+		A8E132571EA4605400644161 /* FMKMapDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMKMapDataManager.h; sourceTree = "<group>"; };
+		A8E132581EA4605400644161 /* FMKMapGestureEnableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMKMapGestureEnableController.h; sourceTree = "<group>"; };
+		A8E132591EA4605400644161 /* FMKMapInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMKMapInfo.h; sourceTree = "<group>"; };
+		A8E1325A1EA4605400644161 /* FMKMapSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMKMapSDK.h; sourceTree = "<group>"; };
+		A8E1325B1EA4605400644161 /* FMKMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMKMapView.h; sourceTree = "<group>"; };
+		A8E1325C1EA4605400644161 /* FMKModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMKModel.h; sourceTree = "<group>"; };
+		A8E1325D1EA4605400644161 /* FMKModelLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMKModelLayer.h; sourceTree = "<group>"; };
+		A8E1325E1EA4605400644161 /* FMKNaviAnalyser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMKNaviAnalyser.h; sourceTree = "<group>"; };
+		A8E1325F1EA4605400644161 /* FMKNaviContraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMKNaviContraint.h; sourceTree = "<group>"; };
+		A8E132601EA4605400644161 /* FMKNaviResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMKNaviResult.h; sourceTree = "<group>"; };
+		A8E132611EA4605400644161 /* FMKNaviStruct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMKNaviStruct.h; sourceTree = "<group>"; };
+		A8E132621EA4605400644161 /* FMKNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMKNode.h; sourceTree = "<group>"; };
+		A8E132631EA4605400644161 /* FMKNodeAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMKNodeAnimator.h; sourceTree = "<group>"; };
+		A8E132641EA4605400644161 /* FMKNodeAssociation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMKNodeAssociation.h; sourceTree = "<group>"; };
+		A8E132651EA4605400644161 /* FMKPathAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMKPathAnimator.h; sourceTree = "<group>"; };
+		A8E132661EA4605400644161 /* FMKReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMKReachability.h; sourceTree = "<group>"; };
+		A8E132671EA4605400644161 /* FMKSceneAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMKSceneAnimator.h; sourceTree = "<group>"; };
+		A8E132681EA4605400644161 /* FMKSceneAnimatorGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMKSceneAnimatorGroup.h; sourceTree = "<group>"; };
+		A8E132691EA4605400644161 /* FMKSearchAnalyser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMKSearchAnalyser.h; sourceTree = "<group>"; };
+		A8E1326A1EA4605400644161 /* FMKSearchObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMKSearchObj.h; sourceTree = "<group>"; };
+		A8E1326B1EA4605400644161 /* FMKSegment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMKSegment.h; sourceTree = "<group>"; };
+		A8E1326C1EA4605400644161 /* FMKSineInterpolator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMKSineInterpolator.h; sourceTree = "<group>"; };
+		A8E1326D1EA4605400644161 /* FMKTextLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMKTextLayer.h; sourceTree = "<group>"; };
+		A8E1326E1EA4605400644161 /* FMKTextMarker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMKTextMarker.h; sourceTree = "<group>"; };
+		A8E1326F1EA4605400644161 /* FMKThemeDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMKThemeDataManager.h; sourceTree = "<group>"; };
+		A8E132701EA4605400644161 /* FMKTransformCoord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMKTransformCoord.h; sourceTree = "<group>"; };
+		A8E132711EA4605400644161 /* FMLocationBuilderInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMLocationBuilderInfo.h; sourceTree = "<group>"; };
+		A8E132721EA4605400644161 /* FMLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMLocationManager.h; sourceTree = "<group>"; };
+		A8E132731EA4605400644161 /* FMManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMManager.h; sourceTree = "<group>"; };
+		A8E132741EA4605400644161 /* FMMangroveHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMMangroveHeader.h; sourceTree = "<group>"; };
+		A8E132751EA4605400644161 /* FMMangroveMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMMangroveMapView.h; sourceTree = "<group>"; };
+		A8E132761EA4605400644161 /* FMMangroveNetTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMMangroveNetTool.h; sourceTree = "<group>"; };
+		A8E132771EA4605400644161 /* FMMapKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMMapKit.h; sourceTree = "<group>"; };
+		A8E132781EA4605400644161 /* FMNaviAnalyserTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMNaviAnalyserTool.h; sourceTree = "<group>"; };
+		A8E132791EA4605400644161 /* FMParserJsonData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMParserJsonData.h; sourceTree = "<group>"; };
+		A8E1327A1EA4605400644161 /* FMRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMRoute.h; sourceTree = "<group>"; };
+		A8E1327B1EA4605400644161 /* FMRouteManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMRouteManager.h; sourceTree = "<group>"; };
+		A8E1327C1EA4605400644161 /* FMRouteResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMRouteResult.h; sourceTree = "<group>"; };
+		A8E1327D1EA4605400644161 /* FMZone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMZone.h; sourceTree = "<group>"; };
+		A8E1327E1EA4605400644161 /* FMZoneManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMZoneManager.h; sourceTree = "<group>"; };
+		A8E1327F1EA4605400644161 /* MapInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapInfo.h; sourceTree = "<group>"; };
+		A8E132801EA4605400644161 /* MapInfos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapInfos.h; sourceTree = "<group>"; };
+		A8E132811EA4605400644161 /* UIImage+AddText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+AddText.h"; sourceTree = "<group>"; };
+		A8E132821EA4605400644161 /* libFMMapKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFMMapKit.a; sourceTree = "<group>"; };
+		A8E132841EA4607700644161 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		A8E132861EA4608100644161 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		A8E132881EA461B400644161 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		A8E1328A1EA461D400644161 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		A8E1328B1EA461D400644161 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		A8E1328C1EA461D400644161 /* ChooseFloorScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseFloorScrollView.h; sourceTree = "<group>"; };
+		A8E1328D1EA461D400644161 /* ChooseFloorScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseFloorScrollView.m; sourceTree = "<group>"; };
+		A8E1328E1EA461D400644161 /* Const.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Const.h; sourceTree = "<group>"; };
+		A8E1328F1EA461D400644161 /* FMIndoorMapVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMIndoorMapVC.h; sourceTree = "<group>"; };
+		A8E132901EA461D400644161 /* FMIndoorMapVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMIndoorMapVC.m; sourceTree = "<group>"; };
 		D5865EC71E9F51F700E070D4 /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPSessionManager.h; sourceTree = "<group>"; };
 		D5865EC81E9F51F700E070D4 /* AFHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPSessionManager.m; sourceTree = "<group>"; };
 		D5865EC91E9F51F700E070D4 /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworking.h; sourceTree = "<group>"; };
@@ -141,6 +699,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8E132891EA461B400644161 /* libz.tbd in Frameworks */,
+				A8E132871EA4608100644161 /* ImageIO.framework in Frameworks */,
+				A8E132851EA4607700644161 /* GLKit.framework in Frameworks */,
+				A8E1300D1EA45E7C00644161 /* libxml2.tbd in Frameworks */,
+				A8E1300B1EA45E7400644161 /* libc++.tbd in Frameworks */,
+				A8E130091EA45E6A00644161 /* libsqlite3.0.tbd in Frameworks */,
+				A8E130071EA45E5C00644161 /* CoreLocation.framework in Frameworks */,
+				A8E130051EA45E5000644161 /* OpenGLES.framework in Frameworks */,
+				A8E130031EA45E4900644161 /* libstdc++.6.0.9.tbd in Frameworks */,
+				A8E132831EA4605400644161 /* libFMMapKit.a in Frameworks */,
+				A8E130011EA45E2300644161 /* libresolv.tbd in Frameworks */,
 				D5865F111E9F821600E070D4 /* CoreText.framework in Frameworks */,
 				D5865F0F1E9F820D00E070D4 /* CoreData.framework in Frameworks */,
 			);
@@ -207,6 +776,7 @@
 		A861B3151E9DD3FB002D61F0 /* waiter */ = {
 			isa = PBXGroup;
 			children = (
+				A8E12DDF1EA4588600644161 /* Map */,
 				D5865EE51E9F522700E070D4 /* MacroFile */,
 				D5865EC51E9F51F700E070D4 /* 3rd */,
 				D5865EDA1E9F520C00E070D4 /* 3rdManager */,
@@ -232,6 +802,377 @@
 				A861B3171E9DD3FB002D61F0 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A8E12DDF1EA4588600644161 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				A8E1328A1EA461D400644161 /* MapViewController.h */,
+				A8E1328B1EA461D400644161 /* MapViewController.m */,
+				A8E1328C1EA461D400644161 /* ChooseFloorScrollView.h */,
+				A8E1328D1EA461D400644161 /* ChooseFloorScrollView.m */,
+				A8E1328E1EA461D400644161 /* Const.h */,
+				A8E1328F1EA461D400644161 /* FMIndoorMapVC.h */,
+				A8E132901EA461D400644161 /* FMIndoorMapVC.m */,
+				A8E132241EA4605400644161 /* FMMapKit */,
+				A8E132221EA4603F00644161 /* FMBundle.bundle */,
+				A8E1300E1EA4600900644161 /* FengMapSource */,
+			);
+			name = Map;
+			sourceTree = "<group>";
+		};
+		A8E1300E1EA4600900644161 /* FengMapSource */ = {
+			isa = PBXGroup;
+			children = (
+				A8E1300F1EA4600900644161 /* 2002 */,
+				A8E130D51EA4600900644161 /* 70144.fmap */,
+				A8E130D61EA4600900644161 /* 70145.fmap */,
+				A8E130D71EA4600900644161 /* 70146.fmap */,
+				A8E130D81EA4600900644161 /* 70147.fmap */,
+				A8E130D91EA4600900644161 /* 70148.fmap */,
+				A8E130DA1EA4600900644161 /* 79980.fmap */,
+				A8E130DB1EA4600900644161 /* 79981.fmap */,
+				A8E130DC1EA4600900644161 /* 79982.fmap */,
+				A8E130DD1EA4600900644161 /* acts.json */,
+				A8E130DE1EA4600900644161 /* facility.json */,
+				A8E130DF1EA4600900644161 /* food.json */,
+				A8E130E01EA4600900644161 /* indoorMapInfo.json */,
+				A8E130E11EA4600900644161 /* jiantou.png */,
+				A8E130E21EA4600900644161 /* locatio.png */,
+				A8E130E31EA4600900644161 /* mangrove.sqlite */,
+				A8E130E41EA4600900644161 /* nodeassociation.json */,
+				A8E130E51EA4600900644161 /* route_food_1.json */,
+				A8E130E61EA4600900644161 /* route_relax_1.json */,
+				A8E130E71EA4600900644161 /* shop.json */,
+				A8E130E81EA4600900644161 /* shop1.json */,
+			);
+			path = FengMapSource;
+			sourceTree = "<group>";
+		};
+		A8E1300F1EA4600900644161 /* 2002 */ = {
+			isa = PBXGroup;
+			children = (
+				A8E130101EA4600900644161 /* 0.fmi */,
+				A8E130111EA4600900644161 /* 100000.fmi */,
+				A8E130121EA4600900644161 /* 100001.fmi */,
+				A8E130131EA4600900644161 /* 100002.fmi */,
+				A8E130141EA4600900644161 /* 100003.fmi */,
+				A8E130151EA4600900644161 /* 100004.fmi */,
+				A8E130161EA4600900644161 /* 100005.fmi */,
+				A8E130171EA4600900644161 /* 100006.fmi */,
+				A8E130181EA4600900644161 /* 100007.fmi */,
+				A8E130191EA4600900644161 /* 110000.fmi */,
+				A8E1301A1EA4600900644161 /* 110001.fmi */,
+				A8E1301B1EA4600900644161 /* 110002.fmi */,
+				A8E1301C1EA4600900644161 /* 110003.fmi */,
+				A8E1301D1EA4600900644161 /* 110004.fmi */,
+				A8E1301E1EA4600900644161 /* 110005.fmi */,
+				A8E1301F1EA4600900644161 /* 120000.fmi */,
+				A8E130201EA4600900644161 /* 120001.fmi */,
+				A8E130211EA4600900644161 /* 120002.fmi */,
+				A8E130221EA4600900644161 /* 120003.fmi */,
+				A8E130231EA4600900644161 /* 120004.fmi */,
+				A8E130241EA4600900644161 /* 120005.fmi */,
+				A8E130251EA4600900644161 /* 120006.fmi */,
+				A8E130261EA4600900644161 /* 120007.fmi */,
+				A8E130271EA4600900644161 /* 120008.fmi */,
+				A8E130281EA4600900644161 /* 120009.fmi */,
+				A8E130291EA4600900644161 /* 120010.fmi */,
+				A8E1302A1EA4600900644161 /* 130000.fmi */,
+				A8E1302B1EA4600900644161 /* 130001.fmi */,
+				A8E1302C1EA4600900644161 /* 130002.fmi */,
+				A8E1302D1EA4600900644161 /* 130003.fmi */,
+				A8E1302E1EA4600900644161 /* 130004.fmi */,
+				A8E1302F1EA4600900644161 /* 130005.fmi */,
+				A8E130301EA4600900644161 /* 140000.fmi */,
+				A8E130311EA4600900644161 /* 140001.fmi */,
+				A8E130321EA4600900644161 /* 140002.fmi */,
+				A8E130331EA4600900644161 /* 140003.fmi */,
+				A8E130341EA4600900644161 /* 140004.fmi */,
+				A8E130351EA4600900644161 /* 140005.fmi */,
+				A8E130361EA4600900644161 /* 140006.fmi */,
+				A8E130371EA4600900644161 /* 140007.fmi */,
+				A8E130381EA4600900644161 /* 140008.fmi */,
+				A8E130391EA4600900644161 /* 140009.fmi */,
+				A8E1303A1EA4600900644161 /* 140010.fmi */,
+				A8E1303B1EA4600900644161 /* 140011.fmi */,
+				A8E1303C1EA4600900644161 /* 140012.fmi */,
+				A8E1303D1EA4600900644161 /* 140013.fmi */,
+				A8E1303E1EA4600900644161 /* 140014.fmi */,
+				A8E1303F1EA4600900644161 /* 140015.fmi */,
+				A8E130401EA4600900644161 /* 140016.fmi */,
+				A8E130411EA4600900644161 /* 140017.fmi */,
+				A8E130421EA4600900644161 /* 140018.fmi */,
+				A8E130431EA4600900644161 /* 140019.fmi */,
+				A8E130441EA4600900644161 /* 140020.fmi */,
+				A8E130451EA4600900644161 /* 140021.fmi */,
+				A8E130461EA4600900644161 /* 140022.fmi */,
+				A8E130471EA4600900644161 /* 140023.fmi */,
+				A8E130481EA4600900644161 /* 140024.fmi */,
+				A8E130491EA4600900644161 /* 140025.fmi */,
+				A8E1304A1EA4600900644161 /* 140026.fmi */,
+				A8E1304B1EA4600900644161 /* 140027.fmi */,
+				A8E1304C1EA4600900644161 /* 140028.fmi */,
+				A8E1304D1EA4600900644161 /* 140100.fmi */,
+				A8E1304E1EA4600900644161 /* 140200.fmi */,
+				A8E1304F1EA4600900644161 /* 140300.fmi */,
+				A8E130501EA4600900644161 /* 140400.fmi */,
+				A8E130511EA4600900644161 /* 140500.fmi */,
+				A8E130521EA4600900644161 /* 140600.fmi */,
+				A8E130531EA4600900644161 /* 140700.fmi */,
+				A8E130541EA4600900644161 /* 150000.fmi */,
+				A8E130551EA4600900644161 /* 150001.fmi */,
+				A8E130561EA4600900644161 /* 150002.fmi */,
+				A8E130571EA4600900644161 /* 150003.fmi */,
+				A8E130581EA4600900644161 /* 150004.fmi */,
+				A8E130591EA4600900644161 /* 150005.fmi */,
+				A8E1305A1EA4600900644161 /* 150006.fmi */,
+				A8E1305B1EA4600900644161 /* 150007.fmi */,
+				A8E1305C1EA4600900644161 /* 150008.fmi */,
+				A8E1305D1EA4600900644161 /* 150009.fmi */,
+				A8E1305E1EA4600900644161 /* 150010.fmi */,
+				A8E1305F1EA4600900644161 /* 150011.fmi */,
+				A8E130601EA4600900644161 /* 150012.fmi */,
+				A8E130611EA4600900644161 /* 150013.fmi */,
+				A8E130621EA4600900644161 /* 150014.fmi */,
+				A8E130631EA4600900644161 /* 160000.fmi */,
+				A8E130641EA4600900644161 /* 160001.fmi */,
+				A8E130651EA4600900644161 /* 160002.fmi */,
+				A8E130661EA4600900644161 /* 160003.fmi */,
+				A8E130671EA4600900644161 /* 160004.fmi */,
+				A8E130681EA4600900644161 /* 160005.fmi */,
+				A8E130691EA4600900644161 /* 160006.fmi */,
+				A8E1306A1EA4600900644161 /* 160007.fmi */,
+				A8E1306B1EA4600900644161 /* 160008.fmi */,
+				A8E1306C1EA4600900644161 /* 170000.fmi */,
+				A8E1306D1EA4600900644161 /* 170001.fmi */,
+				A8E1306E1EA4600900644161 /* 170002.fmi */,
+				A8E1306F1EA4600900644161 /* 170003.fmi */,
+				A8E130701EA4600900644161 /* 170004.fmi */,
+				A8E130711EA4600900644161 /* 170005.fmi */,
+				A8E130721EA4600900644161 /* 170006.fmi */,
+				A8E130731EA4600900644161 /* 180000.fmi */,
+				A8E130741EA4600900644161 /* 180001.fmi */,
+				A8E130751EA4600900644161 /* 180002.fmi */,
+				A8E130761EA4600900644161 /* 180003.fmi */,
+				A8E130771EA4600900644161 /* 180004.fmi */,
+				A8E130781EA4600900644161 /* 180005.fmi */,
+				A8E130791EA4600900644161 /* 190000.fmi */,
+				A8E1307A1EA4600900644161 /* 200000.fmi */,
+				A8E1307B1EA4600900644161 /* 2002.theme */,
+				A8E1307C1EA4600900644161 /* ad.fmi */,
+				A8E1307D1EA4600900644161 /* Arcteryx.fmi */,
+				A8E1307E1EA4600900644161 /* babudou.fmi */,
+				A8E1307F1EA4600900644161 /* baxikaorou.fmi */,
+				A8E130801EA4600900644161 /* bbl.fmi */,
+				A8E130811EA4600900644161 /* BeachStyle.fmi */,
+				A8E130821EA4600900644161 /* bentu.fmi */,
+				A8E130831EA4600900644161 /* Borida.fmi */,
+				A8E130841EA4600900644161 /* boshiyanjing.fmi */,
+				A8E130851EA4600900644161 /* botebafang.fmi */,
+				A8E130861EA4600900644161 /* bufeitai.fmi */,
+				A8E130871EA4600900644161 /* chaotianmentietu.fmi */,
+				A8E130881EA4600900644161 /* coco.fmi */,
+				A8E130891EA4600900644161 /* Columbia.fmi */,
+				A8E1308A1EA4600900644161 /* compass.png */,
+				A8E1308B1EA4600900644161 /* CRZ.fmi */,
+				A8E1308C1EA4600900644161 /* daliangcang.fmi */,
+				A8E1308D1EA4600900644161 /* dawangzongcanting.fmi */,
+				A8E1308E1EA4600900644161 /* dianyinggongfang.fmi */,
+				A8E1308F1EA4600900644161 /* dianyinggongfangba.fmi */,
+				A8E130901EA4600900644161 /* dome.png */,
+				A8E130911EA4600900644161 /* EHANG.fmi */,
+				A8E130921EA4600900644161 /* ESSECHIC.fmi */,
+				A8E130931EA4600900644161 /* EVEBYEVE.fmi */,
+				A8E130941EA4600900644161 /* Eves.fmi */,
+				A8E130951EA4600900644161 /* fenghuanghong.fmi */,
+				A8E130961EA4600900644161 /* fengmap.fmi */,
+				A8E130971EA4600900644161 /* GUESS.fmi */,
+				A8E130981EA4600900644161 /* hainanshouxin.fmi */,
+				A8E130991EA4600900644161 /* hake9d.fmi */,
+				A8E1309A1EA4600900644161 /* handm.fmi */,
+				A8E1309B1EA4600900644161 /* hdl.fmi */,
+				A8E1309C1EA4600900644161 /* hefengge.fmi */,
+				A8E1309D1EA4600900644161 /* hns.fmi */,
+				A8E1309E1EA4600900644161 /* hongmofang.fmi */,
+				A8E1309F1EA4600900644161 /* hongmofangcanting.fmi */,
+				A8E130A01EA4600900644161 /* hongshulinfilm.fmi */,
+				A8E130A11EA4600900644161 /* jackjones.fmi */,
+				A8E130A21EA4600900644161 /* jinrishuwu.fmi */,
+				A8E130A31EA4600900644161 /* jinriweilai.fmi */,
+				A8E130A41EA4600900644161 /* jinriweilaiguan.fmi */,
+				A8E130A51EA4600900644161 /* jinriyishuhui.fmi */,
+				A8E130A61EA4600900644161 /* jiweijiuba.fmi */,
+				A8E130A71EA4600900644161 /* jiweijiulang.fmi */,
+				A8E130A81EA4600900644161 /* jixiangzhai.fmi */,
+				A8E130A91EA4600900644161 /* jpjp.fmi */,
+				A8E130AA1EA4600900644161 /* juyage.fmi */,
+				A8E130AB1EA4600900644161 /* kfc.fmi */,
+				A8E130AC1EA4600900644161 /* laoshanghai.fmi */,
+				A8E130AD1EA4600900644161 /* logo.fmi */,
+				A8E130AE1EA4600900644161 /* Maisonmin.fmi */,
+				A8E130AF1EA4600900644161 /* MariaLuisa.fmi */,
+				A8E130B01EA4600900644161 /* mdl.fmi */,
+				A8E130B11EA4600900644161 /* mingsalon.fmi */,
+				A8E130B21EA4600900644161 /* mlyh.fmi */,
+				A8E130B31EA4600900644161 /* mothercare.fmi */,
+				A8E130B41EA4600900644161 /* moxige.fmi */,
+				A8E130B51EA4600900644161 /* mystyle.fmi */,
+				A8E130B61EA4600900644161 /* ONEILL.fmi */,
+				A8E130B71EA4600900644161 /* only.fmi */,
+				A8E130B81EA4600900644161 /* plate.png */,
+				A8E130B91EA4600900644161 /* pointer.png */,
+				A8E130BA1EA4600900644161 /* psk.fmi */,
+				A8E130BB1EA4600900644161 /* putiduogongneng.fmi */,
+				A8E130BC1EA4600900644161 /* putiyanhui.fmi */,
+				A8E130BD1EA4600900644161 /* riguan.fmi */,
+				A8E130BE1EA4600900644161 /* selected.fmi */,
+				A8E130BF1EA4600900644161 /* senchang.fmi */,
+				A8E130C01EA4600900644161 /* shatanshui.fmi */,
+				A8E130C11EA4600900644161 /* shechipin.fmi */,
+				A8E130C21EA4600900644161 /* t100kids.fmi */,
+				A8E130C31EA4600900644161 /* tanxianwangguo.fmi */,
+				A8E130C41EA4600900644161 /* tianyuan.fmi */,
+				A8E130C51EA4600900644161 /* timg.fmi */,
+				A8E130C61EA4600900644161 /* track.png */,
+				A8E130C71EA4600900644161 /* upjingpindian.fmi */,
+				A8E130C81EA4600900644161 /* UR.fmi */,
+				A8E130C91EA4600900644161 /* Vancasa.fmi */,
+				A8E130CA1EA4600900644161 /* veromoda.fmi */,
+				A8E130CB1EA4600900644161 /* weilaiyishu.fmi */,
+				A8E130CC1EA4600900644161 /* wq.fmi */,
+				A8E130CD1EA4600900644161 /* xbk.fmi */,
+				A8E130CE1EA4600900644161 /* xiangjutietu.fmi */,
+				A8E130CF1EA4600900644161 /* xianhengjiudian.fmi */,
+				A8E130D01EA4600900644161 /* xls.fmi */,
+				A8E130D11EA4600900644161 /* yimiangongfangtietu.fmi */,
+				A8E130D21EA4600900644161 /* yuyuege.fmi */,
+				A8E130D31EA4600900644161 /* zhenzhuba.fmi */,
+				A8E130D41EA4600900644161 /* zxj.fmi */,
+			);
+			path = 2002;
+			sourceTree = "<group>";
+		};
+		A8E132241EA4605400644161 /* FMMapKit */ = {
+			isa = PBXGroup;
+			children = (
+				A8E132251EA4605400644161 /* Release-iphoneos */,
+			);
+			path = FMMapKit;
+			sourceTree = "<group>";
+		};
+		A8E132251EA4605400644161 /* Release-iphoneos */ = {
+			isa = PBXGroup;
+			children = (
+				A8E132261EA4605400644161 /* include */,
+				A8E132821EA4605400644161 /* libFMMapKit.a */,
+			);
+			path = "Release-iphoneos";
+			sourceTree = "<group>";
+		};
+		A8E132261EA4605400644161 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				A8E132271EA4605400644161 /* FMMapKit */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		A8E132271EA4605400644161 /* FMMapKit */ = {
+			isa = PBXGroup;
+			children = (
+				A8E132281EA4605400644161 /* DevicePositionInfo.h */,
+				A8E132291EA4605400644161 /* FMActivity.h */,
+				A8E1322A1EA4605400644161 /* FMActivityManager.h */,
+				A8E1322B1EA4605400644161 /* FMBaseModel.h */,
+				A8E1322C1EA4605400644161 /* FMDHCPNetService.h */,
+				A8E1322D1EA4605400644161 /* FMKAnimator.h */,
+				A8E1322E1EA4605400644161 /* FMKAnimatorEnableController.h */,
+				A8E1322F1EA4605400644161 /* FMKAnimatorPool.h */,
+				A8E132301EA4605400644161 /* FMKBounceInterpolator.h */,
+				A8E132311EA4605400644161 /* FMKBubbleView.h */,
+				A8E132321EA4605400644161 /* FMKCubicInterpolator.h */,
+				A8E132331EA4605400644161 /* FMKDataDownloader.h */,
+				A8E132341EA4605400644161 /* FMKEnableController.h */,
+				A8E132351EA4605400644161 /* FMKExtentLayer.h */,
+				A8E132361EA4605400644161 /* FMKExternalModel.h */,
+				A8E132371EA4605400644161 /* FMKExternalModelLayer.h */,
+				A8E132381EA4605400644161 /* FMKFacility.h */,
+				A8E132391EA4605400644161 /* FMKFacilityLayer.h */,
+				A8E1323A1EA4605400644161 /* FMKGeometry.h */,
+				A8E1323B1EA4605400644161 /* FMKGroundLayer.h */,
+				A8E1323C1EA4605400644161 /* FMKGroup.h */,
+				A8E1323D1EA4605400644161 /* FMKGroupAnimator.h */,
+				A8E1323E1EA4605400644161 /* FMKGroupBorder.h */,
+				A8E1323F1EA4605400644161 /* FMKGroupInfo.h */,
+				A8E132401EA4605400644161 /* FMKHeatBorder.h */,
+				A8E132411EA4605400644161 /* FMKHeatColor.h */,
+				A8E132421EA4605400644161 /* FMKHeatFactor.h */,
+				A8E132431EA4605400644161 /* FMKHeatMap.h */,
+				A8E132441EA4605400644161 /* FMKHttpRequest.h */,
+				A8E132451EA4605400644161 /* FMKImageLayer.h */,
+				A8E132461EA4605400644161 /* FMKImageMarker.h */,
+				A8E132471EA4605400644161 /* FMKInterpolator.h */,
+				A8E132481EA4605400644161 /* FMKKalman.h */,
+				A8E132491EA4605400644161 /* FMKLabel.h */,
+				A8E1324A1EA4605400644161 /* FMKLabelLayer.h */,
+				A8E1324B1EA4605400644161 /* FMKLayer.h */,
+				A8E1324C1EA4605400644161 /* FMKLayerAnimator.h */,
+				A8E1324D1EA4605400644161 /* FMKLayerDelegate.h */,
+				A8E1324E1EA4605400644161 /* FMKLinearInterpolator.h */,
+				A8E1324F1EA4605400644161 /* FMKLineLayer.h */,
+				A8E132501EA4605400644161 /* FMKLineMarker.h */,
+				A8E132511EA4605400644161 /* FMKLocationBorder.h */,
+				A8E132521EA4605400644161 /* FMKLocationLayer.h */,
+				A8E132531EA4605400644161 /* FMKLocationMarker.h */,
+				A8E132541EA4605400644161 /* FMKLocationService.h */,
+				A8E132551EA4605400644161 /* FMKLocationServiceManager.h */,
+				A8E132561EA4605400644161 /* FMKMap.h */,
+				A8E132571EA4605400644161 /* FMKMapDataManager.h */,
+				A8E132581EA4605400644161 /* FMKMapGestureEnableController.h */,
+				A8E132591EA4605400644161 /* FMKMapInfo.h */,
+				A8E1325A1EA4605400644161 /* FMKMapSDK.h */,
+				A8E1325B1EA4605400644161 /* FMKMapView.h */,
+				A8E1325C1EA4605400644161 /* FMKModel.h */,
+				A8E1325D1EA4605400644161 /* FMKModelLayer.h */,
+				A8E1325E1EA4605400644161 /* FMKNaviAnalyser.h */,
+				A8E1325F1EA4605400644161 /* FMKNaviContraint.h */,
+				A8E132601EA4605400644161 /* FMKNaviResult.h */,
+				A8E132611EA4605400644161 /* FMKNaviStruct.h */,
+				A8E132621EA4605400644161 /* FMKNode.h */,
+				A8E132631EA4605400644161 /* FMKNodeAnimator.h */,
+				A8E132641EA4605400644161 /* FMKNodeAssociation.h */,
+				A8E132651EA4605400644161 /* FMKPathAnimator.h */,
+				A8E132661EA4605400644161 /* FMKReachability.h */,
+				A8E132671EA4605400644161 /* FMKSceneAnimator.h */,
+				A8E132681EA4605400644161 /* FMKSceneAnimatorGroup.h */,
+				A8E132691EA4605400644161 /* FMKSearchAnalyser.h */,
+				A8E1326A1EA4605400644161 /* FMKSearchObj.h */,
+				A8E1326B1EA4605400644161 /* FMKSegment.h */,
+				A8E1326C1EA4605400644161 /* FMKSineInterpolator.h */,
+				A8E1326D1EA4605400644161 /* FMKTextLayer.h */,
+				A8E1326E1EA4605400644161 /* FMKTextMarker.h */,
+				A8E1326F1EA4605400644161 /* FMKThemeDataManager.h */,
+				A8E132701EA4605400644161 /* FMKTransformCoord.h */,
+				A8E132711EA4605400644161 /* FMLocationBuilderInfo.h */,
+				A8E132721EA4605400644161 /* FMLocationManager.h */,
+				A8E132731EA4605400644161 /* FMManager.h */,
+				A8E132741EA4605400644161 /* FMMangroveHeader.h */,
+				A8E132751EA4605400644161 /* FMMangroveMapView.h */,
+				A8E132761EA4605400644161 /* FMMangroveNetTool.h */,
+				A8E132771EA4605400644161 /* FMMapKit.h */,
+				A8E132781EA4605400644161 /* FMNaviAnalyserTool.h */,
+				A8E132791EA4605400644161 /* FMParserJsonData.h */,
+				A8E1327A1EA4605400644161 /* FMRoute.h */,
+				A8E1327B1EA4605400644161 /* FMRouteManager.h */,
+				A8E1327C1EA4605400644161 /* FMRouteResult.h */,
+				A8E1327D1EA4605400644161 /* FMZone.h */,
+				A8E1327E1EA4605400644161 /* FMZoneManager.h */,
+				A8E1327F1EA4605400644161 /* MapInfo.h */,
+				A8E132801EA4605400644161 /* MapInfos.h */,
+				A8E132811EA4605400644161 /* UIImage+AddText.h */,
+			);
+			path = FMMapKit;
 			sourceTree = "<group>";
 		};
 		D5865EC51E9F51F700E070D4 /* 3rd */ = {
@@ -332,6 +1273,16 @@
 		D5865F0D1E9F820D00E070D4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A8E132881EA461B400644161 /* libz.tbd */,
+				A8E132861EA4608100644161 /* ImageIO.framework */,
+				A8E132841EA4607700644161 /* GLKit.framework */,
+				A8E1300C1EA45E7C00644161 /* libxml2.tbd */,
+				A8E1300A1EA45E7400644161 /* libc++.tbd */,
+				A8E130081EA45E6A00644161 /* libsqlite3.0.tbd */,
+				A8E130061EA45E5C00644161 /* CoreLocation.framework */,
+				A8E130041EA45E5000644161 /* OpenGLES.framework */,
+				A8E130021EA45E4900644161 /* libstdc++.6.0.9.tbd */,
+				A8E130001EA45E2300644161 /* libresolv.tbd */,
 				D5865F101E9F821600E070D4 /* CoreText.framework */,
 				D5865F0E1E9F820D00E070D4 /* CoreData.framework */,
 			);
@@ -425,11 +1376,229 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8E131821EA4600900644161 /* jpjp.fmi in Resources */,
+				A8E1317B1EA4600900644161 /* jinrishuwu.fmi in Resources */,
+				A8E1318A1EA4600900644161 /* mingsalon.fmi in Resources */,
+				A8E131641EA4600900644161 /* CRZ.fmi in Resources */,
+				A8E1312F1EA4600900644161 /* 150002.fmi in Resources */,
 				A861B3261E9DD3FB002D61F0 /* LaunchScreen.storyboard in Resources */,
 				D59E62341EA05E3100DFDE85 /* CustomScoreView.xib in Resources */,
+				A8E130F11EA4600900644161 /* 100007.fmi in Resources */,
+				A8E131061EA4600900644161 /* 130003.fmi in Resources */,
+				A8E130EF1EA4600900644161 /* 100005.fmi in Resources */,
+				A8E130FD1EA4600900644161 /* 120005.fmi in Resources */,
+				A8E1318F1EA4600900644161 /* ONEILL.fmi in Resources */,
+				A8E130EA1EA4600900644161 /* 100000.fmi in Resources */,
+				A8E131341EA4600900644161 /* 150007.fmi in Resources */,
+				A8E131B71EA4600900644161 /* facility.json in Resources */,
+				A8E131251EA4600900644161 /* 140028.fmi in Resources */,
+				A8E131B41EA4600900644161 /* 79981.fmap in Resources */,
+				A8E1319D1EA4600900644161 /* tianyuan.fmi in Resources */,
+				A8E1314B1EA4600900644161 /* 170006.fmi in Resources */,
+				A8E131871EA4600900644161 /* Maisonmin.fmi in Resources */,
+				A8E130EE1EA4600900644161 /* 100004.fmi in Resources */,
+				A8E131801EA4600900644161 /* jiweijiulang.fmi in Resources */,
+				A8E131A01EA4600900644161 /* upjingpindian.fmi in Resources */,
+				A8E131161EA4600900644161 /* 140013.fmi in Resources */,
+				A8E131581EA4600900644161 /* baxikaorou.fmi in Resources */,
+				A8E1311D1EA4600900644161 /* 140020.fmi in Resources */,
+				A8E131A91EA4600900644161 /* xls.fmi in Resources */,
+				A8E130F91EA4600900644161 /* 120001.fmi in Resources */,
 				D59E622F1EA0584B00DFDE85 /* StatisticalListCell.xib in Resources */,
+				A8E130F31EA4600900644161 /* 110001.fmi in Resources */,
+				A8E131011EA4600900644161 /* 120009.fmi in Resources */,
+				A8E131B31EA4600900644161 /* 79980.fmap in Resources */,
+				A8E131521EA4600900644161 /* 190000.fmi in Resources */,
+				A8E131BC1EA4600900644161 /* mangrove.sqlite in Resources */,
+				A8E131461EA4600900644161 /* 170001.fmi in Resources */,
+				A8E131331EA4600900644161 /* 150006.fmi in Resources */,
+				A8E131BF1EA4600900644161 /* route_relax_1.json in Resources */,
+				A8E131C11EA4600900644161 /* shop1.json in Resources */,
+				A8E131881EA4600900644161 /* MariaLuisa.fmi in Resources */,
+				A8E131791EA4600900644161 /* hongshulinfilm.fmi in Resources */,
+				A8E131151EA4600900644161 /* 140012.fmi in Resources */,
+				A8E131191EA4600900644161 /* 140016.fmi in Resources */,
+				A8E131A11EA4600900644161 /* UR.fmi in Resources */,
+				A8E131181EA4600900644161 /* 140015.fmi in Resources */,
+				A8E131171EA4600900644161 /* 140014.fmi in Resources */,
+				A8E131751EA4600900644161 /* hefengge.fmi in Resources */,
+				A8E1317C1EA4600900644161 /* jinriweilai.fmi in Resources */,
+				A8E131441EA4600900644161 /* 160008.fmi in Resources */,
+				A8E131101EA4600900644161 /* 140007.fmi in Resources */,
+				A8E130FF1EA4600900644161 /* 120007.fmi in Resources */,
+				A8E131BA1EA4600900644161 /* jiantou.png in Resources */,
+				A8E131081EA4600900644161 /* 130005.fmi in Resources */,
+				A8E131771EA4600900644161 /* hongmofang.fmi in Resources */,
+				A8E131BD1EA4600900644161 /* nodeassociation.json in Resources */,
+				A8E131051EA4600900644161 /* 130002.fmi in Resources */,
+				A8E131711EA4600900644161 /* hainanshouxin.fmi in Resources */,
+				A8E131951EA4600900644161 /* putiyanhui.fmi in Resources */,
+				A8E131B11EA4600900644161 /* 70147.fmap in Resources */,
+				A8E131A61EA4600900644161 /* xbk.fmi in Resources */,
+				A8E1315A1EA4600900644161 /* BeachStyle.fmi in Resources */,
+				A8E131501EA4600900644161 /* 180004.fmi in Resources */,
+				A8E130F41EA4600900644161 /* 110002.fmi in Resources */,
+				A8E1315C1EA4600900644161 /* Borida.fmi in Resources */,
+				A8E130FB1EA4600900644161 /* 120003.fmi in Resources */,
+				A8E131511EA4600900644161 /* 180005.fmi in Resources */,
+				A8E131651EA4600900644161 /* daliangcang.fmi in Resources */,
+				A8E131281EA4600900644161 /* 140300.fmi in Resources */,
+				A8E131681EA4600900644161 /* dianyinggongfangba.fmi in Resources */,
+				A8E131B21EA4600900644161 /* 70148.fmap in Resources */,
+				A8E1314F1EA4600900644161 /* 180003.fmi in Resources */,
+				A8E131421EA4600900644161 /* 160006.fmi in Resources */,
+				A8E1316D1EA4600900644161 /* Eves.fmi in Resources */,
+				A8E131911EA4600900644161 /* plate.png in Resources */,
+				A8E130E91EA4600900644161 /* 0.fmi in Resources */,
+				A8E131351EA4600900644161 /* 150008.fmi in Resources */,
+				A8E131291EA4600900644161 /* 140400.fmi in Resources */,
+				A8E131411EA4600900644161 /* 160005.fmi in Resources */,
+				A8E131141EA4600900644161 /* 140011.fmi in Resources */,
+				A8E131111EA4600900644161 /* 140008.fmi in Resources */,
+				A8E1319F1EA4600900644161 /* track.png in Resources */,
+				A8E131241EA4600900644161 /* 140027.fmi in Resources */,
+				A8E1312B1EA4600900644161 /* 140600.fmi in Resources */,
+				A8E1311B1EA4600900644161 /* 140018.fmi in Resources */,
+				A8E131621EA4600900644161 /* Columbia.fmi in Resources */,
+				A8E130FE1EA4600900644161 /* 120006.fmi in Resources */,
+				A8E131551EA4600900644161 /* ad.fmi in Resources */,
+				A8E131B81EA4600900644161 /* food.json in Resources */,
+				A8E131201EA4600900644161 /* 140023.fmi in Resources */,
+				A8E130F81EA4600900644161 /* 120000.fmi in Resources */,
+				A8E131021EA4600900644161 /* 120010.fmi in Resources */,
+				A8E1310D1EA4600900644161 /* 140004.fmi in Resources */,
+				A8E1318D1EA4600900644161 /* moxige.fmi in Resources */,
+				A8E131AD1EA4600900644161 /* zxj.fmi in Resources */,
+				A8E131231EA4600900644161 /* 140026.fmi in Resources */,
+				A8E131691EA4600900644161 /* dome.png in Resources */,
+				A8E1316B1EA4600900644161 /* ESSECHIC.fmi in Resources */,
+				A8E131BE1EA4600900644161 /* route_food_1.json in Resources */,
+				A8E131481EA4600900644161 /* 170003.fmi in Resources */,
+				A8E131B01EA4600900644161 /* 70146.fmap in Resources */,
+				A8E131A31EA4600900644161 /* veromoda.fmi in Resources */,
+				A8E130F61EA4600900644161 /* 110004.fmi in Resources */,
+				A8E131301EA4600900644161 /* 150003.fmi in Resources */,
+				A8E130F71EA4600900644161 /* 110005.fmi in Resources */,
+				A8E131611EA4600900644161 /* coco.fmi in Resources */,
+				A8E131381EA4600900644161 /* 150011.fmi in Resources */,
+				A8E131991EA4600900644161 /* shatanshui.fmi in Resources */,
+				A8E1311A1EA4600900644161 /* 140017.fmi in Resources */,
+				A8E1317E1EA4600900644161 /* jinriyishuhui.fmi in Resources */,
+				A8E131661EA4600900644161 /* dawangzongcanting.fmi in Resources */,
+				A8E131981EA4600900644161 /* senchang.fmi in Resources */,
+				A8E131BB1EA4600900644161 /* locatio.png in Resources */,
+				A8E1315E1EA4600900644161 /* botebafang.fmi in Resources */,
+				A8E131AA1EA4600900644161 /* yimiangongfangtietu.fmi in Resources */,
+				A8E131AB1EA4600900644161 /* yuyuege.fmi in Resources */,
+				A8E131A21EA4600900644161 /* Vancasa.fmi in Resources */,
+				A8E131841EA4600900644161 /* kfc.fmi in Resources */,
+				A8E1312D1EA4600900644161 /* 150000.fmi in Resources */,
+				A8E131451EA4600900644161 /* 170000.fmi in Resources */,
+				A8E131A41EA4600900644161 /* weilaiyishu.fmi in Resources */,
+				A8E1314D1EA4600900644161 /* 180001.fmi in Resources */,
+				A8E131811EA4600900644161 /* jixiangzhai.fmi in Resources */,
+				A8E131131EA4600900644161 /* 140010.fmi in Resources */,
+				A8E131001EA4600900644161 /* 120008.fmi in Resources */,
+				A8E1311F1EA4600900644161 /* 140022.fmi in Resources */,
+				A8E130FC1EA4600900644161 /* 120004.fmi in Resources */,
+				A8E131831EA4600900644161 /* juyage.fmi in Resources */,
+				A8E1312A1EA4600900644161 /* 140500.fmi in Resources */,
+				A8E131321EA4600900644161 /* 150005.fmi in Resources */,
 				A861B3231E9DD3FB002D61F0 /* Assets.xcassets in Resources */,
+				A8E131491EA4600900644161 /* 170004.fmi in Resources */,
+				A8E1319A1EA4600900644161 /* shechipin.fmi in Resources */,
+				A8E130F51EA4600900644161 /* 110003.fmi in Resources */,
+				A8E131971EA4600900644161 /* selected.fmi in Resources */,
+				A8E131531EA4600900644161 /* 200000.fmi in Resources */,
+				A8E1315D1EA4600900644161 /* boshiyanjing.fmi in Resources */,
+				A8E131921EA4600900644161 /* pointer.png in Resources */,
+				A8E131891EA4600900644161 /* mdl.fmi in Resources */,
+				A8E131851EA4600900644161 /* laoshanghai.fmi in Resources */,
+				A8E131901EA4600900644161 /* only.fmi in Resources */,
+				A8E131541EA4600900644161 /* 2002.theme in Resources */,
+				A8E1310B1EA4600900644161 /* 140002.fmi in Resources */,
+				A8E1315F1EA4600900644161 /* bufeitai.fmi in Resources */,
+				A8E1310A1EA4600900644161 /* 140001.fmi in Resources */,
+				A8E1313E1EA4600900644161 /* 160002.fmi in Resources */,
+				A8E131031EA4600900644161 /* 130000.fmi in Resources */,
+				A8E131721EA4600900644161 /* hake9d.fmi in Resources */,
+				A8E131041EA4600900644161 /* 130001.fmi in Resources */,
+				A8E131261EA4600900644161 /* 140100.fmi in Resources */,
+				A8E1319E1EA4600900644161 /* timg.fmi in Resources */,
+				A8E1318C1EA4600900644161 /* mothercare.fmi in Resources */,
+				A8E131071EA4600900644161 /* 130004.fmi in Resources */,
+				A8E131431EA4600900644161 /* 160007.fmi in Resources */,
+				A8E131B51EA4600900644161 /* 79982.fmap in Resources */,
+				A8E1312E1EA4600900644161 /* 150001.fmi in Resources */,
+				A8E1313A1EA4600900644161 /* 150013.fmi in Resources */,
+				A8E1314A1EA4600900644161 /* 170005.fmi in Resources */,
+				A8E1310E1EA4600900644161 /* 140005.fmi in Resources */,
+				A8E1317D1EA4600900644161 /* jinriweilaiguan.fmi in Resources */,
+				A8E131671EA4600900644161 /* dianyinggongfang.fmi in Resources */,
+				A8E130EB1EA4600900644161 /* 100001.fmi in Resources */,
+				A8E131931EA4600900644161 /* psk.fmi in Resources */,
+				A8E1316A1EA4600900644161 /* EHANG.fmi in Resources */,
+				A8E131561EA4600900644161 /* Arcteryx.fmi in Resources */,
+				A8E131361EA4600900644161 /* 150009.fmi in Resources */,
+				A8E131741EA4600900644161 /* hdl.fmi in Resources */,
+				A8E131731EA4600900644161 /* handm.fmi in Resources */,
+				A8E131781EA4600900644161 /* hongmofangcanting.fmi in Resources */,
+				A8E131211EA4600900644161 /* 140024.fmi in Resources */,
+				A8E131941EA4600900644161 /* putiduogongneng.fmi in Resources */,
+				A8E131371EA4600900644161 /* 150010.fmi in Resources */,
+				A8E1319B1EA4600900644161 /* t100kids.fmi in Resources */,
+				A8E131701EA4600900644161 /* GUESS.fmi in Resources */,
+				A8E131391EA4600900644161 /* 150012.fmi in Resources */,
+				A8E131AE1EA4600900644161 /* 70144.fmap in Resources */,
+				A8E131571EA4600900644161 /* babudou.fmi in Resources */,
+				A8E1318B1EA4600900644161 /* mlyh.fmi in Resources */,
+				A8E131471EA4600900644161 /* 170002.fmi in Resources */,
+				A8E1313B1EA4600900644161 /* 150014.fmi in Resources */,
+				A8E131591EA4600900644161 /* bbl.fmi in Resources */,
+				A8E131861EA4600900644161 /* logo.fmi in Resources */,
+				A8E131311EA4600900644161 /* 150004.fmi in Resources */,
+				A8E131B61EA4600900644161 /* acts.json in Resources */,
+				A8E1313F1EA4600900644161 /* 160003.fmi in Resources */,
+				A8E1317A1EA4600900644161 /* jackjones.fmi in Resources */,
+				A8E1312C1EA4600900644161 /* 140700.fmi in Resources */,
+				A8E1310F1EA4600900644161 /* 140006.fmi in Resources */,
+				A8E131271EA4600900644161 /* 140200.fmi in Resources */,
 				A861B3211E9DD3FB002D61F0 /* Main.storyboard in Resources */,
+				A8E131A51EA4600900644161 /* wq.fmi in Resources */,
+				A8E1313C1EA4600900644161 /* 160000.fmi in Resources */,
+				A8E1316F1EA4600900644161 /* fengmap.fmi in Resources */,
+				A8E131221EA4600900644161 /* 140025.fmi in Resources */,
+				A8E131A71EA4600900644161 /* xiangjutietu.fmi in Resources */,
+				A8E1315B1EA4600900644161 /* bentu.fmi in Resources */,
+				A8E131C01EA4600900644161 /* shop.json in Resources */,
+				A8E131961EA4600900644161 /* riguan.fmi in Resources */,
+				A8E1314C1EA4600900644161 /* 180000.fmi in Resources */,
+				A8E131401EA4600900644161 /* 160004.fmi in Resources */,
+				A8E130FA1EA4600900644161 /* 120002.fmi in Resources */,
+				A8E130F21EA4600900644161 /* 110000.fmi in Resources */,
+				A8E1319C1EA4600900644161 /* tanxianwangguo.fmi in Resources */,
+				A8E131631EA4600900644161 /* compass.png in Resources */,
+				A8E130ED1EA4600900644161 /* 100003.fmi in Resources */,
+				A8E132231EA4603F00644161 /* FMBundle.bundle in Resources */,
+				A8E131A81EA4600900644161 /* xianhengjiudian.fmi in Resources */,
+				A8E130EC1EA4600900644161 /* 100002.fmi in Resources */,
+				A8E1317F1EA4600900644161 /* jiweijiuba.fmi in Resources */,
+				A8E131761EA4600900644161 /* hns.fmi in Resources */,
+				A8E131AC1EA4600900644161 /* zhenzhuba.fmi in Resources */,
+				A8E130F01EA4600900644161 /* 100006.fmi in Resources */,
+				A8E1316E1EA4600900644161 /* fenghuanghong.fmi in Resources */,
+				A8E1316C1EA4600900644161 /* EVEBYEVE.fmi in Resources */,
+				A8E131B91EA4600900644161 /* indoorMapInfo.json in Resources */,
+				A8E1313D1EA4600900644161 /* 160001.fmi in Resources */,
+				A8E131121EA4600900644161 /* 140009.fmi in Resources */,
+				A8E131091EA4600900644161 /* 140000.fmi in Resources */,
+				A8E1310C1EA4600900644161 /* 140003.fmi in Resources */,
+				A8E1314E1EA4600900644161 /* 180002.fmi in Resources */,
+				A8E131601EA4600900644161 /* chaotianmentietu.fmi in Resources */,
+				A8E1311C1EA4600900644161 /* 140019.fmi in Resources */,
+				A8E131AF1EA4600900644161 /* 70145.fmap in Resources */,
+				A8E1311E1EA4600900644161 /* 140021.fmi in Resources */,
+				A8E1318E1EA4600900644161 /* mystyle.fmi in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -443,9 +1612,12 @@
 				D5865EFE1E9F55C500E070D4 /* DBUserInfo+CoreDataProperties.m in Sources */,
 				D59E622E1EA0584B00DFDE85 /* StatisticalListCell.m in Sources */,
 				D5865EE31E9F520C00E070D4 /* NetWorkingMain.m in Sources */,
+				A8E132931EA461D400644161 /* FMIndoorMapVC.m in Sources */,
+				A8E132911EA461D400644161 /* MapViewController.m in Sources */,
 				D5865ED91E9F51F700E070D4 /* AFURLSessionManager.m in Sources */,
 				D5865EF41E9F554200E070D4 /* waiter.xcdatamodeld in Sources */,
 				D5865F0C1E9F81DB00E070D4 /* UIViewExt.m in Sources */,
+				A8E132921EA461D400644161 /* ChooseFloorScrollView.m in Sources */,
 				D5865F031E9F579B00E070D4 /* DataBaseManager.m in Sources */,
 				D59E62331EA05E3100DFDE85 /* CustomScoreView.m in Sources */,
 				9C1995341E9F1AB000AC34DB /* StatisticalViewController.m in Sources */,
@@ -595,10 +1767,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 29HSV437NA;
+				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/waiter/MacroFile/PrefixHeader.pch";
+				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
 				INFOPLIST_FILE = waiter/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/waiter/FMMapKit/Release-iphoneos",
+				);
+				OTHER_LDFLAGS = " -ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.suzic.waiter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -609,10 +1788,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 29HSV437NA;
+				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/waiter/MacroFile/PrefixHeader.pch";
+				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
 				INFOPLIST_FILE = waiter/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/waiter/FMMapKit/Release-iphoneos",
+				);
+				OTHER_LDFLAGS = " -ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.suzic.waiter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
