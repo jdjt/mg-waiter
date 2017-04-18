@@ -13,8 +13,8 @@
 
 /* 接口文件 */
 
-#define REQUEST_HEAD_NORMAL "http://"
-#define REQUEST_HEAD_SCREAT "https://"
+#define REQUEST_HEAD_NORMAL @"http://"
+#define REQUEST_HEAD_SCREAT @"https://"
 
 // 服务员登录hotelservice
 #define URI_WAITER_LOGIN                      "/hotelservice/manage/waiter/login.json"

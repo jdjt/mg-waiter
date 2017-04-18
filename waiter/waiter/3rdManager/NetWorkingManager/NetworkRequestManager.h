@@ -17,14 +17,15 @@ typedef  void (^ResponseFailure)(NSURLSessionTask * task,NSString * message,NSSt
 /**
  http请求
 
- @param urlHeader url头
  @param url url
  @param params 入参
  @param byUser 是否用户手动发起
  @param success 成功block
  @param failure 失败block
  */
--(void)POST_UrlHead:(NSString *)urlHeader WithUrl:(NSString *)url Params:(NSDictionary *)params withByUser:(BOOL)byUser Success:(ResponseSuccess)success Failure:(ResponseFailure)failure;
+-(void)POST_Url:(NSString *)url Params:(NSDictionary *)params withByUser:(BOOL)byUser Success:(ResponseSuccess)success Failure:(ResponseFailure)failure;
+
+
 // 取消所有请求
 -(void)cancleAllRequest;
 

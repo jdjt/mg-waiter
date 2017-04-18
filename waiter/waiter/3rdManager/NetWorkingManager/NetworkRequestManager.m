@@ -63,10 +63,10 @@
     return header;
 }
 //发起网络请求
--(void)POST_UrlHead:(NSString *)urlHeader WithUrl:(NSString *)url Params:(NSDictionary *)params withByUser:(BOOL)byUser Success:(ResponseSuccess)success Failure:(ResponseFailure)failure{
+-(void)POST_Url:(NSString *)url Params:(NSDictionary *)params withByUser:(BOOL)byUser Success:(ResponseSuccess)success Failure:(ResponseFailure)failure{
     _success = success;
     _failure = failure;
-    NSString * urlString = [NSString stringWithFormat:@"%@%@%@",urlHeader,[MySingleton sharedSingleton].baseInterfaceUrl,url];
+    NSString * urlString = [NSString stringWithFormat:@"%@%@%@",REQUEST_HEAD_NORMAL,[MySingleton sharedSingleton].baseInterfaceUrl,url];
     
    AFHTTPSessionManager * manager =  [NetWorkingMain POST_URL:urlString WithHttpHeader:[self getHttpHeader] WithParameters:params WithSuccess:^(id responseObject, NSURLSessionTask *task, NSDictionary *headers) {
        [self resultComplete:responseObject urltask:task URL:url Headers:headers];
