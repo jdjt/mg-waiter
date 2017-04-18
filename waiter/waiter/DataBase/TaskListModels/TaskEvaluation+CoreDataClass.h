@@ -1,8 +1,8 @@
 //
-//  DBUserInfo+CoreDataClass.h
+//  TaskEvaluation+CoreDataClass.h
 //  waiter
 //
-//  Created by new on 2017/4/13.
+//  Created by new on 2017/4/18.
 //  Copyright © 2017年 liuchao. All rights reserved.
 //
 
@@ -11,10 +11,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface DBUserInfo : NSManagedObject
+@interface TaskEvaluation : NSManagedObject
 
 @end
 
 NS_ASSUME_NONNULL_END
 
-#import "DBUserInfo+CoreDataProperties.h"
+#import "TaskEvaluation+CoreDataProperties.h"

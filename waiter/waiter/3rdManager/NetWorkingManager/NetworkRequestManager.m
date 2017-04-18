@@ -9,6 +9,8 @@
 #import "NetworkRequestManager.h"
 #import "NetWorkingMain.h"
 #import "DataParser.h"
+#import "DataBaseManager+Category.h"
+
 @interface NetworkRequestManager ()
 
 @property (nonatomic,strong) NSMutableDictionary * managerDictionary;
@@ -48,26 +50,28 @@
 -(NSDictionary *)getHttpHeader{
     
     NSTimeInterval timestamp = [Util timestamp];
+    DBDeviceInfo * deviceInfo = [[DataBaseManager defaultInstance] getDeviceInfo];
     NSMutableDictionary* header = [[NSMutableDictionary alloc]init];
     [header setObject:@"application/json; charset=utf-8" forKey:@"Content-Type"];
     [header setObject:@"" forKey:@"mymhotel-ticket"];
-    [header setObject:@"1001" forKey:@"mymhotel-type"];
+    [header setObject:@"1004" forKey:@"mymhotel-type"];
     [header setObject:@"1.0" forKey:@"mymhotel-version"];
     [header setObject:@"JSON" forKey:@"mymhotel-dataType"];
     [header setObject:@"JSON" forKey:@"mymhotel-ackDataType"];
-    [header setObject:[Util getMacAdd] forKey:@"mymhotel-sourceCode"];
+    [header setObject:[NSString stringWithFormat:@"%@|%@",deviceInfo.deviceId,deviceInfo.deviceToken] forKey:@"mymhotel-sourceCode"];
     [header setObject:[NSString stringWithFormat:@"%f",timestamp] forKey:@"mymhotel-dateTime"];
     [header setObject:@"no-cache" forKey:@"Pragma"];
     [header setObject:@"no-cache" forKey:@"Cache-Control"];
-    
+    NSLog(@"header:-> %@",header);
     return header;
+    
 }
 //发起网络请求
 -(void)POST_Url:(NSString *)url Params:(NSDictionary *)params withByUser:(BOOL)byUser Success:(ResponseSuccess)success Failure:(ResponseFailure)failure{
     _success = success;
     _failure = failure;
     NSString * urlString = [NSString stringWithFormat:@"%@%@%@",REQUEST_HEAD_NORMAL,[MySingleton sharedSingleton].baseInterfaceUrl,url];
-    
+    NSLog(@"url:-> %@",urlString);
    AFHTTPSessionManager * manager =  [NetWorkingMain POST_URL:urlString WithHttpHeader:[self getHttpHeader] WithParameters:params WithSuccess:^(id responseObject, NSURLSessionTask *task, NSDictionary *headers) {
        [self resultComplete:responseObject urltask:task URL:url Headers:headers];
     } failure:^(NSError *error, NSURLSessionTask *task, NSDictionary *headers) {
@@ -82,7 +86,7 @@
 }
 - (void)resultComplete:(id)responseObj urltask:(NSURLSessionTask *)task URL:(NSString *)url Headers:(NSDictionary *)headers{
     [self cancleRequestWithUrl:url];
-
+    NSLog(@"responseObj:-> %@",responseObj);
     NSString * status = [headers objectForKey:@"mymhotel-status"];
     NSString * message = [headers objectForKey:@"mymhotel-message"];
     
@@ -133,15 +137,15 @@
         @try
         {
             
-            NSMutableArray *  dataArray = [DataParser parserUrl:url fromData:responseObj];
+            id dataSource = [DataParser parserUrl:url fromData:responseObj];
             // 不需要返回数据的请求
-            if (dataArray.count < 1){
+            if (dataSource == nil){
                
                 self.failure(task, @"", status, url);
                 return;
             }
             // 有返回数据的请求
-             self.success(task, dataArray, @"", url);
+             self.success(task, dataSource, @"", url);
         }
         @catch (NSException *exception){
         }

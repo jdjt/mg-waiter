@@ -32,9 +32,8 @@
     self = [super init];
     if (self)
     {
-        _baseInterfaceUrl = @"mws.mymhotel.com";
-//        _baseIntertestUrl = @"rc-ws.mymhotel.com";
-//        _baseInterfaceUrl = @"rc-ws.mymhotel.com";
+        //_baseInterfaceUrl = @"mws.mymhotel.com";
+        _baseInterfaceUrl = @"rc-ws.mymhotel.com";
     }
     
     return self;

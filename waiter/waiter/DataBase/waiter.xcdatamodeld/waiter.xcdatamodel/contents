@@ -1,9 +1,73 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16D32" minimumToolsVersion="Xcode 8.0" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
-    <entity name="DBStatistical" representedClassName="DBStatistical" syncable="YES"/>
-    <entity name="DBUserInfo" representedClassName="DBUserInfo" syncable="YES"/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16D32" minimumToolsVersion="Automatic" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
+    <entity name="DBDeviceInfo" representedClassName="DBDeviceInfo" syncable="YES">
+        <attribute name="deviceId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="deviceToken" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="DBLogInInfo" representedClassName="DBLogInInfo" syncable="YES">
+        <attribute name="nowTime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="uploadPerSecond" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="waiterId" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="waiterInfo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DBWaiterInfo" syncable="YES"/>
+    </entity>
+    <entity name="DBWaiterInfo" representedClassName="DBWaiterInfo" syncable="YES">
+        <attribute name="attendStatus" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="depId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="depName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="deviceId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="deviceToken" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="deviceType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="empNo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="hotelCode" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="hotelName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="idNo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="imAccount" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="resetPwdDiv" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sex" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="workStatus" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="workTimeCal" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="TaskCancel" representedClassName="TaskCancel" syncable="YES">
+        <attribute name="causeCode" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="causeDesc" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="TaskEvaluation" representedClassName="TaskEvaluation" syncable="YES">
+        <attribute name="scoreMod" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="scoreTime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="scoreVal" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="TaskList" representedClassName="TaskList" syncable="YES">
+        <attribute name="acceptTime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="areaCode" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="areaName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cImAccount" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="customerId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="finishEndTime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="finishTime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="floorNo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="hotelCode" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mapNo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="nowDate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="posionX" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="positionY" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="postionZ" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="taskContent" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="taskStatus" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="waiterEndTime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="waiterId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="waiteTime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="wImAccount" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="cancelDetail" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TaskCancel" syncable="YES"/>
+        <relationship name="scoreDetail" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TaskEvaluation" syncable="YES"/>
+    </entity>
     <elements>
-        <element name="DBUserInfo" positionX="-45" positionY="0" width="128" height="45"/>
-        <element name="DBStatistical" positionX="-18" positionY="27" width="128" height="45"/>
+        <element name="DBDeviceInfo" positionX="-36" positionY="9" width="128" height="75"/>
+        <element name="DBLogInInfo" positionX="36" positionY="81" width="128" height="105"/>
+        <element name="DBWaiterInfo" positionX="9" positionY="63" width="128" height="300"/>
+        <element name="TaskList" positionX="9" positionY="171" width="128" height="375"/>
+        <element name="TaskCancel" positionX="27" positionY="189" width="128" height="75"/>
+        <element name="TaskEvaluation" positionX="36" positionY="198" width="128" height="90"/>
     </elements>
 </model>

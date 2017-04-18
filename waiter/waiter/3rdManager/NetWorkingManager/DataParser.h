@@ -8,5 +8,13 @@
 
 
 @interface DataParser : NSObject
-+(NSMutableArray *)parserUrl:(NSString*)ident fromData:(id)dict;
+
+/**
+ 解析网络数据
+
+ @param ident url
+ @param dict 网络请求返回的数据
+ @return id类型，(为nil时是不需要返回数据的)
+ */
++(id)parserUrl:(NSString*)ident fromData:(id)dict;
 @end

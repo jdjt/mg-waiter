@@ -16,25 +16,34 @@
 #define REQUEST_HEAD_NORMAL @"http://"
 #define REQUEST_HEAD_SCREAT @"https://"
 
-// 服务员登录hotelservice
-#define URI_WAITER_LOGIN                      "/hotelservice/manage/waiter/login.json"
+// 服务员登录
+#define URI_WAITER_Login                      @"/hotelcallservice/waiter/login.json"
 
-// 服务员注销登录(下班)
-#define URI_WAITER_LOGOUT                     "/hotelservice/manage/waiter/logout.json"
+// 服务员状态
+#define URI_WAITER_AttendStatus               @"/hotelcallservice/waiter/getWaiterAttendStatus.json"
+
+// 服务员修改密码
+#define URI_WAITER_UpdatePass                 @"/hotelcallservice/waiter/updatePass.json"
+
+// 	服务员登出
+#define URI_WAITER_Logout                     @"/hotelcallservice/waiter/logout.json"
+
+//	获取服务员信息
+#define URI_WAITER_WaiterInfoByWaiterId       @"/hotelcallservice/waiter/getWaiterInfoByWaiterId.json"
+
+//	服务员工作状态设置“开始接单”、“停止接单”
+#define URI_WAITER_SetWorkStatus              @"/hotelcallservice/waiter/settingWorkingStatus.json"
+
+//	服务员“开始接单”后获取进行中任务列表
+#define URI_WAITER_TaskAfterAccept            @"/hotelcallservice/waiter/getTaskInfoAfterAccept.json"
 
 
 
-// 服务员信息查询
-#define URI_WAITER_CHECKINFO                  "/hotelservice/manage/waiter/waiter_info.json"
 
-// 服务员获取服务请求列表
-#define URI_WAITER_GETSERVICELIST             "/hotelservice/checkin/service/task_array.json"
 
-// 服务员抢单请求
-#define URI_WAITER_RUSHTASK                   "/hotelservice/checkin/service/accept_task.json"
 
-// 服务员提交完成
-#define URI_WAITER_FINISHTASK                 "/hotelservice/checkin/service/finish_task.json"
+
+
 
 
 

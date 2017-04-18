@@ -9,6 +9,7 @@
 #import "StatisticalViewController.h"
 #import "StatisticalListCell.h"
 #import "CalendarViewController.h"
+#import "DataBaseManager+Category.h"
 @interface StatisticalViewController ()<CalendarDelegate>
 // 日历所选择日期的字符串（xxxx-xx-xx）
 @property(nonatomic,copy)NSString * selectDateString;
@@ -19,8 +20,22 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+//    DBDeviceInfo * deviceInfo = [[DataBaseManager defaultInstance] getDeviceInfo];
+//    NSMutableDictionary * params = [[NSMutableDictionary alloc]init];
+//    [params setObject:@"T001" forKey:@"empNo"];
+//    [params setObject:@"123456" forKey:@"password"];
+//    [params setObject:deviceInfo.deviceId forKey:@"deviceId"];
+//    [params setObject:deviceInfo.deviceToken forKey:@"deviceToken"];
+//    [params setObject:[NSNumber numberWithInt:2] forKey:@"deviceType"];
+//    
+//    [[NetworkRequestManager defaultManager] POST_Url:URI_WAITER_LOGIN Params:params withByUser:YES Success:^(NSURLSessionTask *task, id dataSource, NSString *message, NSString *url) {
+//        NSLog(@"dataSource:----%@",dataSource);
+//    } Failure:^(NSURLSessionTask *task, NSString *message, NSString *status, NSString *url) {
+//        NSLog(@"message:----=== %@",message);
+//    }];
     
-   
+    
+       
     
 }
 -(void)load{
