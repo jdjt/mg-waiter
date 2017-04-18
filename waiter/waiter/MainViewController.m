@@ -23,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *stateButton;//开始接单
 @property (assign, nonatomic) BOOL isWorkingState;
 @property (assign, nonatomic) BOOL ishiddenFoot;
+@property (weak, nonatomic) IBOutlet UIImageView *goMapImage;
 
 @end
 
@@ -35,6 +36,9 @@
 
     self.stateButton.layer.cornerRadius = 5;
     self.stateView.layer.cornerRadius = 3;
+    
+    UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(goMapImageAction:)];
+    [self.goMapImage addGestureRecognizer:tap];
 }
 
 #pragma mark - tableview代理
@@ -97,11 +101,6 @@
 //开始接单和停止接单切换
 - (IBAction)workingStateButtonAction:(id)sender
 {
-    
-#warning 测试进入地图入口
-    MapViewController *map = [[MapViewController alloc] init];
-    [self.navigationController pushViewController:map animated:YES];
-    return;
     if (self.isWorkingState == NO)
     {
         self.stateButton.backgroundColor = [UIColor redColor];
@@ -125,7 +124,8 @@
     self.tableTop.constant = 50.0f;
     self.ishiddenFoot = YES;
     _taskListCell.pickSingleButton.hidden = YES;
-    self.stateView.backgroundColor = [UIColor colorWithRed:16/255.0f green:158/255.0f blue:252/255.0f alpha:1];
+//    self.stateView.backgroundColor = [UIColor colorWithRed:16/255.0f green:158/255.0f blue:252/255.0f alpha:1];
+    self.stateView.backgroundColor = [UIColor grayColor];
     self.taskingLabel.text = @"进行中任务（1）";
     self.stateButton.backgroundColor = [UIColor grayColor];
     self.stateButton.enabled = NO;
@@ -144,9 +144,11 @@
     [self.stateButton setTitle:@"停止接单" forState:UIControlStateNormal];
     self.stateButton.backgroundColor = [UIColor redColor];
     
-    self.stateView.backgroundColor = [UIColor colorWithRed:184/255.0f green:184/255.0f blue:184/255.0f alpha:1];
+//    self.stateView.backgroundColor = [UIColor colorWithRed:184/255.0f green:184/255.0f blue:184/255.0f alpha:1];
+    self.stateView.backgroundColor = [UIColor grayColor];
     self.taskingLabel.text = @"进行中任务（0）";
 }
+
 
 
 - (void)didReceiveMemoryWarning {
@@ -154,6 +156,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)goMapImageAction:(UITapGestureRecognizer *)tap
+{
+    MapViewController *map = [[MapViewController alloc] init];
+    [self.navigationController pushViewController:map animated:YES];
+}
 
 #pragma mark - Navigation
 
