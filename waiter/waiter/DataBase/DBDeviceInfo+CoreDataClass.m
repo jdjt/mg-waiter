@@ -7,8 +7,7 @@
 //
 
 #import "DBDeviceInfo+CoreDataClass.h"
-
+#import "NSManagedObject+Category.h"
 @implementation DBDeviceInfo
--(void)setValue:(id)value forUndefinedKey:(NSString *)key{
-}
+
 @end

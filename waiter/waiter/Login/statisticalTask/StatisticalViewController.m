@@ -13,6 +13,7 @@
 @interface StatisticalViewController ()<CalendarDelegate>
 // 日历所选择日期的字符串（xxxx-xx-xx）
 @property(nonatomic,copy)NSString * selectDateString;
+@property(nonatomic,strong)NSMutableArray * dataArray;
 @end
 
 @implementation StatisticalViewController
@@ -34,9 +35,21 @@
 //        NSLog(@"message:----=== %@",message);
 //    }];
     
+    self.dataArray = [[NSMutableArray alloc]init];
+  TaskList * model =(TaskList *)  [[DataBaseManager defaultInstance] insertIntoCoreData:@"TaskList"];
+    model.isAnOpen = NO;
+    [self.dataArray addObject:model];
     
-       
+    TaskList * model2 =(TaskList *)  [[DataBaseManager defaultInstance] insertIntoCoreData:@"TaskList"];
+    model2.isAnOpen = NO;
+    [self.dataArray addObject:model2];
     
+    
+    TaskList * model3 =(TaskList *)  [[DataBaseManager defaultInstance] insertIntoCoreData:@"TaskList"];
+    model3.isAnOpen = NO;
+    [self.dataArray addObject:model3];
+    
+    [self.tableView reloadData];
 }
 -(void)load{
 
@@ -53,12 +66,33 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+    return self.dataArray.count;
+    
+}
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 20)];
+    return view;    
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 20;
+}
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return 10;
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    TaskList * listModel = self.dataArray[indexPath.section];
+    if (listModel.isAnOpen) {
+        return 80;
+    }else{
+    
+        return 200;
+    }
+
 }
 
 
@@ -69,11 +103,20 @@
         cell = [[NSBundle mainBundle]loadNibNamed:@"StatisticalListCell" owner:self options:nil].lastObject;
         
     }
-    
-    // Configure the cell...
-    
+
+    cell.layer.masksToBounds = YES;
     return cell;
 }
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+
+    TaskList * listModel = self.dataArray[indexPath.section];
+    listModel.isAnOpen = !listModel.isAnOpen;
+    
+    NSIndexSet *indexSet=[[NSIndexSet alloc]initWithIndex:indexPath.section];
+    [tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+
+
 
 #pragma mark - Navigation
 

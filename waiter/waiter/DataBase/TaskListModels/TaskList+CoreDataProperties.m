@@ -2,7 +2,7 @@
 //  TaskList+CoreDataProperties.m
 //  waiter
 //
-//  Created by new on 2017/4/18.
+//  Created by new on 2017/4/19.
 //  Copyright © 2017年 liuchao. All rights reserved.
 //
 
@@ -14,27 +14,35 @@
 	return [[NSFetchRequest alloc] initWithEntityName:@"TaskList"];
 }
 
-@dynamic taskContent;
-@dynamic taskStatus;
-@dynamic hotelCode;
+@dynamic acceptTime;
 @dynamic areaCode;
 @dynamic areaName;
+@dynamic cImAccount;
+@dynamic customerId;
+@dynamic finishEndTime;
+@dynamic finishTime;
 @dynamic floorNo;
+@dynamic hotelCode;
 @dynamic mapNo;
+@dynamic nowDate;
 @dynamic posionX;
 @dynamic positionY;
 @dynamic postionZ;
-@dynamic customerId;
-@dynamic cImAccount;
-@dynamic waiterId;
-@dynamic wImAccount;
-@dynamic nowDate;
-@dynamic waiteTime;
+@dynamic taskContent;
+@dynamic taskStatus;
 @dynamic waiterEndTime;
-@dynamic acceptTime;
-@dynamic finishTime;
-@dynamic finishEndTime;
-@dynamic cancelDetail;
-@dynamic scoreDetail;
+@dynamic waiterId;
+@dynamic waiteTime;
+@dynamic wImAccount;
+@dynamic count;
+@dynamic pageNo;
+@dynamic causeCode;
+@dynamic causeDesc;
+@dynamic scoreMod;
+@dynamic scoreTime;
+@dynamic scoreVal;
+@dynamic taskTypeCustom;
+@dynamic taskCode;
+@dynamic isAnOpen;
 
 @end

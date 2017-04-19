@@ -256,16 +256,11 @@
 		D51C8A141EA5C47C0047FE6C /* DBDeviceInfo+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D51C8A0C1EA5C47C0047FE6C /* DBDeviceInfo+CoreDataProperties.m */; };
 		D51C8A191EA5D5C20047FE6C /* PDKeyChain.m in Sources */ = {isa = PBXBuildFile; fileRef = D51C8A181EA5D5C20047FE6C /* PDKeyChain.m */; };
 		D51C8A1C1EA5D60D0047FE6C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D51C8A1B1EA5D60D0047FE6C /* Security.framework */; };
-		D51C8A251EA5E2740047FE6C /* DBWaiterInfo+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = D51C8A1E1EA5E2740047FE6C /* DBWaiterInfo+CoreDataClass.m */; };
-		D51C8A261EA5E2740047FE6C /* DBWaiterInfo+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D51C8A201EA5E2740047FE6C /* DBWaiterInfo+CoreDataProperties.m */; };
-		D51C8A271EA5E2740047FE6C /* DBLogInInfo+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = D51C8A221EA5E2740047FE6C /* DBLogInInfo+CoreDataClass.m */; };
-		D51C8A281EA5E2740047FE6C /* DBLogInInfo+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D51C8A241EA5E2740047FE6C /* DBLogInInfo+CoreDataProperties.m */; };
-		D533ED531EA60AE200089DC9 /* TaskCancel+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = D533ED481EA60AE200089DC9 /* TaskCancel+CoreDataClass.m */; };
-		D533ED541EA60AE200089DC9 /* TaskCancel+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D533ED4A1EA60AE200089DC9 /* TaskCancel+CoreDataProperties.m */; };
-		D533ED551EA60AE200089DC9 /* TaskEvaluation+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = D533ED4C1EA60AE200089DC9 /* TaskEvaluation+CoreDataClass.m */; };
-		D533ED561EA60AE200089DC9 /* TaskEvaluation+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D533ED4E1EA60AE200089DC9 /* TaskEvaluation+CoreDataProperties.m */; };
-		D533ED571EA60AE200089DC9 /* TaskList+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = D533ED501EA60AE200089DC9 /* TaskList+CoreDataClass.m */; };
-		D533ED581EA60AE200089DC9 /* TaskList+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D533ED521EA60AE200089DC9 /* TaskList+CoreDataProperties.m */; };
+		D54164741EA7009D009D35C8 /* NSManagedObject+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = D54164731EA7009D009D35C8 /* NSManagedObject+Category.m */; };
+		D541649A1EA75605009D35C8 /* DBWaiterInfo+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = D54164971EA75605009D35C8 /* DBWaiterInfo+CoreDataClass.m */; };
+		D541649B1EA75605009D35C8 /* DBWaiterInfo+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D54164991EA75605009D35C8 /* DBWaiterInfo+CoreDataProperties.m */; };
+		D54164AC1EA769A0009D35C8 /* TaskList+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = D54164A91EA769A0009D35C8 /* TaskList+CoreDataClass.m */; };
+		D54164AD1EA769A0009D35C8 /* TaskList+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D54164AB1EA769A0009D35C8 /* TaskList+CoreDataProperties.m */; };
 		D54D80F21EA4901900CC388A /* AlterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D54D80EB1EA4901900CC388A /* AlterViewController.m */; };
 		D54D80F31EA4901900CC388A /* AlterViewCustom.m in Sources */ = {isa = PBXBuildFile; fileRef = D54D80ED1EA4901900CC388A /* AlterViewCustom.m */; };
 		D54D80F41EA4901900CC388A /* AlterViewCustom.xib in Resources */ = {isa = PBXBuildFile; fileRef = D54D80EE1EA4901900CC388A /* AlterViewCustom.xib */; };
@@ -681,26 +676,16 @@
 		D51C8A181EA5D5C20047FE6C /* PDKeyChain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDKeyChain.m; sourceTree = "<group>"; };
 		D51C8A1A1EA5D5C70047FE6C /* waiter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = waiter.entitlements; sourceTree = "<group>"; };
 		D51C8A1B1EA5D60D0047FE6C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		D51C8A1D1EA5E2740047FE6C /* DBWaiterInfo+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DBWaiterInfo+CoreDataClass.h"; sourceTree = "<group>"; };
-		D51C8A1E1EA5E2740047FE6C /* DBWaiterInfo+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DBWaiterInfo+CoreDataClass.m"; sourceTree = "<group>"; };
-		D51C8A1F1EA5E2740047FE6C /* DBWaiterInfo+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DBWaiterInfo+CoreDataProperties.h"; sourceTree = "<group>"; };
-		D51C8A201EA5E2740047FE6C /* DBWaiterInfo+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DBWaiterInfo+CoreDataProperties.m"; sourceTree = "<group>"; };
-		D51C8A211EA5E2740047FE6C /* DBLogInInfo+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DBLogInInfo+CoreDataClass.h"; sourceTree = "<group>"; };
-		D51C8A221EA5E2740047FE6C /* DBLogInInfo+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DBLogInInfo+CoreDataClass.m"; sourceTree = "<group>"; };
-		D51C8A231EA5E2740047FE6C /* DBLogInInfo+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DBLogInInfo+CoreDataProperties.h"; sourceTree = "<group>"; };
-		D51C8A241EA5E2740047FE6C /* DBLogInInfo+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DBLogInInfo+CoreDataProperties.m"; sourceTree = "<group>"; };
-		D533ED471EA60AE200089DC9 /* TaskCancel+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TaskCancel+CoreDataClass.h"; sourceTree = "<group>"; };
-		D533ED481EA60AE200089DC9 /* TaskCancel+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TaskCancel+CoreDataClass.m"; sourceTree = "<group>"; };
-		D533ED491EA60AE200089DC9 /* TaskCancel+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TaskCancel+CoreDataProperties.h"; sourceTree = "<group>"; };
-		D533ED4A1EA60AE200089DC9 /* TaskCancel+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TaskCancel+CoreDataProperties.m"; sourceTree = "<group>"; };
-		D533ED4B1EA60AE200089DC9 /* TaskEvaluation+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TaskEvaluation+CoreDataClass.h"; sourceTree = "<group>"; };
-		D533ED4C1EA60AE200089DC9 /* TaskEvaluation+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TaskEvaluation+CoreDataClass.m"; sourceTree = "<group>"; };
-		D533ED4D1EA60AE200089DC9 /* TaskEvaluation+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TaskEvaluation+CoreDataProperties.h"; sourceTree = "<group>"; };
-		D533ED4E1EA60AE200089DC9 /* TaskEvaluation+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TaskEvaluation+CoreDataProperties.m"; sourceTree = "<group>"; };
-		D533ED4F1EA60AE200089DC9 /* TaskList+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TaskList+CoreDataClass.h"; sourceTree = "<group>"; };
-		D533ED501EA60AE200089DC9 /* TaskList+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TaskList+CoreDataClass.m"; sourceTree = "<group>"; };
-		D533ED511EA60AE200089DC9 /* TaskList+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TaskList+CoreDataProperties.h"; sourceTree = "<group>"; };
-		D533ED521EA60AE200089DC9 /* TaskList+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TaskList+CoreDataProperties.m"; sourceTree = "<group>"; };
+		D54164721EA7009D009D35C8 /* NSManagedObject+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObject+Category.h"; sourceTree = "<group>"; };
+		D54164731EA7009D009D35C8 /* NSManagedObject+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObject+Category.m"; sourceTree = "<group>"; };
+		D54164961EA75605009D35C8 /* DBWaiterInfo+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DBWaiterInfo+CoreDataClass.h"; sourceTree = "<group>"; };
+		D54164971EA75605009D35C8 /* DBWaiterInfo+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DBWaiterInfo+CoreDataClass.m"; sourceTree = "<group>"; };
+		D54164981EA75605009D35C8 /* DBWaiterInfo+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DBWaiterInfo+CoreDataProperties.h"; sourceTree = "<group>"; };
+		D54164991EA75605009D35C8 /* DBWaiterInfo+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DBWaiterInfo+CoreDataProperties.m"; sourceTree = "<group>"; };
+		D54164A81EA769A0009D35C8 /* TaskList+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TaskList+CoreDataClass.h"; sourceTree = "<group>"; };
+		D54164A91EA769A0009D35C8 /* TaskList+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TaskList+CoreDataClass.m"; sourceTree = "<group>"; };
+		D54164AA1EA769A0009D35C8 /* TaskList+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TaskList+CoreDataProperties.h"; sourceTree = "<group>"; };
+		D54164AB1EA769A0009D35C8 /* TaskList+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TaskList+CoreDataProperties.m"; sourceTree = "<group>"; };
 		D54D80EA1EA4901900CC388A /* AlterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlterViewController.h; sourceTree = "<group>"; };
 		D54D80EB1EA4901900CC388A /* AlterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlterViewController.m; sourceTree = "<group>"; };
 		D54D80EC1EA4901900CC388A /* AlterViewCustom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlterViewCustom.h; sourceTree = "<group>"; };
@@ -1305,18 +1290,10 @@
 		D533ED461EA60AC800089DC9 /* TaskListModels */ = {
 			isa = PBXGroup;
 			children = (
-				D533ED471EA60AE200089DC9 /* TaskCancel+CoreDataClass.h */,
-				D533ED481EA60AE200089DC9 /* TaskCancel+CoreDataClass.m */,
-				D533ED491EA60AE200089DC9 /* TaskCancel+CoreDataProperties.h */,
-				D533ED4A1EA60AE200089DC9 /* TaskCancel+CoreDataProperties.m */,
-				D533ED4B1EA60AE200089DC9 /* TaskEvaluation+CoreDataClass.h */,
-				D533ED4C1EA60AE200089DC9 /* TaskEvaluation+CoreDataClass.m */,
-				D533ED4D1EA60AE200089DC9 /* TaskEvaluation+CoreDataProperties.h */,
-				D533ED4E1EA60AE200089DC9 /* TaskEvaluation+CoreDataProperties.m */,
-				D533ED4F1EA60AE200089DC9 /* TaskList+CoreDataClass.h */,
-				D533ED501EA60AE200089DC9 /* TaskList+CoreDataClass.m */,
-				D533ED511EA60AE200089DC9 /* TaskList+CoreDataProperties.h */,
-				D533ED521EA60AE200089DC9 /* TaskList+CoreDataProperties.m */,
+				D54164A81EA769A0009D35C8 /* TaskList+CoreDataClass.h */,
+				D54164A91EA769A0009D35C8 /* TaskList+CoreDataClass.m */,
+				D54164AA1EA769A0009D35C8 /* TaskList+CoreDataProperties.h */,
+				D54164AB1EA769A0009D35C8 /* TaskList+CoreDataProperties.m */,
 			);
 			path = TaskListModels;
 			sourceTree = "<group>";
@@ -1547,16 +1524,12 @@
 		D5865EF11E9F552900E070D4 /* DataBase */ = {
 			isa = PBXGroup;
 			children = (
-				D533ED461EA60AC800089DC9 /* TaskListModels */,
 				D533ED451EA6012D00089DC9 /* otherModels */,
-				D51C8A1D1EA5E2740047FE6C /* DBWaiterInfo+CoreDataClass.h */,
-				D51C8A1E1EA5E2740047FE6C /* DBWaiterInfo+CoreDataClass.m */,
-				D51C8A1F1EA5E2740047FE6C /* DBWaiterInfo+CoreDataProperties.h */,
-				D51C8A201EA5E2740047FE6C /* DBWaiterInfo+CoreDataProperties.m */,
-				D51C8A211EA5E2740047FE6C /* DBLogInInfo+CoreDataClass.h */,
-				D51C8A221EA5E2740047FE6C /* DBLogInInfo+CoreDataClass.m */,
-				D51C8A231EA5E2740047FE6C /* DBLogInInfo+CoreDataProperties.h */,
-				D51C8A241EA5E2740047FE6C /* DBLogInInfo+CoreDataProperties.m */,
+				D533ED461EA60AC800089DC9 /* TaskListModels */,
+				D54164961EA75605009D35C8 /* DBWaiterInfo+CoreDataClass.h */,
+				D54164971EA75605009D35C8 /* DBWaiterInfo+CoreDataClass.m */,
+				D54164981EA75605009D35C8 /* DBWaiterInfo+CoreDataProperties.h */,
+				D54164991EA75605009D35C8 /* DBWaiterInfo+CoreDataProperties.m */,
 				D51C8A091EA5C47C0047FE6C /* DBDeviceInfo+CoreDataClass.h */,
 				D51C8A0A1EA5C47C0047FE6C /* DBDeviceInfo+CoreDataClass.m */,
 				D51C8A0B1EA5C47C0047FE6C /* DBDeviceInfo+CoreDataProperties.h */,
@@ -1566,6 +1539,8 @@
 				D5865F021E9F579B00E070D4 /* DataBaseManager.m */,
 				D51C8A021EA5C3900047FE6C /* DataBaseManager+Category.h */,
 				D51C8A031EA5C3900047FE6C /* DataBaseManager+Category.m */,
+				D54164721EA7009D009D35C8 /* NSManagedObject+Category.h */,
+				D54164731EA7009D009D35C8 /* NSManagedObject+Category.m */,
 			);
 			path = DataBase;
 			sourceTree = "<group>";
@@ -1926,6 +1901,9 @@
 				D54D887A1EA49F3200CC388A /* MJRefreshNormalHeader.m in Sources */,
 				D59E622E1EA0584B00DFDE85 /* StatisticalListCell.m in Sources */,
 				D5865EE31E9F520C00E070D4 /* NetWorkingMain.m in Sources */,
+				D541649A1EA75605009D35C8 /* DBWaiterInfo+CoreDataClass.m in Sources */,
+				D54164741EA7009D009D35C8 /* NSManagedObject+Category.m in Sources */,
+				D541649B1EA75605009D35C8 /* DBWaiterInfo+CoreDataProperties.m in Sources */,
 				D54D88761EA49F3200CC388A /* MJRefreshBackGifFooter.m in Sources */,
 				A8E132931EA461D400644161 /* FMIndoorMapVC.m in Sources */,
 				A8E132911EA461D400644161 /* MapViewController.m in Sources */,
@@ -1941,7 +1919,6 @@
 				D59E62331EA05E3100DFDE85 /* CustomScoreView.m in Sources */,
 				9C1995341E9F1AB000AC34DB /* StatisticalViewController.m in Sources */,
 				D54D88711EA49F3200CC388A /* MJRefreshFooter.m in Sources */,
-				D533ED571EA60AE200089DC9 /* TaskList+CoreDataClass.m in Sources */,
 				D59E62471EA0984400DFDE85 /* CalendarReusableViewCell.m in Sources */,
 				D54D88911EA4A67E00CC388A /* JDMBProressHUD.m in Sources */,
 				9C1995271E9F149C00AC34DB /* LoginViewController.m in Sources */,
@@ -1953,8 +1930,8 @@
 				D5865EE41E9F520C00E070D4 /* NetworkRequestManager.m in Sources */,
 				D54D887F1EA49F3200CC388A /* UIScrollView+MJExtension.m in Sources */,
 				D54D886F1EA49F3200CC388A /* MJRefreshBackFooter.m in Sources */,
+				D54164AC1EA769A0009D35C8 /* TaskList+CoreDataClass.m in Sources */,
 				D54D88811EA49F3200CC388A /* UIView+MJExtension.m in Sources */,
-				D533ED541EA60AE200089DC9 /* TaskCancel+CoreDataProperties.m in Sources */,
 				D59E62441EA07F7100DFDE85 /* CalendarCollectionCell.m in Sources */,
 				D54D886E1EA49F3200CC388A /* MJRefreshAutoFooter.m in Sources */,
 				D54D88781EA49F3200CC388A /* MJRefreshBackStateFooter.m in Sources */,
@@ -1965,34 +1942,27 @@
 				9C19952D1E9F177F00AC34DB /* FirstLoginViewController.m in Sources */,
 				D54D88701EA49F3200CC388A /* MJRefreshComponent.m in Sources */,
 				9C1995231E9F0F5400AC34DB /* MainViewController.m in Sources */,
-				D51C8A261EA5E2740047FE6C /* DBWaiterInfo+CoreDataProperties.m in Sources */,
 				D54D80F31EA4901900CC388A /* AlterViewCustom.m in Sources */,
-				D533ED581EA60AE200089DC9 /* TaskList+CoreDataProperties.m in Sources */,
 				D54D88731EA49F3200CC388A /* MJRefreshAutoGifFooter.m in Sources */,
+				D54164AD1EA769A0009D35C8 /* TaskList+CoreDataProperties.m in Sources */,
 				D59E623B1EA0742800DFDE85 /* CalendarDataUtil.m in Sources */,
 				A861B3181E9DD3FB002D61F0 /* main.m in Sources */,
 				D5865ED61E9F51F700E070D4 /* AFSecurityPolicy.m in Sources */,
 				D51C89FB1EA5C2260047FE6C /* waiter.xcdatamodeld in Sources */,
 				D54D88791EA49F3200CC388A /* MJRefreshGifHeader.m in Sources */,
 				D5865ED71E9F51F700E070D4 /* AFURLRequestSerialization.m in Sources */,
-				D51C8A281EA5E2740047FE6C /* DBLogInInfo+CoreDataProperties.m in Sources */,
 				D59E62411EA0768C00DFDE85 /* CalendarDataModel.m in Sources */,
 				D5865EED1E9F523100E070D4 /* MySingleton.m in Sources */,
-				D51C8A271EA5E2740047FE6C /* DBLogInInfo+CoreDataClass.m in Sources */,
 				D5865F0B1E9F81DB00E070D4 /* Defaut_Enu.m in Sources */,
 				D5865ED81E9F51F700E070D4 /* AFURLResponseSerialization.m in Sources */,
 				D54D88751EA49F3200CC388A /* MJRefreshAutoStateFooter.m in Sources */,
 				D5865EE21E9F520C00E070D4 /* DataParser.m in Sources */,
-				D533ED561EA60AE200089DC9 /* TaskEvaluation+CoreDataProperties.m in Sources */,
 				D51C8A191EA5D5C20047FE6C /* PDKeyChain.m in Sources */,
 				D54D88801EA49F3200CC388A /* UIScrollView+MJRefresh.m in Sources */,
 				D5865ED41E9F51F700E070D4 /* AFHTTPSessionManager.m in Sources */,
 				D59E62371EA0730500DFDE85 /* CalendarViewController.m in Sources */,
 				D5865F061E9F818C00E070D4 /* NSString+Addtions.m in Sources */,
-				D533ED531EA60AE200089DC9 /* TaskCancel+CoreDataClass.m in Sources */,
-				D533ED551EA60AE200089DC9 /* TaskEvaluation+CoreDataClass.m in Sources */,
 				D51C8A131EA5C47C0047FE6C /* DBDeviceInfo+CoreDataClass.m in Sources */,
-				D51C8A251EA5E2740047FE6C /* DBWaiterInfo+CoreDataClass.m in Sources */,
 				D51C8A041EA5C3900047FE6C /* DataBaseManager+Category.m in Sources */,
 				D51C8A141EA5C47C0047FE6C /* DBDeviceInfo+CoreDataProperties.m in Sources */,
 			);

@@ -33,32 +33,43 @@
     return deviceInfo;
     
 }
-/**
- * @abstract 获取登录者的参数表
- */
-- (DBLogInInfo *)getLogInInfo;{
-    
-    DBLogInInfo * logInfo = nil;
-    NSArray *result = [self arrayFromCoreData:@"DBLogInInfo" predicate:nil limit:NSIntegerMax offset:0 orderBy:nil];
+
+//  获取Waiter参数表
+- (DBWaiterInfo *)getWaiterInfo:(NSString *)waiterId{
+
+    DBWaiterInfo * waiterInfo = nil;
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"waiterId = %@", waiterId];
+    NSArray *result = [self arrayFromCoreData:@"DBWaiterInfo" predicate:predicate limit:NSIntegerMax offset:0 orderBy:nil];
     if (result.count<= 0 || result == nil)
     {
-        logInfo = (DBLogInInfo *)[self insertIntoCoreData:@"DBLogInInfo"];
-        logInfo.waiterInfo = (DBWaiterInfo *)[self insertIntoCoreData:@"DBWaiterInfo"];
+        waiterInfo = (DBWaiterInfo *)[self insertIntoCoreData:@"DBWaiterInfo"];
+        waiterInfo.taskList = [[NSOrderedSet alloc]init];
+        
     }
     else
-        logInfo = result.firstObject;
-    return logInfo;
-    
+        waiterInfo = result.firstObject;
+    return waiterInfo;
+
 }
 /**
- * @abstract 获取Waiter参数表
+ 获取任务参数表
+ @param waiterId waiterId
+ @param taskCode 任务编号
  */
-- (DBWaiterInfo *)getWaiterInfo{
-
-    DBLogInInfo * logInfo = [self getLogInInfo];
+- (TaskList *)getTaskInfoWaiterId:(NSString *)waiterId TaskCode:(NSString *)taskCode{
+    DBWaiterInfo * waiterInfo = [self getWaiterInfo:waiterId];
     
-    return logInfo.waiterInfo;
-
+    NSArray * taskListArray = [waiterInfo.taskList array];
+    TaskList * taskList = nil;
+    for (TaskList * taskListModel in taskListArray) {
+        if ([taskListModel.taskCode isEqualToString:taskCode]) {
+            taskList = taskListModel;
+            break;
+        }
+    }
+    
+    return taskList;
+    
 }
 
 @end

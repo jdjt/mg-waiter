@@ -37,12 +37,26 @@
 //	服务员“开始接单”后获取进行中任务列表
 #define URI_WAITER_TaskAfterAccept            @"/hotelcallservice/waiter/getTaskInfoAfterAccept.json"
 
+//	服务员上传位置信息
+#define URI_WAITER_UpdateMapInfo            @"/hotelcallservice/waiter/updateMapInfo.json"
 
+//	服务员“抢单”
+#define URI_WAITER_AcceptTask            @"/hotelcallservice/waiter/acceptTask.json"
 
+//	服务员“确认”完成呼叫任务
+#define URI_WAITER_ConfirmTask            @"/hotelcallservice/waiter/confirmTask.json"
 
+//	服务员获取任务信息
+#define URI_WAITER_GetTaskInfo            @"/hotelcalllservice/waiter/getTaskInfo.json"
 
+//	服务员根据任务号获取任务信息
+#define URI_WAITER_GetTaskInfoByTaskCode            @"/hotelcallservice/waiter/getTaskInfoByTaskCode.json"
 
+//	服务员查询"历史任务统计"
+#define URI_WAITER_GetTaskInfoStatic            @"/hotelcallservice/waiter/getTaskInfoStatic.json"
 
+//  服务员根据任务号获取聊天信息
+#define URI_WAITER_GetMessageByTaskCode            @"/hotelcallservice/waiter/getMessageByTaskCode.json"
 
 
 

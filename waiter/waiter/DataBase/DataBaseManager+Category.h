@@ -8,19 +8,29 @@
 
 #import "DataBaseManager.h"
 #import "DBDeviceInfo+CoreDataClass.h"
-#import "DBLogInInfo+CoreDataClass.h"
 #import "DBWaiterInfo+CoreDataClass.h"
+#import "TaskList+CoreDataClass.h"
 @interface DataBaseManager (Category)
+
+
 /**
  * @abstract 获取设备参数表
  */
 - (DBDeviceInfo *)getDeviceInfo;
+
+
 /**
- * @abstract 获取登录参数表
+ 获取Waiter参数表
+ 
+ @param waiterId waiterId
  */
-- (DBLogInInfo *)getLogInInfo;
+- (DBWaiterInfo *)getWaiterInfo:(NSString *)waiterId;
+
 /**
- * @abstract 获取Waiter参数表
+ 获取任务参数表
+ @param waiterId waiterId
+ @param taskCode 任务编号
  */
-- (DBWaiterInfo *)getWaiterInfo;
+- (TaskList *)getTaskInfoWaiterId:(NSString *)waiterId TaskCode:(NSString *)taskCode;
+
 @end

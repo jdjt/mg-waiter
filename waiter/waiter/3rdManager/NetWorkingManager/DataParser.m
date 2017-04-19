@@ -8,6 +8,8 @@
 
 #import "DataParser.h"
 #import "DataBaseManager+Category.h"
+#import "TaskList+CoreDataProperties.h"
+#import "DBWaiterInfo+CoreDataClass.h"
 @implementation DataParser
 +(id)parserUrl:(NSString*)ident fromData:(id)dict{
 
@@ -40,6 +42,34 @@
     }
     
     
+    if ([ident isEqualToString:URI_WAITER_UpdateMapInfo]) {
+        dataSource =  [DataParser parsingWaiterUpdateMapInfo:dict];/* 服务员上传位置信息 */
+    }
+    
+    if ([ident isEqualToString:URI_WAITER_AcceptTask]) {
+        dataSource =  [DataParser parsingWaiterAcceptTask:dict];/* 服务员“抢单” */
+    }
+    
+    if ([ident isEqualToString:URI_WAITER_ConfirmTask]) {
+        dataSource =  [DataParser parsingWaiterConfirmTask:dict];/* 服务员“确认”完成呼叫任务 */
+    }
+    
+    if ([ident isEqualToString:URI_WAITER_GetTaskInfo]) {
+        dataSource =  [DataParser parsingWaiterGetTaskInfo:dict];/* 服务员获取任务信息 */
+    }
+    
+    if ([ident isEqualToString:URI_WAITER_GetTaskInfoByTaskCode]) {
+        dataSource =  [DataParser parsingWaiterGetTaskInfoByTaskCode:dict];/* 服务员根据任务号获取任务信息 */
+    }
+    
+    if ([ident isEqualToString:URI_WAITER_GetTaskInfoStatic]) {
+        dataSource =  [DataParser parsingWaiterGetTaskInfoStatic:dict];/* 服务员查询"历史任务统计" */
+    }
+    
+    if ([ident isEqualToString:URI_WAITER_GetMessageByTaskCode]) {
+        dataSource =  [DataParser parsingWaiterGetMessageByTaskCode:dict];/* 服务员根据任务号获取聊天信息 */
+    }
+    
     if ([dataSource isKindOfClass:[NSManagedObject class]]) {
         [[DataBaseManager defaultInstance] saveContext];
     }
@@ -47,20 +77,38 @@
     return dataSource;
 
 }
+//解析RetOk
++(BOOL)parsingRetOk:(id)dict{
+    NSDictionary * responseObject = dict;
+    if ([responseObject[@"retOk"] isEqualToString:@"0"]) {
+        return YES;
+    }
+    return NO;
+
+}
+
 //服务员登录
-+(DBLogInInfo *)parsingWaiterLogIn:(id)dict{
++(id)parsingWaiterLogIn:(id)dict{
+    
+    
+    if (![self parsingRetOk:dict]) {
+         return [NSNumber numberWithBool:NO];
+    }
     
     NSDictionary * responseObject = dict;
     
-    DBLogInInfo * logindb = [[DataBaseManager defaultInstance] getLogInInfo];
+    NSString * waterId = responseObject[@"waiterId"];
     
-    [logindb setValuesForKeysWithDictionary:responseObject];
+    [MySingleton sharedSingleton].waiterId = waterId;
+    DBWaiterInfo * waiterInfo = [[DataBaseManager defaultInstance] getWaiterInfo:waterId];
     
+    waiterInfo.waiterId = waterId;
+    [waiterInfo setValuesForKeysWithDictionary:responseObject];
     NSDictionary * waiterInfoDic = responseObject[@"waiterInfo"];
+    [waiterInfo setValuesForKeysWithDictionary:waiterInfoDic];
     
-    [logindb.waiterInfo setValuesForKeysWithDictionary:waiterInfoDic];
-        
-    return logindb;
+    
+    return waiterInfo;
 
 }
 //服务员状态
@@ -68,39 +116,88 @@
 
     NSDictionary * responseObject = dict;
     
-    DBLogInInfo * logindb = [[DataBaseManager defaultInstance] getLogInInfo];
-    logindb.waiterInfo.workStatus = responseObject[@"workStatus"];
-    logindb.waiterInfo.attendStatus = responseObject[@"attendStatus"];
-    return logindb.waiterInfo;
+    DBWaiterInfo * waiterInfo = [[DataBaseManager defaultInstance] getWaiterInfo:[MySingleton sharedSingleton].waiterId];
+    waiterInfo.workStatus = responseObject[@"workStatus"];
+    waiterInfo.attendStatus = responseObject[@"attendStatus"];
+    return waiterInfo;
 
 }
 
 //服务员修改密码
-+(id)parsingWaiterUpdatePass:(id)dict{
-    return nil;
++(NSNumber *)parsingWaiterUpdatePass:(id)dict{
+    NSNumber * value = [NSNumber numberWithBool:[DataParser parsingRetOk:dict]];
+    return value;
 }
 
 //服务员登出
-+(id)parsingWaiterLogout:(id)dict{
-    return nil;
++(NSNumber *)parsingWaiterLogout:(id)dict{
+   NSNumber * value = [NSNumber numberWithBool:[DataParser parsingRetOk:dict]];
+    return value;
 }
 //获取服务员信息
 +(DBWaiterInfo *)parsingWaiterInfoByWaiterId:(id)dict{
     NSDictionary * responseObject = dict;
     
-    DBLogInInfo * logindb = [[DataBaseManager defaultInstance] getLogInInfo];
-    [logindb.waiterInfo setValuesForKeysWithDictionary:responseObject];
-    return logindb.waiterInfo;
+   DBWaiterInfo * waiterInfo = [[DataBaseManager defaultInstance] getWaiterInfo:[MySingleton sharedSingleton].waiterId];
+    
+    [waiterInfo setValuesForKeysWithDictionary:responseObject];
+    return waiterInfo;
 }
 //服务员工作状态设置“开始接单”、“停止接单”
-+(id)parsingWaiterSetWorkStatus:(id)dict{
-    return nil;
++(NSNumber *)parsingWaiterSetWorkStatus:(id)dict{
+    NSNumber * value = [NSNumber numberWithBool:[DataParser parsingRetOk:dict]];
+    return value;
 }
 //服务员“开始接单”后获取进行中任务列表
 +(NSMutableArray *)parsingWaiterTaskAfterAccept:(id)dict{
     NSMutableArray * dataArray = [[NSMutableArray alloc]init];
     
+#warning 服务员“开始接单”后获取进行中任务列表
     
+    return dataArray;
+}
+
+//服务员上传位置信息
++(NSNumber *)parsingWaiterUpdateMapInfo:(id)dict{
+    NSNumber * value = [NSNumber numberWithBool:[DataParser parsingRetOk:dict]];
+    return value;
+}
+//服务员“抢单”
++(NSNumber *)parsingWaiterAcceptTask:(id)dict{
+    NSNumber * value = [NSNumber numberWithBool:[DataParser parsingRetOk:dict]];
+    return value;
+}
+//服务员“确认”完成呼叫任务
++(NSNumber *)parsingWaiterConfirmTask:(id)dict{
+    NSNumber * value = [NSNumber numberWithBool:[DataParser parsingRetOk:dict]];
+    return value;
+}
+//服务员获取任务信息
++(NSMutableArray *)parsingWaiterGetTaskInfo:(id)dict{
+    NSMutableArray * dataArray = [[NSMutableArray alloc]init];
+    
+#warning 服务员获取任务信息
+    
+    return dataArray;
+}
+//服务员根据任务号获取任务信息
++(TaskList *)parsingWaiterGetTaskInfoByTaskCode:(id)dict{
+    TaskList * taskListModel = [[TaskList alloc]init];
+ #warning TaskList
+    return taskListModel;
+}
+//服务员查询"历史任务统计"
++(NSMutableArray *)parsingWaiterGetTaskInfoStatic:(id)dict{
+    NSMutableArray * dataArray = [[NSMutableArray alloc]init];
+
+#warning TaskList
+    return dataArray;
+}
+//服务员根据任务号获取聊天信息
++(NSMutableArray *)parsingWaiterGetMessageByTaskCode:(id)dict{
+    NSMutableArray * dataArray = [[NSMutableArray alloc]init];
+    
+#warning 服务员根据任务号获取聊天信息
     
     return dataArray;
 }

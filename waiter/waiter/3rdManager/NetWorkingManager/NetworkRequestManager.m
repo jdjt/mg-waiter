@@ -139,7 +139,7 @@
             
             id dataSource = [DataParser parserUrl:url fromData:responseObj];
             // 不需要返回数据的请求
-            if (dataSource == nil){
+            if ([dataSource isKindOfClass:[NSNumber class]]){
                
                 self.failure(task, @"", status, url);
                 return;
