@@ -451,4 +451,15 @@ static NSString* macadd;
     return netWorkStatus;
 }
 */
+
++(NSMutableAttributedString *)aVarietyOfColorFonts:(NSString *)text WithComPer:(NSString *)comStr WithColor:(UIColor *)color{
+    
+    NSRange  jackRange;
+    jackRange = [text rangeOfString: comStr];
+    NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:text];
+    if (jackRange.length != 0 && jackRange.location > 0) {
+        [str addAttribute:NSForegroundColorAttributeName value:color range:NSMakeRange(jackRange.location,comStr.length)];
+    }
+    return str;
+}
 @end

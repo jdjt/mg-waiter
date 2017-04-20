@@ -97,6 +97,8 @@
  * @abstract 获取当前时间
  */
 +(NSString *)getTimeNow;
-
-
+/**
+ * @abstract 获取属性字符串
+ */
++(NSMutableAttributedString *)aVarietyOfColorFonts:(NSString *)text WithComPer:(NSString *)comStr WithColor:(UIColor *)color;
 @end

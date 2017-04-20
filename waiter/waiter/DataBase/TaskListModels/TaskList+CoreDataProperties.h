@@ -45,7 +45,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, copy) NSString *taskTypeCustom;
 @property (nullable, nonatomic, copy) NSString *taskCode;
 @property (nonatomic) BOOL isAnOpen;
-
+@property (nonatomic) float callContentHeight;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -32,6 +32,7 @@
         <attribute name="acceptTime" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="areaCode" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="areaName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="callContentHeight" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="causeCode" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="causeDesc" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="cImAccount" optional="YES" attributeType="String" syncable="YES"/>
@@ -63,6 +64,6 @@
     <elements>
         <element name="DBDeviceInfo" positionX="180" positionY="-162" width="128" height="75"/>
         <element name="DBWaiterInfo" positionX="-560" positionY="-189" width="128" height="373"/>
-        <element name="TaskList" positionX="-263" positionY="-154" width="128" height="493"/>
+        <element name="TaskList" positionX="-263" positionY="-154" width="128" height="508"/>
     </elements>
 </model>

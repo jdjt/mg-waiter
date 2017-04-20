@@ -44,5 +44,5 @@
 @dynamic taskTypeCustom;
 @dynamic taskCode;
 @dynamic isAnOpen;
-
+@dynamic callContentHeight;
 @end
