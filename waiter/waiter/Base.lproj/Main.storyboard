@@ -153,14 +153,14 @@
                                         <color key="textColor" red="0.16078431372549018" green="0.51764705882352935" blue="0.74117647058823533" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="3-01抢单成功_640-720-750聊天" translatesAutoresizingMaskIntoConstraints="NO" id="Z6v-9w-uJL">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chaticon" translatesAutoresizingMaskIntoConstraints="NO" id="Z6v-9w-uJL">
                                         <rect key="frame" x="326.5" y="9.5" width="31" height="31"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="31" id="dKc-sd-s0I"/>
                                             <constraint firstAttribute="width" constant="31" id="kda-y9-CDq"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="3-01抢单成功_640-720-750地图" translatesAutoresizingMaskIntoConstraints="NO" id="f9W-Kk-kKV">
+                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mapicon" translatesAutoresizingMaskIntoConstraints="NO" id="f9W-Kk-kKV">
                                         <rect key="frame" x="276.5" y="9.5" width="31" height="31"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="31" id="VUC-JE-rdX"/>
@@ -275,7 +275,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wkZ-pX-ySb">
-                                                    <rect key="frame" x="230" y="112" width="70" height="40"/>
+                                                    <rect key="frame" x="285" y="22" width="70" height="40"/>
                                                     <color key="backgroundColor" red="0.18415046202036756" green="0.67171890360449771" blue="0.18728463940212384" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="BId-Sn-aKQ"/>
@@ -340,10 +340,10 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tyA-w5-bXc" userLabel="footView">
-                                                    <rect key="frame" x="0.0" y="-0.5" width="320" height="44.5"/>
+                                                    <rect key="frame" x="0.0" y="-4" width="375" height="51.5"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VG5-rM-NH3">
-                                                            <rect key="frame" x="17.5" y="0.0" width="340" height="51"/>
+                                                            <rect key="frame" x="17.5" y="0.0" width="340" height="51.5"/>
                                                             <color key="backgroundColor" red="0.16470588235294117" green="0.62745098039215685" blue="0.92156862745098034" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="51" id="8ca-Wj-SwG"/>
@@ -1088,7 +1088,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="3-01抢单成功_640-720-750地图" width="62" height="62"/>
-        <image name="3-01抢单成功_640-720-750聊天" width="62" height="62"/>
+        <image name="chaticon" width="31" height="31"/>
+        <image name="mapicon" width="31" height="31"/>
     </resources>
 </document>
