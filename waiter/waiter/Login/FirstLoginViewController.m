@@ -9,6 +9,7 @@
 #import "FirstLoginViewController.h"
 
 @interface FirstLoginViewController ()
+@property (weak, nonatomic) IBOutlet UIButton *returnButton;
 
 @end
 
@@ -16,7 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.returnButton.layer.cornerRadius = 5.0f;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -42,6 +43,17 @@
         return 1;
     }
 }
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 0.01f;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 56;
+}
+
 - (IBAction)firstLoginButtonAction:(id)sender
 {
     [self dismissViewControllerAnimated:YES completion:nil];

@@ -10,7 +10,7 @@
 #import "TaskListCell.h"
 #import "FootCell.h"
 #import "MapViewController.h"
-
+#import "AlterViewController.h"
 @interface MainViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (strong, nonatomic) TaskListCell * taskListCell;
 @property (strong, nonatomic) FootCell * footcCell;
@@ -31,14 +31,23 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.ishiddenFoot = NO;
+    
     self.serviceTimeView.hidden = YES;
     self.tableTop.constant = 0.0f;
 
     self.stateButton.layer.cornerRadius = 5;
-    self.stateView.layer.cornerRadius = 3;
+    
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     
     UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(goMapImageAction:)];
     [self.goMapImage addGestureRecognizer:tap];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
 }
 
 #pragma mark - tableview代理
@@ -103,50 +112,62 @@
 {
     if (self.isWorkingState == NO)
     {
-        self.stateButton.backgroundColor = [UIColor redColor];
+        self.stateButton.backgroundColor = [UIColor colorWithRed:242/255.0f green:69/255.0f blue:41/255.0f alpha:1];
         [self.stateButton setTitle:@"停止接单" forState:UIControlStateNormal];
         self.isWorkingState = YES;
     }
     else
     {
-        self.stateButton.backgroundColor = [UIColor colorWithRed:43/255.0f green:170/255.0f blue:59/255.0f alpha:1];
+        self.stateButton.backgroundColor = [UIColor colorWithRed:42/255.0f green:160/255.0f blue:235/255.0f alpha:1];
         [self.stateButton setTitle:@"开始接单" forState:UIControlStateNormal];
         self.isWorkingState = NO;
     }
-     
-    
 }
 
 //抢单按钮
 - (IBAction)pickSingleButtonAction:(id)sender
 {
-    self.serviceTimeView.hidden = NO;
-    self.tableTop.constant = 50.0f;
-    self.ishiddenFoot = YES;
-    _taskListCell.pickSingleButton.hidden = YES;
-//    self.stateView.backgroundColor = [UIColor colorWithRed:16/255.0f green:158/255.0f blue:252/255.0f alpha:1];
-    self.stateView.backgroundColor = [UIColor grayColor];
-    self.taskingLabel.text = @"进行中任务（1）";
-    self.stateButton.backgroundColor = [UIColor grayColor];
-    self.stateButton.enabled = NO;
-    [self.taskTableView reloadData];
+    AlterViewController * alter = [AlterViewController alterViewOwner:self WithAlterViewStype:AlterViewGrabSingle WithMessageCount:nil WithAlterViewBlock:^(UIButton *button, NSInteger buttonIndex) {
+        if (buttonIndex == 1)
+        {
+            self.serviceTimeView.hidden = NO;
+            self.tableTop.constant = 59.0f;
+            self.ishiddenFoot = YES;
+            _taskListCell.pickSingleButton.hidden = YES;
+            _taskListCell.separatedView.hidden = YES;
+            self.stateView.backgroundColor = [UIColor colorWithRed:137/255.0f green:137/255.0f blue:137/255.0f alpha:1];
+            self.taskingLabel.text = @"进行中任务（1）";
+            self.stateButton.backgroundColor = [UIColor colorWithRed:137/255.0f green:137/255.0f blue:137/255.0f alpha:1];
+            self.stateButton.enabled = NO;
+            [self.taskTableView reloadData];
+        }
+        
+    }];
+    
+    [self presentViewController:alter animated:NO completion:nil];
 }
 
 //完成按钮
 - (IBAction)completeTaskButton:(id)sender
 {
-//    _footcCell.completeButton.backgroundColor = [UIColor grayColor];
-    _footcCell.hidden = YES;
-    _taskListCell.pickSingleButton.hidden = NO;
-    self.serviceTimeView.hidden = YES;
-    self.tableTop.constant = 0.0f;
-    self.stateButton.enabled = YES;
-    [self.stateButton setTitle:@"停止接单" forState:UIControlStateNormal];
-    self.stateButton.backgroundColor = [UIColor redColor];
-    
-//    self.stateView.backgroundColor = [UIColor colorWithRed:184/255.0f green:184/255.0f blue:184/255.0f alpha:1];
-    self.stateView.backgroundColor = [UIColor grayColor];
-    self.taskingLabel.text = @"进行中任务（0）";
+    AlterViewController * alter = [AlterViewController alterViewOwner:self WithAlterViewStype:AlterViewServiceComplete WithMessageCount:nil WithAlterViewBlock:^(UIButton *button, NSInteger buttonIndex) {
+        if (buttonIndex == 1)
+        {
+            self.ishiddenFoot = NO;
+            _taskListCell.pickSingleButton.hidden = NO;//显示抢单按钮
+            _taskListCell.separatedView.hidden = NO;
+            self.serviceTimeView.hidden = YES;//隐藏服务时间View
+            self.tableTop.constant = 0.0f;
+            self.stateButton.enabled = YES;
+            [self.stateButton setTitle:@"停止接单" forState:UIControlStateNormal];
+            self.stateButton.backgroundColor = [UIColor redColor];
+            
+            self.stateView.backgroundColor = [UIColor colorWithRed:210/255.0f green:210/255.0f blue:210/255.0f alpha:1];
+            self.taskingLabel.text = @"进行中任务（0）";
+            [self.taskTableView reloadData];
+        }
+    }];
+    [self presentViewController:alter animated:NO completion:nil];
 }
 
 

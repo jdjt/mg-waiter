@@ -9,6 +9,7 @@
 #import "LoginViewController.h"
 
 @interface LoginViewController ()
+@property (weak, nonatomic) IBOutlet UIButton *loginButton;
 
 @end
 
@@ -16,7 +17,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    self.loginButton.layer.cornerRadius = 5.0f;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -42,6 +45,17 @@
         return 1;
     }
 }
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 0.01f;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 56;
+}
+
 - (IBAction)loginPressed:(id)sender
 {
     NSLog(@"进入第一次设置密码页面");

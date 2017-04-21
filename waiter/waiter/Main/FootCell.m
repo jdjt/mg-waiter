@@ -15,7 +15,7 @@
     // Initialization code
     self.completeButton.layer.borderWidth = 0.3f;
     self.completeButton.layer.borderColor = [UIColor grayColor].CGColor;
-    self.completeButton.layer.cornerRadius = 10.0f;
+    self.completeButton.layer.cornerRadius = 8.0f;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

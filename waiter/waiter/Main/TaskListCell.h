@@ -17,5 +17,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *callContent;
 @property (weak, nonatomic) IBOutlet UILabel *orderTime;
 @property (weak, nonatomic) IBOutlet UIButton *pickSingleButton;
+@property (weak, nonatomic) IBOutlet UIView *separatedView;
 
 @end
