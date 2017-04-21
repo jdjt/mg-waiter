@@ -26,7 +26,7 @@
 {
     NSString *device = [[[[deviceToken description] stringByReplacingOccurrencesOfString: @"<" withString: @""] stringByReplacingOccurrencesOfString: @">" withString: @""] stringByReplacingOccurrencesOfString: @" " withString: @""];
     
-//    // 保存参数到本地
+    // 保存参数到本地
     DBDeviceInfo * deviceInfo = [[DataBaseManager defaultInstance] getDeviceInfo];
     deviceInfo.deviceToken = device;
     [[DataBaseManager defaultInstance] saveContext];
