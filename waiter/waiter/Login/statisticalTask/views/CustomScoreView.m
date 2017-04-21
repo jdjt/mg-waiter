@@ -48,7 +48,7 @@
         if (i > scoreValue-1) {
             return;
         }
-        imageView.image = [UIImage imageNamed:@"timg.jpg"];
+        imageView.image = [UIImage imageNamed:@"orangeStars"];
     }
 
 

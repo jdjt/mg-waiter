@@ -230,19 +230,23 @@
     if (cell == nil) {
         cell = [[NSBundle mainBundle]loadNibNamed:@"StatisticalListCell" owner:self options:nil].lastObject;
         [cell.chatRecordButton addTarget:self action:@selector(cellChatRecordButton:) forControlEvents:UIControlEventTouchUpInside];
+        [cell.topButton addTarget:self action:@selector(topButtonAnClick:) forControlEvents:UIControlEventTouchUpInside];
         
     }
+    
+    cell.topButton.tag = indexPath.section;
     cell.chatRecordButton.tag = indexPath.section;
-    [cell setData:nil isSelectComplete:self.isSelectComplete];
+     TaskList * listModel = self.dataArray[indexPath.section];
+    [cell setData:listModel isSelectComplete:self.isSelectComplete];
     return cell;
 }
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    TaskList * listModel = self.dataArray[indexPath.section];
+-(void)topButtonAnClick:(UIButton *)button{
+    TaskList * listModel = self.dataArray[button.tag];
     listModel.isAnOpen = !listModel.isAnOpen;
-    NSIndexSet *indexSet=[[NSIndexSet alloc]initWithIndex:indexPath.section];
-    [tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
-}
+    NSIndexSet *indexSet=[[NSIndexSet alloc]initWithIndex:button.tag];
+    [self.tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
 
+}
 -(void)cellChatRecordButton:(UIButton *)button{
     NSLog(@"%ld",(long)button.tag);
     AlterViewController * alterVc = [AlterViewController alterViewOwner:self WithAlterViewStype:AlterViewGuestGiveUp WithMessageCount:nil WithAlterViewBlock:^(UIButton *button, NSInteger buttonIndex) {

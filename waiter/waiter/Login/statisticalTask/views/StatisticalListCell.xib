@@ -15,16 +15,16 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="297"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="296.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="297"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="te6-AD-3BQ" userLabel="展开三角">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="te6-AD-3BQ" userLabel="展开三角">
                         <rect key="frame" x="17" y="12" width="12" height="12"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="12" id="Fqo-JX-jMu"/>
                             <constraint firstAttribute="width" constant="12" id="Y32-9S-c0M"/>
                         </constraints>
-                        <state key="normal" title="Button"/>
+                        <state key="normal" title="Button" image="toTriangle"/>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="S12345678912345612345" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yi7-ZB-DFb" userLabel="编号">
                         <rect key="frame" x="35" y="12" width="233" height="14"/>
@@ -213,6 +213,12 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mn8-Ss-1c8">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="65" id="udp-KV-VmW"/>
+                        </constraints>
+                    </button>
                 </subviews>
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 <constraints>
@@ -258,10 +264,12 @@
                     <constraint firstItem="uUy-Jz-6i6" firstAttribute="leading" secondItem="OG0-cx-YjK" secondAttribute="trailing" constant="10" id="YhT-ZD-lGj"/>
                     <constraint firstItem="gqh-lX-crb" firstAttribute="height" secondItem="GLm-3d-fZd" secondAttribute="height" id="ZFN-DK-IAn"/>
                     <constraint firstItem="3OY-do-M9x" firstAttribute="top" secondItem="Yi7-ZB-DFb" secondAttribute="bottom" constant="41" id="Zin-FJ-tat"/>
+                    <constraint firstItem="mn8-Ss-1c8" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="ZmZ-C4-ftd"/>
                     <constraint firstItem="b2P-G5-XgG" firstAttribute="top" secondItem="FYH-8a-Ib0" secondAttribute="bottom" constant="12" id="aQ7-hg-oQY"/>
                     <constraint firstItem="JJS-dX-cLF" firstAttribute="leading" secondItem="0bu-gu-o6h" secondAttribute="leading" id="aRX-zz-itv"/>
                     <constraint firstItem="uc6-hy-NTA" firstAttribute="leading" secondItem="KS1-8r-aKa" secondAttribute="trailing" constant="8" id="al2-eG-QZC"/>
                     <constraint firstItem="Nb2-Cg-LV7" firstAttribute="width" secondItem="0bu-gu-o6h" secondAttribute="width" id="bFd-Ye-yLJ"/>
+                    <constraint firstAttribute="trailing" secondItem="mn8-Ss-1c8" secondAttribute="trailing" id="bIM-SX-1xi"/>
                     <constraint firstItem="lE8-6w-OkL" firstAttribute="top" secondItem="825-Cz-TqW" secondAttribute="bottom" constant="12" id="bgu-CZ-9ZP"/>
                     <constraint firstItem="kFp-w4-8g8" firstAttribute="leading" secondItem="sZk-Gr-NVp" secondAttribute="trailing" constant="15" id="cfs-Kj-diH"/>
                     <constraint firstItem="IBg-el-RoM" firstAttribute="top" secondItem="gqh-lX-crb" secondAttribute="bottom" constant="12" id="dC8-55-tTg"/>
@@ -275,6 +283,7 @@
                     <constraint firstItem="gqh-lX-crb" firstAttribute="leading" secondItem="GLm-3d-fZd" secondAttribute="leading" id="ikw-f1-91U"/>
                     <constraint firstItem="te6-AD-3BQ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="17" id="jE1-YF-r0y"/>
                     <constraint firstItem="825-Cz-TqW" firstAttribute="width" secondItem="GLm-3d-fZd" secondAttribute="width" id="jgz-2O-tkB"/>
+                    <constraint firstItem="mn8-Ss-1c8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="kam-GB-wmB"/>
                     <constraint firstItem="Yi7-ZB-DFb" firstAttribute="leading" secondItem="te6-AD-3BQ" secondAttribute="trailing" constant="6" id="kiZ-Jp-aqm"/>
                     <constraint firstItem="HCP-JV-Qid" firstAttribute="leading" secondItem="Yi7-ZB-DFb" secondAttribute="leading" id="kq0-4E-Lyy"/>
                     <constraint firstAttribute="trailing" secondItem="0bu-gu-o6h" secondAttribute="trailing" constant="17" id="lDg-jO-lMk"/>
@@ -320,10 +329,15 @@
                 <outlet property="serialNumberLable" destination="Yi7-ZB-DFb" id="OkD-og-PYj"/>
                 <outlet property="serviceTimeLable" destination="0bu-gu-o6h" id="EHU-2X-OS1"/>
                 <outlet property="serviceTimeText" destination="FYH-8a-Ib0" id="J9v-px-mZl"/>
+                <outlet property="topButton" destination="mn8-Ss-1c8" id="NU5-Jx-I2q"/>
+                <outlet property="topButtonHeight" destination="udp-KV-VmW" id="GX4-wf-IE3"/>
                 <outlet property="triangleButton" destination="te6-AD-3BQ" id="nGf-uc-m7i"/>
                 <outlet property="triangleTop" destination="10k-iz-b3Z" id="a3M-lH-dH1"/>
             </connections>
             <point key="canvasLocation" x="-368" y="-154"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="toTriangle" width="12" height="12"/>
+    </resources>
 </document>

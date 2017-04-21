@@ -41,9 +41,15 @@
         self.triangleTop.constant = 17;
         self.dividerLine.constant = 17;
         self.canceTimeLable.text = @"取消时间";
+        self.topButtonHeight.constant = 48;
         
     }
+    if (model.isAnOpen)
+        [self.triangleButton setImage:[UIImage imageNamed:@"equilateralTriangle"] forState:UIControlStateNormal];
+    else
+       [self.triangleButton setImage:[UIImage imageNamed:@"toTriangle"] forState:UIControlStateNormal];
     
+    self.customScoreView.scoreValue = 3;
 
 }
 @end

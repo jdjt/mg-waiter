@@ -63,8 +63,10 @@
 @property (weak, nonatomic) IBOutlet UIView *diverLineView;//分割线view
 
 
+@property (weak, nonatomic) IBOutlet UIButton *topButton;
 
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topButtonHeight;
 
 
 

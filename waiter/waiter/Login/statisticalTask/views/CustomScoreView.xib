@@ -24,19 +24,19 @@
             <rect key="frame" x="0.0" y="0.0" width="445" height="89"/>
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="locatio.png" translatesAutoresizingMaskIntoConstraints="NO" id="bs8-wm-NLt" userLabel="Image View1">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="whiteStars" translatesAutoresizingMaskIntoConstraints="NO" id="bs8-wm-NLt" userLabel="Image View1">
                     <rect key="frame" x="0.0" y="0.0" width="89" height="89"/>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="locatio.png" translatesAutoresizingMaskIntoConstraints="NO" id="aDI-oB-Ez6" userLabel="Image View3">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="whiteStars" translatesAutoresizingMaskIntoConstraints="NO" id="aDI-oB-Ez6" userLabel="Image View3">
                     <rect key="frame" x="178" y="0.0" width="89" height="89"/>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="locatio.png" translatesAutoresizingMaskIntoConstraints="NO" id="A3r-GP-ntb" userLabel="Image View4">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="whiteStars" translatesAutoresizingMaskIntoConstraints="NO" id="A3r-GP-ntb" userLabel="Image View4">
                     <rect key="frame" x="267" y="0.0" width="89" height="89"/>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="locatio.png" translatesAutoresizingMaskIntoConstraints="NO" id="FXl-nd-q1d" userLabel="Image View2">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="whiteStars" translatesAutoresizingMaskIntoConstraints="NO" id="FXl-nd-q1d" userLabel="Image View2">
                     <rect key="frame" x="89" y="0.0" width="89" height="89"/>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="locatio.png" translatesAutoresizingMaskIntoConstraints="NO" id="YHC-oe-OBE" userLabel="Image View5">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="whiteStars" translatesAutoresizingMaskIntoConstraints="NO" id="YHC-oe-OBE" userLabel="Image View5">
                     <rect key="frame" x="356" y="0.0" width="89" height="89"/>
                 </imageView>
             </subviews>
@@ -71,6 +71,6 @@
         </view>
     </objects>
     <resources>
-        <image name="locatio.png" width="256" height="256"/>
+        <image name="whiteStars" width="22" height="22"/>
     </resources>
 </document>
