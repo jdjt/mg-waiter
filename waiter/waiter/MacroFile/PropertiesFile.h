@@ -22,7 +22,7 @@
 #define iPhone5 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) : NO)
 
 //判断iPhone4/5的代码
-#define IS_LESS4 kScreenWidth<= 320 ? YES : NO
+#define IS_LESS5 kScreenWidth<= 320 ? YES : NO
 
 //判断retain屏的
 #define isRetina ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 960), [[UIScreen mainScreen] currentMode].size) : NO)

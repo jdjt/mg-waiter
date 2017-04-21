@@ -123,17 +123,14 @@
  *  @abstract 从数据库中取得数据
  *
  */
-- (NSArray *)arrayFromCoreData:(NSString *)entityName predicate:(NSPredicate *)predicate limit:(NSUInteger)limit offset:(NSUInteger)offset orderBy:(NSArray *)sortDescriptors
-{
+- (NSArray *)arrayFromCoreData:(NSString *)entityName predicate:(NSPredicate *)predicate limit:(NSUInteger)limit offset:(NSUInteger)offset orderBy:(NSArray *)sortDescriptors{
     NSEntityDescription *entity = [NSEntityDescription entityForName:entityName inManagedObjectContext:self.managedObjectContext];
-    
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
     [request setEntity:entity];
     if (sortDescriptors != nil && sortDescriptors.count > 0)
         [request setSortDescriptors:sortDescriptors];
     if (predicate)
         [request setPredicate:predicate];
-    
     [request setFetchLimit:limit];
     [request setFetchOffset:offset];
     
@@ -177,16 +174,5 @@
         }
     }
 }
-/**
- * @abstract 根据任务编号查找本地是否存在
- */
-- (BOOL)findWaiterRushByTaskCode:(NSString *)taskCode EntityName:(NSString *)entityName{
-    
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"taskCode = %@", taskCode];
-    NSArray *result = [self arrayFromCoreData:entityName predicate:predicate limit:NSIntegerMax offset:0 orderBy:nil];
-    if (result.count <= 0 ||result == nil)
-        return NO;
-    else
-       return YES;
-}
+
 @end

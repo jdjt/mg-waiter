@@ -9,6 +9,7 @@
 #import "AlterViewController.h"
 #import "AlterViewSystem.h"
 #import "AlterViewCustom.h"
+#import "AppDelegate.h"
 @interface AlterViewController ()
 @property(nonatomic,copy)AlterViewFinis alterViewBlock;
 
@@ -22,13 +23,14 @@
     
     if (self) {
         UIImageView * imageView = [[UIImageView alloc]initWithFrame:self.view.bounds];
-        UIViewController * vc = tagret;
-        UIImage * backImage = [self screenView:vc.view];
+        AppDelegate * app = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        //tagret 预留字段
+        UIImage * backImage = [self screenView:app.window];
         imageView.image = backImage;
         [self.view addSubview:imageView];
         
         UIView * backView = [[UIView alloc]initWithFrame:self.view.bounds];
-        backView.backgroundColor = [UIColor colorWithRed:0/255.0f green:0/255.0f blue:0/255.0f alpha:0.7];
+        backView.backgroundColor = [UIColor colorWithRed:0/255.0f green:0/255.0f blue:0/255.0f alpha:0.8];
         [self.view addSubview:backView];
         
         
@@ -129,9 +131,9 @@
 -(UIView *)creatSystemStyleMessage:(NSString *)message leftTitle:(NSString *)leftCurrentTitle rightTitle:(NSString *)rightCurrentTitle{
 
     AlterViewSystem * view = [[[NSBundle mainBundle] loadNibNamed:@"AlterViewSystem" owner:self options:nil] lastObject];
-    view.frame = CGRectMake(0, 0, self.view.bounds.size.width - 30, 200);
+    view.frame = CGRectMake(0, 0, self.view.bounds.size.width - 70, 158);
     view.layer.masksToBounds = YES;
-    view.layer.cornerRadius = 10;
+    view.layer.cornerRadius = 7;
     view.messageLabel.text = message;
     [view.leftButton setTitle:leftCurrentTitle forState:UIControlStateNormal];
     [view.rightButton setTitle:rightCurrentTitle forState:UIControlStateNormal];
@@ -146,9 +148,9 @@
 -(UIView *)creatCustomStyleMessage:(NSString *)message Title:(NSString *)currentTitle {
     
     AlterViewCustom * view = [[[NSBundle mainBundle] loadNibNamed:@"AlterViewCustom" owner:self options:nil] lastObject];
-    view.frame = CGRectMake(0, 0, self.view.bounds.size.width - 30, 200);
+    view.frame = CGRectMake(0, 0, self.view.bounds.size.width - 58, 188);
     view.layer.masksToBounds = YES;
-    view.layer.cornerRadius = 10;
+    view.layer.cornerRadius = 7;
     view.messageLabel.text = message;
     [view.button setTitle:currentTitle forState:UIControlStateNormal];
     [view.button addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];

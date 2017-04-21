@@ -12,16 +12,14 @@
 
 + (MySingleton *)sharedSingleton;
 
-@property (nonatomic,strong) NSString *sessionId;
+@property (nonatomic,copy) NSString *sessionId;
 
-@property (nonatomic,readonly) NSString *baseInterfaceUrl;//接口地址根路径
-
-@property (nonatomic,readonly) NSString *baseIntertestUrl;//测试接口地址根路径
+@property (nonatomic,readonly,copy) NSString *baseInterfaceUrl;//接口地址根路径
 
 @property (nonatomic,readonly) NSString *weixinInterfaceUrl;
 
 
-@property (nonatomic,strong) NSString *waiterId;//服务员ID,登录时赋值
+@property (nonatomic,copy) NSString *waiterId;//服务员ID,登录时赋值
 
 
 @end

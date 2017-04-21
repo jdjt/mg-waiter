@@ -10,6 +10,7 @@
 #import "StatisticalListCell.h"
 #import "CalendarViewController.h"
 #import "DataBaseManager+Category.h"
+#import "JDMJRefreshManager.h"
 @interface StatisticalViewController ()<CalendarDelegate>
 // 日历所选择日期的字符串（xxxx-xx-xx）
 @property(nonatomic,copy)NSString * selectDateString;
@@ -94,6 +95,7 @@
     }
 
 }
+#pragma mark  全部、自主、系统按钮点击
 - (IBAction)allandIndependentandSystemButtonClick:(UIButton *)sender {
     NSLog(@"%ld",(long)sender.tag);
     if (sender.tag == 0) {
@@ -149,15 +151,34 @@
     [self.dataArray addObject:model3];
     [self.tableView reloadData];
     
-    self.orderLable.attributedText = [Util aVarietyOfColorFonts:@"接单任务总计  15条" WithComPer:@"15" WithColor:[UIColor redColor]];
-    
-    
+    [self setOrderText:@"20" NoOrderText:@"20" SystemPushText:@"20" OrderRateText:@"20"];
 
+}
+#pragma mark 设置 接单、未接单、系统推送、接单率
+-(void)setOrderText:(NSString *)orderText NoOrderText:(NSString *)noOrderText SystemPushText:(NSString *)systemText OrderRateText:(NSString *)orderRateText{
+    
+    self.orderLable.attributedText = [Util aVarietyOfColorFonts:[NSString stringWithFormat:@"接单任务数  %@条",orderText] WithComPer:orderText WithColor:[UIColor redColor]];
+    self.noOrderLable.attributedText = [Util aVarietyOfColorFonts:[NSString stringWithFormat:@"未接单任务数  %@条",noOrderText] WithComPer:noOrderText WithColor:[UIColor redColor]];
+    self.systemPushLable.attributedText = [Util aVarietyOfColorFonts:[NSString stringWithFormat:@"推送任务数  %@条",systemText] WithComPer:systemText WithColor:[UIColor redColor]];
+    self.orderRateLable.attributedText = [Util aVarietyOfColorFonts:[NSString stringWithFormat:@"接单率  %@%@",orderRateText,@"%"] WithComPer:[NSString stringWithFormat:@"%@%@",orderRateText,@"%"] WithColor:[UIColor redColor]];
 }
 -(void)creatTableView{
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.backgroundColor = self.view.backgroundColor;
+    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    [JDMJRefreshManager headerWithRefreshingTarget:self refreshingAction:@selector(PullDownRefresh) view:self.tableView];
+    [JDMJRefreshManager footWithRefreshingTarget:self refreshingAction:@selector(loadingMore) view:self.tableView];
+    
+}
+#pragma mark - MJRefresh
+-(void)PullDownRefresh{
+    [self.tableView.mj_header endRefreshing];
+    self.tableView.mj_footer.state = MJRefreshStateIdle;
+}
+-(void)loadingMore{
+    [self.tableView.mj_footer endRefreshing];
+    self.tableView.mj_footer.state = MJRefreshStateNoMoreData;
 }
 #pragma mark - Table view data source
 
@@ -176,12 +197,15 @@
     UITableViewHeaderFooterView * footView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:footViewIndex];
     if (footView == nil) {
         footView = [[UITableViewHeaderFooterView alloc]initWithReuseIdentifier:footViewIndex];
-        footView.backgroundColor = self.view.backgroundColor;
+        footView.contentView.backgroundColor = self.view.backgroundColor;
     }
     return footView;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     return 10;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 0.001f;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -205,20 +229,28 @@
     StatisticalListCell * cell = [tableView dequeueReusableCellWithIdentifier:cellIndex];
     if (cell == nil) {
         cell = [[NSBundle mainBundle]loadNibNamed:@"StatisticalListCell" owner:self options:nil].lastObject;
+        [cell.chatRecordButton addTarget:self action:@selector(cellChatRecordButton:) forControlEvents:UIControlEventTouchUpInside];
+        
     }
+    cell.chatRecordButton.tag = indexPath.section;
     [cell setData:nil isSelectComplete:self.isSelectComplete];
     return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-
     TaskList * listModel = self.dataArray[indexPath.section];
     listModel.isAnOpen = !listModel.isAnOpen;
-    
     NSIndexSet *indexSet=[[NSIndexSet alloc]initWithIndex:indexPath.section];
     [tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
-
+-(void)cellChatRecordButton:(UIButton *)button{
+    NSLog(@"%ld",(long)button.tag);
+    AlterViewController * alterVc = [AlterViewController alterViewOwner:self WithAlterViewStype:AlterViewGuestGiveUp WithMessageCount:nil WithAlterViewBlock:^(UIButton *button, NSInteger buttonIndex) {
+        
+    }];
+    
+    [self presentViewController:alterVc animated:NO completion:nil];
+}
 
 #pragma mark - Navigation
 
@@ -237,6 +269,7 @@
 
     NSLog(@"%@",dateString);
     self.selectDateString = dateString;
+    self.timeLable.text = [NSString stringWithFormat:@"日期  %@",self.selectDateString];
     
 }
 

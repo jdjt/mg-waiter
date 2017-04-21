@@ -53,10 +53,7 @@
  */
 - (void)cleanCoreDatabyEntityName:(NSString*)entityName;
 
-/**
- * @abstract 根据任务编号查找本地是否存在
- */
-- (BOOL)findWaiterRushByTaskCode:(NSString *)taskCode EntityName:(NSString *)entityName;
+
 
 
 

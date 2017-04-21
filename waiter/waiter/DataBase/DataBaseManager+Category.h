@@ -28,9 +28,8 @@
 
 /**
  获取任务参数表
- @param waiterId waiterId
  @param taskCode 任务编号
  */
-- (TaskList *)getTaskInfoWaiterId:(NSString *)waiterId TaskCode:(NSString *)taskCode;
+- (TaskList *)getTask:(NSString *)taskCode;
 
 @end
