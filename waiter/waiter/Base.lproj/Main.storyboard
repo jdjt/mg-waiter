@@ -407,7 +407,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="统计" id="vdS-1J-05b">
                             <connections>
-                                <segue destination="SqQ-xT-2Oo" kind="show" id="wkW-KI-JcY"/>
+                                <segue destination="aBb-DV-DJL" kind="push" id="aWG-9k-ioH"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -423,32 +423,250 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="920.79999999999995" y="35.532233883058474"/>
+            <point key="canvasLocation" x="786" y="3"/>
         </scene>
         <!--历史任务统计-->
-        <scene sceneID="65F-Jk-Jua">
+        <scene sceneID="Lkb-xL-lOW">
             <objects>
-                <tableViewController id="SqQ-xT-2Oo" customClass="StatisticalViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="aWQ-QT-nTT">
+                <viewController id="aBb-DV-DJL" customClass="StatisticalViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="PeE-CB-MlH"/>
+                        <viewControllerLayoutGuide type="bottom" id="qIj-Fh-fjL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bLa-gS-OnD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UJP-cg-kqI" userLabel="日期接单推送View">
+                                <rect key="frame" x="0.0" y="70" width="375" height="120"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="日期  2017-03-16" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YNH-aE-XrB" userLabel="日期Label">
+                                        <rect key="frame" x="17" y="0.0" width="341" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="39.5" id="Ygw-7z-oHZ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u6Q-CI-qOL" userLabel="日期横线">
+                                        <rect key="frame" x="0.0" y="40" width="375" height="0.5"/>
+                                        <color key="backgroundColor" red="0.81568627450980391" green="0.81960784313725488" blue="0.83529411764705885" alpha="0.6678617294520548" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="0.5" id="l2V-9P-C6e"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="接单任务总计  15条" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AXp-YZ-Adq" userLabel="接单Label">
+                                        <rect key="frame" x="17" y="40.5" width="165.5" height="39.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="39.5" id="tT0-od-fGW"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="未接单任务总计  15条" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cUS-71-QNm" userLabel="未接单Label">
+                                        <rect key="frame" x="192.5" y="40.5" width="165.5" height="39.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="39.5" id="BzC-aF-uFz"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sgP-iw-H4I" userLabel="接单横线">
+                                        <rect key="frame" x="0.0" y="80" width="375" height="0.5"/>
+                                        <color key="backgroundColor" red="0.81568627449999997" green="0.81960784310000001" blue="0.83529411760000005" alpha="0.6678617295" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="0.5" id="zbM-Hb-d3U"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="系统推送任务总计  30条" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qd2-uP-8p2" userLabel="推送Label">
+                                        <rect key="frame" x="17" y="80.5" width="165.5" height="39.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="39.5" id="1Ko-qp-Liv"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="接单率  50%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K8h-pL-OM5" userLabel="接单率Label">
+                                        <rect key="frame" x="192.5" y="80.5" width="165.5" height="39.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="39.5" id="Ptj-I7-TTR"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="u6Q-CI-qOL" secondAttribute="trailing" id="2bh-pK-KeN"/>
+                                    <constraint firstItem="K8h-pL-OM5" firstAttribute="width" secondItem="Qd2-uP-8p2" secondAttribute="width" id="9wh-f9-dum"/>
+                                    <constraint firstItem="cUS-71-QNm" firstAttribute="top" secondItem="u6Q-CI-qOL" secondAttribute="bottom" id="Auj-T7-QnX"/>
+                                    <constraint firstItem="K8h-pL-OM5" firstAttribute="top" secondItem="sgP-iw-H4I" secondAttribute="bottom" id="Cgs-ao-Ad4"/>
+                                    <constraint firstAttribute="trailing" secondItem="sgP-iw-H4I" secondAttribute="trailing" id="DXn-tp-7sD"/>
+                                    <constraint firstAttribute="trailing" secondItem="K8h-pL-OM5" secondAttribute="trailing" constant="17" id="MI2-b4-kYN"/>
+                                    <constraint firstItem="cUS-71-QNm" firstAttribute="width" secondItem="AXp-YZ-Adq" secondAttribute="width" id="TtY-br-lQf"/>
+                                    <constraint firstAttribute="trailing" secondItem="cUS-71-QNm" secondAttribute="trailing" constant="17" id="XA4-uv-pf6"/>
+                                    <constraint firstItem="Qd2-uP-8p2" firstAttribute="leading" secondItem="UJP-cg-kqI" secondAttribute="leading" constant="17" id="YdC-pF-s6f"/>
+                                    <constraint firstAttribute="trailing" secondItem="YNH-aE-XrB" secondAttribute="trailing" constant="17" id="bjn-Sg-fQu"/>
+                                    <constraint firstItem="u6Q-CI-qOL" firstAttribute="top" secondItem="YNH-aE-XrB" secondAttribute="bottom" id="dg9-Y7-kNF"/>
+                                    <constraint firstItem="sgP-iw-H4I" firstAttribute="leading" secondItem="UJP-cg-kqI" secondAttribute="leading" id="fah-gT-Hia"/>
+                                    <constraint firstItem="YNH-aE-XrB" firstAttribute="leading" secondItem="UJP-cg-kqI" secondAttribute="leading" constant="17" id="hQk-0b-IPL"/>
+                                    <constraint firstItem="u6Q-CI-qOL" firstAttribute="leading" secondItem="UJP-cg-kqI" secondAttribute="leading" id="lZH-ek-K24"/>
+                                    <constraint firstItem="YNH-aE-XrB" firstAttribute="top" secondItem="UJP-cg-kqI" secondAttribute="top" id="lj8-x4-7Tr"/>
+                                    <constraint firstItem="Qd2-uP-8p2" firstAttribute="top" secondItem="sgP-iw-H4I" secondAttribute="bottom" id="mNJ-gq-IDA"/>
+                                    <constraint firstItem="K8h-pL-OM5" firstAttribute="leading" secondItem="Qd2-uP-8p2" secondAttribute="trailing" constant="10" id="nGd-L3-D8d"/>
+                                    <constraint firstItem="AXp-YZ-Adq" firstAttribute="leading" secondItem="UJP-cg-kqI" secondAttribute="leading" constant="17" id="oOd-fj-hsc"/>
+                                    <constraint firstItem="sgP-iw-H4I" firstAttribute="top" secondItem="AXp-YZ-Adq" secondAttribute="bottom" id="paX-IO-JQr"/>
+                                    <constraint firstItem="cUS-71-QNm" firstAttribute="leading" secondItem="AXp-YZ-Adq" secondAttribute="trailing" constant="10" id="vKC-Xb-VvJ"/>
+                                    <constraint firstAttribute="height" constant="120" id="yWh-NU-dJq"/>
+                                    <constraint firstItem="AXp-YZ-Adq" firstAttribute="top" secondItem="u6Q-CI-qOL" secondAttribute="bottom" id="z3f-84-EgZ"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m2q-I4-cRP" userLabel="已完成Button">
+                                <rect key="frame" x="0.0" y="190" width="187.5" height="36"/>
+                                <color key="backgroundColor" red="0.16470588235294117" green="0.62745098039215685" blue="0.92156862745098034" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="qF9-h2-f4u"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="已完成">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="completeCancelButtonClick:" destination="aBb-DV-DJL" eventType="touchUpInside" id="JDq-m1-c3L"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nYE-2S-KEx" userLabel="被取消Button">
+                                <rect key="frame" x="187.5" y="190" width="187.5" height="36"/>
+                                <color key="backgroundColor" red="0.53725490196078429" green="0.53725490196078429" blue="0.53725490196078429" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="LgV-FW-v61"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="被取消">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="completeCancelButtonClick:" destination="aBb-DV-DJL" eventType="touchUpInside" id="YBL-Hx-5H0"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cmr-nx-fEW" userLabel="全部Button">
+                                <rect key="frame" x="17" y="232" width="108.5" height="33"/>
+                                <color key="backgroundColor" red="0.1647058824" green="0.62745098040000002" blue="0.92156862750000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="33" id="W4y-F4-zmJ"/>
+                                </constraints>
+                                <state key="normal" title="全部（10）">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="allandIndependentandSystemButtonClick:" destination="aBb-DV-DJL" eventType="touchUpInside" id="Xce-mE-e1Q"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eah-6s-h6d" userLabel="自主Button">
+                                <rect key="frame" x="133.5" y="232" width="109" height="33"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="33" id="fai-vT-NcP"/>
+                                </constraints>
+                                <state key="normal" title="自主接单（1）">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="allandIndependentandSystemButtonClick:" destination="aBb-DV-DJL" eventType="touchUpInside" id="GeO-6K-vvU"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jbK-Xy-0EU" userLabel="系统Button">
+                                <rect key="frame" x="249.5" y="232" width="108.5" height="33"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="33" id="8BC-UM-n3K"/>
+                                </constraints>
+                                <state key="normal" title="系统派单（2）">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="allandIndependentandSystemButtonClick:" destination="aBb-DV-DJL" eventType="touchUpInside" id="6xv-Ev-Ys8"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="x9F-C4-yBG">
+                                <rect key="frame" x="0.0" y="275" width="375" height="392"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <connections>
-                            <outlet property="dataSource" destination="SqQ-xT-2Oo" id="7vQ-Vj-W1T"/>
-                            <outlet property="delegate" destination="SqQ-xT-2Oo" id="cbc-0h-SMj"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="历史任务统计" id="ZXO-zC-s1p">
-                        <barButtonItem key="rightBarButtonItem" title="日历" id="oLM-0W-zYe">
+                        <constraints>
+                            <constraint firstItem="m2q-I4-cRP" firstAttribute="top" secondItem="UJP-cg-kqI" secondAttribute="bottom" id="0zc-4R-oaJ"/>
+                            <constraint firstAttribute="trailing" secondItem="UJP-cg-kqI" secondAttribute="trailing" id="1kC-XP-9KB"/>
+                            <constraint firstItem="x9F-C4-yBG" firstAttribute="top" secondItem="jbK-Xy-0EU" secondAttribute="bottom" constant="10" id="3bs-0b-TqH"/>
+                            <constraint firstItem="nYE-2S-KEx" firstAttribute="leading" secondItem="m2q-I4-cRP" secondAttribute="trailing" id="CiZ-MV-KA2"/>
+                            <constraint firstAttribute="trailing" secondItem="x9F-C4-yBG" secondAttribute="trailing" id="EOr-Ma-m1G"/>
+                            <constraint firstAttribute="trailing" secondItem="jbK-Xy-0EU" secondAttribute="trailing" constant="17" id="JNM-Mt-waZ"/>
+                            <constraint firstItem="m2q-I4-cRP" firstAttribute="leading" secondItem="bLa-gS-OnD" secondAttribute="leading" id="MqE-h4-xjz"/>
+                            <constraint firstItem="jbK-Xy-0EU" firstAttribute="top" secondItem="cmr-nx-fEW" secondAttribute="top" id="P8j-L7-7X1"/>
+                            <constraint firstItem="cmr-nx-fEW" firstAttribute="top" secondItem="m2q-I4-cRP" secondAttribute="bottom" constant="6" id="R00-gl-gtL"/>
+                            <constraint firstItem="UJP-cg-kqI" firstAttribute="top" secondItem="PeE-CB-MlH" secondAttribute="bottom" constant="6" id="Rfd-vc-0T6"/>
+                            <constraint firstItem="jbK-Xy-0EU" firstAttribute="leading" secondItem="eah-6s-h6d" secondAttribute="trailing" constant="7" id="Wem-Fn-q46"/>
+                            <constraint firstItem="eah-6s-h6d" firstAttribute="leading" secondItem="cmr-nx-fEW" secondAttribute="trailing" constant="8" id="XCv-3V-wc6"/>
+                            <constraint firstItem="x9F-C4-yBG" firstAttribute="leading" secondItem="bLa-gS-OnD" secondAttribute="leading" id="XpF-jX-ygT"/>
+                            <constraint firstItem="cmr-nx-fEW" firstAttribute="leading" secondItem="bLa-gS-OnD" secondAttribute="leading" constant="17" id="Yvd-zK-Iez"/>
+                            <constraint firstItem="eah-6s-h6d" firstAttribute="top" secondItem="cmr-nx-fEW" secondAttribute="top" id="dG1-It-lip"/>
+                            <constraint firstItem="eah-6s-h6d" firstAttribute="width" secondItem="cmr-nx-fEW" secondAttribute="width" id="diD-g7-Q7g"/>
+                            <constraint firstItem="nYE-2S-KEx" firstAttribute="width" secondItem="m2q-I4-cRP" secondAttribute="width" id="gue-6D-PDg"/>
+                            <constraint firstItem="jbK-Xy-0EU" firstAttribute="width" secondItem="cmr-nx-fEW" secondAttribute="width" id="iQL-7L-CHi"/>
+                            <constraint firstItem="UJP-cg-kqI" firstAttribute="leading" secondItem="bLa-gS-OnD" secondAttribute="leading" id="inL-jL-gzw"/>
+                            <constraint firstAttribute="bottom" secondItem="x9F-C4-yBG" secondAttribute="bottom" id="mSi-Bb-aAv"/>
+                            <constraint firstItem="nYE-2S-KEx" firstAttribute="top" secondItem="UJP-cg-kqI" secondAttribute="bottom" id="tQc-ai-69r"/>
+                            <constraint firstAttribute="trailing" secondItem="nYE-2S-KEx" secondAttribute="trailing" id="x7o-Ne-xbW"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="历史任务统计" id="O0O-gN-nBo">
+                        <barButtonItem key="rightBarButtonItem" title="日历" id="IIR-WS-nAV">
+                            <color key="tintColor" red="0.81568627450980391" green="0.81960784313725488" blue="0.83529411764705885" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <segue destination="9l6-du-Eeo" kind="show" identifier="calendarShow" id="leL-UO-e66"/>
+                                <segue destination="9l6-du-Eeo" kind="push" identifier="calendarShow" id="dlc-9Z-otI"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Lba-OA-Rb3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                    <connections>
+                        <outlet property="allButton" destination="cmr-nx-fEW" id="hUr-Rr-7gG"/>
+                        <outlet property="cancelButton" destination="nYE-2S-KEx" id="TTO-GA-qky"/>
+                        <outlet property="completeButton" destination="m2q-I4-cRP" id="Zi8-4x-o8T"/>
+                        <outlet property="independentButton" destination="eah-6s-h6d" id="79O-YP-aw8"/>
+                        <outlet property="noOrderLable" destination="cUS-71-QNm" id="3Tj-hR-Mao"/>
+                        <outlet property="orderLable" destination="AXp-YZ-Adq" id="3jW-7N-uux"/>
+                        <outlet property="orderRateLable" destination="K8h-pL-OM5" id="Mdu-2i-6AG"/>
+                        <outlet property="systemButton" destination="jbK-Xy-0EU" id="Tp4-gG-3cQ"/>
+                        <outlet property="systemPushLable" destination="Qd2-uP-8p2" id="nvy-XW-tAs"/>
+                        <outlet property="tableView" destination="x9F-C4-yBG" id="Zbr-jq-8Ry"/>
+                        <outlet property="timeLable" destination="YNH-aE-XrB" id="la1-bC-e2v"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2tm-HC-P3z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1597.5999999999999" y="27.436281859070466"/>
+            <point key="canvasLocation" x="1548" y="2"/>
         </scene>
         <!--日历-->
         <scene sceneID="fX4-oP-fJV">
@@ -578,6 +796,7 @@
                             <constraint firstItem="wLI-9E-aqi" firstAttribute="leading" secondItem="1ft-Ta-hAV" secondAttribute="leading" constant="23" id="p4y-eS-gZ3"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="日历" id="Rz1-My-atV"/>
                     <connections>
                         <outlet property="collectionLayout" destination="pLs-Mt-4I7" id="nO7-Xi-FhX"/>
                         <outlet property="collectionView" destination="k3X-ns-4Eq" id="Nlz-jC-Y5L"/>
