@@ -2,7 +2,7 @@
 //  DBWaiterInfo+CoreDataClass.h
 //  waiter
 //
-//  Created by new on 2017/4/19.
+//  Created by new on 2017/4/21.
 //  Copyright © 2017年 liuchao. All rights reserved.
 //
 

@@ -12,42 +12,58 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="VDS-Z2-AMK" customClass="AlterViewCustom">
-            <rect key="frame" x="0.0" y="0.0" width="426" height="235"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="235"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xlq-Lq-Rat">
-                    <rect key="frame" x="20" y="175" width="386" height="40"/>
-                    <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <rect key="frame" x="0.0" y="194" width="320" height="41"/>
+                    <color key="backgroundColor" red="0.1647058824" green="0.62745098040000002" blue="0.92156862750000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="40" id="1iD-br-t7L"/>
+                        <constraint firstAttribute="height" constant="41" id="1iD-br-t7L"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                    <state key="normal" title="Button">
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <state key="normal" title="确定">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                            <integer key="value" value="5"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hO8-nG-slw">
-                    <rect key="frame" x="20" y="0.0" width="386" height="175"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                    <nil key="textColor"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="管理员给您派送了一个呼叫任务请及时处理" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hO8-nG-slw">
+                    <rect key="frame" x="26" y="51" width="268" height="143"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                    <color key="textColor" red="0.54509803921568623" green="0.55294117647058827" blue="0.61960784313725492" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="温馨提示" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a1U-DC-eaf">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="vRR-mC-qhY"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                    <color key="textColor" red="0.16078431372549018" green="0.51764705882352935" blue="0.74117647058823533" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OPc-5O-ZH6">
+                    <rect key="frame" x="0.0" y="50" width="320" height="1"/>
+                    <color key="backgroundColor" red="0.81568627449999997" green="0.81960784310000001" blue="0.83529411760000005" alpha="0.6678617295" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="nSk-kT-qIA"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="hO8-nG-slw" secondAttribute="trailing" constant="20" id="2b7-O3-GJh"/>
+                <constraint firstAttribute="trailing" secondItem="hO8-nG-slw" secondAttribute="trailing" constant="26" id="2b7-O3-GJh"/>
+                <constraint firstAttribute="trailing" secondItem="OPc-5O-ZH6" secondAttribute="trailing" id="G8Q-yX-Pf9"/>
                 <constraint firstItem="xlq-Lq-Rat" firstAttribute="top" secondItem="hO8-nG-slw" secondAttribute="bottom" id="HHB-cs-62Z"/>
-                <constraint firstAttribute="trailing" secondItem="xlq-Lq-Rat" secondAttribute="trailing" constant="20" id="ORe-5B-q6I"/>
-                <constraint firstItem="hO8-nG-slw" firstAttribute="top" secondItem="VDS-Z2-AMK" secondAttribute="top" id="lHb-Qs-1gS"/>
-                <constraint firstItem="hO8-nG-slw" firstAttribute="leading" secondItem="VDS-Z2-AMK" secondAttribute="leading" constant="20" id="n0T-RY-5RA"/>
-                <constraint firstItem="xlq-Lq-Rat" firstAttribute="leading" secondItem="VDS-Z2-AMK" secondAttribute="leading" constant="20" id="tD1-K4-8pi"/>
-                <constraint firstAttribute="bottom" secondItem="xlq-Lq-Rat" secondAttribute="bottom" constant="20" id="tsg-fM-XMy"/>
+                <constraint firstAttribute="trailing" secondItem="xlq-Lq-Rat" secondAttribute="trailing" id="ORe-5B-q6I"/>
+                <constraint firstItem="hO8-nG-slw" firstAttribute="top" secondItem="OPc-5O-ZH6" secondAttribute="bottom" id="UDO-br-uTy"/>
+                <constraint firstItem="a1U-DC-eaf" firstAttribute="leading" secondItem="VDS-Z2-AMK" secondAttribute="leading" id="V3F-cB-nuB"/>
+                <constraint firstItem="OPc-5O-ZH6" firstAttribute="top" secondItem="a1U-DC-eaf" secondAttribute="bottom" id="evt-RK-k1v"/>
+                <constraint firstItem="a1U-DC-eaf" firstAttribute="top" secondItem="VDS-Z2-AMK" secondAttribute="top" id="hdW-2M-RUa"/>
+                <constraint firstItem="hO8-nG-slw" firstAttribute="leading" secondItem="VDS-Z2-AMK" secondAttribute="leading" constant="26" id="n0T-RY-5RA"/>
+                <constraint firstAttribute="trailing" secondItem="a1U-DC-eaf" secondAttribute="trailing" id="oNh-DZ-tKn"/>
+                <constraint firstItem="OPc-5O-ZH6" firstAttribute="leading" secondItem="VDS-Z2-AMK" secondAttribute="leading" id="pTe-mk-Shu"/>
+                <constraint firstItem="xlq-Lq-Rat" firstAttribute="leading" secondItem="VDS-Z2-AMK" secondAttribute="leading" id="tD1-K4-8pi"/>
+                <constraint firstAttribute="bottom" secondItem="xlq-Lq-Rat" secondAttribute="bottom" id="tsg-fM-XMy"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <nil key="simulatedTopBarMetrics"/>
@@ -57,7 +73,7 @@
                 <outlet property="button" destination="xlq-Lq-Rat" id="nvk-8f-tPU"/>
                 <outlet property="messageLabel" destination="hO8-nG-slw" id="jtN-I5-qvN"/>
             </connections>
-            <point key="canvasLocation" x="30" y="-150"/>
+            <point key="canvasLocation" x="30" y="-150.5"/>
         </view>
     </objects>
 </document>

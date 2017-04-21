@@ -2,7 +2,7 @@
 //  DBWaiterInfo+CoreDataProperties.m
 //  waiter
 //
-//  Created by new on 2017/4/19.
+//  Created by new on 2017/4/21.
 //  Copyright © 2017年 liuchao. All rights reserved.
 //
 
@@ -15,6 +15,7 @@
 }
 
 @dynamic attendStatus;
+@dynamic attribute;
 @dynamic depId;
 @dynamic depName;
 @dynamic deviceId;
@@ -26,15 +27,14 @@
 @dynamic idNo;
 @dynamic imAccount;
 @dynamic name;
+@dynamic nowTime;
 @dynamic phone;
 @dynamic resetPwdDiv;
 @dynamic sex;
-@dynamic workStatus;
-@dynamic workTimeCal;
-@dynamic attribute;
-@dynamic nowTime;
 @dynamic uploadPerSecond;
 @dynamic waiterId;
-@dynamic taskList;
+@dynamic workStatus;
+@dynamic workTimeCal;
+@dynamic hasTaskList;
 
 @end

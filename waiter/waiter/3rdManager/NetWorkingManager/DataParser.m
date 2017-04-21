@@ -189,7 +189,7 @@
 //服务员查询"历史任务统计"
 +(NSMutableArray *)parsingWaiterGetTaskInfoStatic:(id)dict{
     NSMutableArray * dataArray = [[NSMutableArray alloc]init];
-
+    
 #warning TaskList
     return dataArray;
 }

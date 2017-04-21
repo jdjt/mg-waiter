@@ -2,7 +2,7 @@
 //  DBWaiterInfo+CoreDataProperties.h
 //  waiter
 //
-//  Created by new on 2017/4/19.
+//  Created by new on 2017/4/21.
 //  Copyright © 2017年 liuchao. All rights reserved.
 //
 
@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSFetchRequest<DBWaiterInfo *> *)fetchRequest;
 
 @property (nullable, nonatomic, copy) NSString *attendStatus;
+@property (nullable, nonatomic, copy) NSString *attribute;
 @property (nullable, nonatomic, copy) NSString *depId;
 @property (nullable, nonatomic, copy) NSString *depName;
 @property (nullable, nonatomic, copy) NSString *deviceId;
@@ -27,31 +28,30 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, copy) NSString *idNo;
 @property (nullable, nonatomic, copy) NSString *imAccount;
 @property (nullable, nonatomic, copy) NSString *name;
+@property (nullable, nonatomic, copy) NSString *nowTime;
 @property (nullable, nonatomic, copy) NSString *phone;
 @property (nullable, nonatomic, copy) NSString *resetPwdDiv;
 @property (nullable, nonatomic, copy) NSString *sex;
-@property (nullable, nonatomic, copy) NSString *workStatus;
-@property (nullable, nonatomic, copy) NSString *workTimeCal;
-@property (nullable, nonatomic, copy) NSString *attribute;
-@property (nullable, nonatomic, copy) NSString *nowTime;
 @property (nullable, nonatomic, copy) NSString *uploadPerSecond;
 @property (nullable, nonatomic, copy) NSString *waiterId;
-@property (nullable, nonatomic, retain) NSOrderedSet<TaskList *> *taskList;
+@property (nullable, nonatomic, copy) NSString *workStatus;
+@property (nullable, nonatomic, copy) NSString *workTimeCal;
+@property (nullable, nonatomic, retain) NSOrderedSet<TaskList *> *hasTaskList;
 
 @end
 
 @interface DBWaiterInfo (CoreDataGeneratedAccessors)
 
-- (void)insertObject:(TaskList *)value inTaskListAtIndex:(NSUInteger)idx;
-- (void)removeObjectFromTaskListAtIndex:(NSUInteger)idx;
-- (void)insertTaskList:(NSArray<TaskList *> *)value atIndexes:(NSIndexSet *)indexes;
-- (void)removeTaskListAtIndexes:(NSIndexSet *)indexes;
-- (void)replaceObjectInTaskListAtIndex:(NSUInteger)idx withObject:(TaskList *)value;
-- (void)replaceTaskListAtIndexes:(NSIndexSet *)indexes withTaskList:(NSArray<TaskList *> *)values;
-- (void)addTaskListObject:(TaskList *)value;
-- (void)removeTaskListObject:(TaskList *)value;
-- (void)addTaskList:(NSOrderedSet<TaskList *> *)values;
-- (void)removeTaskList:(NSOrderedSet<TaskList *> *)values;
+- (void)insertObject:(TaskList *)value inHasTaskListAtIndex:(NSUInteger)idx;
+- (void)removeObjectFromHasTaskListAtIndex:(NSUInteger)idx;
+- (void)insertHasTaskList:(NSArray<TaskList *> *)value atIndexes:(NSIndexSet *)indexes;
+- (void)removeHasTaskListAtIndexes:(NSIndexSet *)indexes;
+- (void)replaceObjectInHasTaskListAtIndex:(NSUInteger)idx withObject:(TaskList *)value;
+- (void)replaceHasTaskListAtIndexes:(NSIndexSet *)indexes withHasTaskList:(NSArray<TaskList *> *)values;
+- (void)addHasTaskListObject:(TaskList *)value;
+- (void)removeHasTaskListObject:(TaskList *)value;
+- (void)addHasTaskList:(NSOrderedSet<TaskList *> *)values;
+- (void)removeHasTaskList:(NSOrderedSet<TaskList *> *)values;
 
 @end
 
