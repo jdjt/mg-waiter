@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="297"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="297"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="296.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="te6-AD-3BQ" userLabel="展开三角">
@@ -26,7 +26,7 @@
                         </constraints>
                         <state key="normal" title="Button"/>
                     </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="S127364567894756432754" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yi7-ZB-DFb" userLabel="编号">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="S12345678912345612345" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yi7-ZB-DFb" userLabel="编号">
                         <rect key="frame" x="35" y="12" width="233" height="14"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="14" id="MBB-kd-tPb"/>
@@ -114,7 +114,7 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="完成时间" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IBg-el-RoM">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="完成时间" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IBg-el-RoM" userLabel="完成时间s">
                         <rect key="frame" x="17" y="134.5" width="65" height="15"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <nil key="textColor"/>
@@ -323,7 +323,7 @@
                 <outlet property="triangleButton" destination="te6-AD-3BQ" id="nGf-uc-m7i"/>
                 <outlet property="triangleTop" destination="10k-iz-b3Z" id="a3M-lH-dH1"/>
             </connections>
-            <point key="canvasLocation" x="-233" y="-143"/>
+            <point key="canvasLocation" x="-368" y="-154"/>
         </tableViewCell>
     </objects>
 </document>

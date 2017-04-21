@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="VSP-Gc-7fj">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="VSP-Gc-7fj">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -275,7 +275,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wkZ-pX-ySb">
-                                                    <rect key="frame" x="230" y="112" width="70" height="40"/>
+                                                    <rect key="frame" x="285" y="22" width="70" height="40"/>
                                                     <color key="backgroundColor" red="0.18415046202036756" green="0.67171890360449771" blue="0.18728463940212384" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="BId-Sn-aKQ"/>
@@ -340,10 +340,10 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tyA-w5-bXc" userLabel="footView">
-                                                    <rect key="frame" x="0.0" y="-0.5" width="320" height="44.5"/>
+                                                    <rect key="frame" x="0.0" y="-4" width="375" height="51.5"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VG5-rM-NH3">
-                                                            <rect key="frame" x="17.5" y="0.0" width="340" height="51"/>
+                                                            <rect key="frame" x="17.5" y="0.0" width="340" height="51.5"/>
                                                             <color key="backgroundColor" red="0.16470588235294117" green="0.62745098039215685" blue="0.92156862745098034" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="51" id="8ca-Wj-SwG"/>
@@ -645,7 +645,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="历史任务统计" id="O0O-gN-nBo">
                         <barButtonItem key="rightBarButtonItem" title="日历" id="IIR-WS-nAV">
-                            <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <segue destination="9l6-du-Eeo" kind="push" identifier="calendarShow" id="dlc-9Z-otI"/>
                             </connections>
