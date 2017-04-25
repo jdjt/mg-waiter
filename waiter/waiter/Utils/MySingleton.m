@@ -40,4 +40,21 @@
     return self;
 }
 
+-(void)setWaiterId:(NSString *)waiterId{
+    _waiterId = waiterId;
+    NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+    [user setObject:waiterId forKey:@"waiterId"];
+    [user synchronize];
+}
+-(NSString *)waiterId{
+    if (_waiterId == nil) {
+        NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+        _waiterId = @"";
+        if ([ user objectForKey:@"waiterId"]) {
+            _waiterId = [ user objectForKey:@"waiterId"];
+        }
+    }
+    NSLog(@"waiterId --- > %@",_waiterId);
+    return _waiterId;
+}
 @end
