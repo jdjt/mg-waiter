@@ -2,7 +2,7 @@
 //  TaskList+CoreDataProperties.m
 //  waiter
 //
-//  Created by new on 2017/4/21.
+//  Created by new on 2017/4/24.
 //  Copyright © 2017年 liuchao. All rights reserved.
 //
 
@@ -45,7 +45,14 @@
 @dynamic waiterId;
 @dynamic waiteTime;
 @dynamic wImAccount;
-@dynamic haschatmessage;
+@dynamic causeTime;
+@dynamic causePoint;
+@dynamic customerName;
+@dynamic customerDeviceId;
+@dynamic waiterName;
+@dynamic waiterDeviceId;
+@dynamic produceTime;
 @dynamic belongWaiterInfor;
+@dynamic haschatmessage;
 
 @end

@@ -288,8 +288,6 @@
 		D54D88911EA4A67E00CC388A /* JDMBProressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = D54D88901EA4A67E00CC388A /* JDMBProressHUD.m */; };
 		D58446161EA9E0A000C136CD /* DBWaiterInfo+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = D58446131EA9E0A000C136CD /* DBWaiterInfo+CoreDataClass.m */; };
 		D58446171EA9E0A000C136CD /* DBWaiterInfo+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D58446151EA9E0A000C136CD /* DBWaiterInfo+CoreDataProperties.m */; };
-		D584461C1EA9E0B300C136CD /* TaskList+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = D58446191EA9E0B300C136CD /* TaskList+CoreDataClass.m */; };
-		D584461D1EA9E0B300C136CD /* TaskList+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D584461B1EA9E0B300C136CD /* TaskList+CoreDataProperties.m */; };
 		D58446221EA9E0C600C136CD /* ChatMessage+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = D584461F1EA9E0C600C136CD /* ChatMessage+CoreDataClass.m */; };
 		D58446231EA9E0C600C136CD /* ChatMessage+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D58446211EA9E0C600C136CD /* ChatMessage+CoreDataProperties.m */; };
 		D5865ED41E9F51F700E070D4 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D5865EC81E9F51F700E070D4 /* AFHTTPSessionManager.m */; };
@@ -318,6 +316,10 @@
 		D59E62411EA0768C00DFDE85 /* CalendarDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D59E62401EA0768C00DFDE85 /* CalendarDataModel.m */; };
 		D59E62441EA07F7100DFDE85 /* CalendarCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D59E62431EA07F7100DFDE85 /* CalendarCollectionCell.m */; };
 		D59E62471EA0984400DFDE85 /* CalendarReusableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D59E62461EA0984400DFDE85 /* CalendarReusableViewCell.m */; };
+		D5A4F7D91EADAD4A000B7B7D /* libUMessage_Sdk_1.5.0a.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D5A4F7D71EADAD4A000B7B7D /* libUMessage_Sdk_1.5.0a.a */; };
+		D5A4F7DB1EADAD7F000B7B7D /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5A4F7DA1EADAD7F000B7B7D /* UserNotifications.framework */; };
+		D5A4F7E01EADED30000B7B7D /* TaskList+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = D5A4F7DD1EADED30000B7B7D /* TaskList+CoreDataClass.m */; };
+		D5A4F7E11EADED30000B7B7D /* TaskList+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D5A4F7DF1EADED30000B7B7D /* TaskList+CoreDataProperties.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -740,10 +742,6 @@
 		D58446131EA9E0A000C136CD /* DBWaiterInfo+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DBWaiterInfo+CoreDataClass.m"; sourceTree = "<group>"; };
 		D58446141EA9E0A000C136CD /* DBWaiterInfo+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DBWaiterInfo+CoreDataProperties.h"; sourceTree = "<group>"; };
 		D58446151EA9E0A000C136CD /* DBWaiterInfo+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DBWaiterInfo+CoreDataProperties.m"; sourceTree = "<group>"; };
-		D58446181EA9E0B300C136CD /* TaskList+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TaskList+CoreDataClass.h"; sourceTree = "<group>"; };
-		D58446191EA9E0B300C136CD /* TaskList+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TaskList+CoreDataClass.m"; sourceTree = "<group>"; };
-		D584461A1EA9E0B300C136CD /* TaskList+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TaskList+CoreDataProperties.h"; sourceTree = "<group>"; };
-		D584461B1EA9E0B300C136CD /* TaskList+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TaskList+CoreDataProperties.m"; sourceTree = "<group>"; };
 		D584461E1EA9E0C600C136CD /* ChatMessage+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ChatMessage+CoreDataClass.h"; sourceTree = "<group>"; };
 		D584461F1EA9E0C600C136CD /* ChatMessage+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ChatMessage+CoreDataClass.m"; sourceTree = "<group>"; };
 		D58446201EA9E0C600C136CD /* ChatMessage+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ChatMessage+CoreDataProperties.h"; sourceTree = "<group>"; };
@@ -801,6 +799,13 @@
 		D59E62431EA07F7100DFDE85 /* CalendarCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarCollectionCell.m; sourceTree = "<group>"; };
 		D59E62451EA0984400DFDE85 /* CalendarReusableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarReusableViewCell.h; sourceTree = "<group>"; };
 		D59E62461EA0984400DFDE85 /* CalendarReusableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarReusableViewCell.m; sourceTree = "<group>"; };
+		D5A4F7D71EADAD4A000B7B7D /* libUMessage_Sdk_1.5.0a.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUMessage_Sdk_1.5.0a.a; sourceTree = "<group>"; };
+		D5A4F7D81EADAD4A000B7B7D /* UMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMessage.h; sourceTree = "<group>"; };
+		D5A4F7DA1EADAD7F000B7B7D /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		D5A4F7DC1EADED30000B7B7D /* TaskList+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TaskList+CoreDataClass.h"; sourceTree = "<group>"; };
+		D5A4F7DD1EADED30000B7B7D /* TaskList+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TaskList+CoreDataClass.m"; sourceTree = "<group>"; };
+		D5A4F7DE1EADED30000B7B7D /* TaskList+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TaskList+CoreDataProperties.h"; sourceTree = "<group>"; };
+		D5A4F7DF1EADED30000B7B7D /* TaskList+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TaskList+CoreDataProperties.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -808,6 +813,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5A4F7D91EADAD4A000B7B7D /* libUMessage_Sdk_1.5.0a.a in Frameworks */,
 				A8E132831EA4605400644161 /* libFMMapKit.a in Frameworks */,
 				A8E132891EA461B400644161 /* libz.tbd in Frameworks */,
 				A8E1300D1EA45E7C00644161 /* libxml2.tbd in Frameworks */,
@@ -815,6 +821,7 @@
 				A8E130091EA45E6A00644161 /* libsqlite3.0.tbd in Frameworks */,
 				A8E130031EA45E4900644161 /* libstdc++.6.0.9.tbd in Frameworks */,
 				A8E130011EA45E2300644161 /* libresolv.tbd in Frameworks */,
+				D5A4F7DB1EADAD7F000B7B7D /* UserNotifications.framework in Frameworks */,
 				D51C8A1C1EA5D60D0047FE6C /* Security.framework in Frameworks */,
 				A8E132871EA4608100644161 /* ImageIO.framework in Frameworks */,
 				A8E132851EA4607700644161 /* GLKit.framework in Frameworks */,
@@ -1296,10 +1303,10 @@
 		D533ED461EA60AC800089DC9 /* TaskListModels */ = {
 			isa = PBXGroup;
 			children = (
-				D58446181EA9E0B300C136CD /* TaskList+CoreDataClass.h */,
-				D58446191EA9E0B300C136CD /* TaskList+CoreDataClass.m */,
-				D584461A1EA9E0B300C136CD /* TaskList+CoreDataProperties.h */,
-				D584461B1EA9E0B300C136CD /* TaskList+CoreDataProperties.m */,
+				D5A4F7DC1EADED30000B7B7D /* TaskList+CoreDataClass.h */,
+				D5A4F7DD1EADED30000B7B7D /* TaskList+CoreDataClass.m */,
+				D5A4F7DE1EADED30000B7B7D /* TaskList+CoreDataProperties.h */,
+				D5A4F7DF1EADED30000B7B7D /* TaskList+CoreDataProperties.m */,
 			);
 			path = TaskListModels;
 			sourceTree = "<group>";
@@ -1468,6 +1475,7 @@
 		D5865EC51E9F51F700E070D4 /* 3rd */ = {
 			isa = PBXGroup;
 			children = (
+				D5A4F7D61EADAD4A000B7B7D /* UMessage_Sdk_1.5.0a */,
 				D54D88871EA4A63800CC388A /* MBProgressHUD */,
 				D54D883F1EA49F3200CC388A /* MJRefresh */,
 				D5865EC61E9F51F700E070D4 /* AFNetworking */,
@@ -1574,6 +1582,7 @@
 		D5865F0D1E9F820D00E070D4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D5A4F7DA1EADAD7F000B7B7D /* UserNotifications.framework */,
 				D51C8A1B1EA5D60D0047FE6C /* Security.framework */,
 				A8E132881EA461B400644161 /* libz.tbd */,
 				A8E132861EA4608100644161 /* ImageIO.framework */,
@@ -1617,6 +1626,15 @@
 				D59E62401EA0768C00DFDE85 /* CalendarDataModel.m */,
 			);
 			path = CalendarData;
+			sourceTree = "<group>";
+		};
+		D5A4F7D61EADAD4A000B7B7D /* UMessage_Sdk_1.5.0a */ = {
+			isa = PBXGroup;
+			children = (
+				D5A4F7D71EADAD4A000B7B7D /* libUMessage_Sdk_1.5.0a.a */,
+				D5A4F7D81EADAD4A000B7B7D /* UMessage.h */,
+			);
+			path = UMessage_Sdk_1.5.0a;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1926,6 +1944,7 @@
 				D54D887E1EA49F3200CC388A /* NSBundle+MJRefresh.m in Sources */,
 				D54D887A1EA49F3200CC388A /* MJRefreshNormalHeader.m in Sources */,
 				D59E622E1EA0584B00DFDE85 /* StatisticalListCell.m in Sources */,
+				D5A4F7E11EADED30000B7B7D /* TaskList+CoreDataProperties.m in Sources */,
 				D5865EE31E9F520C00E070D4 /* NetWorkingMain.m in Sources */,
 				D58446221EA9E0C600C136CD /* ChatMessage+CoreDataClass.m in Sources */,
 				D58446161EA9E0A000C136CD /* DBWaiterInfo+CoreDataClass.m in Sources */,
@@ -1956,8 +1975,8 @@
 				D54D88861EA49FE500CC388A /* JDMJRefreshManager.m in Sources */,
 				D5865EE41E9F520C00E070D4 /* NetworkRequestManager.m in Sources */,
 				D54D887F1EA49F3200CC388A /* UIScrollView+MJExtension.m in Sources */,
+				D5A4F7E01EADED30000B7B7D /* TaskList+CoreDataClass.m in Sources */,
 				D54D886F1EA49F3200CC388A /* MJRefreshBackFooter.m in Sources */,
-				D584461C1EA9E0B300C136CD /* TaskList+CoreDataClass.m in Sources */,
 				D54D88811EA49F3200CC388A /* UIView+MJExtension.m in Sources */,
 				D59E62441EA07F7100DFDE85 /* CalendarCollectionCell.m in Sources */,
 				D58446231EA9E0C600C136CD /* ChatMessage+CoreDataProperties.m in Sources */,
@@ -1972,7 +1991,6 @@
 				9C1995231E9F0F5400AC34DB /* MainViewController.m in Sources */,
 				D54D80F31EA4901900CC388A /* AlterViewCustom.m in Sources */,
 				D54D88731EA49F3200CC388A /* MJRefreshAutoGifFooter.m in Sources */,
-				D584461D1EA9E0B300C136CD /* TaskList+CoreDataProperties.m in Sources */,
 				D59E623B1EA0742800DFDE85 /* CalendarDataUtil.m in Sources */,
 				A861B3181E9DD3FB002D61F0 /* main.m in Sources */,
 				D5865ED61E9F51F700E070D4 /* AFSecurityPolicy.m in Sources */,
@@ -2127,6 +2145,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/waiter/FMMapKit/Release-iphoneos",
+					"$(PROJECT_DIR)/waiter/3rd/UMessage_Sdk_1.5.0a",
 				);
 				OTHER_LDFLAGS = " -ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.suzic.waiter;
@@ -2153,6 +2172,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/waiter/FMMapKit/Release-iphoneos",
+					"$(PROJECT_DIR)/waiter/3rd/UMessage_Sdk_1.5.0a",
 				);
 				OTHER_LDFLAGS = " -ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.suzic.waiter;

@@ -8,7 +8,11 @@
 
 #import "AppDelegate.h"
 #import "DataBaseManager+Category.h"
-@interface AppDelegate ()
+#import "UMessage.h"
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 100000
+#import <UserNotifications/UserNotifications.h>
+#endif
+@interface AppDelegate ()<UNUserNotificationCenterDelegate>
 
 @end
 
@@ -17,19 +21,82 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    //设置 AppKey 及 LaunchOptions
+    [UMessage startWithAppkey:@"56f23615e0f55a8fc400053b" launchOptions:launchOptions httpsEnable:YES];
+#warning openDebugMode 开发模式，生成环境删除掉或制为NO
+    [UMessage openDebugMode:YES];
+    //注册通知
+    [UMessage registerForRemoteNotifications];
+
+    //iOS10必须加下面这段代码。
+    UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+    center.delegate=self;
+    UNAuthorizationOptions types10=UNAuthorizationOptionBadge|UNAuthorizationOptionAlert|UNAuthorizationOptionSound;
+    [center requestAuthorizationWithOptions:types10 completionHandler:^(BOOL granted, NSError * _Nullable error) {
+        if (granted) {
+            //点击允许
+            
+        } else {
+            //点击不允许
+            
+        }
+    }];
+#warning setLogEnabled 开发模式（打开日志，方便调试），生成环境删除掉或制为NO
+    [UMessage setLogEnabled:YES];
     
-    
+      
     return YES;
 }
 
-- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
-{
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken{
     NSString *device = [[[[deviceToken description] stringByReplacingOccurrencesOfString: @"<" withString: @""] stringByReplacingOccurrencesOfString: @">" withString: @""] stringByReplacingOccurrencesOfString: @" " withString: @""];
     
     // 保存参数到本地
     DBDeviceInfo * deviceInfo = [[DataBaseManager defaultInstance] getDeviceInfo];
     deviceInfo.deviceToken = device;
     [[DataBaseManager defaultInstance] saveContext];
+    
+    NSLog(@"deviceToken：--> %@",device);
+}
+//iOS10以前使用这个方法接收通知
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{
+    //关闭友盟自带的弹出框
+    [UMessage setAutoAlert:NO];
+    [UMessage sendClickReportForRemoteNotification:userInfo];
+    [UMessage didReceiveRemoteNotification:userInfo];
+    
+    NSLog(@"------11111");
+}
+
+//iOS10新增：处理前台收到通知的代理方法
+-(void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler{
+    NSDictionary * userInfo = notification.request.content.userInfo;
+    if([notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
+        //应用处于前台时的远程推送接受
+        //关闭U-Push自带的弹出框
+        [UMessage setAutoAlert:NO];
+        [UMessage sendClickReportForRemoteNotification:userInfo];
+        //必须加这句代码
+        [UMessage didReceiveRemoteNotification:userInfo];
+        NSLog(@"------222222");
+    }else{
+        //应用处于前台时的本地推送接受
+    }
+    //当应用处于前台时提示设置，需要哪个可以设置哪一个
+    completionHandler(UNNotificationPresentationOptionSound);
+}
+
+//iOS10新增：处理后台点击通知的代理方法
+-(void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)())completionHandler{
+    NSDictionary * userInfo = response.notification.request.content.userInfo;
+    if([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
+        //应用处于后台时的远程推送接受
+        //必须加这句代码
+        [UMessage didReceiveRemoteNotification:userInfo];
+        NSLog(@"------333333");
+    }else{
+        //应用处于后台时的本地推送接受
+    }
 }
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -45,6 +112,7 @@
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+    
 }
 
 

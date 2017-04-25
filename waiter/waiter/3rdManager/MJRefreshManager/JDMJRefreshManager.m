@@ -14,9 +14,9 @@
     MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingTarget:target refreshingAction:action];
     
     // 设置文字
-    [header setTitle:@"Pull down to refresh" forState:MJRefreshStateIdle];
-    [header setTitle:@"Release to refresh" forState:MJRefreshStatePulling];
-    [header setTitle:@"Loading ..." forState:MJRefreshStateRefreshing];
+    [header setTitle:@"下拉可以刷新" forState:MJRefreshStateIdle];
+    [header setTitle:@"松开立即刷新" forState:MJRefreshStatePulling];
+    [header setTitle:@"正在刷新数据中..." forState:MJRefreshStateRefreshing];
     
     tableView.mj_header = header;
     
@@ -29,9 +29,9 @@
     MJRefreshAutoNormalFooter * footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:target refreshingAction:action];
     
     // 设置文字
-    [footer setTitle:@"Click or drag up to refresh" forState:MJRefreshStateIdle];
-    [footer setTitle:@"Loading more ..." forState:MJRefreshStateRefreshing];
-    [footer setTitle:@"No more data" forState:MJRefreshStateNoMoreData];
+    [footer setTitle:@"点击或上拉加载更多" forState:MJRefreshStateIdle];
+    [footer setTitle:@"正在加载更多的数据..." forState:MJRefreshStateRefreshing];
+    [footer setTitle:@"已经全部加载完毕" forState:MJRefreshStateNoMoreData];
     
     // 设置字体
     //footer.stateLabel.font = [UIFont systemFontOfSize:17];

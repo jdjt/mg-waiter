@@ -2,7 +2,7 @@
 //  TaskList+CoreDataProperties.h
 //  waiter
 //
-//  Created by new on 2017/4/21.
+//  Created by new on 2017/4/24.
 //  Copyright © 2017年 liuchao. All rights reserved.
 //
 
@@ -46,8 +46,15 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, copy) NSString *waiterId;
 @property (nullable, nonatomic, copy) NSString *waiteTime;
 @property (nullable, nonatomic, copy) NSString *wImAccount;
-@property (nullable, nonatomic, retain) NSOrderedSet<ChatMessage *> *haschatmessage;
+@property (nullable, nonatomic, copy) NSString *causeTime;
+@property (nullable, nonatomic, copy) NSString *causePoint;
+@property (nullable, nonatomic, copy) NSString *customerName;
+@property (nullable, nonatomic, copy) NSString *customerDeviceId;
+@property (nullable, nonatomic, copy) NSString *waiterName;
+@property (nullable, nonatomic, copy) NSString *waiterDeviceId;
+@property (nullable, nonatomic, copy) NSString *produceTime;
 @property (nullable, nonatomic, retain) DBWaiterInfo *belongWaiterInfor;
+@property (nullable, nonatomic, retain) NSOrderedSet<ChatMessage *> *haschatmessage;
 
 @end
 

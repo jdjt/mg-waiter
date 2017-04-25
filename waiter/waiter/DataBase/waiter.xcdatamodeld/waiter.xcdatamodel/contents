@@ -38,9 +38,13 @@
         <attribute name="callContentHeight" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="causeCode" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="causeDesc" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="causePoint" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="causeTime" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="cImAccount" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="count" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="customerDeviceId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="customerId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="customerName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="finishEndTime" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="finishTime" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="floorNo" optional="YES" attributeType="String" syncable="YES"/>
@@ -52,6 +56,7 @@
         <attribute name="posionX" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="positionY" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="postionZ" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="produceTime" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="scoreMod" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="scoreTime" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="scoreVal" optional="YES" attributeType="String" syncable="YES"/>
@@ -59,17 +64,19 @@
         <attribute name="taskContent" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="taskStatus" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="taskTypeCustom" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="waiterDeviceId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="waiterEndTime" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="waiterId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="waiterName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="waiteTime" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="wImAccount" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="belongWaiterInfor" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DBWaiterInfo" inverseName="hasTaskList" inverseEntity="DBWaiterInfo" syncable="YES"/>
         <relationship name="haschatmessage" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="ChatMessage" inverseName="belongTaskList" inverseEntity="ChatMessage" syncable="YES"/>
     </entity>
     <elements>
+        <element name="ChatMessage" positionX="-83" positionY="198" width="128" height="58"/>
         <element name="DBDeviceInfo" positionX="180" positionY="-162" width="128" height="75"/>
         <element name="DBWaiterInfo" positionX="-560" positionY="-189" width="128" height="375"/>
-        <element name="TaskList" positionX="-263" positionY="-154" width="128" height="538"/>
-        <element name="ChatMessage" positionX="-83" positionY="198" width="128" height="58"/>
+        <element name="TaskList" positionX="-263" positionY="-154" width="128" height="645"/>
     </elements>
 </model>

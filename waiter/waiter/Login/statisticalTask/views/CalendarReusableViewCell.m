@@ -20,7 +20,7 @@
         [self addSubview:self.dateLabel];
         
         UIView * view = [[UIView alloc] initWithFrame:CGRectMake(0, frame.size.height - 1, kScreenWidth, 1)];
-        view.backgroundColor = [UIColor lightGrayColor];
+        view.backgroundColor = RGBA(208, 209, 213, 1);
         [self addSubview:view];
     }
     return self;

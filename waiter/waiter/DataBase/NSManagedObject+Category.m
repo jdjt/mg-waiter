@@ -31,9 +31,7 @@
     free(properties);
     return propertiesArray;
 }
-- (NSDictionary *)properties_aps
-
-{
+- (NSDictionary *)properties_aps{
     
     NSMutableDictionary *props = [NSMutableDictionary dictionary];
     
@@ -41,9 +39,7 @@
     
     objc_property_t *properties = class_copyPropertyList([self class], &outCount);
     
-    for (i = 0; i<outCount; i++)
-        
-    {
+    for (i = 0; i<outCount; i++){
         
         objc_property_t property = properties[i];
         

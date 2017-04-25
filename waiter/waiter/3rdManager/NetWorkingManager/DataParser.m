@@ -10,6 +10,7 @@
 #import "DataBaseManager+Category.h"
 #import "TaskList+CoreDataProperties.h"
 #import "DBWaiterInfo+CoreDataClass.h"
+#import "NSString+Addtions.h"
 @implementation DataParser
 +(id)parserUrl:(NSString*)ident fromData:(id)dict{
 
@@ -152,11 +153,50 @@
 +(NSMutableArray *)parsingWaiterTaskAfterAccept:(id)dict{
     NSMutableArray * dataArray = [[NSMutableArray alloc]init];
     
-#warning 服务员“开始接单”后获取进行中任务列表
+//#warning 服务员“开始接单”后获取进行中任务列表
+    NSDictionary * responseObject = dict;
     
+    NSArray * responseArray = responseObject[@"taskInfoList"];
+    
+    for (NSDictionary * dic in responseArray) {
+        [dataArray addObject:[DataParser getTaskListOrResponseDic:dic]];
+    }
+ 
     return dataArray;
 }
+//获取单个任务model,并判断数据库中是否存在
++(TaskList *)getTaskListOrResponseDic:(NSDictionary *)dic{
 
+    TaskList * taskModel = [[DataBaseManager defaultInstance] getTask:dic[@"taskCode"]];
+    if (taskModel == nil) {
+        taskModel = (TaskList *)[[DataBaseManager defaultInstance] insertIntoCoreData:@"TaskList"];
+    }
+    
+    [taskModel setValuesForKeysWithDictionary:dic];
+    
+    if ([dic objectForKey:@"cancelDetail"]) {
+        NSDictionary * canDic = [dic objectForKey:@"cancelDetail"];
+        [taskModel setValuesForKeysWithDictionary:canDic];
+    }
+    if ([dic objectForKey:@"scoreDetail"]) {
+        NSDictionary * canDic = [dic objectForKey:@"scoreDetail"];
+        [taskModel setValuesForKeysWithDictionary:canDic];
+    }
+    UIFont * font = [UIFont systemFontOfSize:15];
+    if (IS_LESS5) {
+        font = [UIFont systemFontOfSize:13];
+    }
+    CGFloat taskContentHerght = [NSString heightFromString:taskModel.taskContent withFont:font constraintToWidth:kScreenWidth - 107];
+    taskModel.callContentHeight = taskContentHerght < 15 ? 15 : taskContentHerght;
+    if (![taskModel.waiterId isEqualToString:[MySingleton sharedSingleton].waiterId]) {
+        DBWaiterInfo * waiterInfo = [[DataBaseManager defaultInstance] getWaiterInfo:taskModel.waiterId];
+        [waiterInfo addHasTaskListObject:taskModel];
+        
+    }
+
+    return taskModel;
+
+}
 //服务员上传位置信息
 +(NSNumber *)parsingWaiterUpdateMapInfo:(id)dict{
     NSNumber * value = [NSNumber numberWithBool:[DataParser parsingRetOk:dict]];
@@ -176,21 +216,42 @@
 +(NSMutableArray *)parsingWaiterGetTaskInfo:(id)dict{
     NSMutableArray * dataArray = [[NSMutableArray alloc]init];
     
-#warning 服务员获取任务信息
+//#warning 服务员获取任务信息
+    
+    NSDictionary * responseObject = dict;
+    
+    NSArray * responseArray = responseObject[@"taskInfoList"];
+    
+    for (NSDictionary * dic in responseArray) {
+        [dataArray addObject:[DataParser getTaskListOrResponseDic:dic]];
+    }
+
     
     return dataArray;
 }
 //服务员根据任务号获取任务信息
 +(TaskList *)parsingWaiterGetTaskInfoByTaskCode:(id)dict{
-    TaskList * taskListModel = [[TaskList alloc]init];
- #warning TaskList
+    TaskList * taskListModel = [DataParser getTaskListOrResponseDic:dict];
+ //#warning TaskList
     return taskListModel;
 }
 //服务员查询"历史任务统计"
 +(NSMutableArray *)parsingWaiterGetTaskInfoStatic:(id)dict{
     NSMutableArray * dataArray = [[NSMutableArray alloc]init];
     
-#warning TaskList
+//#warning TaskList
+    
+    NSDictionary * responseObject = dict;
+    
+    NSArray * responseArray = responseObject[@"taskInfoList"];
+    
+    for (NSDictionary * dic in responseArray) {
+        TaskList * taskModel = [DataParser getTaskListOrResponseDic:dic];
+        taskModel.pageNo = responseObject[@"pageNo"];
+        taskModel.count = responseObject[@"count"];
+        [dataArray addObject:taskModel];
+    }
+    
     return dataArray;
 }
 //服务员根据任务号获取聊天信息
