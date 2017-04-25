@@ -60,8 +60,6 @@
     [header setObject:@"JSON" forKey:@"mymhotel-ackDataType"];
     [header setObject:[NSString stringWithFormat:@"%@|%@",deviceInfo.deviceId,deviceInfo.deviceToken] forKey:@"mymhotel-sourceCode"];
     [header setObject:[NSString stringWithFormat:@"%f",timestamp] forKey:@"mymhotel-dateTime"];
-    [header setObject:@"no-cache" forKey:@"Pragma"];
-    [header setObject:@"no-cache" forKey:@"Cache-Control"];
     NSLog(@"header:-> %@",header);
     return header;
     
@@ -72,6 +70,7 @@
     _failure = failure;
     NSString * urlString = [NSString stringWithFormat:@"%@%@%@",REQUEST_HEAD_NORMAL,[MySingleton sharedSingleton].baseInterfaceUrl,url];
     NSLog(@"url:-> %@",urlString);
+    NSLog(@"params:~~~> %@",params);
    AFHTTPSessionManager * manager =  [NetWorkingMain POST_URL:urlString WithHttpHeader:[self getHttpHeader] WithParameters:params WithSuccess:^(id responseObject, NSURLSessionTask *task, NSDictionary *headers) {
        [self resultComplete:responseObject urltask:task URL:url Headers:headers];
     } failure:^(NSError *error, NSURLSessionTask *task, NSDictionary *headers) {
@@ -86,66 +85,54 @@
 }
 - (void)resultComplete:(id)responseObj urltask:(NSURLSessionTask *)task URL:(NSString *)url Headers:(NSDictionary *)headers{
     [self cancleRequestWithUrl:url];
-    NSLog(@"responseObj:-> %@",responseObj);
-    NSString * status = [headers objectForKey:@"mymhotel-status"];
-    NSString * message = [headers objectForKey:@"mymhotel-message"];
-    
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:responseObj options:NSJSONWritingPrettyPrinted error:nil];
+    NSString *jsonStr = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    NSLog(@"responseObj -- > %@",jsonStr);
     /* 无响应：网络连接失败 */
-    if (status == NULL)
-    {
-        self.failure(task, message, status, url);
+    if ([responseObj isKindOfClass:[NSError class]]) {
+        self.failure(task, @"网络连接错误",nil , url);
         return;
     }
-     
     
-    // 有网络连接
-    NSString *unicodeStr = [NSString stringWithCString:[message cStringUsingEncoding:NSISOLatin1StringEncoding] encoding:NSUTF8StringEncoding];
-    //NSLog(@"返回的数据:%@", unicodeStr);
+    NSString * headerStatus = [headers objectForKey:@"mymhotel-status"];
+    NSString * headerMessage = [headers objectForKey:@"mymhotel-message"];
+    NSString *unicodeMessage = [NSString stringWithCString:[headerMessage cStringUsingEncoding:NSISOLatin1StringEncoding] encoding:NSUTF8StringEncoding];
     
-    // 解析状态数据
-    NSArray* msgs = [unicodeStr componentsSeparatedByString:@"|"];
+    NSLog(@"headerStatus:%@---headerMessage:%@",headerStatus,unicodeMessage);
     
-    // 登录失败或者超时的情况，自动登录一次（之前的操作未完成，需要用户重新点击发起操作）
-    if ([msgs[0] isEqualToString:@"EBA013"]
-        ||[msgs[0] isEqualToString:@"TICKET_ISNULL"]
-        ||[msgs[0] isEqualToString:@"TOKEN_INVALID"]
-        ||[msgs[0] isEqualToString:@"UNLOGIN"]
-        ||[msgs[0] isEqualToString:@"EBF001"]
-        ||[msgs[0] isEqualToString:@"ES0003"]
-        ||[msgs[0] isEqualToString:@"ES0001"]) {
+    NSArray * messageArray = [unicodeMessage componentsSeparatedByString:@"|"];
+    
+    /* 网络数据失败 */
+    if ([headerStatus isEqualToString:@"ERR"]){
         
-        self.failure(task, msgs[1], status, url);
+        self.failure(task, messageArray.count > 1 ? messageArray[1] : @"", headerStatus, url);
         return;
     }
-    // 返回无数据的状态
-    if (msgs != nil && msgs.count > 1) {
-        NSRange range = [msgs[1] rangeOfString:@"不存在"];
-        if ([status isEqualToString:@"ERR"]
-            || [msgs[1]isEqualToString:@"无数据"]
-            || [msgs[1]isEqualToString:@"数据空"]
-            || range.length > 0) {
-            
-            self.failure(task, msgs[1], status, url);
-            return;
-        }
-    }else {
-        
-        self.failure(task, unicodeStr, status, url);
-    }
     
+    /* 有数据返回 */
     if (responseObj != nil) {
         @try
         {
             
+            
             id dataSource = [DataParser parserUrl:url fromData:responseObj];
             // 不需要返回数据的请求
             if ([dataSource isKindOfClass:[NSNumber class]]){
-               
-                self.failure(task, @"", status, url);
+                NSString * bodyMessage = [responseObj objectForKey:@"message"];
+                BOOL isSuccess = [dataSource boolValue];
+                
+                if (isSuccess) {
+                    //数据操作成功
+                    self.success(task, nil, bodyMessage, url);
+                }else{
+                    //数据操作失败
+                    self.failure(task, nil, bodyMessage, url);
+                }
+                
                 return;
             }
             // 有返回数据的请求
-             self.success(task, dataSource, @"", url);
+             self.success(task, dataSource, nil, url);
         }
         @catch (NSException *exception){
         }

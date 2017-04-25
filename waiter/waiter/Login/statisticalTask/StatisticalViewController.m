@@ -28,20 +28,47 @@
     [self updateData];
     
     
-//    DBDeviceInfo * deviceInfo = [[DataBaseManager defaultInstance] getDeviceInfo];
-//    NSMutableDictionary * params = [[NSMutableDictionary alloc]init];
-//    [params setObject:@"T001" forKey:@"empNo"];
-//    [params setObject:@"123456" forKey:@"password"];
-//    [params setObject:deviceInfo.deviceId forKey:@"deviceId"];
-//    [params setObject:deviceInfo.deviceToken forKey:@"deviceToken"];
-//    [params setObject:[NSNumber numberWithInt:2] forKey:@"deviceType"];
-//    
-//    [[NetworkRequestManager defaultManager] POST_Url:URI_WAITER_LOGIN Params:params withByUser:YES Success:^(NSURLSessionTask *task, id dataSource, NSString *message, NSString *url) {
-//        NSLog(@"dataSource:----%@",dataSource);
-//    } Failure:^(NSURLSessionTask *task, NSString *message, NSString *status, NSString *url) {
-//        NSLog(@"message:----=== %@",message);
-//    }];
+    DBDeviceInfo * deviceInfo = [[DataBaseManager defaultInstance] getDeviceInfo];
+    NSMutableDictionary * params = [[NSMutableDictionary alloc]init];
+    [params setObject:@"0000" forKey:@"empNo"];
+    [params setObject:@"4017" forKey:@"password"];
+    [params setObject:deviceInfo.deviceId forKey:@"deviceId"];
+    [params setObject:deviceInfo.deviceToken forKey:@"deviceToken"];
+    [params setObject:@"2" forKey:@"deviceType"];
     
+    [[NetworkRequestManager defaultManager] POST_Url:URI_WAITER_Login Params:params withByUser:YES Success:^(NSURLSessionTask *task, id dataSource, NSString *message, NSString *url) {
+        NSLog(@"dataSource --- %@",dataSource);
+        
+        
+        
+        NSMutableDictionary * params2 = [[NSMutableDictionary alloc]init];
+        [params setObject:@"1111" forKey:@"newPass"];
+        [params setObject:@"1111" forKey:@"newPassConfirm"];
+        
+        
+        
+        
+        [[NetworkRequestManager defaultManager] POST_Url:URI_WAITER_UpdatePass Params:params2 withByUser:YES Success:^(NSURLSessionTask *task, id dataSource, NSString *message, NSString *url) {
+            NSLog(@"dataSource --- %@",dataSource);
+        } Failure:^(NSURLSessionTask *task, NSString *message, NSString *status, NSString *url) {
+            NSLog(@"message --- %@",message);
+        }];
+        
+        
+        
+        
+        
+        
+        
+    } Failure:^(NSURLSessionTask *task, NSString *message, NSString *status, NSString *url) {
+        NSLog(@"message --- %@",message);
+    }];
+    
+    
+    
+    
+    
+  
     
     
     
@@ -83,6 +110,7 @@
         self.isSelectComplete = 1;
     }
     [self completeCancelButtonUpdateLayer];
+    [self allandIndependentandSystemButtonClick:self.allButton];
     [self.tableView reloadData];
 }
 -(void)completeCancelButtonUpdateLayer{

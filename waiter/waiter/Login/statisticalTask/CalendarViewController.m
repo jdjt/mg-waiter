@@ -85,7 +85,7 @@ static NSString * collectionReusableCell = @"reusableCell";
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section{
     if (section == self.dataArray.count-1)
-        return CGSizeMake(kScreenWidth, 200);
+        return CGSizeMake(kScreenWidth, 50);
     else
        return CGSizeMake(0, 0);
 
@@ -113,9 +113,13 @@ static NSString * collectionReusableCell = @"reusableCell";
         if ((model.year == self.selectYear) && (model.month == self.selecMonth) && (subModel.day == self.selectDay))  {
             cell.isSelect = YES;
         }
-            
-            
+        cell.dateLabel.textColor = [UIColor blackColor];
+        if (indexPath.section == self.dataArray.count - 1 && indexPath.row == model.details.count + model.firstday - 1) {
+            cell.dateLabel.textColor = RGBA(42, 160, 235, 1);
+        }
     }
+    
+    
     
     return cell;
 }

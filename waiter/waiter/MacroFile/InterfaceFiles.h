@@ -19,6 +19,7 @@
 // 服务员登录
 #define URI_WAITER_Login                      @"/hotelcallservice/waiter/login.json"
 
+
 // 服务员状态
 #define URI_WAITER_AttendStatus               @"/hotelcallservice/waiter/getWaiterAttendStatus.json"
 

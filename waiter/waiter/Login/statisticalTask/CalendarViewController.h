@@ -17,6 +17,7 @@
 // 日历所选择日期的字符串（xxxx-xx-xx）
 @property (copy, nonatomic) NSString * selectDateString;
 
+@property (weak, nonatomic) IBOutlet UIView *dateView;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UICollectionViewFlowLayout *collectionLayout;
 

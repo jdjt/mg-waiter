@@ -33,7 +33,8 @@
     if (self)
     {
         //_baseInterfaceUrl = @"mws.mymhotel.com";
-        _baseInterfaceUrl = @"rc-ws.mymhotel.com";
+        //_baseInterfaceUrl = @"rc-ws.mymhotel.com";
+        _baseInterfaceUrl = @"192.168.1.45:8181";
     }
     
     return self;
