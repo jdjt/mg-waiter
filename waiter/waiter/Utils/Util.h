@@ -101,4 +101,12 @@
  * @abstract 获取属性字符串
  */
 +(NSMutableAttributedString *)aVarietyOfColorFonts:(NSString *)text WithComPer:(NSString *)comStr WithColor:(UIColor *)color;
+/**
+ * @abstract 时间戳转为日期格式
+ */
++(NSString *)timeStampConversionStandardTime:(NSString *)timeStamp WithFormatter:(NSString *)formatter;
+/**
+ * @abstract 日期格式转为时间戳
+ */
++(NSString *)standardTimeConversionTimeStamp:(NSString *)standardTime WithFormatter:(NSString *)formatter;
 @end

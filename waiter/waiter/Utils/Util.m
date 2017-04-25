@@ -462,4 +462,30 @@ static NSString* macadd;
     }
     return str;
 }
+
+//时间戳转为日期格式
++(NSString *)timeStampConversionStandardTime:(NSString *)timeStamp WithFormatter:(NSString *)formatter{
+    //yyyy-MM-dd HH:mm:ss
+    if (formatter == nil) {
+        formatter = @"yyyy-MM-dd HH:mm:ss";
+    }
+    NSDate *date = [[NSDate alloc]initWithTimeIntervalSince1970:[timeStamp doubleValue]/1000];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:formatter];
+    return [dateFormatter stringFromDate:date];
+}
+//日期格式转为时间戳
++(NSString *)standardTimeConversionTimeStamp:(NSString *)standardTime WithFormatter:(NSString *)formatter{
+    
+    if (formatter == nil) {
+        formatter = @"yyyy-MM-dd HH:mm:ss";
+    }
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:formatter];
+    NSDate* date1 = [dateFormatter dateFromString:standardTime];
+    NSTimeInterval newTineSc = [date1 timeIntervalSince1970]*1000;
+    return [NSString stringWithFormat:@"%.0f",newTineSc];
+    
+}
 @end
