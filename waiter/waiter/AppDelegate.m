@@ -18,7 +18,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    
+    // 友盟即时通讯sdk初始化
+    [[SPKitExample sharedInstance] callThisInDidFinishLaunching];
     return YES;
 }
 
