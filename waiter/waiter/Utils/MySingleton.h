@@ -9,7 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface MySingleton : NSObject
+{
+    NSString * _waiterId;
 
+}
+@property (nonatomic, copy) NSString *waiterId;//服务员ID,登录时赋值
 + (MySingleton *)sharedSingleton;
 
 @property (nonatomic,copy) NSString *sessionId;
@@ -19,7 +23,6 @@
 @property (nonatomic,readonly) NSString *weixinInterfaceUrl;
 
 
-@property (nonatomic,copy) NSString *waiterId;//服务员ID,登录时赋值
 
 
 @end

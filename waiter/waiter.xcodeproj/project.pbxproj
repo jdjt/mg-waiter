@@ -13,14 +13,6 @@
 		9C1995341E9F1AB000AC34DB /* StatisticalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C1995331E9F1AB000AC34DB /* StatisticalViewController.m */; };
 		9C1995391E9F4BF000AC34DB /* TaskListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C1995381E9F4BF000AC34DB /* TaskListCell.m */; };
 		9C6F201E1EA0659300778094 /* FootCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C6F201D1EA0659300778094 /* FootCell.m */; };
-		9CD6376F1EADEAE10091C495 /* SecurityGuardSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CD637671EADEAE10091C495 /* SecurityGuardSDK.framework */; };
-		9CD637701EADEAE10091C495 /* SGMain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CD637681EADEAE10091C495 /* SGMain.framework */; };
-		9CD637711EADEAE10091C495 /* UTMini.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CD637691EADEAE10091C495 /* UTMini.framework */; };
-		9CD637721EADEAE10091C495 /* WXOpenIMSDKFMWK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CD6376A1EADEAE10091C495 /* WXOpenIMSDKFMWK.framework */; };
-		9CD637731EADEAE10091C495 /* WXOpenIMSDKResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9CD6376B1EADEAE10091C495 /* WXOpenIMSDKResource.bundle */; };
-		9CD637741EADEAE10091C495 /* WXOUIModule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CD6376C1EADEAE10091C495 /* WXOUIModule.framework */; };
-		9CD637751EADEAE10091C495 /* WXOUIModuleResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9CD6376D1EADEAE10091C495 /* WXOUIModuleResources.bundle */; };
-		9CD637761EADEAE10091C495 /* yw_1222.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9CD6376E1EADEAE10091C495 /* yw_1222.jpg */; };
 		9CD637781EADEBCE0091C495 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CD637771EADEBCE0091C495 /* UIKit.framework */; };
 		9CD6377A1EADEBD70091C495 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CD637791EADEBD70091C495 /* AddressBook.framework */; };
 		9CD6377C1EADEBE30091C495 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CD6377B1EADEBE20091C495 /* SystemConfiguration.framework */; };
@@ -300,6 +292,14 @@
 		D51C8A141EA5C47C0047FE6C /* DBDeviceInfo+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D51C8A0C1EA5C47C0047FE6C /* DBDeviceInfo+CoreDataProperties.m */; };
 		D51C8A191EA5D5C20047FE6C /* PDKeyChain.m in Sources */ = {isa = PBXBuildFile; fileRef = D51C8A181EA5D5C20047FE6C /* PDKeyChain.m */; };
 		D51C8A1C1EA5D60D0047FE6C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D51C8A1B1EA5D60D0047FE6C /* Security.framework */; };
+		D53577F91EAEEA7200465DA6 /* SecurityGuardSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D53577F11EAEEA7200465DA6 /* SecurityGuardSDK.framework */; };
+		D53577FA1EAEEA7200465DA6 /* SGMain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D53577F21EAEEA7200465DA6 /* SGMain.framework */; };
+		D53577FB1EAEEA7200465DA6 /* UTMini.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D53577F31EAEEA7200465DA6 /* UTMini.framework */; };
+		D53577FC1EAEEA7200465DA6 /* WXOpenIMSDKFMWK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D53577F41EAEEA7200465DA6 /* WXOpenIMSDKFMWK.framework */; };
+		D53577FD1EAEEA7200465DA6 /* WXOpenIMSDKResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D53577F51EAEEA7200465DA6 /* WXOpenIMSDKResource.bundle */; };
+		D53577FE1EAEEA7200465DA6 /* WXOUIModule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D53577F61EAEEA7200465DA6 /* WXOUIModule.framework */; };
+		D53577FF1EAEEA7200465DA6 /* WXOUIModuleResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D53577F71EAEEA7200465DA6 /* WXOUIModuleResources.bundle */; };
+		D53578001EAEEA7200465DA6 /* yw_1222.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D53577F81EAEEA7200465DA6 /* yw_1222.jpg */; };
 		D54164741EA7009D009D35C8 /* NSManagedObject+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = D54164731EA7009D009D35C8 /* NSManagedObject+Category.m */; };
 		D54D80F21EA4901900CC388A /* AlterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D54D80EB1EA4901900CC388A /* AlterViewController.m */; };
 		D54D80F31EA4901900CC388A /* AlterViewCustom.m in Sources */ = {isa = PBXBuildFile; fileRef = D54D80ED1EA4901900CC388A /* AlterViewCustom.m */; };
@@ -379,14 +379,6 @@
 		9C1995381E9F4BF000AC34DB /* TaskListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskListCell.m; sourceTree = "<group>"; };
 		9C6F201C1EA0659300778094 /* FootCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FootCell.h; sourceTree = "<group>"; };
 		9C6F201D1EA0659300778094 /* FootCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FootCell.m; sourceTree = "<group>"; };
-		9CD637671EADEAE10091C495 /* SecurityGuardSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SecurityGuardSDK.framework; sourceTree = "<group>"; };
-		9CD637681EADEAE10091C495 /* SGMain.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SGMain.framework; sourceTree = "<group>"; };
-		9CD637691EADEAE10091C495 /* UTMini.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UTMini.framework; sourceTree = "<group>"; };
-		9CD6376A1EADEAE10091C495 /* WXOpenIMSDKFMWK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WXOpenIMSDKFMWK.framework; sourceTree = "<group>"; };
-		9CD6376B1EADEAE10091C495 /* WXOpenIMSDKResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = WXOpenIMSDKResource.bundle; sourceTree = "<group>"; };
-		9CD6376C1EADEAE10091C495 /* WXOUIModule.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WXOUIModule.framework; sourceTree = "<group>"; };
-		9CD6376D1EADEAE10091C495 /* WXOUIModuleResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = WXOUIModuleResources.bundle; sourceTree = "<group>"; };
-		9CD6376E1EADEAE10091C495 /* yw_1222.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = yw_1222.jpg; sourceTree = "<group>"; };
 		9CD637771EADEBCE0091C495 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9CD637791EADEBD70091C495 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		9CD6377B1EADEBE20091C495 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -781,6 +773,14 @@
 		D51C8A181EA5D5C20047FE6C /* PDKeyChain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDKeyChain.m; sourceTree = "<group>"; };
 		D51C8A1A1EA5D5C70047FE6C /* waiter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = waiter.entitlements; sourceTree = "<group>"; };
 		D51C8A1B1EA5D60D0047FE6C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		D53577F11EAEEA7200465DA6 /* SecurityGuardSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SecurityGuardSDK.framework; sourceTree = "<group>"; };
+		D53577F21EAEEA7200465DA6 /* SGMain.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SGMain.framework; sourceTree = "<group>"; };
+		D53577F31EAEEA7200465DA6 /* UTMini.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UTMini.framework; sourceTree = "<group>"; };
+		D53577F41EAEEA7200465DA6 /* WXOpenIMSDKFMWK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WXOpenIMSDKFMWK.framework; sourceTree = "<group>"; };
+		D53577F51EAEEA7200465DA6 /* WXOpenIMSDKResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = WXOpenIMSDKResource.bundle; sourceTree = "<group>"; };
+		D53577F61EAEEA7200465DA6 /* WXOUIModule.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WXOUIModule.framework; sourceTree = "<group>"; };
+		D53577F71EAEEA7200465DA6 /* WXOUIModuleResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = WXOUIModuleResources.bundle; sourceTree = "<group>"; };
+		D53577F81EAEEA7200465DA6 /* yw_1222.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = yw_1222.jpg; sourceTree = "<group>"; };
 		D54164721EA7009D009D35C8 /* NSManagedObject+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObject+Category.h"; sourceTree = "<group>"; };
 		D54164731EA7009D009D35C8 /* NSManagedObject+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObject+Category.m"; sourceTree = "<group>"; };
 		D54D80EA1EA4901900CC388A /* AlterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlterViewController.h; sourceTree = "<group>"; };
@@ -917,12 +917,16 @@
 				9CD637881EADEC740091C495 /* CoreMotion.framework in Frameworks */,
 				9CD637861EADEC6E0091C495 /* AssetsLibrary.framework in Frameworks */,
 				9CD637841EADEC670091C495 /* AVFoundation.framework in Frameworks */,
+				D53577FC1EAEEA7200465DA6 /* WXOpenIMSDKFMWK.framework in Frameworks */,
 				9CD637821EADEC600091C495 /* AudioToolbox.framework in Frameworks */,
+				D53577FB1EAEEA7200465DA6 /* UTMini.framework in Frameworks */,
 				A8E132871EA4608100644161 /* ImageIO.framework in Frameworks */,
 				9CD637801EADEC520091C495 /* MobileCoreServices.framework in Frameworks */,
 				A8E130011EA45E2300644161 /* libresolv.tbd in Frameworks */,
 				A8E130091EA45E6A00644161 /* libsqlite3.0.tbd in Frameworks */,
 				A8E130031EA45E4900644161 /* libstdc++.6.0.9.tbd in Frameworks */,
+				D53577FA1EAEEA7200465DA6 /* SGMain.framework in Frameworks */,
+				D53577F91EAEEA7200465DA6 /* SecurityGuardSDK.framework in Frameworks */,
 				A8E132891EA461B400644161 /* libz.tbd in Frameworks */,
 				D5865F0F1E9F820D00E070D4 /* CoreData.framework in Frameworks */,
 				9CD6377E1EADEBF50091C495 /* CoreTelephony.framework in Frameworks */,
@@ -932,21 +936,17 @@
 				9CD637781EADEBCE0091C495 /* UIKit.framework in Frameworks */,
 				D5A4F7D91EADAD4A000B7B7D /* libUMessage_Sdk_1.5.0a.a in Frameworks */,
 				A8E132831EA4605400644161 /* libFMMapKit.a in Frameworks */,
-				9CD637711EADEAE10091C495 /* UTMini.framework in Frameworks */,
+				D53577FE1EAEEA7200465DA6 /* WXOUIModule.framework in Frameworks */,
 				A8E1300D1EA45E7C00644161 /* libxml2.tbd in Frameworks */,
 				A8E1300B1EA45E7400644161 /* libc++.tbd in Frameworks */,
-				9CD637721EADEAE10091C495 /* WXOpenIMSDKFMWK.framework in Frameworks */,
 				A8E130091EA45E6A00644161 /* libsqlite3.0.tbd in Frameworks */,
 				A8E130031EA45E4900644161 /* libstdc++.6.0.9.tbd in Frameworks */,
 				A8E130011EA45E2300644161 /* libresolv.tbd in Frameworks */,
 				D5A4F7DB1EADAD7F000B7B7D /* UserNotifications.framework in Frameworks */,
 				D51C8A1C1EA5D60D0047FE6C /* Security.framework in Frameworks */,
-				9CD6376F1EADEAE10091C495 /* SecurityGuardSDK.framework in Frameworks */,
 				A8E132851EA4607700644161 /* GLKit.framework in Frameworks */,
-				9CD637701EADEAE10091C495 /* SGMain.framework in Frameworks */,
 				A8E130051EA45E5000644161 /* OpenGLES.framework in Frameworks */,
 				D5865F111E9F821600E070D4 /* CoreText.framework in Frameworks */,
-				9CD637741EADEAE10091C495 /* WXOUIModule.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -989,21 +989,6 @@
 				9C6F201D1EA0659300778094 /* FootCell.m */,
 			);
 			path = Main;
-			sourceTree = "<group>";
-		};
-		9CD637661EADEAE10091C495 /* WXFrameworks */ = {
-			isa = PBXGroup;
-			children = (
-				9CD637671EADEAE10091C495 /* SecurityGuardSDK.framework */,
-				9CD637681EADEAE10091C495 /* SGMain.framework */,
-				9CD637691EADEAE10091C495 /* UTMini.framework */,
-				9CD6376A1EADEAE10091C495 /* WXOpenIMSDKFMWK.framework */,
-				9CD6376B1EADEAE10091C495 /* WXOpenIMSDKResource.bundle */,
-				9CD6376C1EADEAE10091C495 /* WXOUIModule.framework */,
-				9CD6376D1EADEAE10091C495 /* WXOUIModuleResources.bundle */,
-				9CD6376E1EADEAE10091C495 /* yw_1222.jpg */,
-			);
-			path = WXFrameworks;
 			sourceTree = "<group>";
 		};
 		9CD637891EADF0650091C495 /* Customize */ = {
@@ -1562,6 +1547,21 @@
 			path = TaskListModels;
 			sourceTree = "<group>";
 		};
+		D53577F01EAEEA7200465DA6 /* WXFrameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D53577F11EAEEA7200465DA6 /* SecurityGuardSDK.framework */,
+				D53577F21EAEEA7200465DA6 /* SGMain.framework */,
+				D53577F31EAEEA7200465DA6 /* UTMini.framework */,
+				D53577F41EAEEA7200465DA6 /* WXOpenIMSDKFMWK.framework */,
+				D53577F51EAEEA7200465DA6 /* WXOpenIMSDKResource.bundle */,
+				D53577F61EAEEA7200465DA6 /* WXOUIModule.framework */,
+				D53577F71EAEEA7200465DA6 /* WXOUIModuleResources.bundle */,
+				D53577F81EAEEA7200465DA6 /* yw_1222.jpg */,
+			);
+			path = WXFrameworks;
+			sourceTree = "<group>";
+		};
 		D54D80E91EA4901900CC388A /* CustomAlterView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1726,9 +1726,9 @@
 		D5865EC51E9F51F700E070D4 /* 3rd */ = {
 			isa = PBXGroup;
 			children = (
+				D53577F01EAEEA7200465DA6 /* WXFrameworks */,
 				9CD637891EADF0650091C495 /* Customize */,
 				9CD637AD1EADF0650091C495 /* MainLogic */,
-				9CD637661EADEAE10091C495 /* WXFrameworks */,
 				D5A4F7D61EADAD4A000B7B7D /* UMessage_Sdk_1.5.0a */,
 				D54D88871EA4A63800CC388A /* MBProgressHUD */,
 				D54D883F1EA49F3200CC388A /* MJRefresh */,
@@ -2000,8 +2000,8 @@
 				A8E130F31EA4600900644161 /* 110001.fmi in Resources */,
 				A8E131011EA4600900644161 /* 120009.fmi in Resources */,
 				A8E131B31EA4600900644161 /* 79980.fmap in Resources */,
-				9CD637751EADEAE10091C495 /* WXOUIModuleResources.bundle in Resources */,
 				A8E131521EA4600900644161 /* 190000.fmi in Resources */,
+				D53577FF1EAEEA7200465DA6 /* WXOUIModuleResources.bundle in Resources */,
 				A8E131BC1EA4600900644161 /* mangrove.sqlite in Resources */,
 				A8E131461EA4600900644161 /* 170001.fmi in Resources */,
 				A8E131331EA4600900644161 /* 150006.fmi in Resources */,
@@ -2025,6 +2025,7 @@
 				A8E130FF1EA4600900644161 /* 120007.fmi in Resources */,
 				A8E131BA1EA4600900644161 /* jiantou.png in Resources */,
 				A8E131081EA4600900644161 /* 130005.fmi in Resources */,
+				D53578001EAEEA7200465DA6 /* yw_1222.jpg in Resources */,
 				A8E131771EA4600900644161 /* hongmofang.fmi in Resources */,
 				A8E131BD1EA4600900644161 /* nodeassociation.json in Resources */,
 				A8E131051EA4600900644161 /* 130002.fmi in Resources */,
@@ -2043,7 +2044,6 @@
 				A8E131281EA4600900644161 /* 140300.fmi in Resources */,
 				A8E131681EA4600900644161 /* dianyinggongfangba.fmi in Resources */,
 				A8E131B21EA4600900644161 /* 70148.fmap in Resources */,
-				9CD637731EADEAE10091C495 /* WXOpenIMSDKResource.bundle in Resources */,
 				A8E1314F1EA4600900644161 /* 180003.fmi in Resources */,
 				A8E131421EA4600900644161 /* 160006.fmi in Resources */,
 				A8E1316D1EA4600900644161 /* Eves.fmi in Resources */,
@@ -2077,6 +2077,7 @@
 				A8E131B01EA4600900644161 /* 70146.fmap in Resources */,
 				A8E131A31EA4600900644161 /* veromoda.fmi in Resources */,
 				A8E130F61EA4600900644161 /* 110004.fmi in Resources */,
+				D53577FD1EAEEA7200465DA6 /* WXOpenIMSDKResource.bundle in Resources */,
 				A8E131301EA4600900644161 /* 150003.fmi in Resources */,
 				A8E130F71EA4600900644161 /* 110005.fmi in Resources */,
 				A8E131611EA4600900644161 /* coco.fmi in Resources */,
@@ -2175,7 +2176,6 @@
 				A8E131A51EA4600900644161 /* wq.fmi in Resources */,
 				A8E1313C1EA4600900644161 /* 160000.fmi in Resources */,
 				A8E1316F1EA4600900644161 /* fengmap.fmi in Resources */,
-				9CD637761EADEAE10091C495 /* yw_1222.jpg in Resources */,
 				A8E131221EA4600900644161 /* 140025.fmi in Resources */,
 				A8E131A71EA4600900644161 /* xiangjutietu.fmi in Resources */,
 				A8E1315B1EA4600900644161 /* bentu.fmi in Resources */,
@@ -2264,7 +2264,6 @@
 				D5A4F7E01EADED30000B7B7D /* TaskList+CoreDataClass.m in Sources */,
 				D54D886F1EA49F3200CC388A /* MJRefreshBackFooter.m in Sources */,
 				9CD637D21EADF0650091C495 /* SPKitExample.m in Sources */,
-				D584461C1EA9E0B300C136CD /* TaskList+CoreDataClass.m in Sources */,
 				D54D88811EA49F3200CC388A /* UIView+MJExtension.m in Sources */,
 				D59E62441EA07F7100DFDE85 /* CalendarCollectionCell.m in Sources */,
 				D58446231EA9E0C600C136CD /* ChatMessage+CoreDataProperties.m in Sources */,

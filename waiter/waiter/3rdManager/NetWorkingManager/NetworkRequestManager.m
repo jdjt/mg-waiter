@@ -53,7 +53,7 @@
     DBDeviceInfo * deviceInfo = [[DataBaseManager defaultInstance] getDeviceInfo];
     NSMutableDictionary* header = [[NSMutableDictionary alloc]init];
     [header setObject:@"application/json; charset=utf-8" forKey:@"Content-Type"];
-    [header setObject:@"" forKey:@"mymhotel-ticket"];
+    [header setObject:[MySingleton sharedSingleton].waiterId forKey:@"mymhotel-ticket"];
     [header setObject:@"1004" forKey:@"mymhotel-type"];
     [header setObject:@"1.0" forKey:@"mymhotel-version"];
     [header setObject:@"JSON" forKey:@"mymhotel-dataType"];
@@ -85,9 +85,7 @@
 }
 - (void)resultComplete:(id)responseObj urltask:(NSURLSessionTask *)task URL:(NSString *)url Headers:(NSDictionary *)headers{
     [self cancleRequestWithUrl:url];
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:responseObj options:NSJSONWritingPrettyPrinted error:nil];
-    NSString *jsonStr = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-    NSLog(@"responseObj -- > %@",jsonStr);
+    
     /* 无响应：网络连接失败 */
     if ([responseObj isKindOfClass:[NSError class]]) {
         self.failure(task, @"网络连接错误",nil , url);
@@ -109,6 +107,8 @@
         return;
     }
     
+    
+    NSLog(@"responseObj -- > %@",responseObj);
     /* 有数据返回 */
     if (responseObj != nil) {
         @try
@@ -132,7 +132,11 @@
                 return;
             }
             // 有返回数据的请求
-             self.success(task, dataSource, nil, url);
+            NSString * successMessage = messageArray.count > 1 ? messageArray[1] : @"";
+            if ([responseObj objectForKey:@"message"]) {
+                successMessage = [responseObj objectForKey:@"message"];
+            }
+             self.success(task, dataSource, successMessage, url);
         }
         @catch (NSException *exception){
         }
