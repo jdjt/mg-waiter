@@ -18,12 +18,17 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableTop;
 @property (weak, nonatomic) IBOutlet UIView *stateView;//状态View
 @property (weak, nonatomic) IBOutlet UIView *serviceTimeView;//服务时长View
+@property (weak, nonatomic) IBOutlet UILabel *empNoLabel;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *depNameLabel;
+
 @property (weak, nonatomic) IBOutlet UILabel *taskingLabel;
 
 @property (weak, nonatomic) IBOutlet UIButton *stateButton;//开始接单
 @property (assign, nonatomic) BOOL isWorkingState;
 @property (assign, nonatomic) BOOL ishiddenFoot;
 @property (weak, nonatomic) IBOutlet UIImageView *goMapImage;
+@property (strong, nonatomic) DBWaiterInfo * userInfo;
 
 @end
 
@@ -44,14 +49,18 @@
     UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(goMapImageAction:)];
     [self.goMapImage addGestureRecognizer:tap];
     
+    self.userInfo = [[DataBaseManager defaultInstance]getWaiterInfo:nil];
+    self.empNoLabel.text = self.userInfo.empNo;
+    self.nameLabel.text = self.userInfo.name;
+    self.depNameLabel.text = self.userInfo.depName;
     
+    [self NET_attendStatus];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    DBWaiterInfo * userInfo = [[DataBaseManager defaultInstance]getWaiterInfo:nil];
-    NSLog(@"%@",userInfo.depName);
+    
 }
 
 #pragma mark - tableview代理
@@ -111,20 +120,19 @@
 
 #pragma mark - 点击事件
 
+
 //开始接单和停止接单切换
 - (IBAction)workingStateButtonAction:(id)sender
 {
-    if (self.isWorkingState == NO)
+    if ([self.userInfo.workStatus isEqualToString:@"2"])
     {
-        self.stateButton.backgroundColor = [UIColor colorWithRed:242/255.0f green:69/255.0f blue:41/255.0f alpha:1];
-        [self.stateButton setTitle:@"停止接单" forState:UIControlStateNormal];
-        self.isWorkingState = YES;
+        UIColor * color = [UIColor colorWithRed:42/255.0f green:160/255.0f blue:235/255.0f alpha:1];
+        [self changeWaiterStatus:@"2" statusName:@"开始接单" color:color];
     }
     else
     {
-        self.stateButton.backgroundColor = [UIColor colorWithRed:42/255.0f green:160/255.0f blue:235/255.0f alpha:1];
-        [self.stateButton setTitle:@"开始接单" forState:UIControlStateNormal];
-        self.isWorkingState = NO;
+        UIColor * color = [UIColor colorWithRed:242/255.0f green:69/255.0f blue:41/255.0f alpha:1];
+        [self changeWaiterStatus:@"1" statusName:@"停止接单" color:color];
     }
 }
 
@@ -174,7 +182,61 @@
     [self presentViewController:alter animated:NO completion:nil];
 }
 
+//下班按钮
+- (IBAction)goLogin:(id)sender
+{
+    NSMutableDictionary * params = [[NSMutableDictionary alloc]init];
+    [[NetworkRequestManager defaultManager] POST_Url:URI_WAITER_Logout Params:params withByUser:YES Success:^(NSURLSessionTask *task, id dataSource, NSString *message, NSString *url) {
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"waiterId"];
+        [self performSegueWithIdentifier:@"goLogin" sender:nil];
+    } Failure:^(NSURLSessionTask *task, NSString *message, NSString *status, NSString *url) {
+        NSLog(@"message --- %@",message);
+    }];
+}
 
+
+#pragma mark - 方法
+- (void)changeWaiterStatus:(NSString *)waiterStatus statusName:(NSString *)statusName color:(UIColor *)color
+{
+    NSMutableDictionary * params = [[NSMutableDictionary alloc]init];
+    [params setObject:waiterStatus forKey:@"workStatus"];
+    
+    //切换服务员状态
+    [[NetworkRequestManager defaultManager] POST_Url:URI_WAITER_SetWorkStatus Params:params withByUser:YES Success:^(NSURLSessionTask *task, id dataSource, NSString *message, NSString *url) {
+        //获取服务员状态
+        [[NetworkRequestManager defaultManager] POST_Url:URI_WAITER_WaiterInfoByWaiterId Params:nil withByUser:YES Success:^(NSURLSessionTask *task, id dataSource, NSString *message, NSString *url) {
+            _userInfo = dataSource;
+            if ([_userInfo.workStatus isEqualToString:@"2"])
+            {
+                NSLog(@"可以获取任务列表了");
+                NSMutableDictionary * params = [[NSMutableDictionary alloc]init];
+                //获取任务列表
+                [[NetworkRequestManager defaultManager] POST_Url:URI_WAITER_TaskAfterAccept Params:params withByUser:YES Success:^(NSURLSessionTask *task, id dataSource, NSString *message, NSString *url) {
+                    NSLog(@"dataSource --- %@",dataSource);
+                } Failure:^(NSURLSessionTask *task, NSString *message, NSString *status, NSString *url) {
+                    NSLog(@"message --- %@",message);
+                }];
+            }
+            self.stateButton.backgroundColor = color;
+            [self.stateButton setTitle:statusName forState:UIControlStateNormal];
+        } Failure:^(NSURLSessionTask *task, NSString *message, NSString *status, NSString *url) {
+            NSLog(@"message --- %@",message);
+        }];
+    } Failure:^(NSURLSessionTask *task, NSString *message, NSString *status, NSString *url) {
+        NSLog(@"message --- %@",message);
+    }];
+}
+
+- (void)NET_attendStatus
+{
+    NSUserDefaults * user = [[NSUserDefaults standardUserDefaults] objectForKey:@"waiterId"];
+    if (user == nil)
+    {
+        [self performSegueWithIdentifier:@"goLogin" sender:nil];
+    }
+}
+
+#pragma mark - ------
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

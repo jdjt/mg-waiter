@@ -140,6 +140,19 @@
         }
         @catch (NSException *exception){
         }
+    }else{
+    
+        @try {
+            // 返回数据为nil
+            NSString * successMessage = messageArray.count > 1 ? messageArray[1] : @"";
+            if ([responseObj objectForKey:@"message"]) {
+                successMessage = [responseObj objectForKey:@"message"];
+            }
+            self.success(task, nil, successMessage, url);
+        } @catch (NSException *exception) {
+            
+        }
+    
     }
 
 }
