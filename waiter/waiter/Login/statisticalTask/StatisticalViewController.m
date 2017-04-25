@@ -14,8 +14,10 @@
 @interface StatisticalViewController ()<CalendarDelegate>
 // 日历所选择日期的字符串（xxxx-xx-xx）
 @property(nonatomic,copy)NSString * selectDateString;
-@property(nonatomic,assign)NSInteger isSelectComplete;//0已完成、1被取消
+@property(nonatomic,assign)NSInteger isSelectComplete;//8已完成、9被取消
 @property(nonatomic,assign)NSInteger isSelectSingle;//0全部、1自主，2系统
+@property(nonatomic,assign)NSInteger currentPage;//当前页码
+
 @property(nonatomic,strong)NSMutableArray * dataArray;
 @end
 
@@ -25,7 +27,34 @@
     [super viewDidLoad];
     [self setUIandDataConfig];
     [self creatTableView];
-    [self updateData];
+    
+    
+    
+    DBDeviceInfo * deve = [[DataBaseManager defaultInstance] getDeviceInfo];
+    
+    NSMutableDictionary * parmst = [[NSMutableDictionary alloc]init];
+    [parmst setValue:@"0000" forKey:@"empNo"];
+    [parmst setValue:@"111123" forKey:@"password"];
+    [parmst setValue:deve.deviceId forKey:@"deviceId"];
+    [parmst setValue:deve.deviceToken forKey:@"deviceToken"];
+   
+    [parmst setValue:@"2" forKey:@"deviceType"];
+    
+    [[NetworkRequestManager defaultManager] POST_Url:URI_WAITER_Login Params:parmst withByUser:YES Success:^(NSURLSessionTask *task, id dataSource, NSString *message, NSString *url) {
+        NSLog(@"message:---->  %@",message);
+        [self PullDownRefresh];
+    } Failure:^(NSURLSessionTask *task, NSString *message, NSString *status, NSString *url) {
+       NSLog(@"message:---->  %@",message);
+    }];
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -39,13 +68,14 @@
 }
 -(void)setUIandDataConfig{
     self.view.backgroundColor = RGBA(242, 242, 242, 1);
-    self.isSelectComplete = 0;
+    self.isSelectComplete = 8;
     self.isSelectSingle = 0;
     self.aisArray = [NSArray arrayWithObjects:self.allButton, self.independentButton,self.systemButton,nil];
      [self completeCancelButtonUpdateLayer];
      [self allandIndependentandSystemButtonUpdateLayer];
     self.dataArray = [[NSMutableArray alloc]init];
-
+    DBWaiterInfo * waiterInfo = [[DataBaseManager defaultInstance] getWaiterInfo:nil];
+    self.selectDateString = [Util timeStampConversionStandardTime:waiterInfo.nowTime WithFormatter:@"yyyy-MM-dd"];
 }
 -(void)updateViewConstraints{
     [super updateViewConstraints];
@@ -57,22 +87,22 @@
 }
 - (IBAction)completeCancelButtonClick:(UIButton *)sender {
     if (sender.tag == 0) {
-        if (self.isSelectComplete == 0) {
+        if (self.isSelectComplete == 8) {
             return;
         }
-        self.isSelectComplete = 0;
+        self.isSelectComplete = 8;
     }else{
-        if (self.isSelectComplete == 1) {
+        if (self.isSelectComplete == 9) {
             return;
         }
-        self.isSelectComplete = 1;
+        self.isSelectComplete = 9;
     }
     [self completeCancelButtonUpdateLayer];
     [self allandIndependentandSystemButtonClick:self.allButton];
-    [self.tableView reloadData];
+    
 }
 -(void)completeCancelButtonUpdateLayer{
-    if (self.isSelectComplete == 0) {
+    if (self.isSelectComplete == 8) {
         self.completeButton.backgroundColor = RGBA(42, 160, 235, 1);
         self.cancelButton.backgroundColor = RGBA(137, 137, 137, 1);
     }else{
@@ -104,6 +134,7 @@
     }
     
     [self allandIndependentandSystemButtonUpdateLayer];
+    [self PullDownRefresh];
 }
 -(void)allandIndependentandSystemButtonUpdateLayer{
      UIColor * boardColor = RGBA(208, 209, 213, 1);
@@ -120,25 +151,42 @@
         }
     }
 }
--(void)updateData{
-    TaskList * model =(TaskList *)  [[DataBaseManager defaultInstance] insertIntoCoreData:@"TaskList"];
-    model.isAnOpen = NO;
-    model.callContentHeight = 15;
-    [self.dataArray addObject:model];
-    
-    TaskList * model2 =(TaskList *)  [[DataBaseManager defaultInstance] insertIntoCoreData:@"TaskList"];
-    model2.isAnOpen = NO;
-    model2.callContentHeight = 15;
-    [self.dataArray addObject:model2];
-    
-    TaskList * model3 =(TaskList *)  [[DataBaseManager defaultInstance] insertIntoCoreData:@"TaskList"];
-    model3.isAnOpen = NO;
-    model3.callContentHeight = 15;
-    [self.dataArray addObject:model3];
-    [self.tableView reloadData];
+-(void)updateDataWithRef:(BOOL)isRef{
+    self.tableView.mj_footer.state = MJRefreshStateIdle;
+    NSMutableDictionary * parmst = [[NSMutableDictionary alloc]init];
+    [parmst setValue:[NSString stringWithFormat:@"%ld",(long)self.isSelectComplete] forKey:@"taskStatus"];
+    [parmst setValue:[NSString stringWithFormat:@"%@",[Util standardTimeConversionTimeStamp:[NSString stringWithFormat:@"%@ %@",self.selectDateString,@"00:00:00"] WithFormatter:nil]] forKey:@"taskStartTime"];
+    [parmst setValue:[NSString stringWithFormat:@"%@",[Util standardTimeConversionTimeStamp:[NSString stringWithFormat:@"%@ %@",self.selectDateString,@"23:59:59"] WithFormatter:nil]] forKey:@"taskEndTime"];
+    if (self.isSelectSingle != 0){
+    [parmst setValue:[NSString stringWithFormat:@"%ld",(long)self.isSelectSingle] forKey:@"acceptMode"];
+    }
+    [parmst setValue:[NSString stringWithFormat:@"%ld",(long)self.currentPage+1] forKey:@"pageNo"];
+    [parmst setValue:@"20" forKey:@"pageCount"];
+    [[NetworkRequestManager defaultManager] POST_Url:URI_WAITER_GetTaskInfoStatic Params:parmst withByUser:YES Success:^(NSURLSessionTask *task, id dataSource, NSString *message, NSString *url) {
+        if (isRef) {
+            [self.dataArray removeAllObjects];
+        }
+        [self.dataArray addObjectsFromArray:dataSource];
+        [self exchangemj_footerState];
+        [self.tableView reloadData];
+        [self.tableView.mj_footer endRefreshing];
+        [self.tableView.mj_header endRefreshing];
+    } Failure:^(NSURLSessionTask *task, NSString *message, NSString *status, NSString *url) {
+        [self exchangemj_footerState];
+        [self.tableView.mj_footer endRefreshing];
+        [self.tableView.mj_header endRefreshing];
+       
+    }];
     
     [self setOrderText:@"20" NoOrderText:@"20" SystemPushText:@"20" OrderRateText:@"20"];
 
+}
+//修改加载更多文字状态
+-(void)exchangemj_footerState{
+    TaskList * taskMode = self.dataArray.lastObject;
+    if (taskMode == nil || [taskMode.count intValue]/20 <= [taskMode.pageNo intValue]) {
+        self.tableView.mj_footer.state = MJRefreshStateNoMoreData;
+    }
 }
 #pragma mark 设置 接单、未接单、系统推送、接单率
 -(void)setOrderText:(NSString *)orderText NoOrderText:(NSString *)noOrderText SystemPushText:(NSString *)systemText OrderRateText:(NSString *)orderRateText{
@@ -159,12 +207,12 @@
 }
 #pragma mark - MJRefresh
 -(void)PullDownRefresh{
-    [self.tableView.mj_header endRefreshing];
-    self.tableView.mj_footer.state = MJRefreshStateIdle;
+    self.currentPage = 0;
+    [self updateDataWithRef:YES];
 }
 -(void)loadingMore{
-    [self.tableView.mj_footer endRefreshing];
-    self.tableView.mj_footer.state = MJRefreshStateNoMoreData;
+    self.currentPage++;
+    [self updateDataWithRef:NO];
 }
 #pragma mark - Table view data source
 
@@ -260,7 +308,7 @@
     NSLog(@"%@",dateString);
     self.selectDateString = dateString;
     self.timeLable.text = [NSString stringWithFormat:@"日期  %@",self.selectDateString];
-    
+    [self PullDownRefresh];
 }
 
 @end

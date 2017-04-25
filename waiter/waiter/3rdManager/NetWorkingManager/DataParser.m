@@ -147,6 +147,7 @@
 //服务员工作状态设置“开始接单”、“停止接单”
 +(NSNumber *)parsingWaiterSetWorkStatus:(id)dict{
     NSNumber * value = [NSNumber numberWithBool:[DataParser parsingRetOk:dict]];
+    
     return value;
 }
 //服务员“开始接单”后获取进行中任务列表
