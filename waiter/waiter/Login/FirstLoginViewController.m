@@ -10,6 +10,8 @@
 
 @interface FirstLoginViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *returnButton;
+@property (weak, nonatomic) IBOutlet UITextField *passWordTextField;
+@property (weak, nonatomic) IBOutlet UITextField *NPassWordTextField;
 
 @end
 
@@ -56,7 +58,25 @@
 
 - (IBAction)firstLoginButtonAction:(id)sender
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    if (_passWordTextField.text.length<6||_passWordTextField.text.length>18 || _NPassWordTextField.text.length<6||_NPassWordTextField.text.length>18) {
+        NSLog(@"请输入6-18位的密码");
+        return;
+    }
+    if (![_NPassWordTextField.text isEqualToString:_passWordTextField.text])
+    {
+        NSLog(@"两次密码不一致");
+        return;
+    }
+    NSMutableDictionary * params = [[NSMutableDictionary alloc]init];
+    [params setObject:_passWordTextField.text forKey:@"newPass"];
+    [params setObject:_NPassWordTextField.text forKey:@"newPassConfirm"];
+    
+    [[NetworkRequestManager defaultManager] POST_Url:URI_WAITER_UpdatePass Params:params withByUser:YES Success:^(NSURLSessionTask *task, id dataSource, NSString *message, NSString *url) {
+        NSLog(@"dataSource --- %@",dataSource);
+        [self dismissViewControllerAnimated:YES completion:nil];
+    } Failure:^(NSURLSessionTask *task, NSString *message, NSString *status, NSString *url) {
+        NSLog(@"message --- %@",message);
+    }];
 }
 
 /*

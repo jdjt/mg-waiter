@@ -43,11 +43,15 @@
     
     UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(goMapImageAction:)];
     [self.goMapImage addGestureRecognizer:tap];
+    
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    DBWaiterInfo * userInfo = [[DataBaseManager defaultInstance]getWaiterInfo:nil];
+    NSLog(@"%@",userInfo.depName);
 }
 
 #pragma mark - tableview代理

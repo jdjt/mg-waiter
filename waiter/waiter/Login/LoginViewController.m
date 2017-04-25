@@ -10,6 +10,9 @@
 
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
+@property (strong, nonatomic) DBWaiterInfo * user;
+@property (weak, nonatomic) IBOutlet UITextField *userIDField;
+@property (weak, nonatomic) IBOutlet UITextField *pwdField;
 
 @end
 
@@ -20,6 +23,9 @@
     self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     self.loginButton.layer.cornerRadius = 5.0f;
+    
+    self.userIDField.text = @"0000";
+    self.pwdField.text = @"111123";
 }
 
 - (void)didReceiveMemoryWarning {
@@ -58,7 +64,29 @@
 
 - (IBAction)loginPressed:(id)sender
 {
-    NSLog(@"进入第一次设置密码页面");
+    DBDeviceInfo * deviceInfo = [[DataBaseManager defaultInstance] getDeviceInfo];
+    NSMutableDictionary * params = [[NSMutableDictionary alloc]init];
+    [params setObject:self.userIDField.text forKey:@"empNo"];
+    [params setObject:self.pwdField.text forKey:@"password"];
+    [params setObject:deviceInfo.deviceId forKey:@"deviceId"];
+    [params setObject:deviceInfo.deviceToken forKey:@"deviceToken"];
+    [params setObject:@"2" forKey:@"deviceType"];
+    
+    [[NetworkRequestManager defaultManager] POST_Url:URI_WAITER_Login Params:params withByUser:YES Success:^(NSURLSessionTask *task, id dataSource, NSString *message, NSString *url) {
+        
+        _user = dataSource;
+        if ([_user.resetPwdDiv isEqualToString:@"0"])
+        {
+            [self performSegueWithIdentifier:@"goChangePassword" sender:nil];
+        }
+        else
+        {
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }
+
+    } Failure:^(NSURLSessionTask *task, NSString *message, NSString *status, NSString *url) {
+        NSLog(@"message --- %@",message);
+    }];
 }
 
 /*
