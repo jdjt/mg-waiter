@@ -158,7 +158,9 @@
     NSDictionary * responseObject = dict;
     
     NSArray * responseArray = responseObject[@"taskInfoList"];
-    
+    if (![responseArray isKindOfClass:[NSArray class]]) {
+        return dataArray;
+    }
     for (NSDictionary * dic in responseArray) {
         [dataArray addObject:[DataParser getTaskListOrResponseDic:dic]];
     }
@@ -222,12 +224,12 @@
     NSDictionary * responseObject = dict;
     
     NSArray * responseArray = responseObject[@"taskInfoList"];
-    
+    if (![responseArray isKindOfClass:[NSArray class]]) {
+        return dataArray;
+    }
     for (NSDictionary * dic in responseArray) {
         [dataArray addObject:[DataParser getTaskListOrResponseDic:dic]];
     }
-
-    
     return dataArray;
 }
 //服务员根据任务号获取任务信息
@@ -250,6 +252,8 @@
         TaskList * taskModel = [DataParser getTaskListOrResponseDic:dic];
         taskModel.pageNo = responseObject[@"pageNo"];
         taskModel.count = responseObject[@"count"];
+        taskModel.pushTaskCount = responseObject[@"pushTaskCount"];
+        taskModel.acceptTaskCount = responseObject[@"acceptTaskCount"];
         [dataArray addObject:taskModel];
     }
     

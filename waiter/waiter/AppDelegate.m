@@ -65,8 +65,7 @@
     [UMessage setAutoAlert:NO];
     [UMessage sendClickReportForRemoteNotification:userInfo];
     [UMessage didReceiveRemoteNotification:userInfo];
-    
-    NSLog(@"------11111");
+    [self userPushNotification:userInfo];
 }
 
 //iOS10新增：处理前台收到通知的代理方法
@@ -79,7 +78,7 @@
         [UMessage sendClickReportForRemoteNotification:userInfo];
         //必须加这句代码
         [UMessage didReceiveRemoteNotification:userInfo];
-        NSLog(@"------222222");
+        [self userPushNotification:userInfo];
     }else{
         //应用处于前台时的本地推送接受
     }
@@ -94,10 +93,15 @@
         //应用处于后台时的远程推送接受
         //必须加这句代码
         [UMessage didReceiveRemoteNotification:userInfo];
-        NSLog(@"------333333");
+        [self userPushNotification:userInfo];
     }else{
         //应用处于后台时的本地推送接受
     }
+}
+-(void)userPushNotification:(NSDictionary *)userInfo{
+
+    [[NSNotificationCenter defaultCenter] postNotificationName:WAITER_RECEIVED_PUSH object:nil userInfo:userInfo];
+
 }
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
