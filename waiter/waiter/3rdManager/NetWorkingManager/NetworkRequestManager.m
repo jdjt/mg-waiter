@@ -60,7 +60,7 @@
     [header setObject:@"JSON" forKey:@"mymhotel-ackDataType"];
     [header setObject:[NSString stringWithFormat:@"%@|%@",deviceInfo.deviceId,deviceInfo.deviceToken] forKey:@"mymhotel-sourceCode"];
     [header setObject:[NSString stringWithFormat:@"%f",timestamp] forKey:@"mymhotel-dateTime"];
-    NSLog(@"header:-> %@",header);
+    NSLog(@"httpHeader:```` > %@",header);
     return header;
     
 }
@@ -70,7 +70,7 @@
     _success = success;
     _failure = failure;
     NSString * urlString = [NSString stringWithFormat:@"%@%@%@",REQUEST_HEAD_NORMAL,[MySingleton sharedSingleton].baseInterfaceUrl,url];
-    NSLog(@"url:-> %@",urlString);
+    NSLog(@"url:--> %@",urlString);
     NSLog(@"params:~~~> %@",params);
    AFHTTPSessionManager * manager =  [NetWorkingMain POST_URL:urlString WithHttpHeader:[self getHttpHeader] WithParameters:params WithSuccess:^(id responseObject, NSURLSessionTask *task, NSDictionary *headers) {
        [self resultComplete:responseObject urltask:task URL:url Headers:headers];
@@ -97,7 +97,7 @@
     NSString * headerMessage = [headers objectForKey:@"mymhotel-message"];
     NSString *unicodeMessage = [NSString stringWithCString:[headerMessage cStringUsingEncoding:NSISOLatin1StringEncoding] encoding:NSUTF8StringEncoding];
     
-    NSLog(@"headerStatus:%@---headerMessage:%@",headerStatus,unicodeMessage);
+    NSLog(@"headerStatus:%@ --...--headerMessage:%@ ",headerStatus,unicodeMessage);
     
     NSArray * messageArray = [unicodeMessage componentsSeparatedByString:@"|"];
     

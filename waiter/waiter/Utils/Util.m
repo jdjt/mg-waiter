@@ -475,12 +475,10 @@ static NSString* macadd;
     return [dateFormatter stringFromDate:date];
 }
 //日期格式转为时间戳
-+(NSString *)standardTimeConversionTimeStamp:(NSString *)standardTime WithFormatter:(NSString *)formatter{
-    
++(NSString *)standardTimeConversionTimeStamp:(NSString *)standardTime WithFormatter:(NSString *)formatter{    
     if (formatter == nil) {
         formatter = @"yyyy-MM-dd HH:mm:ss";
     }
-    
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:formatter];
     NSDate* date1 = [dateFormatter dateFromString:standardTime];

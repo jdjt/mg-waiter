@@ -65,7 +65,11 @@
     
     
      self.serialNumberLable.text = model.taskCode;
-    #warning 无法判断是否系统派单
+    if ([model.comeFrom isEqualToString:@"1"])
+        self.orderFormLable.text = @"自主接单";
+    else
+        self.orderFormLable.text = @"管理员派单";
+ 
     //下单时间
     self.PlaceOrderTimeLable.text = model.produceTime;
     //接单时间

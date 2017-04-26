@@ -22,41 +22,18 @@
     self = [super init];
     
     if (self) {
-        UIImageView * imageView = [[UIImageView alloc]initWithFrame:self.view.bounds];
+       
         AppDelegate * app = (AppDelegate *)[UIApplication sharedApplication].delegate;
         //tagret 预留字段
-        UIImage * backImage = [self screenView:app.window];
-        imageView.image = backImage;
-        [self.view addSubview:imageView];
         
-        UIView * backView = [[UIView alloc]initWithFrame:self.view.bounds];
-        backView.backgroundColor = [UIColor colorWithRed:0/255.0f green:0/255.0f blue:0/255.0f alpha:0.8];
-        [self.view addSubview:backView];
+        self.backgroundColor = [UIColor colorWithRed:0/255.0f green:0/255.0f blue:0/255.0f alpha:0.8];
         
+        self.frame = app.window.bounds;
+        [app.window addSubview:self];
         
     }
     return self;
 
-}
-- (UIImage*)screenView:(UIView *)view{
-    CGRect rect = view.frame;
-    UIGraphicsBeginImageContext(rect.size);
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    [view.layer renderInContext:context];
-    UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    return img;
-}
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor whiteColor];
-    
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 +(AlterViewController *)alterViewOwner:(id)tagret WithAlterViewStype:(AlterViewStype)alterViewStype WithMessageCount:(NSString *)messageCount WithAlterViewBlock:(AlterViewFinis)alterViewBlock{
@@ -121,8 +98,8 @@
             break;
     }
 
-    view.center = CGPointMake(self.view.bounds.size.width/2, self.view.bounds.size.height/2);
-    [self.view addSubview:view];
+    view.center = CGPointMake(self.bounds.size.width/2, self.bounds.size.height/2);
+    [self addSubview:view];
     
 
 }
@@ -131,7 +108,7 @@
 -(UIView *)creatSystemStyleMessage:(NSString *)message leftTitle:(NSString *)leftCurrentTitle rightTitle:(NSString *)rightCurrentTitle{
 
     AlterViewSystem * view = [[[NSBundle mainBundle] loadNibNamed:@"AlterViewSystem" owner:self options:nil] lastObject];
-    view.frame = CGRectMake(0, 0, self.view.bounds.size.width - 70, 158);
+    view.frame = CGRectMake(0, 0, self.bounds.size.width - 70, 158);
     view.layer.masksToBounds = YES;
     view.layer.cornerRadius = 7;
     view.messageLabel.text = message;
@@ -148,7 +125,7 @@
 -(UIView *)creatCustomStyleMessage:(NSString *)message Title:(NSString *)currentTitle {
     
     AlterViewCustom * view = [[[NSBundle mainBundle] loadNibNamed:@"AlterViewCustom" owner:self options:nil] lastObject];
-    view.frame = CGRectMake(0, 0, self.view.bounds.size.width - 58, 188);
+    view.frame = CGRectMake(0, 0, self.bounds.size.width - 58, 188);
     view.layer.masksToBounds = YES;
     view.layer.cornerRadius = 7;
     view.messageLabel.text = message;
@@ -160,8 +137,7 @@
 }
 -(void)buttonClick:(UIButton *)button{
     self.alterViewBlock(button, button.tag);
-    [self dismissViewControllerAnimated:NO completion:nil];
-
+    [self removeFromSuperview];
 }
 
 @end

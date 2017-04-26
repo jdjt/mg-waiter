@@ -28,7 +28,7 @@ typedef NS_ENUM(NSInteger, AlterViewStype) {
  */
 typedef void (^AlterViewFinis)(UIButton * button , NSInteger buttonIndex);
 
-@interface AlterViewController : UIViewController
+@interface AlterViewController : UIView
 
 /**
  提示控件

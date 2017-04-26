@@ -13,7 +13,6 @@
 +(AFHTTPSessionManager *)POST_URL:(NSString *)url WithHttpHeader:(NSDictionary *)httpHeader WithParameters:(NSDictionary *)parameters WithSuccess:(NetWokingSuccess)success failure:(NetWokingFailure)failure{
     
     AFHTTPSessionManager * session = [NetWorkingMain managerHeader:httpHeader];
-   // AFHTTPSessionManager * session = [AFHTTPSessionManager manager];
 
     [session POST:url parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSHTTPURLResponse * response = (NSHTTPURLResponse *)task.response;
@@ -29,12 +28,12 @@
 // 设置请求对象参数
 +(AFHTTPSessionManager *)managerHeader:(NSDictionary *)header{
     
-     AFHTTPSessionManager * session = [AFHTTPSessionManager manager];
-        session.requestSerializer.timeoutInterval = 15;
-        session.requestSerializer = [AFJSONRequestSerializer serializer];
-        for (NSString * key in header) {
-            [session.requestSerializer setValue:header[key] forHTTPHeaderField:key];
-        }
+    AFHTTPSessionManager * session = [AFHTTPSessionManager manager];
+    session.requestSerializer.timeoutInterval = 15;
+    session.requestSerializer = [AFJSONRequestSerializer serializer];
+    for (NSString * key in header) {
+        [session.requestSerializer setValue:header[key] forHTTPHeaderField:key];
+    }
     session.requestSerializer.stringEncoding = NSUTF8StringEncoding;
         
     session.responseSerializer = [AFJSONResponseSerializer serializer];
