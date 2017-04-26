@@ -24,8 +24,8 @@
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     self.loginButton.layer.cornerRadius = 5.0f;
     
-//    self.userIDField.text = @"11111";
-//    self.pwdField.text = @"wwwwww";
+    self.userIDField.text = @"11111";
+    self.pwdField.text = @"wwwwww";
 }
 
 - (void)didReceiveMemoryWarning {
