@@ -24,8 +24,8 @@
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     self.loginButton.layer.cornerRadius = 5.0f;
     
-    self.userIDField.text = @"0000";
-    self.pwdField.text = @"111123";
+//    self.userIDField.text = @"11111";
+//    self.pwdField.text = @"wwwwww";
 }
 
 - (void)didReceiveMemoryWarning {
@@ -75,6 +75,7 @@
     [[NetworkRequestManager defaultManager] POST_Url:URI_WAITER_Login Params:params withByUser:YES Success:^(NSURLSessionTask *task, id dataSource, NSString *message, NSString *url) {
         
         _user = dataSource;
+        [[DataBaseManager defaultInstance] saveContext];
         if ([_user.resetPwdDiv isEqualToString:@"0"])
         {
             [self performSegueWithIdentifier:@"goChangePassword" sender:nil];
