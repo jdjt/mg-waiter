@@ -151,7 +151,7 @@
 //抢单按钮
 - (IBAction)pickSingleButtonAction:(id)sender
 {
-    AlterViewController * alter = [AlterViewController alterViewOwner:self WithAlterViewStype:AlterViewGrabSingle WithMessageCount:nil WithAlterViewBlock:^(UIButton *button, NSInteger buttonIndex) {
+    [AlterViewController alterViewOwner:self WithAlterViewStype:AlterViewGrabSingle WithMessageCount:nil WithAlterViewBlock:^(UIButton *button, NSInteger buttonIndex) {
         if (buttonIndex == 1)
         {
             self.serviceTimeView.hidden = NO;
@@ -169,14 +169,13 @@
         
     }];
     
-    [self presentViewController:alter animated:NO completion:nil];
 }
 
 //完成按钮
 - (IBAction)completeTaskButton:(id)sender
 {
     
-    AlterViewController * alter = [AlterViewController alterViewOwner:self WithAlterViewStype:AlterViewServiceComplete WithMessageCount:nil WithAlterViewBlock:^(UIButton *button, NSInteger buttonIndex) {
+    [AlterViewController alterViewOwner:self WithAlterViewStype:AlterViewServiceComplete WithMessageCount:nil WithAlterViewBlock:^(UIButton *button, NSInteger buttonIndex) {
         if (buttonIndex == 1)
         {
             self.ishiddenFoot = NO;
@@ -193,15 +192,14 @@
             [self.taskTableView reloadData];
         }
     }];
-    [self presentViewController:alter animated:NO completion:nil];
 }
 
 //下班按钮
 - (IBAction)goLogin:(id)sender
 {
-//    AlterViewController * alter = [AlterViewController alterViewOwner:self WithAlterViewStype:AlterViewLogoOut WithMessageCount:nil WithAlterViewBlock:^(UIButton *button, NSInteger buttonIndex) {
-//        if (buttonIndex == 1)
-//        {
+    [AlterViewController alterViewOwner:self WithAlterViewStype:AlterViewLogoOut WithMessageCount:nil WithAlterViewBlock:^(UIButton *button, NSInteger buttonIndex) {
+        if (buttonIndex == 1)
+        {
             NSMutableDictionary * params = [[NSMutableDictionary alloc]init];
             [[NetworkRequestManager defaultManager] POST_Url:URI_WAITER_Logout Params:params withByUser:YES Success:^(NSURLSessionTask *task, id dataSource, NSString *message, NSString *url) {
 //                self.userInfo.attendStatus = @"0";
@@ -211,9 +209,8 @@
             } Failure:^(NSURLSessionTask *task, NSString *message, NSString *status, NSString *url) {
                 NSLog(@"message --- %@",message);
             }];
-//        }
-//    }];
-//    [self presentViewController:alter animated:NO completion:nil];
+        }
+    }];
 }
 
 
