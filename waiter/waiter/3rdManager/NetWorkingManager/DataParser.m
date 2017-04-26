@@ -245,7 +245,9 @@
     NSDictionary * responseObject = dict;
     
     NSArray * responseArray = responseObject[@"taskInfoList"];
-    
+    if (![responseArray isKindOfClass:[NSArray class]]) {
+       return dataArray;
+    }
     for (NSDictionary * dic in responseArray) {
         TaskList * taskModel = [DataParser getTaskListOrResponseDic:dic];
         taskModel.pageNo = responseObject[@"pageNo"];
