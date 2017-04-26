@@ -37,7 +37,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:05:39" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uG9-VY-8ds" userLabel="workTimeLabel">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:05:39" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uG9-VY-8ds" userLabel="workTimeCalLabel">
                                                 <rect key="frame" x="113" y="19" width="127" height="32"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                                 <color key="textColor" red="0.16078431369999999" green="0.51764705879999995" blue="0.74117647060000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -458,6 +458,7 @@
                         <outlet property="tableTop" destination="2Om-cT-nTu" id="p2r-E0-3g8"/>
                         <outlet property="taskTableView" destination="YHr-Af-hmd" id="Gn0-4p-y8b"/>
                         <outlet property="taskingLabel" destination="fyG-RK-ZEf" id="kHH-Uz-3mq"/>
+                        <outlet property="workTimeCalLabel" destination="uG9-VY-8ds" id="STo-Yp-hym"/>
                         <segue destination="jLp-SQ-soZ" kind="modal" identifier="goLogin" id="3cw-HE-kfG"/>
                     </connections>
                 </viewController>

@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *empNoLabel;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *depNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *workTimeCalLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel *taskingLabel;
 
@@ -29,6 +30,14 @@
 @property (assign, nonatomic) BOOL ishiddenFoot;
 @property (weak, nonatomic) IBOutlet UIImageView *goMapImage;
 @property (strong, nonatomic) DBWaiterInfo * userInfo;
+
+@property (nonatomic, strong)NSTimer *timer;
+@property (nonatomic, assign)NSInteger second;
+@property (nonatomic, assign)NSInteger minute;
+@property (nonatomic, assign)NSInteger hour;
+@property (nonatomic, strong)NSString * secondString;
+@property (nonatomic, strong)NSString * minuteString;
+@property (nonatomic, strong)NSString * hourString;
 
 @end
 
@@ -49,18 +58,19 @@
     UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(goMapImageAction:)];
     [self.goMapImage addGestureRecognizer:tap];
     
-    self.userInfo = [[DataBaseManager defaultInstance]getWaiterInfo:nil];
-    self.empNoLabel.text = self.userInfo.empNo;
-    self.nameLabel.text = self.userInfo.name;
-    self.depNameLabel.text = self.userInfo.depName;
-    
-    [self NET_attendStatus];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    self.userInfo = [[DataBaseManager defaultInstance]getWaiterInfo:nil];
+    self.empNoLabel.text = self.userInfo.empNo;
+    self.nameLabel.text = self.userInfo.name;
+    self.depNameLabel.text = self.userInfo.depName;
+    self.workTimeCalLabel.text = self.userInfo.workTimeCal;
     
+    [self NET_attendStatus];
+    [self workingTime];
 }
 
 #pragma mark - tableview代理
@@ -120,7 +130,6 @@
 
 #pragma mark - 点击事件
 
-
 //开始接单和停止接单切换
 - (IBAction)workingStateButtonAction:(id)sender
 {
@@ -128,11 +137,13 @@
     {
         UIColor * color = [UIColor colorWithRed:42/255.0f green:160/255.0f blue:235/255.0f alpha:1];
         [self changeWaiterStatus:@"2" statusName:@"开始接单" color:color];
+        self.navigationItem.leftBarButtonItem.enabled = YES;
     }
     else
     {
         UIColor * color = [UIColor colorWithRed:242/255.0f green:69/255.0f blue:41/255.0f alpha:1];
         [self changeWaiterStatus:@"1" statusName:@"停止接单" color:color];
+        self.navigationItem.leftBarButtonItem.enabled = NO;
     }
 }
 
@@ -173,7 +184,6 @@
             self.stateButton.enabled = YES;
             [self.stateButton setTitle:@"停止接单" forState:UIControlStateNormal];
             self.stateButton.backgroundColor = [UIColor redColor];
-            
             self.stateView.backgroundColor = [UIColor colorWithRed:210/255.0f green:210/255.0f blue:210/255.0f alpha:1];
             self.taskingLabel.text = @"进行中任务（0）";
             [self.taskTableView reloadData];
@@ -185,13 +195,20 @@
 //下班按钮
 - (IBAction)goLogin:(id)sender
 {
-    NSMutableDictionary * params = [[NSMutableDictionary alloc]init];
-    [[NetworkRequestManager defaultManager] POST_Url:URI_WAITER_Logout Params:params withByUser:YES Success:^(NSURLSessionTask *task, id dataSource, NSString *message, NSString *url) {
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"waiterId"];
-        [self performSegueWithIdentifier:@"goLogin" sender:nil];
-    } Failure:^(NSURLSessionTask *task, NSString *message, NSString *status, NSString *url) {
-        NSLog(@"message --- %@",message);
+    AlterViewController * alter = [AlterViewController alterViewOwner:self WithAlterViewStype:AlterViewLogoOut WithMessageCount:nil WithAlterViewBlock:^(UIButton *button, NSInteger buttonIndex) {
+        if (buttonIndex == 1)
+        {
+            NSMutableDictionary * params = [[NSMutableDictionary alloc]init];
+            [[NetworkRequestManager defaultManager] POST_Url:URI_WAITER_Logout Params:params withByUser:YES Success:^(NSURLSessionTask *task, id dataSource, NSString *message, NSString *url) {
+                self.userInfo.attendStatus = @"0";
+                [[DataBaseManager defaultInstance] saveContext];
+                [self performSegueWithIdentifier:@"goLogin" sender:nil];
+            } Failure:^(NSURLSessionTask *task, NSString *message, NSString *status, NSString *url) {
+                NSLog(@"message --- %@",message);
+            }];
+        }
     }];
+    [self presentViewController:alter animated:NO completion:nil];
 }
 
 
@@ -206,6 +223,7 @@
         //获取服务员状态
         [[NetworkRequestManager defaultManager] POST_Url:URI_WAITER_WaiterInfoByWaiterId Params:nil withByUser:YES Success:^(NSURLSessionTask *task, id dataSource, NSString *message, NSString *url) {
             _userInfo = dataSource;
+            [[DataBaseManager defaultInstance] saveContext];
             if ([_userInfo.workStatus isEqualToString:@"2"])
             {
                 NSLog(@"可以获取任务列表了");
@@ -227,15 +245,50 @@
     }];
 }
 
+//检查上班状态 是否上班
 - (void)NET_attendStatus
 {
-    NSUserDefaults * user = [[NSUserDefaults standardUserDefaults] objectForKey:@"waiterId"];
-    if (user == nil)
+    NSLog(@"%@",self.userInfo.attendStatus);
+    if ([self.userInfo.attendStatus isEqualToString:@"0"] || self.userInfo.attendStatus == nil)
     {
         [self performSegueWithIdentifier:@"goLogin" sender:nil];
     }
 }
 
+//工作时长
+- (void)workingTime
+{
+    if (self.userInfo.workTimeCal != nil){
+        NSMutableString * time=[[NSMutableString alloc]initWithString:self.userInfo.workTimeCal];
+        NSLog(@"工作时长:%@",self.userInfo.workTimeCal);
+        NSRange ange={0,2};
+        _hourString=[time substringWithRange:ange];//截取时
+        NSRange ange1={3,2};
+        _minuteString =[time substringWithRange:ange1];//截取分
+        NSRange ange2={6,2};
+        _secondString =[time substringWithRange:ange2];//截取秒
+        self.second = [self.secondString integerValue];
+        self.minute = [self.minuteString integerValue];
+        self.hour   = [self.hourString integerValue];
+    }
+    
+    [self.timer invalidate];
+    self.timer = nil;
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timeHeadle) userInfo:nil repeats:YES];
+}
+
+- (void)timeHeadle{
+    self.second++;
+    if (self.second==60){
+        self.second=00;
+        self.minute++;
+        if (self.minute==60) {
+            self.minute=00;
+            self.hour++;
+        }
+    }
+    self.workTimeCalLabel.text = [NSString stringWithFormat:@"%02ld:%02ld:%02ld",(long)self.hour,(long)self.minute,(long)self.second];
+}
 #pragma mark - ------
 
 - (void)didReceiveMemoryWarning {
