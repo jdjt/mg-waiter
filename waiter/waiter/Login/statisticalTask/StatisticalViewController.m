@@ -27,25 +27,7 @@
     [super viewDidLoad];
     [self setUIandDataConfig];
     [self creatTableView];
-    
-    
-    
-    DBDeviceInfo * deve = [[DataBaseManager defaultInstance] getDeviceInfo];
-    
-    NSMutableDictionary * parmst = [[NSMutableDictionary alloc]init];
-    [parmst setValue:@"0000" forKey:@"empNo"];
-    [parmst setValue:@"111123" forKey:@"password"];
-    [parmst setValue:deve.deviceId forKey:@"deviceId"];
-    [parmst setValue:deve.deviceToken forKey:@"deviceToken"];
-    [parmst setValue:@"2" forKey:@"deviceType"];
-    
-    [[NetworkRequestManager defaultManager] POST_Url:URI_WAITER_Login Params:parmst withByUser:YES Success:^(NSURLSessionTask *task, id dataSource, NSString *message, NSString *url) {
-        NSLog(@"message:---->  %@",message);
-        [self completeCancelButtonClick:self.completeButton];
-    } Failure:^(NSURLSessionTask *task, NSString *message, NSString *status, NSString *url) {
-       NSLog(@"message:---->  %@",message);
-    }];
-    
+    [self completeCancelButtonClick:self.completeButton];
     
 }
 
@@ -61,7 +43,7 @@
      [self completeCancelButtonUpdateLayer];
      [self allandIndependentandSystemButtonUpdateLayer];
     self.dataArray = [[NSMutableArray alloc]init];
-    [self setOrderText:@"" NoOrderText:@"" SystemPushText:@"" OrderRateText:@""];
+    [self setOrderText:@"0" NoOrderText:@"0" SystemPushText:@"0" OrderRateText:@"0"];
     DBWaiterInfo * waiterInfo = [[DataBaseManager defaultInstance] getWaiterInfo:nil];
     self.selectDateString = [Util timeStampConversionStandardTime:waiterInfo.nowTime WithFormatter:@"yyyy-MM-dd"];
     self.timeLable.text = [NSString stringWithFormat:@"日期  %@",self.selectDateString];
