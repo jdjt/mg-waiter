@@ -70,4 +70,23 @@
 #define WAITER_RECEIVED_PUSH            @"waiterReceivedPush"
 
 
+//  入住客人发送任务
+#define CusAddTaskK                     @"cusAddTask"
+//  入住客人取消任务
+#define CusCancelTask                   @"cusCancelTask"
+//  入住客人确认任务 （完成)
+#define CusConfirmTaskComplete          @"cusConfirmTaskComplete"
+//  入住客人确认任务 (未完成)
+#define CusConfirmTaskUnComplete        @"cusConfirmTaskUnComplete"
+//  入住客人评价任务
+#define CusScoreTask                    @"cusScoreTask"
+//  服务员接受任务（不用）
+#define WaiterAcceptTask                @"waiterAcceptTask"
+//  服务员确认完成服务（不用）
+#define WaiterConfirmTaskComplete       @"waiterConfirmTaskComplete"
+//  管理员派单
+#define ManagerSendTask                 @"managerSendTask"
+//  管理员催单
+#define ManagerRemindeTask              @"managerRemindeTask"
+
 
