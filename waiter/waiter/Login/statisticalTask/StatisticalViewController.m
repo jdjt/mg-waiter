@@ -61,9 +61,10 @@
      [self completeCancelButtonUpdateLayer];
      [self allandIndependentandSystemButtonUpdateLayer];
     self.dataArray = [[NSMutableArray alloc]init];
-    [self setOrderText:@"" NoOrderText:@"" SystemPushText:@"" OrderRateText:@"2"];
+    [self setOrderText:@"" NoOrderText:@"" SystemPushText:@"" OrderRateText:@""];
     DBWaiterInfo * waiterInfo = [[DataBaseManager defaultInstance] getWaiterInfo:nil];
     self.selectDateString = [Util timeStampConversionStandardTime:waiterInfo.nowTime WithFormatter:@"yyyy-MM-dd"];
+    self.timeLable.text = [NSString stringWithFormat:@"日期  %@",self.selectDateString];
 }
 -(void)updateViewConstraints{
     [super updateViewConstraints];
@@ -96,6 +97,7 @@
         self.completeButton.backgroundColor = RGBA(137, 137, 137, 1);
     }
     
+       
 }
 #pragma mark  全部、自主、系统按钮点击
 - (IBAction)allandIndependentandSystemButtonClick:(UIButton *)sender {
@@ -273,12 +275,10 @@
 }
 -(void)cellChatRecordButton:(UIButton *)button{
     NSLog(@"%ld",(long)button.tag);
-    AlterViewController * alterVc = [AlterViewController alterViewOwner:self WithAlterViewStype:AlterViewGuestGiveUp WithMessageCount:nil WithAlterViewBlock:^(UIButton *button, NSInteger buttonIndex) {
+   [AlterViewController alterViewOwner:self WithAlterViewStype:AlterViewGuestGiveUp WithMessageCount:nil WithAlterViewBlock:^(UIButton *button, NSInteger buttonIndex) {
         
     }];
     
-    [self presentViewController:alterVc animated:NO completion:nil];
-   
 }
 
 #pragma mark - Navigation

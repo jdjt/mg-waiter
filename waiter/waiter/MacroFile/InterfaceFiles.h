@@ -11,7 +11,7 @@
 #endif /* InterfaceFiles_h */
 
 
-/* 接口文件 */
+/* http 接口文件 */
 
 #define REQUEST_HEAD_NORMAL @"http://"
 #define REQUEST_HEAD_SCREAT @"https://"
@@ -60,6 +60,14 @@
 #define URI_WAITER_GetMessageByTaskCode            @"/hotelcallservice/waiter/getMessageByTaskCode.json"
 
 
+
+
+
+
+/* push 接口文件 */
+
+//  收到推送通知Name
+#define WAITER_RECEIVED_PUSH            @"waiterReceivedPush"
 
 
 
