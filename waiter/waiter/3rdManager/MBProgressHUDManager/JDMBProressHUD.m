@@ -15,22 +15,24 @@ MBProgressHUD * hud;
 +(void)addJdHud{
 
     if (isShow == NO) {
+        isShow = YES;
         hud = [[MBProgressHUD alloc] initWithWindow:[UIApplication sharedApplication].delegate.window];
         [[UIApplication sharedApplication].delegate.window addSubview:hud];
         hud.labelText = @"正在加载";
         [hud hide:NO];
         [hud show:YES];
-        isShow = YES;        
+        
     }
 
 }
 +(void)removeJdHud{
     
     if (isShow){
+        isShow = NO;
         [hud hide:YES];
         [hud removeFromSuperview];
         hud = nil;
-        isShow = NO;
+        
     }
 
 }

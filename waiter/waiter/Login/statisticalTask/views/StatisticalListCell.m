@@ -33,7 +33,9 @@
 }
 -(void)setData:(TaskList *)model isSelectComplete:(NSInteger)isSelect{
 
-    if (isSelect == 1) {
+    
+    if (isSelect == 9) {
+        //已取消
         self.evaluationLable.hidden = YES;
         self.customScoreView.hidden = YES;
         self.isScoreLable.hidden = YES;
@@ -49,7 +51,38 @@
     else
        [self.triangleButton setImage:[UIImage imageNamed:@"toTriangle"] forState:UIControlStateNormal];
     
-    self.customScoreView.scoreValue = 3;
+    
+    if (isSelect == 8) {
+        //已完成
+        self.customScoreView.scoreValue = [model.scoreVal intValue];
+        //完成时间
+        self.canceTimeContentLable.text = model.finishTime;
+    }else{
+        //取消时间
+        self.canceTimeContentLable.text = model.causeTime;
+    }
+    
+    
+    
+     self.serialNumberLable.text = model.taskCode;
+    #warning 无法判断是否系统派单
+    //下单时间
+    self.PlaceOrderTimeLable.text = model.produceTime;
+    //接单时间
+    self.orderTimeLable.text = model.acceptTime;
+    //服务时长
+    self.serviceTimeLable.text = model.finishEndTime;
+    //客人姓名
+    self.guestNameLable.text = model.customerName;
+    //房间号码
+    #warning 无法判断房间号码
+    self.roomNumberLable.text = @"xxxxxx";
+    //呼叫区域
+    self.areaLable.text = model.areaName;
+    //呼叫区域
+    self.areaContentLable.text = model.taskContent;
+    
+    self.areaContentHeight.constant = model.callContentHeight;
 
 }
 @end

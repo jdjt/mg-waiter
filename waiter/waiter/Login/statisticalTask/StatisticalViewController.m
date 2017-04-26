@@ -37,27 +37,14 @@
     [parmst setValue:@"111123" forKey:@"password"];
     [parmst setValue:deve.deviceId forKey:@"deviceId"];
     [parmst setValue:deve.deviceToken forKey:@"deviceToken"];
-   
     [parmst setValue:@"2" forKey:@"deviceType"];
     
     [[NetworkRequestManager defaultManager] POST_Url:URI_WAITER_Login Params:parmst withByUser:YES Success:^(NSURLSessionTask *task, id dataSource, NSString *message, NSString *url) {
         NSLog(@"message:---->  %@",message);
-        [self PullDownRefresh];
+        [self completeCancelButtonClick:self.completeButton];
     } Failure:^(NSURLSessionTask *task, NSString *message, NSString *status, NSString *url) {
        NSLog(@"message:---->  %@",message);
     }];
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
 }
@@ -74,6 +61,7 @@
      [self completeCancelButtonUpdateLayer];
      [self allandIndependentandSystemButtonUpdateLayer];
     self.dataArray = [[NSMutableArray alloc]init];
+    [self setOrderText:@"" NoOrderText:@"" SystemPushText:@"" OrderRateText:@"2"];
     DBWaiterInfo * waiterInfo = [[DataBaseManager defaultInstance] getWaiterInfo:nil];
     self.selectDateString = [Util timeStampConversionStandardTime:waiterInfo.nowTime WithFormatter:@"yyyy-MM-dd"];
 }
@@ -87,14 +75,12 @@
 }
 - (IBAction)completeCancelButtonClick:(UIButton *)sender {
     if (sender.tag == 0) {
-        if (self.isSelectComplete == 8) {
-            return;
-        }
+        self.completeButton.userInteractionEnabled = NO;
+        self.cancelButton.userInteractionEnabled = YES;
         self.isSelectComplete = 8;
     }else{
-        if (self.isSelectComplete == 9) {
-            return;
-        }
+        self.completeButton.userInteractionEnabled = YES;
+        self.cancelButton.userInteractionEnabled = NO;
         self.isSelectComplete = 9;
     }
     [self completeCancelButtonUpdateLayer];
@@ -109,32 +95,21 @@
         self.cancelButton.backgroundColor = RGBA(42, 160, 235, 1);
         self.completeButton.backgroundColor = RGBA(137, 137, 137, 1);
     }
-
+    
 }
 #pragma mark  全部、自主、系统按钮点击
 - (IBAction)allandIndependentandSystemButtonClick:(UIButton *)sender {
     NSLog(@"%ld",(long)sender.tag);
     if (sender.tag == 0) {
-        if (self.isSelectSingle == 0) {
-            return;
-        }
         self.isSelectSingle = 0;
     }else if(sender.tag == 1){
-        if (self.isSelectSingle == 1) {
-            return;
-        }
         self.isSelectSingle = 1;
     }else{
-    
-        if (self.isSelectSingle == 2) {
-            return;
-        }
         self.isSelectSingle = 2;
-    
     }
     
     [self allandIndependentandSystemButtonUpdateLayer];
-    [self PullDownRefresh];
+    [self updateDataWithRef:YES withByUser:YES];
 }
 -(void)allandIndependentandSystemButtonUpdateLayer{
      UIColor * boardColor = RGBA(208, 209, 213, 1);
@@ -144,15 +119,18 @@
             button.backgroundColor = RGBA(42, 160, 235, 1);
             [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
             [button.layer setBorderColor:self.allButton.backgroundColor.CGColor];
+            button.userInteractionEnabled = NO;
         }else{
             button.backgroundColor = [UIColor whiteColor];
             [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
             [button.layer setBorderColor:boardColor.CGColor];
+            button.userInteractionEnabled = YES;
         }
     }
 }
--(void)updateDataWithRef:(BOOL)isRef{
-    self.tableView.mj_footer.state = MJRefreshStateIdle;
+-(void)updateDataWithRef:(BOOL)isRef withByUser:(BOOL)byUser{
+    if (isRef)
+        self.currentPage = 1;
     NSMutableDictionary * parmst = [[NSMutableDictionary alloc]init];
     [parmst setValue:[NSString stringWithFormat:@"%ld",(long)self.isSelectComplete] forKey:@"taskStatus"];
     [parmst setValue:[NSString stringWithFormat:@"%@",[Util standardTimeConversionTimeStamp:[NSString stringWithFormat:@"%@ %@",self.selectDateString,@"00:00:00"] WithFormatter:nil]] forKey:@"taskStartTime"];
@@ -160,25 +138,27 @@
     if (self.isSelectSingle != 0){
     [parmst setValue:[NSString stringWithFormat:@"%ld",(long)self.isSelectSingle] forKey:@"acceptMode"];
     }
-    [parmst setValue:[NSString stringWithFormat:@"%ld",(long)self.currentPage+1] forKey:@"pageNo"];
+    [parmst setValue:[NSString stringWithFormat:@"%ld",(long)self.currentPage] forKey:@"pageNo"];
     [parmst setValue:@"20" forKey:@"pageCount"];
-    [[NetworkRequestManager defaultManager] POST_Url:URI_WAITER_GetTaskInfoStatic Params:parmst withByUser:YES Success:^(NSURLSessionTask *task, id dataSource, NSString *message, NSString *url) {
+    [[NetworkRequestManager defaultManager] POST_Url:URI_WAITER_GetTaskInfoStatic Params:parmst withByUser:byUser Success:^(NSURLSessionTask *task, id dataSource, NSString *message, NSString *url) {
         if (isRef) {
             [self.dataArray removeAllObjects];
         }
         [self.dataArray addObjectsFromArray:dataSource];
+        
+        [self.tableView.mj_footer endRefreshing];
+        [self.tableView.mj_header endRefreshing];
         [self exchangemj_footerState];
         [self.tableView reloadData];
-        [self.tableView.mj_footer endRefreshing];
-        [self.tableView.mj_header endRefreshing];
     } Failure:^(NSURLSessionTask *task, NSString *message, NSString *status, NSString *url) {
-        [self exchangemj_footerState];
         [self.tableView.mj_footer endRefreshing];
         [self.tableView.mj_header endRefreshing];
+        [self exchangemj_footerState];
+        [self systemAlterView:message];
        
     }];
     
-    [self setOrderText:@"20" NoOrderText:@"20" SystemPushText:@"20" OrderRateText:@"20"];
+    
 
 }
 //修改加载更多文字状态
@@ -186,6 +166,13 @@
     TaskList * taskMode = self.dataArray.lastObject;
     if (taskMode == nil || [taskMode.count intValue]/20 <= [taskMode.pageNo intValue]) {
         self.tableView.mj_footer.state = MJRefreshStateNoMoreData;
+    }else{
+        self.tableView.mj_footer.state = MJRefreshStateIdle;
+    }
+    
+    if (taskMode != nil) {
+        int noOrder = taskMode.pushTaskCount.intValue - taskMode.acceptTaskCount.intValue;
+       [self setOrderText:taskMode.acceptTaskCount NoOrderText:[NSString stringWithFormat:@"%d",noOrder] SystemPushText:taskMode.pushTaskCount OrderRateText:[NSString stringWithFormat:@"%d",taskMode.acceptTaskCount.intValue / taskMode.pushTaskCount.intValue]];
     }
 }
 #pragma mark 设置 接单、未接单、系统推送、接单率
@@ -194,7 +181,11 @@
     self.orderLable.attributedText = [Util aVarietyOfColorFonts:[NSString stringWithFormat:@"接单任务数  %@条",orderText] WithComPer:orderText WithColor:[UIColor redColor]];
     self.noOrderLable.attributedText = [Util aVarietyOfColorFonts:[NSString stringWithFormat:@"未接单任务数  %@条",noOrderText] WithComPer:noOrderText WithColor:[UIColor redColor]];
     self.systemPushLable.attributedText = [Util aVarietyOfColorFonts:[NSString stringWithFormat:@"推送任务数  %@条",systemText] WithComPer:systemText WithColor:[UIColor redColor]];
-    self.orderRateLable.attributedText = [Util aVarietyOfColorFonts:[NSString stringWithFormat:@"接单率  %@%@",orderRateText,@"%"] WithComPer:[NSString stringWithFormat:@"%@%@",orderRateText,@"%"] WithColor:[UIColor redColor]];
+    NSString * percent = @"%";
+    if ([orderRateText isEqualToString:@""]) {
+        percent = @"";
+    }
+    self.orderRateLable.attributedText = [Util aVarietyOfColorFonts:[NSString stringWithFormat:@"接单率  %@%@",orderRateText,percent] WithComPer:[NSString stringWithFormat:@"%@%@",orderRateText,percent] WithColor:[UIColor redColor]];
 }
 -(void)creatTableView{
     self.tableView.delegate = self;
@@ -207,12 +198,11 @@
 }
 #pragma mark - MJRefresh
 -(void)PullDownRefresh{
-    self.currentPage = 0;
-    [self updateDataWithRef:YES];
+    [self updateDataWithRef:YES withByUser:NO];
 }
 -(void)loadingMore{
     self.currentPage++;
-    [self updateDataWithRef:NO];
+    [self updateDataWithRef:NO withByUser:NO];
 }
 #pragma mark - Table view data source
 
@@ -247,12 +237,12 @@
     
     if (listModel.isAnOpen) {
         NSInteger cellHeight = 263;
-        if (self.isSelectComplete == 0)
+        if (self.isSelectComplete == 8)
         cellHeight = 280;
         return cellHeight + listModel.callContentHeight;
     }else{
     
-        return self.isSelectComplete == 0 ? 65 : 48;
+        return self.isSelectComplete == 8 ? 65 : 48;
     }
  
 }
@@ -288,6 +278,7 @@
     }];
     
     [self presentViewController:alterVc animated:NO completion:nil];
+   
 }
 
 #pragma mark - Navigation
@@ -308,7 +299,15 @@
     NSLog(@"%@",dateString);
     self.selectDateString = dateString;
     self.timeLable.text = [NSString stringWithFormat:@"日期  %@",self.selectDateString];
-    [self PullDownRefresh];
+    [self updateDataWithRef:YES withByUser:YES];
 }
+-(void)systemAlterView:(NSString *)message{
 
+    UIAlertController * alert = [UIAlertController alertControllerWithTitle:nil message:message preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction * action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    }];
+    [alert addAction:action];
+    [self presentViewController:alert animated:YES completion:nil];
+
+}
 @end

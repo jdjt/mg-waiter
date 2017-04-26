@@ -10,7 +10,7 @@
 #import "NetWorkingMain.h"
 #import "DataParser.h"
 #import "DataBaseManager+Category.h"
-
+#import "JDMBProressHUD.h"
 @interface NetworkRequestManager ()
 
 @property (nonatomic,strong) NSMutableDictionary * managerDictionary;
@@ -66,6 +66,7 @@
 }
 //发起网络请求
 -(void)POST_Url:(NSString *)url Params:(NSDictionary *)params withByUser:(BOOL)byUser Success:(ResponseSuccess)success Failure:(ResponseFailure)failure{
+    if (byUser)[JDMBProressHUD addJdHud];
     _success = success;
     _failure = failure;
     NSString * urlString = [NSString stringWithFormat:@"%@%@%@",REQUEST_HEAD_NORMAL,[MySingleton sharedSingleton].baseInterfaceUrl,url];
@@ -85,7 +86,7 @@
 }
 - (void)resultComplete:(id)responseObj urltask:(NSURLSessionTask *)task URL:(NSString *)url Headers:(NSDictionary *)headers{
     [self cancleRequestWithUrl:url];
-    
+    [JDMBProressHUD removeJdHud];
     /* 无响应：网络连接失败 */
     if ([responseObj isKindOfClass:[NSError class]]) {
         self.failure(task, @"网络连接错误",nil , url);
@@ -110,11 +111,13 @@
     
     NSLog(@"responseObj -- > %@",responseObj);
     /* 有数据返回 */
+    NSString * successMessage = messageArray.count > 1 ? messageArray[1] : @"";//提示语
+    if ([responseObj objectForKey:@"message"]) {
+        successMessage = [responseObj objectForKey:@"message"];
+    }
     if (responseObj != nil) {
         @try
         {
-            
-            
             id dataSource = [DataParser parserUrl:url fromData:responseObj];
             // 不需要返回数据的请求
             if ([dataSource isKindOfClass:[NSNumber class]]){
@@ -132,26 +135,14 @@
                 return;
             }
             // 有返回数据的请求
-            NSString * successMessage = messageArray.count > 1 ? messageArray[1] : @"";
-            if ([responseObj objectForKey:@"message"]) {
-                successMessage = [responseObj objectForKey:@"message"];
-            }
              self.success(task, dataSource, successMessage, url);
         }
         @catch (NSException *exception){
         }
     }else{
-    
-        @try {
-            // 返回数据为nil
-            NSString * successMessage = messageArray.count > 1 ? messageArray[1] : @"";
-            if ([responseObj objectForKey:@"message"]) {
-                successMessage = [responseObj objectForKey:@"message"];
-            }
-            self.success(task, nil, successMessage, url);
-        } @catch (NSException *exception) {
-            
-        }
+        // 返回数据为nil
+        self.success(task, nil, successMessage, url);
+        
     
     }
 

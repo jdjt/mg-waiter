@@ -32,6 +32,7 @@
         <relationship name="hasTaskList" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="TaskList" inverseName="belongWaiterInfor" inverseEntity="TaskList" syncable="YES"/>
     </entity>
     <entity name="TaskList" representedClassName="TaskList" syncable="YES">
+        <attribute name="acceptTaskCount" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="acceptTime" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="areaCode" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="areaName" optional="YES" attributeType="String" syncable="YES"/>
@@ -41,6 +42,7 @@
         <attribute name="causePoint" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="causeTime" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="cImAccount" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="comeFrom" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="count" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="customerDeviceId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="customerId" optional="YES" attributeType="String" syncable="YES"/>
@@ -57,6 +59,7 @@
         <attribute name="positionY" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="postionZ" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="produceTime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pushTaskCount" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="scoreMod" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="scoreTime" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="scoreVal" optional="YES" attributeType="String" syncable="YES"/>
@@ -77,6 +80,6 @@
         <element name="ChatMessage" positionX="-83" positionY="198" width="128" height="58"/>
         <element name="DBDeviceInfo" positionX="180" positionY="-162" width="128" height="75"/>
         <element name="DBWaiterInfo" positionX="-560" positionY="-189" width="128" height="375"/>
-        <element name="TaskList" positionX="-263" positionY="-154" width="128" height="645"/>
+        <element name="TaskList" positionX="-263" positionY="-154" width="128" height="690"/>
     </elements>
 </model>

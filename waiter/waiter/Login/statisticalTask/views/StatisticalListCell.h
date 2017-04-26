@@ -19,7 +19,7 @@
 @property (weak, nonatomic) IBOutlet CustomScoreView *customScoreView;//评星
 
 @property (weak, nonatomic) IBOutlet UILabel *isScoreLable;//已评价
-@property (weak, nonatomic) IBOutlet UILabel *canceTimeLable;//完成时间文字
+@property (weak, nonatomic) IBOutlet UILabel *canceTimeLable;//取消时间文字
 @property (weak, nonatomic) IBOutlet UILabel *canceTimeContentLable;//取消时间
 @property (weak, nonatomic) IBOutlet UILabel *serialNumberLable;//编号
 

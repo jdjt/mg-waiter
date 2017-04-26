@@ -20,6 +20,7 @@
 @dynamic callContentHeight;
 @dynamic causeCode;
 @dynamic causeDesc;
+@dynamic comeFrom;
 @dynamic cImAccount;
 @dynamic count;
 @dynamic customerId;
@@ -54,5 +55,6 @@
 @dynamic produceTime;
 @dynamic belongWaiterInfor;
 @dynamic haschatmessage;
-
+@dynamic pushTaskCount;
+@dynamic acceptTaskCount;
 @end

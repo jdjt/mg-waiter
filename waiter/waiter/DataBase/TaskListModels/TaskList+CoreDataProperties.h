@@ -22,6 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, copy) NSString *causeCode;
 @property (nullable, nonatomic, copy) NSString *causeDesc;
 @property (nullable, nonatomic, copy) NSString *cImAccount;
+@property (nullable, nonatomic, copy) NSString *comeFrom;
 @property (nullable, nonatomic, copy) NSString *count;
 @property (nullable, nonatomic, copy) NSString *customerId;
 @property (nullable, nonatomic, copy) NSString *finishEndTime;
@@ -53,6 +54,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, copy) NSString *waiterName;
 @property (nullable, nonatomic, copy) NSString *waiterDeviceId;
 @property (nullable, nonatomic, copy) NSString *produceTime;
+@property (nullable, nonatomic, copy) NSString *pushTaskCount;
+@property (nullable, nonatomic, copy) NSString *acceptTaskCount;
 @property (nullable, nonatomic, retain) DBWaiterInfo *belongWaiterInfor;
 @property (nullable, nonatomic, retain) NSOrderedSet<ChatMessage *> *haschatmessage;
 
