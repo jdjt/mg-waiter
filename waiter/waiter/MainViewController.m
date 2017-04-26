@@ -64,13 +64,14 @@
 {
     [super viewWillAppear:animated];
     self.userInfo = [[DataBaseManager defaultInstance]getWaiterInfo:nil];
+    NSLog(@"time : %@",self.userInfo.workTimeCal);
     self.empNoLabel.text = self.userInfo.empNo;
     self.nameLabel.text = self.userInfo.name;
     self.depNameLabel.text = self.userInfo.depName;
-    self.workTimeCalLabel.text = self.userInfo.workTimeCal;
+    
     
     [self NET_attendStatus];
-    [self workingTime];
+    
 }
 
 #pragma mark - tableview代理
@@ -137,13 +138,13 @@
     {
         UIColor * color = [UIColor colorWithRed:42/255.0f green:160/255.0f blue:235/255.0f alpha:1];
         [self changeWaiterStatus:@"2" statusName:@"开始接单" color:color];
-        self.navigationItem.leftBarButtonItem.enabled = YES;
+        
     }
     else
     {
         UIColor * color = [UIColor colorWithRed:242/255.0f green:69/255.0f blue:41/255.0f alpha:1];
         [self changeWaiterStatus:@"1" statusName:@"停止接单" color:color];
-        self.navigationItem.leftBarButtonItem.enabled = NO;
+        
     }
 }
 
@@ -162,6 +163,7 @@
             self.taskingLabel.text = @"进行中任务（1）";
             self.stateButton.backgroundColor = [UIColor colorWithRed:137/255.0f green:137/255.0f blue:137/255.0f alpha:1];
             self.stateButton.enabled = NO;
+            self.navigationItem.leftBarButtonItem.enabled = NO;
             [self.taskTableView reloadData];
         }
         
@@ -173,6 +175,7 @@
 //完成按钮
 - (IBAction)completeTaskButton:(id)sender
 {
+    
     AlterViewController * alter = [AlterViewController alterViewOwner:self WithAlterViewStype:AlterViewServiceComplete WithMessageCount:nil WithAlterViewBlock:^(UIButton *button, NSInteger buttonIndex) {
         if (buttonIndex == 1)
         {
@@ -186,6 +189,7 @@
             self.stateButton.backgroundColor = [UIColor redColor];
             self.stateView.backgroundColor = [UIColor colorWithRed:210/255.0f green:210/255.0f blue:210/255.0f alpha:1];
             self.taskingLabel.text = @"进行中任务（0）";
+            self.navigationItem.leftBarButtonItem.enabled = YES;
             [self.taskTableView reloadData];
         }
     }];
@@ -195,20 +199,21 @@
 //下班按钮
 - (IBAction)goLogin:(id)sender
 {
-    AlterViewController * alter = [AlterViewController alterViewOwner:self WithAlterViewStype:AlterViewLogoOut WithMessageCount:nil WithAlterViewBlock:^(UIButton *button, NSInteger buttonIndex) {
-        if (buttonIndex == 1)
-        {
+//    AlterViewController * alter = [AlterViewController alterViewOwner:self WithAlterViewStype:AlterViewLogoOut WithMessageCount:nil WithAlterViewBlock:^(UIButton *button, NSInteger buttonIndex) {
+//        if (buttonIndex == 1)
+//        {
             NSMutableDictionary * params = [[NSMutableDictionary alloc]init];
             [[NetworkRequestManager defaultManager] POST_Url:URI_WAITER_Logout Params:params withByUser:YES Success:^(NSURLSessionTask *task, id dataSource, NSString *message, NSString *url) {
-                self.userInfo.attendStatus = @"0";
+//                self.userInfo.attendStatus = @"0";
+                [[DataBaseManager defaultInstance] deleteFromCoreData:self.userInfo];
                 [[DataBaseManager defaultInstance] saveContext];
                 [self performSegueWithIdentifier:@"goLogin" sender:nil];
             } Failure:^(NSURLSessionTask *task, NSString *message, NSString *status, NSString *url) {
                 NSLog(@"message --- %@",message);
             }];
-        }
-    }];
-    [self presentViewController:alter animated:NO completion:nil];
+//        }
+//    }];
+//    [self presentViewController:alter animated:NO completion:nil];
 }
 
 
@@ -219,8 +224,8 @@
     [params setObject:waiterStatus forKey:@"workStatus"];
     
     //切换服务员状态
-    [[NetworkRequestManager defaultManager] POST_Url:URI_WAITER_SetWorkStatus Params:params withByUser:YES Success:^(NSURLSessionTask *task, id dataSource, NSString *message, NSString *url) {
-        //获取服务员状态
+    [[NetworkRequestManager defaultManager] POST_Url:URI_WAITER_SetWorkStatus Params:params withByUser:NO Success:^(NSURLSessionTask *task, id dataSource, NSString *message, NSString *url) {
+        //获取服务员信息
         [[NetworkRequestManager defaultManager] POST_Url:URI_WAITER_WaiterInfoByWaiterId Params:nil withByUser:YES Success:^(NSURLSessionTask *task, id dataSource, NSString *message, NSString *url) {
             _userInfo = dataSource;
             [[DataBaseManager defaultInstance] saveContext];
@@ -253,6 +258,16 @@
     {
         [self performSegueWithIdentifier:@"goLogin" sender:nil];
     }
+    else
+    {
+        [[NetworkRequestManager defaultManager] POST_Url:URI_WAITER_WaiterInfoByWaiterId Params:nil withByUser:YES Success:^(NSURLSessionTask *task, id dataSource, NSString *message, NSString *url) {
+            _userInfo = dataSource;
+            [[DataBaseManager defaultInstance] saveContext];
+            [self workingTime];
+        } Failure:^(NSURLSessionTask *task, NSString *message, NSString *status, NSString *url) {
+            NSLog(@"message --- %@",message);
+        }];
+    }
 }
 
 //工作时长
@@ -260,7 +275,6 @@
 {
     if (self.userInfo.workTimeCal != nil){
         NSMutableString * time=[[NSMutableString alloc]initWithString:self.userInfo.workTimeCal];
-        NSLog(@"工作时长:%@",self.userInfo.workTimeCal);
         NSRange ange={0,2};
         _hourString=[time substringWithRange:ange];//截取时
         NSRange ange1={3,2};
@@ -271,7 +285,7 @@
         self.minute = [self.minuteString integerValue];
         self.hour   = [self.hourString integerValue];
     }
-    
+    self.workTimeCalLabel.text = self.userInfo.workTimeCal;
     [self.timer invalidate];
     self.timer = nil;
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timeHeadle) userInfo:nil repeats:YES];
@@ -288,6 +302,7 @@
         }
     }
     self.workTimeCalLabel.text = [NSString stringWithFormat:@"%02ld:%02ld:%02ld",(long)self.hour,(long)self.minute,(long)self.second];
+    self.userInfo.workTimeCal = self.workTimeCalLabel.text;
 }
 #pragma mark - ------
 
