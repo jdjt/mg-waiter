@@ -26,10 +26,13 @@
 @property (weak, nonatomic) IBOutlet UILabel *taskingLabel;
 
 @property (weak, nonatomic) IBOutlet UIButton *stateButton;//开始接单
+
 @property (assign, nonatomic) BOOL isWorkingState;
 @property (assign, nonatomic) BOOL ishiddenFoot;
 @property (weak, nonatomic) IBOutlet UIImageView *goMapImage;
 @property (strong, nonatomic) DBWaiterInfo * userInfo;
+@property (strong, nonatomic) TaskList * taskList;
+@property (strong, nonatomic) NSMutableArray * dataSource;
 
 @property (nonatomic, strong)NSTimer *timer;
 @property (nonatomic, assign)NSInteger second;
@@ -60,7 +63,7 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(wwwwwwww:) name:WAITER_RECEIVED_PUSH object:nil];
     
-    
+    self.dataSource = [[NSMutableArray alloc]initWithCapacity:10];
 }
 -(void)wwwwwwww:(NSNotification *)notion{
 
@@ -83,7 +86,7 @@
     
     
     [self NET_attendStatus];
-    
+    [self workingTime];
 }
 
 #pragma mark - tableview代理
@@ -95,18 +98,22 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+    return self.dataSource.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString * identifier = @"taskCell";
     _taskListCell = [tableView dequeueReusableCellWithIdentifier:identifier];
-    _taskListCell.userName.text = @"王亚东";
-    _taskListCell.roomNumber.text = @"椰林酒店-16001";
-    _taskListCell.callArea.text = @"椰林酒店";
-    _taskListCell.callContent.text = @"你好，我需要打扫房间";
-    _taskListCell.orderTime.text = @"2017-03-15  10:39:32";
+    if (self.dataSource.count != 0){
+        self.taskList = self.dataSource[indexPath.row];
+    }
+    _taskListCell.userName.text = self.taskList.customerName;
+    _taskListCell.roomNumber.text = self.taskList.floorNo;
+    _taskListCell.callArea.text = self.taskList.areaName;
+    _taskListCell.callContent.text = self.taskList.taskContent;
+    _taskListCell.orderTime.text = [self timeWithTimeIntervalString:self.taskList.produceTime];
+    _taskListCell.pickSingleButton.tag = indexPath.row;
     return _taskListCell;
 }
 
@@ -166,6 +173,17 @@
     [AlterViewController alterViewOwner:self WithAlterViewStype:AlterViewGrabSingle WithMessageCount:nil WithAlterViewBlock:^(UIButton *button, NSInteger buttonIndex) {
         if (buttonIndex == 1)
         {
+            self.taskList = self.dataSource[self.view viewWithTag:sender];
+            NSMutableDictionary * params = [[NSMutableDictionary alloc]init];
+            [params setObject:@"123456" forKey:@"taskCode"];
+            
+            [[NetworkRequestManager defaultManager] POST_Url:URI_WAITER_AcceptTask Params:params withByUser:YES Success:^(NSURLSessionTask *task, id dataSource, NSString *message, NSString *url) {
+                NSLog(@"dataSource --- %@",dataSource);
+            } Failure:^(NSURLSessionTask *task, NSString *message, NSString *status, NSString *url) {
+                NSLog(@"message --- %@",message);
+            }];
+            
+            
             self.serviceTimeView.hidden = NO;
             self.tableTop.constant = 59.0f;
             self.ishiddenFoot = YES;
@@ -237,7 +255,6 @@
         //获取服务员信息
         [[NetworkRequestManager defaultManager] POST_Url:URI_WAITER_WaiterInfoByWaiterId Params:nil withByUser:YES Success:^(NSURLSessionTask *task, id dataSource, NSString *message, NSString *url) {
             _userInfo = dataSource;
-            [[DataBaseManager defaultInstance] saveContext];
             if ([_userInfo.workStatus isEqualToString:@"2"])
             {
                 NSLog(@"可以获取任务列表了");
@@ -245,10 +262,19 @@
                 //获取任务列表
                 [[NetworkRequestManager defaultManager] POST_Url:URI_WAITER_TaskAfterAccept Params:params withByUser:YES Success:^(NSURLSessionTask *task, id dataSource, NSString *message, NSString *url) {
                     NSLog(@"dataSource --- %@",dataSource);
+                    self.dataSource = dataSource;
+                    NSLog(@"%@",self.dataSource);
+                    [self.taskTableView reloadData];
                 } Failure:^(NSURLSessionTask *task, NSString *message, NSString *status, NSString *url) {
                     NSLog(@"message --- %@",message);
                 }];
             }
+            else
+            {
+                [self.dataSource removeAllObjects];
+                [self.taskTableView reloadData];
+            }
+            [[DataBaseManager defaultInstance] saveContext];
             self.stateButton.backgroundColor = color;
             [self.stateButton setTitle:statusName forState:UIControlStateNormal];
         } Failure:^(NSURLSessionTask *task, NSString *message, NSString *status, NSString *url) {
@@ -269,13 +295,10 @@
     }
     else
     {
-        [[NetworkRequestManager defaultManager] POST_Url:URI_WAITER_WaiterInfoByWaiterId Params:nil withByUser:YES Success:^(NSURLSessionTask *task, id dataSource, NSString *message, NSString *url) {
-            _userInfo = dataSource;
-            [[DataBaseManager defaultInstance] saveContext];
-            [self workingTime];
-        } Failure:^(NSURLSessionTask *task, NSString *message, NSString *status, NSString *url) {
-            NSLog(@"message --- %@",message);
-        }];
+        self.stateButton.backgroundColor = [UIColor colorWithRed:42/255.0f green:160/255.0f blue:235/255.0f alpha:1];;
+        [self.stateButton setTitle:@"开始接单" forState:UIControlStateNormal];
+        [self.dataSource removeAllObjects];
+        [self.taskTableView reloadData];
     }
 }
 
@@ -313,6 +336,23 @@
     self.workTimeCalLabel.text = [NSString stringWithFormat:@"%02ld:%02ld:%02ld",(long)self.hour,(long)self.minute,(long)self.second];
     self.userInfo.workTimeCal = self.workTimeCalLabel.text;
 }
+
+//时间戳转换成时间
+- (NSString *)timeWithTimeIntervalString:(NSString *)timeString
+{
+    // 格式化时间
+    NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
+    formatter.timeZone = [NSTimeZone timeZoneWithName:@"shanghai"];
+    [formatter setDateStyle:NSDateFormatterMediumStyle];
+    [formatter setTimeStyle:NSDateFormatterShortStyle];
+    [formatter setDateFormat:@"yyyy年MM月dd日 HH:mm:ss"];
+    
+    // 毫秒值转化为秒
+    NSDate* date = [NSDate dateWithTimeIntervalSince1970:[timeString doubleValue]/ 1000.0];
+    NSString* dateString = [formatter stringFromDate:date];
+    return dateString;
+}
+
 #pragma mark - ------
 
 - (void)didReceiveMemoryWarning {
