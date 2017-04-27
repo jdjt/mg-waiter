@@ -112,24 +112,22 @@
     NSLog(@"responseObj -- > %@",responseObj);
     /* 有数据返回 */
     NSString * successMessage = messageArray.count > 1 ? messageArray[1] : @"";//提示语
-    if ([responseObj objectForKey:@"message"]) {
-        successMessage = [responseObj objectForKey:@"message"];
-    }
+   
     if (responseObj != nil) {
         @try
         {
             id dataSource = [DataParser parserUrl:url fromData:responseObj];
             // 不需要返回数据的请求
             if ([dataSource isKindOfClass:[NSNumber class]]){
-                NSString * bodyMessage = [responseObj objectForKey:@"message"];
+                
                 BOOL isSuccess = [dataSource boolValue];
                 
                 if (isSuccess) {
                     //数据操作成功
-                    self.success(task, nil, bodyMessage, url);
+                    self.success(task, nil, successMessage, url);
                 }else{
                     //数据操作失败
-                    self.failure(task, nil, bodyMessage, url);
+                    self.failure(task, nil, successMessage, url);
                 }
                 
                 return;

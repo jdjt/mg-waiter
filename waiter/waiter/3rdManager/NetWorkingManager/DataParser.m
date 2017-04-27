@@ -155,9 +155,9 @@
     NSMutableArray * dataArray = [[NSMutableArray alloc]init];
     
 //#warning 服务员“开始接单”后获取进行中任务列表
-    NSDictionary * responseObject = dict;
+  //  NSDictionary * responseObject = dict;
     
-    NSArray * responseArray = responseObject[@"taskInfoList"];
+    NSArray * responseArray = dict;//[@"taskInfoList"];
     if (![responseArray isKindOfClass:[NSArray class]]) {
         return dataArray;
     }

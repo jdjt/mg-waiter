@@ -58,8 +58,19 @@
     UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(goMapImageAction:)];
     [self.goMapImage addGestureRecognizer:tap];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(wwwwwwww:) name:WAITER_RECEIVED_PUSH object:nil];
+    
+    
 }
+-(void)wwwwwwww:(NSNotification *)notion{
 
+    if ([CusAddTaskK isEqualToString:[notion.userInfo objectForKey:@"type"]])
+    {
+        
+    }
+
+
+}
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
