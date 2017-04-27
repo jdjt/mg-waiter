@@ -54,5 +54,6 @@
 @dynamic belongWaiterInfor;
 @dynamic haschatmessage;
 @dynamic belongHistoricalStatics;
+@dynamic customerRoomNum;
 
 @end

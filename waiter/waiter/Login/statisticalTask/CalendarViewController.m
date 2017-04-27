@@ -17,6 +17,7 @@ static NSString * collectionReusableCell = @"reusableCell";
 @property(nonatomic,assign)NSInteger selecMonth;
 @property(nonatomic,assign)NSInteger selectDay;
 @property (nonatomic, strong) NSMutableArray * dataArray;
+
 @end
 
 @implementation CalendarViewController
@@ -36,25 +37,28 @@ static NSString * collectionReusableCell = @"reusableCell";
 }
 
 -(void)initData{
-    
-    NSDate * selectDate = nil;
-    if (self.selectDateString == nil)
-        selectDate = [NSDate date];
-    else
-        selectDate = [CalendarDataUtil dateFromString:self.selectDateString];
-    
+    //NSDate * selectDate = [CalendarDataUtil dateFromString:self.selectDateString];//为上次选择时间（先废弃）
+    //默认选择时间为当前服务器时间
+    NSDate * selectDate = [CalendarDataUtil dateFromString:[self getServerTime]];
     self.selectYear = [CalendarDataUtil year:selectDate];
     self.selecMonth = [CalendarDataUtil month:selectDate];
     self.selectDay = [CalendarDataUtil day:selectDate];
     self.dataArray = [[NSMutableArray alloc]init];
 }
-
+-(NSString *)getServerTime{
+    DBWaiterInfo * waiterInfo = [[DataBaseManager defaultInstance] getWaiterInfo:nil];
+    NSString * nowDateString = [Util timeStampConversionStandardTime:waiterInfo.nowTime WithFormatter:@"yyyy-MM-dd"];
+    
+    return nowDateString;
+}
 - (void)getData {
-    [CalendarDataModel getCalenderStartDate:[CalendarDataUtil dateFromString:@"2016-01-01"] WithEndDate:[NSDate date] block:^(NSMutableArray *result) {
+
+    [CalendarDataModel getCalenderStartDate:[CalendarDataUtil dateFromString:@"2016-01-01"] WithEndDate:[CalendarDataUtil dateFromString:[self getServerTime]] block:^(NSMutableArray *result) {
         [self.dataArray addObjectsFromArray:result];
         [self.collectionView reloadData];
         dispatch_async(dispatch_get_main_queue(), ^{
-          [self.collectionView setContentOffset:CGPointMake(0, self.collectionView.contentSize.height - self.collectionView.height)];
+           
+             [self.collectionView setContentOffset:CGPointMake(0, self.collectionView.contentSize.height - self.collectionView.height)];
             
         });
     }];
@@ -109,13 +113,14 @@ static NSString * collectionReusableCell = @"reusableCell";
         NSInteger index = indexPath.item - model.firstday;
         CalenderDateSubModel * subModel = model.details[index];
         cell.dateLabel.text = [NSString stringWithFormat:@"%ld",(long)subModel.day];
-        
+        cell.dateLabel.textColor = [UIColor blackColor];
         if ((model.year == self.selectYear) && (model.month == self.selecMonth) && (subModel.day == self.selectDay))  {
             cell.isSelect = YES;
-        }
-        cell.dateLabel.textColor = [UIColor blackColor];
-        if (indexPath.section == self.dataArray.count - 1 && indexPath.row == model.details.count + model.firstday - 1) {
             cell.dateLabel.textColor = RGBA(42, 160, 235, 1);
+        }
+        
+        if (indexPath.section == self.dataArray.count - 1 && indexPath.row == model.details.count + model.firstday - 1) {
+            //最后一个
         }
     }
     

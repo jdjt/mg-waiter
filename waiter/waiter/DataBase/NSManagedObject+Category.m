@@ -12,6 +12,9 @@
 -(void)setValue:(id)value forUndefinedKey:(NSString *)key{
 }
 -(void)setValuesForKeysWithDictionary:(NSDictionary<NSString *,id> *)keyedValues{
+    if (![keyedValues isKindOfClass:[NSDictionary class]]) {
+        return;
+    }
     NSDictionary * properties = [self properties_aps];
     for (NSString * namekey in properties) {
         if ([keyedValues objectForKey:namekey] && [[properties objectForKey:namekey] isEqualToString:@"NSString"]) {
