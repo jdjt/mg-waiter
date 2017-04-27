@@ -10,6 +10,7 @@
 #import "DBDeviceInfo+CoreDataClass.h"
 #import "DBWaiterInfo+CoreDataClass.h"
 #import "TaskList+CoreDataClass.h"
+#import "HistoricalStatistics+CoreDataClass.h"
 @interface DataBaseManager (Category)
 
 

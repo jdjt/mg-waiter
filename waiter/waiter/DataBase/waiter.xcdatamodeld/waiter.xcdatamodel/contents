@@ -29,10 +29,18 @@
         <attribute name="waiterId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="workStatus" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="workTimeCal" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="hasHistoriceStatiscs" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="HistoricalStatistics" inverseName="belongHisWaiterInfo" inverseEntity="HistoricalStatistics" syncable="YES"/>
         <relationship name="hasTaskList" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="TaskList" inverseName="belongWaiterInfor" inverseEntity="TaskList" syncable="YES"/>
     </entity>
-    <entity name="TaskList" representedClassName="TaskList" syncable="YES">
+    <entity name="HistoricalStatistics" representedClassName="HistoricalStatistics" syncable="YES">
         <attribute name="acceptTaskCount" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="count" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pageNo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pushTaskCount" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="belongHisWaiterInfo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DBWaiterInfo" inverseName="hasHistoriceStatiscs" inverseEntity="DBWaiterInfo" syncable="YES"/>
+        <relationship name="hasHisStaTaskList" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="TaskList" inverseName="belongHistoricalStatics" inverseEntity="TaskList" syncable="YES"/>
+    </entity>
+    <entity name="TaskList" representedClassName="TaskList" syncable="YES">
         <attribute name="acceptTime" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="areaCode" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="areaName" optional="YES" attributeType="String" syncable="YES"/>
@@ -43,7 +51,6 @@
         <attribute name="causeTime" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="cImAccount" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="comeFrom" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="count" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="customerDeviceId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="customerId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="customerName" optional="YES" attributeType="String" syncable="YES"/>
@@ -54,12 +61,10 @@
         <attribute name="isAnOpen" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="mapNo" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="nowDate" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="pageNo" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="posionX" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="positionY" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="postionZ" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="produceTime" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="pushTaskCount" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="scoreMod" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="scoreTime" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="scoreVal" optional="YES" attributeType="String" syncable="YES"/>
@@ -73,13 +78,15 @@
         <attribute name="waiterName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="waiteTime" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="wImAccount" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="belongHistoricalStatics" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="HistoricalStatistics" inverseName="hasHisStaTaskList" inverseEntity="HistoricalStatistics" syncable="YES"/>
         <relationship name="belongWaiterInfor" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DBWaiterInfo" inverseName="hasTaskList" inverseEntity="DBWaiterInfo" syncable="YES"/>
         <relationship name="haschatmessage" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="ChatMessage" inverseName="belongTaskList" inverseEntity="ChatMessage" syncable="YES"/>
     </entity>
     <elements>
-        <element name="ChatMessage" positionX="-83" positionY="198" width="128" height="58"/>
+        <element name="ChatMessage" positionX="79" positionY="239" width="128" height="58"/>
         <element name="DBDeviceInfo" positionX="180" positionY="-162" width="128" height="75"/>
-        <element name="DBWaiterInfo" positionX="-560" positionY="-189" width="128" height="375"/>
-        <element name="TaskList" positionX="-263" positionY="-154" width="128" height="690"/>
+        <element name="DBWaiterInfo" positionX="-542" positionY="-441" width="128" height="388"/>
+        <element name="TaskList" positionX="-189" positionY="-351" width="128" height="643"/>
+        <element name="HistoricalStatistics" positionX="-351" positionY="-414" width="128" height="133"/>
     </elements>
 </model>

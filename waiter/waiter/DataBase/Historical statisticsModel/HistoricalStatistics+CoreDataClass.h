@@ -1,5 +1,5 @@
 //
-//  ChatMessage+CoreDataClass.h
+//  HistoricalStatistics+CoreDataClass.h
 //  waiter
 //
 //  Created by new on 2017/4/26.
@@ -9,14 +9,14 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class TaskList;
+@class DBWaiterInfo, TaskList;
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ChatMessage : NSManagedObject
+@interface HistoricalStatistics : NSManagedObject
 
 @end
 
 NS_ASSUME_NONNULL_END
 
-#import "ChatMessage+CoreDataProperties.h"
+#import "HistoricalStatistics+CoreDataProperties.h"

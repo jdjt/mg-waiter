@@ -1,16 +1,16 @@
 //
-//  DBWaiterInfo+CoreDataClass.m
+//  HistoricalStatistics+CoreDataClass.m
 //  waiter
 //
 //  Created by new on 2017/4/26.
 //  Copyright © 2017年 liuchao. All rights reserved.
 //
 
-#import "DBWaiterInfo+CoreDataClass.h"
 #import "HistoricalStatistics+CoreDataClass.h"
+#import "DBWaiterInfo+CoreDataClass.h"
 
 #import "TaskList+CoreDataClass.h"
 
-@implementation DBWaiterInfo
+@implementation HistoricalStatistics
 
 @end

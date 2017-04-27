@@ -11,13 +11,13 @@
 #import "CalendarViewController.h"
 #import "DataBaseManager+Category.h"
 #import "JDMJRefreshManager.h"
+#import "HistoricalStatistics+CoreDataClass.h"
 @interface StatisticalViewController ()<CalendarDelegate>
 // 日历所选择日期的字符串（xxxx-xx-xx）
 @property(nonatomic,copy)NSString * selectDateString;
 @property(nonatomic,assign)NSInteger isSelectComplete;//8已完成、9被取消
 @property(nonatomic,assign)NSInteger isSelectSingle;//0全部、1自主，2系统
 @property(nonatomic,assign)NSInteger currentPage;//当前页码
-
 @property(nonatomic,strong)NSMutableArray * dataArray;
 @end
 
@@ -43,7 +43,6 @@
      [self completeCancelButtonUpdateLayer];
      [self allandIndependentandSystemButtonUpdateLayer];
     self.dataArray = [[NSMutableArray alloc]init];
-    [self setOrderText:@"0" NoOrderText:@"0" SystemPushText:@"0" OrderRateText:@"0"];
     DBWaiterInfo * waiterInfo = [[DataBaseManager defaultInstance] getWaiterInfo:nil];
     self.selectDateString = [Util timeStampConversionStandardTime:waiterInfo.nowTime WithFormatter:@"yyyy-MM-dd"];
     self.timeLable.text = [NSString stringWithFormat:@"日期  %@",self.selectDateString];
@@ -129,7 +128,7 @@
             [self.dataArray removeAllObjects];
         }
         [self.dataArray addObjectsFromArray:dataSource];
-        
+        [self exchangeOrderSystemPushOrderRateText];
         [self.tableView.mj_footer endRefreshing];
         [self.tableView.mj_header endRefreshing];
         [self exchangemj_footerState];
@@ -147,17 +146,20 @@
 }
 //修改加载更多文字状态
 -(void)exchangemj_footerState{
-    TaskList * taskMode = self.dataArray.lastObject;
-    if (taskMode == nil || [taskMode.count intValue]/20 <= [taskMode.pageNo intValue]) {
+    HistoricalStatistics * hsModel = [[DataBaseManager defaultInstance] getWaiterInfo:nil].hasHistoriceStatiscs;
+    if ([hsModel.count intValue]/20 <= [hsModel.pageNo intValue]) {
         self.tableView.mj_footer.state = MJRefreshStateNoMoreData;
     }else{
         self.tableView.mj_footer.state = MJRefreshStateIdle;
     }
-    
-    if (taskMode != nil) {
-        int noOrder = taskMode.pushTaskCount.intValue - taskMode.acceptTaskCount.intValue;
-       [self setOrderText:taskMode.acceptTaskCount NoOrderText:[NSString stringWithFormat:@"%d",noOrder] SystemPushText:taskMode.pushTaskCount OrderRateText:[NSString stringWithFormat:@"%d",taskMode.acceptTaskCount.intValue / taskMode.pushTaskCount.intValue]];
-    }
+}
+//解析网络接单、未接单、系统推送、接单率数据
+-(void)exchangeOrderSystemPushOrderRateText{
+    HistoricalStatistics * hsModel = [[DataBaseManager defaultInstance] getWaiterInfo:nil].hasHistoriceStatiscs;
+    int pushTaskCount = [hsModel.pushTaskCount intValue];
+    int acceptTaskCount = [hsModel.acceptTaskCount intValue];
+    int noOrder = pushTaskCount - acceptTaskCount;
+    [self setOrderText:hsModel.acceptTaskCount NoOrderText:[NSString stringWithFormat:@"%d",noOrder] SystemPushText:hsModel.pushTaskCount OrderRateText:[NSString stringWithFormat:@"%d",acceptTaskCount / pushTaskCount]];
 }
 #pragma mark 设置 接单、未接单、系统推送、接单率
 -(void)setOrderText:(NSString *)orderText NoOrderText:(NSString *)noOrderText SystemPushText:(NSString *)systemText OrderRateText:(NSString *)orderRateText{

@@ -2,7 +2,7 @@
 //  TaskList+CoreDataProperties.m
 //  waiter
 //
-//  Created by new on 2017/4/24.
+//  Created by new on 2017/4/26.
 //  Copyright © 2017年 liuchao. All rights reserved.
 //
 
@@ -20,10 +20,13 @@
 @dynamic callContentHeight;
 @dynamic causeCode;
 @dynamic causeDesc;
-@dynamic comeFrom;
+@dynamic causePoint;
+@dynamic causeTime;
 @dynamic cImAccount;
-@dynamic count;
+@dynamic comeFrom;
+@dynamic customerDeviceId;
 @dynamic customerId;
+@dynamic customerName;
 @dynamic finishEndTime;
 @dynamic finishTime;
 @dynamic floorNo;
@@ -31,10 +34,10 @@
 @dynamic isAnOpen;
 @dynamic mapNo;
 @dynamic nowDate;
-@dynamic pageNo;
 @dynamic posionX;
 @dynamic positionY;
 @dynamic postionZ;
+@dynamic produceTime;
 @dynamic scoreMod;
 @dynamic scoreTime;
 @dynamic scoreVal;
@@ -42,19 +45,14 @@
 @dynamic taskContent;
 @dynamic taskStatus;
 @dynamic taskTypeCustom;
+@dynamic waiterDeviceId;
 @dynamic waiterEndTime;
 @dynamic waiterId;
+@dynamic waiterName;
 @dynamic waiteTime;
 @dynamic wImAccount;
-@dynamic causeTime;
-@dynamic causePoint;
-@dynamic customerName;
-@dynamic customerDeviceId;
-@dynamic waiterName;
-@dynamic waiterDeviceId;
-@dynamic produceTime;
 @dynamic belongWaiterInfor;
 @dynamic haschatmessage;
-@dynamic pushTaskCount;
-@dynamic acceptTaskCount;
+@dynamic belongHistoricalStatics;
+
 @end

@@ -2,7 +2,7 @@
 //  TaskList+CoreDataClass.m
 //  waiter
 //
-//  Created by new on 2017/4/24.
+//  Created by new on 2017/4/26.
 //  Copyright © 2017年 liuchao. All rights reserved.
 //
 
@@ -10,6 +10,8 @@
 #import "ChatMessage+CoreDataClass.h"
 
 #import "DBWaiterInfo+CoreDataClass.h"
+
+#import "HistoricalStatistics+CoreDataClass.h"
 
 @implementation TaskList
 

@@ -10,6 +10,7 @@
 #import "DataBaseManager+Category.h"
 #import "TaskList+CoreDataProperties.h"
 #import "DBWaiterInfo+CoreDataClass.h"
+#import "HistoricalStatistics+CoreDataClass.h"
 #import "NSString+Addtions.h"
 @implementation DataParser
 +(id)parserUrl:(NSString*)ident fromData:(id)dict{
@@ -108,6 +109,7 @@
     NSDictionary * waiterInfoDic = responseObject[@"waiterInfo"];
     [waiterInfo setValuesForKeysWithDictionary:waiterInfoDic];
     
+    NSLog(@"waiterInfo --- > %@",waiterInfo);
     
     return waiterInfo;
 
@@ -162,9 +164,16 @@
         return dataArray;
     }
     for (NSDictionary * dic in responseArray) {
-        [dataArray addObject:[DataParser getTaskListOrResponseDic:dic]];
+        TaskList * taskModel = [DataParser getTaskListOrResponseDic:dic];
+        [dataArray addObject:taskModel];
+        if (![taskModel.waiterId isEqualToString:[MySingleton sharedSingleton].waiterId]) {
+            DBWaiterInfo * waiterInfo = [[DataBaseManager defaultInstance] getWaiterInfo:taskModel.waiterId];
+            [waiterInfo addHasTaskListObject:taskModel];
+            
+        }
     }
  
+    
     return dataArray;
 }
 //获取单个任务model,并判断数据库中是否存在
@@ -191,12 +200,7 @@
     }
     CGFloat taskContentHerght = [NSString heightFromString:taskModel.taskContent withFont:font constraintToWidth:kScreenWidth - 107];
     taskModel.callContentHeight = taskContentHerght < 15 ? 15 : taskContentHerght;
-    if (![taskModel.waiterId isEqualToString:[MySingleton sharedSingleton].waiterId]) {
-        DBWaiterInfo * waiterInfo = [[DataBaseManager defaultInstance] getWaiterInfo:taskModel.waiterId];
-        [waiterInfo addHasTaskListObject:taskModel];
-        
-    }
-
+   
     return taskModel;
 
 }
@@ -241,21 +245,25 @@
 //服务员查询"历史任务统计"
 +(NSMutableArray *)parsingWaiterGetTaskInfoStatic:(id)dict{
     NSMutableArray * dataArray = [[NSMutableArray alloc]init];
-    
-//#warning TaskList
-    
     NSDictionary * responseObject = dict;
-    
     NSArray * responseArray = responseObject[@"taskInfoList"];
+    DBWaiterInfo * waiterinfo = [[DataBaseManager defaultInstance] getWaiterInfo:nil];
+    if (waiterinfo.hasHistoriceStatiscs == nil) {
+        waiterinfo.hasHistoriceStatiscs = (HistoricalStatistics *)[[DataBaseManager defaultInstance]insertIntoCoreData:@"HistoricalStatistics"];
+    }
+    HistoricalStatistics * hStatistics = waiterinfo.hasHistoriceStatiscs;
+    hStatistics.pageNo = responseObject[@"pageNo"];
+    hStatistics.count = responseObject[@"count"];
+    hStatistics.pushTaskCount = responseObject[@"pushTaskCount"];
+    hStatistics.acceptTaskCount = responseObject[@"acceptTaskCount"];
+    
     if (![responseArray isKindOfClass:[NSArray class]]) {
        return dataArray;
     }
+    [hStatistics removeHasHisStaTaskList:hStatistics.hasHisStaTaskList];
     for (NSDictionary * dic in responseArray) {
         TaskList * taskModel = [DataParser getTaskListOrResponseDic:dic];
-        taskModel.pageNo = responseObject[@"pageNo"];
-        taskModel.count = responseObject[@"count"];
-        taskModel.pushTaskCount = responseObject[@"pushTaskCount"];
-        taskModel.acceptTaskCount = responseObject[@"acceptTaskCount"];
+        [hStatistics addHasHisStaTaskListObject:taskModel];
         [dataArray addObject:taskModel];
     }
     

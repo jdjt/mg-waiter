@@ -2,7 +2,7 @@
 //  DBWaiterInfo+CoreDataProperties.h
 //  waiter
 //
-//  Created by new on 2017/4/21.
+//  Created by new on 2017/4/26.
 //  Copyright © 2017年 liuchao. All rights reserved.
 //
 
@@ -37,6 +37,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, copy) NSString *workStatus;
 @property (nullable, nonatomic, copy) NSString *workTimeCal;
 @property (nullable, nonatomic, retain) NSOrderedSet<TaskList *> *hasTaskList;
+@property (nullable, nonatomic, retain) HistoricalStatistics *hasHistoriceStatiscs;
 
 @end
 
