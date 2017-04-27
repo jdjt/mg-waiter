@@ -19,8 +19,11 @@ MBProgressHUD * hud;
         hud = [[MBProgressHUD alloc] initWithWindow:[UIApplication sharedApplication].delegate.window];
         [[UIApplication sharedApplication].delegate.window addSubview:hud];
         hud.labelText = @"正在加载";
-        [hud hide:NO];
-        [hud show:YES];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [hud hide:NO];
+            [hud show:YES];
+        });
+        
         
     }
 

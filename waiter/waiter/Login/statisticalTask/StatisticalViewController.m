@@ -109,9 +109,13 @@
         }
     }
 }
+#pragma mark 网络请求
+/**
+ @param isRef 是否刷新
+ @param byUser 是否需要加载等待动画
+ */
 -(void)updateDataWithRef:(BOOL)isRef withByUser:(BOOL)byUser{
-    if (isRef)
-        self.currentPage = 1;
+    if (isRef)self.currentPage = 1;
     NSMutableDictionary * parmst = [[NSMutableDictionary alloc]init];
     [parmst setValue:[NSString stringWithFormat:@"%ld",(long)self.isSelectComplete] forKey:@"taskStatus"];
     [parmst setValue:[NSString stringWithFormat:@"%@",[Util standardTimeConversionTimeStamp:[NSString stringWithFormat:@"%@ %@",self.selectDateString,@"00:00:00"] WithFormatter:nil]] forKey:@"taskStartTime"];
@@ -151,14 +155,19 @@
         self.tableView.mj_footer.state = MJRefreshStateIdle;
     }
 }
-//解析网络接单、未接单、系统推送、接单率数据
+//解析网络接单、未接单、系统推送、接单率数据/******/全部，自主 管理员派单按钮的currentTitle
 -(void)exchangeOrderSystemPushOrderRateText{
     HistoricalStatistics * hsModel = [[DataBaseManager defaultInstance] getWaiterInfo:nil].hasHistoriceStatiscs;
     int pushTaskCount = [hsModel.pushTaskCount intValue];
     int acceptTaskCount = [hsModel.acceptTaskCount intValue];
     int noOrder = pushTaskCount - acceptTaskCount;
     [self setOrderText:hsModel.acceptTaskCount NoOrderText:[NSString stringWithFormat:@"%d",noOrder] SystemPushText:hsModel.pushTaskCount OrderRateText:[NSString stringWithFormat:@"%d",acceptTaskCount / pushTaskCount]];
+    [self.allButton setTitle:[NSString stringWithFormat:@"全部(%@)",hsModel.acllCount] forState:UIControlStateNormal];
+    [self.independentButton setTitle:[NSString stringWithFormat:@"自主接单(%@)",hsModel.selfCount] forState:UIControlStateNormal];
+    [self.systemButton setTitle:[NSString stringWithFormat:@"管理员派单(%@)",hsModel.sysCount] forState:UIControlStateNormal];
+    
 }
+
 #pragma mark 设置 接单、未接单、系统推送、接单率
 -(void)setOrderText:(NSString *)orderText NoOrderText:(NSString *)noOrderText SystemPushText:(NSString *)systemText OrderRateText:(NSString *)orderRateText{
     
@@ -190,17 +199,13 @@
 }
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return self.dataArray.count;
-    
 }
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{    
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return 1;
 }
-- (nullable UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
-{
+- (nullable UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
     static NSString * footViewIndex = @"section";
     UITableViewHeaderFooterView * footView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:footViewIndex];
     if (footView == nil) {
@@ -216,22 +221,16 @@
     return 0.001f;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
     TaskList * listModel = self.dataArray[indexPath.section];
-    
     if (listModel.isAnOpen) {
         NSInteger cellHeight = 263;
         if (self.isSelectComplete == 8)
         cellHeight = 280;
         return cellHeight + listModel.callContentHeight;
     }else{
-    
         return self.isSelectComplete == 8 ? 65 : 48;
     }
- 
 }
-
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString * cellIndex = @"cell";
     StatisticalListCell * cell = [tableView dequeueReusableCellWithIdentifier:cellIndex];
@@ -239,7 +238,6 @@
         cell = [[NSBundle mainBundle]loadNibNamed:@"StatisticalListCell" owner:self options:nil].lastObject;
         [cell.chatRecordButton addTarget:self action:@selector(cellChatRecordButton:) forControlEvents:UIControlEventTouchUpInside];
         [cell.topButton addTarget:self action:@selector(topButtonAnClick:) forControlEvents:UIControlEventTouchUpInside];
-        
     }
     
     cell.topButton.tag = indexPath.section;
@@ -253,22 +251,14 @@
     listModel.isAnOpen = !listModel.isAnOpen;
     NSIndexSet *indexSet=[[NSIndexSet alloc]initWithIndex:button.tag];
     [self.tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
-
 }
 -(void)cellChatRecordButton:(UIButton *)button{
     NSLog(@"%ld",(long)button.tag);
    [AlterViewController alterViewOwner:self WithAlterViewStype:AlterViewGuestGiveUp WithMessageCount:nil WithAlterViewBlock:^(UIButton *button, NSInteger buttonIndex) {
-        
     }];
-    
 }
-
 #pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
     if ([segue.identifier isEqualToString:@"calendarShow"]) {
         CalendarViewController * vc = segue.destinationViewController;
         vc.delegate = self;
@@ -277,19 +267,16 @@
 }
 #pragma mark - 统计选择日期——delegate
 -(void)calendarSelectDateString:(NSString *)dateString{
-
     NSLog(@"%@",dateString);
     self.selectDateString = dateString;
     self.timeLable.text = [NSString stringWithFormat:@"日期  %@",self.selectDateString];
     [self updateDataWithRef:YES withByUser:YES];
 }
 -(void)systemAlterView:(NSString *)message{
-
     UIAlertController * alert = [UIAlertController alertControllerWithTitle:nil message:message preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction * action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
     }];
     [alert addAction:action];
     [self presentViewController:alert animated:YES completion:nil];
-
 }
 @end

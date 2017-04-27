@@ -55,7 +55,7 @@
         if ([ user objectForKey:@"waiterId"]) {
             _waiterId = [ user objectForKey:@"waiterId"];
         }
-    }
+    } 
     NSLog(@"waiterId --- > %@",_waiterId);
     return _waiterId;
 }

@@ -34,9 +34,12 @@
     </entity>
     <entity name="HistoricalStatistics" representedClassName="HistoricalStatistics" syncable="YES">
         <attribute name="acceptTaskCount" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="acllCount" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="count" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="pageNo" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="pushTaskCount" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="selfCount" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sysCount" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="belongHisWaiterInfo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DBWaiterInfo" inverseName="hasHistoriceStatiscs" inverseEntity="DBWaiterInfo" syncable="YES"/>
         <relationship name="hasHisStaTaskList" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="TaskList" inverseName="belongHistoricalStatics" inverseEntity="TaskList" syncable="YES"/>
     </entity>
@@ -54,6 +57,7 @@
         <attribute name="customerDeviceId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="customerId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="customerName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="customerRoomNum" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="finishEndTime" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="finishTime" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="floorNo" optional="YES" attributeType="String" syncable="YES"/>
@@ -86,7 +90,7 @@
         <element name="ChatMessage" positionX="79" positionY="239" width="128" height="58"/>
         <element name="DBDeviceInfo" positionX="180" positionY="-162" width="128" height="75"/>
         <element name="DBWaiterInfo" positionX="-542" positionY="-441" width="128" height="388"/>
-        <element name="TaskList" positionX="-189" positionY="-351" width="128" height="643"/>
-        <element name="HistoricalStatistics" positionX="-351" positionY="-414" width="128" height="133"/>
+        <element name="HistoricalStatistics" positionX="-351" positionY="-414" width="128" height="178"/>
+        <element name="TaskList" positionX="-189" positionY="-351" width="128" height="658"/>
     </elements>
 </model>

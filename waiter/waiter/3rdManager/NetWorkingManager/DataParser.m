@@ -163,14 +163,13 @@
     if (![responseArray isKindOfClass:[NSArray class]]) {
         return dataArray;
     }
+    DBWaiterInfo * waiterInfo = [[DataBaseManager defaultInstance] getWaiterInfo:nil];
     for (NSDictionary * dic in responseArray) {
-        TaskList * taskModel = [DataParser getTaskListOrResponseDic:dic];
+        TaskList * taskModel = [DataParser getTaskListOrResponseDic:dic];        
+        taskModel.belongWaiterInfor = waiterInfo;
+        [waiterInfo addHasTaskListObject:taskModel];
         [dataArray addObject:taskModel];
-        if (![taskModel.waiterId isEqualToString:[MySingleton sharedSingleton].waiterId]) {
-            DBWaiterInfo * waiterInfo = [[DataBaseManager defaultInstance] getWaiterInfo:taskModel.waiterId];
-            [waiterInfo addHasTaskListObject:taskModel];
-            
-        }
+        
     }
  
     
@@ -249,23 +248,22 @@
 +(NSMutableArray *)parsingWaiterGetTaskInfoStatic:(id)dict{
     NSMutableArray * dataArray = [[NSMutableArray alloc]init];
     NSDictionary * responseObject = dict;
-    NSArray * responseArray = responseObject[@"taskInfoList"];
     DBWaiterInfo * waiterinfo = [[DataBaseManager defaultInstance] getWaiterInfo:nil];
     if (waiterinfo.hasHistoriceStatiscs == nil) {
         waiterinfo.hasHistoriceStatiscs = (HistoricalStatistics *)[[DataBaseManager defaultInstance]insertIntoCoreData:@"HistoricalStatistics"];
     }
     HistoricalStatistics * hStatistics = waiterinfo.hasHistoriceStatiscs;
-    hStatistics.pageNo = responseObject[@"pageNo"];
-    hStatistics.count = responseObject[@"count"];
-    hStatistics.pushTaskCount = responseObject[@"pushTaskCount"];
-    hStatistics.acceptTaskCount = responseObject[@"acceptTaskCount"];
+    [hStatistics setValuesForKeysWithDictionary:responseObject];
     
+    NSArray * responseArray = responseObject[@"taskInfoList"];
     if (![responseArray isKindOfClass:[NSArray class]]) {
        return dataArray;
     }
     [hStatistics removeHasHisStaTaskList:hStatistics.hasHisStaTaskList];
     for (NSDictionary * dic in responseArray) {
         TaskList * taskModel = [DataParser getTaskListOrResponseDic:dic];
+        taskModel.belongWaiterInfor = waiterinfo;
+        taskModel.belongHistoricalStatics = hStatistics;
         [hStatistics addHasHisStaTaskListObject:taskModel];
         [dataArray addObject:taskModel];
     }
