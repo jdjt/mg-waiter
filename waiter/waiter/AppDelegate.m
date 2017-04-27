@@ -23,11 +23,8 @@
     // Override point for customization after application launch.
     //设置 AppKey 及 LaunchOptions
     [UMessage startWithAppkey:@"56f23615e0f55a8fc400053b" launchOptions:launchOptions httpsEnable:YES];
-#warning openDebugMode 开发模式，生成环境删除掉或制为NO
-    [UMessage openDebugMode:YES];
     //注册通知
     [UMessage registerForRemoteNotifications];
-
     //iOS10必须加下面这段代码。
     UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
     center.delegate=self;
@@ -35,14 +32,10 @@
     [center requestAuthorizationWithOptions:types10 completionHandler:^(BOOL granted, NSError * _Nullable error) {
         if (granted) {
             //点击允许
-            
         } else {
             //点击不允许
-            
         }
     }];
-#warning setLogEnabled 开发模式（打开日志，方便调试），生成环境删除掉或制为NO
-    [UMessage setLogEnabled:YES];
     
     // 友盟即时通讯sdk初始化
     [[SPKitExample sharedInstance] callThisInDidFinishLaunching];

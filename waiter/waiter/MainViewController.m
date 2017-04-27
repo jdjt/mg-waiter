@@ -64,9 +64,10 @@
 }
 -(void)wwwwwwww:(NSNotification *)notion{
 
-    if ([CusAddTaskK isEqualToString:[notion.userInfo objectForKey:@"type"]])
+    if ([EBCALL002 isEqualToString:[notion.userInfo objectForKey:@"type"]])
     {
-        
+        [self performSegueWithIdentifier:@"goLogin" sender:nil];
+       
     }
 
 

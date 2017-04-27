@@ -52,8 +52,6 @@
     [self.allButton.layer setBorderWidth:1];
     [self.independentButton.layer setBorderWidth:1];
     [self.systemButton.layer setBorderWidth:1];
-    
-    
 }
 - (IBAction)completeCancelButtonClick:(UIButton *)sender {
     if (sender.tag == 0) {

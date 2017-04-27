@@ -11,6 +11,8 @@
 #import "DataParser.h"
 #import "DataBaseManager+Category.h"
 #import "JDMBProressHUD.h"
+#import "AppDelegate.h"
+#import "LoginViewController.h"
 @interface NetworkRequestManager ()
 
 @property (nonatomic,strong) NSMutableDictionary * managerDictionary;
@@ -101,9 +103,16 @@
     
     NSArray * messageArray = [unicodeMessage componentsSeparatedByString:@"|"];
     
+    
+    NSString * successMessage = messageArray.count > 1 ? messageArray[1] : @"";//提示语
+    
     /* 网络数据失败 */
     if ([headerStatus isEqualToString:@"ERR"]){
-        
+        if ([messageArray.firstObject isEqualToString:EBCALL002]) {
+            //登录失效
+            [[NSNotificationCenter defaultCenter] postNotificationName:WAITER_RECEIVED_PUSH object:nil userInfo:@{@"type":EBCALL002}];
+            return;
+        }
         self.failure(task, messageArray.count > 1 ? messageArray[1] : @"", headerStatus, url);
         return;
     }
@@ -111,8 +120,6 @@
     
     NSLog(@"responseObj -- > %@",responseObj);
     /* 有数据返回 */
-    NSString * successMessage = messageArray.count > 1 ? messageArray[1] : @"";//提示语
-   
     if (responseObj != nil) {
         @try
         {

@@ -186,14 +186,17 @@
     
     [taskModel setValuesForKeysWithDictionary:dic];
     
-    if ([dic objectForKey:@"cancelDetail"]) {
-        NSDictionary * canDic = [dic objectForKey:@"cancelDetail"];
-        [taskModel setValuesForKeysWithDictionary:canDic];
+    
+    if ([[dic objectForKey:@"cancelDetail"] isKindOfClass:[NSDictionary class]]) {
+            NSDictionary * canDic = [dic objectForKey:@"cancelDetail"];
+            [taskModel setValuesForKeysWithDictionary:canDic];
     }
-    if ([dic objectForKey:@"scoreDetail"]) {
+    if ([[dic objectForKey:@"scoreDetail"] isKindOfClass:[NSDictionary class]]) {
         NSDictionary * canDic = [dic objectForKey:@"scoreDetail"];
         [taskModel setValuesForKeysWithDictionary:canDic];
     }
+    
+    
     UIFont * font = [UIFont systemFontOfSize:15];
     if (IS_LESS5) {
         font = [UIFont systemFontOfSize:13];

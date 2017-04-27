@@ -69,6 +69,9 @@
 //  收到推送通知Name
 #define WAITER_RECEIVED_PUSH            @"waiterReceivedPush"
 
+//  登录失效
+#define EBCALL002                       @"EBCALL002"
+
 
 //  入住客人发送任务
 #define CusAddTaskK                     @"cusAddTask"
@@ -88,5 +91,4 @@
 #define ManagerSendTask                 @"managerSendTask"
 //  管理员催单
 #define ManagerRemindeTask              @"managerRemindeTask"
-
 
