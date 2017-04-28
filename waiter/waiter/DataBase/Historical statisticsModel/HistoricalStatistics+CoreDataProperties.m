@@ -20,7 +20,7 @@
 @dynamic acceptTaskCount;
 @dynamic hasHisStaTaskList;
 @dynamic belongHisWaiterInfo;
-@dynamic acllCount;
+@dynamic allCount;
 @dynamic selfCount;
 @dynamic sysCount;
 @end

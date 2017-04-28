@@ -34,7 +34,7 @@
     </entity>
     <entity name="HistoricalStatistics" representedClassName="HistoricalStatistics" syncable="YES">
         <attribute name="acceptTaskCount" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="acllCount" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="allCount" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="count" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="pageNo" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="pushTaskCount" optional="YES" attributeType="String" syncable="YES"/>
@@ -90,7 +90,7 @@
         <element name="ChatMessage" positionX="79" positionY="239" width="128" height="58"/>
         <element name="DBDeviceInfo" positionX="180" positionY="-162" width="128" height="75"/>
         <element name="DBWaiterInfo" positionX="-542" positionY="-441" width="128" height="388"/>
-        <element name="HistoricalStatistics" positionX="-351" positionY="-414" width="128" height="178"/>
+        <element name="HistoricalStatistics" positionX="-351" positionY="-414" width="128" height="180"/>
         <element name="TaskList" positionX="-189" positionY="-351" width="128" height="658"/>
     </elements>
 </model>

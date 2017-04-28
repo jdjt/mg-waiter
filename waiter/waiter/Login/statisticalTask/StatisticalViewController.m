@@ -158,11 +158,12 @@
 //解析网络接单、未接单、系统推送、接单率数据/******/全部，自主 管理员派单按钮的currentTitle
 -(void)exchangeOrderSystemPushOrderRateText{
     HistoricalStatistics * hsModel = [[DataBaseManager defaultInstance] getWaiterInfo:nil].hasHistoriceStatiscs;
-    int pushTaskCount = [hsModel.pushTaskCount intValue];
-    int acceptTaskCount = [hsModel.acceptTaskCount intValue];
-    int noOrder = pushTaskCount - acceptTaskCount;
-    [self setOrderText:hsModel.acceptTaskCount NoOrderText:[NSString stringWithFormat:@"%d",noOrder] SystemPushText:hsModel.pushTaskCount OrderRateText:[NSString stringWithFormat:@"%d",acceptTaskCount / pushTaskCount]];
-    [self.allButton setTitle:[NSString stringWithFormat:@"全部(%@)",hsModel.acllCount] forState:UIControlStateNormal];
+    float pushTaskCount = [hsModel.pushTaskCount floatValue];
+    float acceptTaskCount = [hsModel.acceptTaskCount floatValue];
+    float noOrder = pushTaskCount - acceptTaskCount;
+    
+    [self setOrderText:hsModel.acceptTaskCount NoOrderText:[NSString stringWithFormat:@"%.0f",noOrder] SystemPushText:hsModel.pushTaskCount OrderRateText:[NSString stringWithFormat:@"%.0f",acceptTaskCount / pushTaskCount * 100]];
+    [self.allButton setTitle:[NSString stringWithFormat:@"全部(%@)",hsModel.allCount] forState:UIControlStateNormal];
     [self.independentButton setTitle:[NSString stringWithFormat:@"自主接单(%@)",hsModel.selfCount] forState:UIControlStateNormal];
     [self.systemButton setTitle:[NSString stringWithFormat:@"管理员派单(%@)",hsModel.sysCount] forState:UIControlStateNormal];
     

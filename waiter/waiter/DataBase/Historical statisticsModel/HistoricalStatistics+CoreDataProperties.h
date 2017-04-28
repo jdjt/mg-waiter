@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, copy) NSString *count;
 @property (nullable, nonatomic, copy) NSString *pushTaskCount;
 @property (nullable, nonatomic, copy) NSString *acceptTaskCount;
-@property (nullable, nonatomic, copy) NSString *acllCount;
+@property (nullable, nonatomic, copy) NSString *allCount;
 @property (nullable, nonatomic, copy) NSString *selfCount;
 @property (nullable, nonatomic, copy) NSString *sysCount;
 @property (nullable, nonatomic, retain) NSOrderedSet<TaskList *> *hasHisStaTaskList;

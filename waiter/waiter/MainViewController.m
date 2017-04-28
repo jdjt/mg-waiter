@@ -173,7 +173,7 @@
     [AlterViewController alterViewOwner:self WithAlterViewStype:AlterViewGrabSingle WithMessageCount:nil WithAlterViewBlock:^(UIButton *button, NSInteger buttonIndex) {
         if (buttonIndex == 1)
         {
-            self.taskList = self.dataSource[self.view viewWithTag:sender];
+           // self.taskList = self.dataSource[sender];
             NSMutableDictionary * params = [[NSMutableDictionary alloc]init];
             [params setObject:@"123456" forKey:@"taskCode"];
             
