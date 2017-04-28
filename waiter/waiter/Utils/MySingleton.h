@@ -22,7 +22,7 @@
 
 @property (nonatomic,readonly) NSString *weixinInterfaceUrl;
 
-
+@property(nonatomic,strong)NSMutableArray * messageErrorArray;
 
 
 @end

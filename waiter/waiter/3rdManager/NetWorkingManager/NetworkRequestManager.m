@@ -142,7 +142,9 @@
             // 有返回数据的请求
              self.success(task, dataSource, successMessage, url);
         }
-        @catch (NSException *exception){
+        @catch (NSException *exception){            
+            //数据操作失败
+            self.failure(task, nil, successMessage, url);
         }
     }else{
         // 返回数据为nil
