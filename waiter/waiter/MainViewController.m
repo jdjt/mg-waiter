@@ -251,7 +251,6 @@
 //完成按钮
 - (IBAction)completeTaskButton:(id)sender
 {
-    
     [AlterViewController alterViewOwner:self WithAlterViewStype:AlterViewServiceComplete WithMessageCount:nil WithAlterViewBlock:^(UIButton *button, NSInteger buttonIndex) {
         if (buttonIndex == 1)
         {
@@ -267,6 +266,7 @@
                 NSLog(@"dataSource --- %@",dataSource);
                 
                 _footcCell.completeButton.backgroundColor = [UIColor grayColor];
+                _footcCell.completeButton.enabled = NO;
                 
                 [self.stateButton setTitle:@"停止接单" forState:UIControlStateNormal];
                 self.stateButton.backgroundColor = [UIColor grayColor];
