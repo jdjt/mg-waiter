@@ -89,15 +89,17 @@
 - (void)resultComplete:(id)responseObj urltask:(NSURLSessionTask *)task URL:(NSString *)url Headers:(NSDictionary *)headers{
     [self cancleRequestWithUrl:url];
     [JDMBProressHUD removeJdHud];
-    /* 无响应：网络连接失败 */
-    if ([responseObj isKindOfClass:[NSError class]]) {
-        self.failure(task, @"网络连接错误",nil , url);
+   
+    NSString * headerStatus = [headers objectForKey:@"mymhotel-status"];
+    NSString * headerMessage = [headers objectForKey:@"mymhotel-message"];
+    NSString *unicodeMessage = nil;
+     /* 无响应：网络连接失败 */
+    if (headerStatus == nil || headerMessage == nil) {
+        self.failure(task, headerMessage,nil ,url);
         return;
     }
     
-    NSString * headerStatus = [headers objectForKey:@"mymhotel-status"];
-    NSString * headerMessage = [headers objectForKey:@"mymhotel-message"];
-    NSString *unicodeMessage = [NSString stringWithCString:[headerMessage cStringUsingEncoding:NSISOLatin1StringEncoding] encoding:NSUTF8StringEncoding];
+    unicodeMessage = [NSString stringWithCString:[headerMessage cStringUsingEncoding:NSISOLatin1StringEncoding] encoding:NSUTF8StringEncoding];
     
     NSLog(@"headerStatus:%@ --...--headerMessage:%@ ",headerStatus,unicodeMessage);
     

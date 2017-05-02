@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="VSP-Gc-7fj">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="VSP-Gc-7fj">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -452,6 +452,7 @@
                         <outlet property="empNoLabel" destination="13r-mJ-v2a" id="Kch-qn-yP2"/>
                         <outlet property="goMapImage" destination="f9W-Kk-kKV" id="orl-eq-iaK"/>
                         <outlet property="nameLabel" destination="zVJ-3W-uq5" id="H5q-WI-Rov"/>
+                        <outlet property="serviceTimeLabel" destination="KPU-gh-zqG" id="a1M-lm-BnD"/>
                         <outlet property="serviceTimeView" destination="2f2-BX-lcd" id="RnS-Il-IQd"/>
                         <outlet property="stateButton" destination="nd6-2V-K0I" id="12g-7Z-UAz"/>
                         <outlet property="stateView" destination="yG9-IO-fWZ" id="2MU-KJ-iuW"/>

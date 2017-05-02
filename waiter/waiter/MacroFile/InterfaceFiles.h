@@ -48,7 +48,7 @@
 #define URI_WAITER_ConfirmTask            @"/hotelcallservice/waiter/confirmTask.json"
 
 //	服务员获取任务信息
-#define URI_WAITER_GetTaskInfo            @"/hotelcalllservice/waiter/getTaskInfo.json"
+#define URI_WAITER_GetTaskInfo            @"/hotelcallservice/waiter/getTaskInfo.json"
 
 //	服务员根据任务号获取任务信息
 #define URI_WAITER_GetTaskInfoByTaskCode            @"/hotelcallservice/waiter/getTaskInfoByTaskCode.json"

@@ -228,9 +228,8 @@
     
 //#warning 服务员获取任务信息
     
-    NSDictionary * responseObject = dict;
     
-    NSArray * responseArray = responseObject[@"taskInfoList"];
+    NSArray * responseArray = dict;
     if (![responseArray isKindOfClass:[NSArray class]]) {
         return dataArray;
     }
@@ -243,6 +242,7 @@
 +(TaskList *)parsingWaiterGetTaskInfoByTaskCode:(id)dict{
     TaskList * taskListModel = [DataParser getTaskListOrResponseDic:dict];
  //#warning TaskList
+    
     return taskListModel;
 }
 //服务员查询"历史任务统计"
