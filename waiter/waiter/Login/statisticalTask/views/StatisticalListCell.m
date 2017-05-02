@@ -79,8 +79,8 @@
     //客人姓名
     self.guestNameLable.text = model.customerName;
     //房间号码
-    #warning 无法判断房间号码
-    self.roomNumberLable.text = @"xxxxxx";
+    #warning 无法判断哪个酒店
+    self.roomNumberLable.text = model.customerRoomNum;
     //呼叫区域
     self.areaLable.text = model.areaName;
     //呼叫区域

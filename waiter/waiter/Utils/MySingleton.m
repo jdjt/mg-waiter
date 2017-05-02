@@ -55,8 +55,21 @@
         if ([ user objectForKey:@"waiterId"]) {
             _waiterId = [ user objectForKey:@"waiterId"];
         }
-    }
+    } 
     NSLog(@"waiterId --- > %@",_waiterId);
     return _waiterId;
 }
+
+-(NSMutableArray *)messageErrorArray{
+    if (_messageErrorArray == nil) {
+        _messageErrorArray = [[NSMutableArray alloc]init];
+        
+    }
+
+    return _messageErrorArray;
+}
+
+
+
+
 @end

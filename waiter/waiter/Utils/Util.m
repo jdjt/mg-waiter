@@ -272,8 +272,7 @@ static NSString* macadd;
         }
     }
 }
-#warning FMKReachability
-/*
+
 + (BOOL) isConnectionAvailable
 {
     
@@ -296,7 +295,7 @@ static NSString* macadd;
     
     return isExistenceNetwork;
 }
-*/
+
 + (BOOL)SelectTheServerUrl
 {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -430,7 +429,7 @@ static NSString* macadd;
     return JsonObject;
 }
 #warning FMKReachability
-/*
+
 // 获取当前网络状态
 + (int)getCurrentNetworkStatus
 {
@@ -450,7 +449,7 @@ static NSString* macadd;
     
     return netWorkStatus;
 }
-*/
+
 
 +(NSMutableAttributedString *)aVarietyOfColorFonts:(NSString *)text WithComPer:(NSString *)comStr WithColor:(UIColor *)color{
     

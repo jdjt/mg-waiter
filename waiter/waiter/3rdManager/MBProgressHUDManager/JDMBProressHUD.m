@@ -21,6 +21,8 @@ MBProgressHUD * hud;
         hud.labelText = @"正在加载";
         [hud hide:NO];
         [hud show:YES];
+    
+        
         
     }
 
