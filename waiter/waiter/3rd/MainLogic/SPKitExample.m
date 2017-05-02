@@ -450,39 +450,14 @@ UIAlertViewDelegate>
  */
 - (YWConversationViewController *)exampleMakeConversationViewControllerWithConversation:(YWConversation *)conversation {
     YWConversationViewController *conversationController = nil;
-#if HAS_TRIBECONVERSATION
-    /// Demo中使用了继承方式，实现群聊聊天页面。
-    if ([conversation isKindOfClass:[YWTribeConversation class]]) {
-        conversationController = [SPTribeConversationViewController makeControllerWithIMKit:self.ywIMKit
-                                                                               conversation:conversation];
-        
-        [self.ywIMKit addDefaultInputViewPluginsToMessagesListController:conversationController];
-        
-    }
-    else
-#endif
-#if HAS_FEEDBACK
-        #warning 如果集成使用反馈服务，点击会话列表需要拦截反馈会话并反馈会话
-        if ([conversation isKindOfClass:[YWFeedbackConversation class]]) {
-            YWFeedbackConversation *feedbackConversation = (YWFeedbackConversation *)conversation;
-            conversationController = [self.ywIMKit makeFeedbackViewControllerWithConversation:feedbackConversation];
 
-            [conversationController setHidesBottomBarWhenPushed:YES];
-
-            conversationController.hidesBottomBarWhenPushed = YES;
-            return conversationController;
-        }
-        else
-#endif
-    {
-        conversationController = [YWConversationViewController makeControllerWithIMKit:self.ywIMKit conversation:conversation];
-        [self.ywIMKit addDefaultInputViewPluginsToMessagesListController:conversationController];
-    }
+    conversationController = [YWConversationViewController makeControllerWithIMKit:self.ywIMKit conversation:conversation];
+    [self.ywIMKit addDefaultInputViewPluginsToMessagesListController:conversationController];
     
-    if ([conversation isKindOfClass:[YWP2PConversation class]] && [((YWP2PConversation *)conversation).person.personId isEqualToString:@"云大旺"]) {
-        conversationController.disableTitleAutoConfig = YES;
-        conversationController.title = @"自定义标题";
-        conversationController.disableTextShowInFullScreen = YES;
+    if ([conversation isKindOfClass:[YWP2PConversation class]]) {
+        //conversationController.disableTitleAutoConfig = YES;
+        conversationController.title = @"呼叫服务";
+        //conversationController.disableTextShowInFullScreen = YES;
     }
 
     /// 添加自定义插件
@@ -519,23 +494,7 @@ UIAlertViewDelegate>
  */
 - (void)exampleAddInputViewPluginToConversationController:(YWConversationViewController *)aConversationController
 {
-    // 添加插件
-    if ([aConversationController.messageInputView isKindOfClass:[YWMessageInputView class]]) {
-        YWMessageInputView *messageInputView = (YWMessageInputView *)aConversationController.messageInputView;
-
-        /// 创建自定义插件
-        SPInputViewPluginGreeting *plugin = [[SPInputViewPluginGreeting alloc] init];
-        [messageInputView addPlugin:plugin];
-        
-        if ([aConversationController.conversation isKindOfClass:[YWP2PConversation class]]) {
-            /// 此功能仅作为示例代码
-            /**
-            SPInputViewPluginTransparent *pluginTransparent = [[SPInputViewPluginTransparent alloc] init];
-            [messageInputView addPlugin:pluginTransparent];
-             */
-        }
-        
-    }
+    
 }
 
 /**
