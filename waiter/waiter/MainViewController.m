@@ -30,6 +30,7 @@
 @property (assign, nonatomic) BOOL isWorkingState;
 @property (assign, nonatomic) BOOL ishiddenFoot;
 @property (weak, nonatomic) IBOutlet UIImageView *goMapImage;
+@property (weak, nonatomic) IBOutlet UIImageView *goChatImage;
 @property (strong, nonatomic) DBWaiterInfo * userInfo;
 @property (strong, nonatomic) TaskList * taskList;
 @property (strong, nonatomic) NSMutableArray * dataSource;
@@ -60,6 +61,8 @@
     
     UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(goMapImageAction:)];
     [self.goMapImage addGestureRecognizer:tap];
+    UITapGestureRecognizer * chatTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(goChatImageAction:)];
+    [self.goMapImage addGestureRecognizer:chatTap];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(wwwwwwww:) name:WAITER_RECEIVED_PUSH object:nil];
     
@@ -170,10 +173,15 @@
 //抢单按钮
 - (IBAction)pickSingleButtonAction:(id)sender
 {
+    // 获取被点击抢单按钮的cell
+    UIView * content = [sender superview];
+    self.taskListCell = (TaskListCell *)[content superview];
+    NSIndexPath * indexPath = [self.taskTableView indexPathForCell:self.taskListCell];
+    self.taskList = self.dataSource[indexPath.row];
+    
     [AlterViewController alterViewOwner:self WithAlterViewStype:AlterViewGrabSingle WithMessageCount:nil WithAlterViewBlock:^(UIButton *button, NSInteger buttonIndex) {
         if (buttonIndex == 1)
         {
-           // self.taskList = self.dataSource[sender];
             NSMutableDictionary * params = [[NSMutableDictionary alloc]init];
             [params setObject:@"123456" forKey:@"taskCode"];
             
@@ -259,6 +267,7 @@
             {
                 NSLog(@"可以获取任务列表了");
                 NSMutableDictionary * params = [[NSMutableDictionary alloc]init];
+                [self instantMessaging];
                 //获取任务列表
                 [[NetworkRequestManager defaultManager] POST_Url:URI_WAITER_TaskAfterAccept Params:params withByUser:YES Success:^(NSURLSessionTask *task, id dataSource, NSString *message, NSString *url) {
                     NSLog(@"dataSource --- %@",dataSource);
@@ -364,6 +373,40 @@
 {
     MapViewController *map = [[MapViewController alloc] init];
     [self.navigationController pushViewController:map animated:YES];
+}
+
+- (void)goChatImageAction:(UITapGestureRecognizer *)tap
+{
+    [self instantMessageingFormation];
+}
+
+// 即时通讯登录
+- (void)instantMessaging
+{
+    if (self.userInfo.imAccount != nil && ![self.userInfo.imAccount isEqualToString:@""])
+    {
+        [[SPKitExample sharedInstance]callThisAfterISVAccountLoginSuccessWithYWLoginId:self.userInfo.imAccount passWord:@"sjlh2017" preloginedBlock:nil successBlock:^{
+            NSLog(@"即时通讯登录成功");
+        } failedBlock:^(NSError * error) {
+            UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"通讯模块登录失败" message:@"请检查网络状态重新登录" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction * action1 = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                
+            }];
+            UIAlertAction * action2 = [UIAlertAction actionWithTitle:@"重试" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                [self instantMessaging];
+            }];
+            [alert addAction:action1];
+            [alert addAction:action2];
+            [self presentViewController:alert animated:YES completion:nil];
+        }];
+    }
+}
+
+// 创建及时通讯界面
+- (void)instantMessageingFormation
+{
+    YWPerson * person = [[YWPerson alloc]initWithPersonId:self.taskList.cImAccount appKey:@"23758144"];
+    [[SPKitExample sharedInstance] exampleOpenConversationViewControllerWithPerson:person fromNavigationController:self.navigationController];
 }
 
 #pragma mark - Navigation
