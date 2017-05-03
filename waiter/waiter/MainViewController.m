@@ -72,19 +72,7 @@
 //    [_timer1 setFireDate:[NSDate date]];//开始 .备用
 }
 
--(void)pushTypeAction:(NSNotification *)notion
-{
-    NSLog(@"%@",notion);
-    NSDictionary *dic =  notion.object;
-    if ([EBCALL002 isEqualToString:[dic objectForKey:@"messType"]])
-    {
-        [self performSegueWithIdentifier:@"goLogin" sender:nil];
-    }
-    if ([CusAddTaskK isEqualToString:[dic objectForKey:@"messType"]])
-    {
-        NSLog(@"新任务");
-    }
-}
+
 -  (void)newMessage:(NSNotification *)noti
 {
     if (self.conversation)
@@ -244,9 +232,9 @@
                     [self.dataSource addObject:dataSource];
                     NSLog(@"%ld",self.dataSource.count);
                     
-                    if ([(NSArray *)dataSource count] > 0)
+                    if (dataSource != nil)
                     {
-                        self.taskList = [dataSource lastObject];
+                        self.taskList = dataSource;
                         self.conversation = [YWP2PConversation fetchConversationByPerson:[[YWPerson alloc]initWithPersonId:self.taskList.cImAccount appKey:@"23758144"] creatIfNotExist:YES baseContext:[SPKitExample sharedInstance].ywIMKit.IMCore];
                         self.messageCountLabel.text = [NSString stringWithFormat:@"%@",self.conversation.conversationUnreadMessagesCount];
                         if (self.conversation.conversationUnreadMessagesCount.integerValue != 0)
@@ -299,7 +287,7 @@
                 _footcCell.completeButton.backgroundColor = [UIColor grayColor];
                 _footcCell.completeButton.enabled = NO;
                 //服务时长暂停计时
-                [_timer1 setFireDate:[NSDate distantFuture]];
+//                [_timer1 setFireDate:[NSDate distantFuture]];//备用
                 
                 //获取根据任务号获取信息，为了拿到完成时间，去跟系统时间对比，做30分钟倒计时功能。
                 [[NetworkRequestManager defaultManager] POST_Url:URI_WAITER_GetTaskInfoByTaskCode Params:params withByUser:YES Success:^(NSURLSessionTask *task, id dataSource, NSString *message, NSString *url) {
@@ -360,18 +348,8 @@
             if ([_userInfo.workStatus isEqualToString:@"2"])
             {
                 NSLog(@"可以获取任务列表了");
-                NSMutableDictionary * params = [[NSMutableDictionary alloc]init];
                 //获取任务列表
-                [[NetworkRequestManager defaultManager] POST_Url:URI_WAITER_TaskAfterAccept Params:params withByUser:YES Success:^(NSURLSessionTask *task, id dataSource, NSString *message, NSString *url) {
-                    NSLog(@"dataSource --- %@",dataSource);
-                    [self.dataSource removeAllObjects];
-                    [self.dataSource addObjectsFromArray:dataSource];
-                    [JDMJRefreshManager headerWithRefreshingTarget:self refreshingAction:@selector(PullDownRefresh) view:self.taskTableView];
-                    NSLog(@"%@",self.dataSource);
-                    [self.taskTableView reloadData];
-                } Failure:^(NSURLSessionTask *task, NSString *message, NSString *status, NSString *url) {
-                    NSLog(@"message --- %@",message);
-                }];
+                [self Net_taskInfoList];
             }
             else
             {
@@ -476,17 +454,8 @@
                 self.navigationItem.leftBarButtonItem.enabled = YES;
                 self.serviceTimeView.hidden = YES;//隐藏服务时长的View
                 [self resetConversationAndNewMessage];
-                NSMutableDictionary * params = [[NSMutableDictionary alloc]init];
                 //获取任务列表
-                [[NetworkRequestManager defaultManager] POST_Url:URI_WAITER_TaskAfterAccept Params:params withByUser:YES Success:^(NSURLSessionTask *task, id dataSource, NSString *message, NSString *url) {
-                    NSLog(@"dataSource --- %@",dataSource);
-                    [self.dataSource removeAllObjects];
-                    [self.dataSource addObjectsFromArray:dataSource];
-                    NSLog(@"%@",self.dataSource);
-                    [self.taskTableView reloadData];
-                } Failure:^(NSURLSessionTask *task, NSString *message, NSString *status, NSString *url) {
-                    NSLog(@"message --- %@",message);
-                }];
+                [self Net_taskInfoList];
             }
             [self.taskTableView reloadData];
             
@@ -524,6 +493,71 @@
     NSInteger seconds = ((int)balance)%(3600*24)%3600%60;
     timeString = [NSString stringWithFormat:@"%02ld:%02ld:%02ld",(long)hour,(long)mint,(long)seconds];
     return timeString;
+}
+
+#pragma mark - 通知
+-(void)pushTypeAction:(NSNotification *)notion
+{
+    NSLog(@"%@",notion);
+    NSDictionary *dic =  notion.object;
+    if ([EBCALL002 isEqualToString:[dic objectForKey:@"messType"]])
+    {
+        [self performSegueWithIdentifier:@"goLogin" sender:nil];
+    }
+    if ([CusAddTaskK isEqualToString:[dic objectForKey:@"messType"]])
+    {
+        NSLog(@"新任务");
+        [self Net_taskInfoList];
+    }
+    if ([CusCancelTask isEqualToString:[dic objectForKey:@"messType"]])
+    {
+        NSLog(@"客人取消任务");
+        [self NET_attendStatus];
+    }
+    if ([CusConfirmTaskComplete isEqualToString:[dic objectForKey:@"messType"]])
+    {
+        NSLog(@"客人确认，完成");
+        [self NET_attendStatus];
+    }
+    if ([CusConfirmTaskUnComplete isEqualToString:[dic objectForKey:@"messType"]])
+    {
+        NSLog(@"客人确认，未完成");
+        [self NET_attendStatus];
+    }
+    if ([CusScoreTask isEqualToString:[dic objectForKey:@"messType"]])
+    {
+        NSLog(@"客人评价了任务");
+    }
+    if ([SystemAutoConfirmTaskToWaiter isEqualToString:[dic objectForKey:@"messType"]])
+    {
+        NSLog(@"30分钟客人没点认可和不认可时的推送");
+        [self NET_attendStatus];
+    }
+    if ([ManagerSendTask isEqualToString:[dic objectForKey:@"messType"]])
+    {
+        NSLog(@"管理员派单");
+        [self NET_attendStatus];
+    }
+    if ([ManagerRemindeTask isEqualToString:[dic objectForKey:@"messType"]])
+    {
+        NSLog(@"管理员催单");
+    }
+}
+
+#pragma mark - 获取任务列表
+- (void)Net_taskInfoList
+{
+    //获取任务列表
+    [[NetworkRequestManager defaultManager] POST_Url:URI_WAITER_TaskAfterAccept Params:nil withByUser:YES Success:^(NSURLSessionTask *task, id dataSource, NSString *message, NSString *url) {
+        NSLog(@"dataSource --- %@",dataSource);
+        [self.dataSource removeAllObjects];
+        [self.dataSource addObjectsFromArray:dataSource];
+        [JDMJRefreshManager headerWithRefreshingTarget:self refreshingAction:@selector(PullDownRefresh) view:self.taskTableView];
+        NSLog(@"%@",self.dataSource);
+        [self.taskTableView reloadData];
+    } Failure:^(NSURLSessionTask *task, NSString *message, NSString *status, NSString *url) {
+        NSLog(@"message --- %@",message);
+    }];
 }
 
 #pragma mark - 工作时长

@@ -76,19 +76,21 @@
 //  入住客人发送任务
 #define CusAddTaskK                     @"CusAddTask"
 //  入住客人取消任务
-#define CusCancelTask                   @"cusCancelTask"
+#define CusCancelTask                   @"CusCancelTask"
 //  入住客人确认任务 （完成)
-#define CusConfirmTaskComplete          @"cusConfirmTaskComplete"
+#define CusConfirmTaskComplete          @"CusConfirmTaskComplete"
 //  入住客人确认任务 (未完成)
-#define CusConfirmTaskUnComplete        @"cusConfirmTaskUnComplete"
+#define CusConfirmTaskUnComplete        @"CusConfirmTaskUnComplete"
 //  入住客人评价任务
-#define CusScoreTask                    @"cusScoreTask"
+#define CusScoreTask                    @"CusScoreTask"
+//  服务员点击完成后，客人在超过规定时间范围后，还没有点击确认(认可，不认可)的情况下，系统自动客人确认认可,推送给服务员
+#define SystemAutoConfirmTaskToWaiter   @"SystemAutoConfirmTaskToWaiter"
 //  服务员接受任务（不用）
-#define WaiterAcceptTask                @"waiterAcceptTask"
+#define WaiterAcceptTask                @"WaiterAcceptTask"
 //  服务员确认完成服务（不用）
-#define WaiterConfirmTaskComplete       @"waiterConfirmTaskComplete"
+#define WaiterConfirmTaskComplete       @"WaiterConfirmTaskComplete"
 //  管理员派单
-#define ManagerSendTask                 @"managerSendTask"
+#define ManagerSendTask                 @"ManagerSendTask"
 //  管理员催单
-#define ManagerRemindeTask              @"managerRemindeTask"
+#define ManagerRemindeTask              @"ManagerRemindeTask"
 
