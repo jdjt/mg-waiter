@@ -425,7 +425,7 @@ UIAlertViewDelegate>
         NSLog(@"conversationViewController:%@", conversationViewController);
         viewControllers = @[conversationNavigationController.viewControllers.firstObject, conversationViewController];
     }
-
+    
     [conversationNavigationController setViewControllers:viewControllers animated:YES];
 }
 
@@ -455,9 +455,11 @@ UIAlertViewDelegate>
     [self.ywIMKit addDefaultInputViewPluginsToMessagesListController:conversationController];
     
     if ([conversation isKindOfClass:[YWP2PConversation class]]) {
-        //conversationController.disableTitleAutoConfig = YES;
+        UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStyleDone target:nil action:nil];
+        conversationController.disableTitleAutoConfig = YES;
         conversationController.title = @"呼叫服务";
-        //conversationController.disableTextShowInFullScreen = YES;
+        conversationController.navigationItem.backBarButtonItem = barButtonItem;
+        conversationController.disableTextShowInFullScreen = YES;
     }
 
     /// 添加自定义插件
@@ -755,7 +757,7 @@ UIAlertViewDelegate>
             /// 用户划开Push导致app启动
             
         } else {
-            /// app已经启动时处理Push
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"NotiNewIMMessage" object:nil];
             
         }
     } forKey:self.description ofPriority:YWBlockPriorityDeveloper];

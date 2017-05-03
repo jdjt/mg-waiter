@@ -16,6 +16,7 @@
  * @param font 使用字体大小
  */
 + (CGFloat)heightFromString:(NSString*)text withFont:(UIFont*)font constraintToWidth:(CGFloat)width;
++(CGSize)lableSize:(NSString *)str withFont:(CGFloat)font cgSizemakeWhite:(CGFloat)white;
 - (CGSize)sizeWithFont:(UIFont *)font maxSize:(CGSize)maxSize;
 
 @end
