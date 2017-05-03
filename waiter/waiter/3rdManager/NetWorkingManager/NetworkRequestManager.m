@@ -106,12 +106,12 @@
     NSArray * messageArray = [unicodeMessage componentsSeparatedByString:@"|"];
     
     
-    NSString * successMessage = messageArray.count > 1 ? messageArray[1] : @"";//提示语
+    NSString * serverMessage = messageArray.count > 1 ? messageArray[1] : @"";//提示语
     
     /* 网络数据失败 */
     if ([headerStatus isEqualToString:@"ERR"]){
         
-         self.failure(task, messageArray.count > 1 ? messageArray[1] : @"", headerStatus, url);
+         self.failure(task, serverMessage, headerStatus, url);
         if ([messageArray.firstObject isEqualToString:EBCALL002]) {
             //登录失效
             [[NSNotificationCenter defaultCenter] postNotificationName:WAITER_RECEIVED_PUSH object:nil userInfo:@{@"type":EBCALL002}];
@@ -133,24 +133,24 @@
                 
                 if (isSuccess) {
                     //数据操作成功
-                    self.success(task, nil, successMessage, url);
+                    self.success(task, nil, serverMessage, url);
                 }else{
                     //数据操作失败
-                    self.failure(task, nil, successMessage, url);
+                    self.failure(task, nil, serverMessage, url);
                 }
                 
                 return;
             }
             // 有返回数据的请求
-             self.success(task, dataSource, successMessage, url);
+             self.success(task, dataSource, serverMessage, url);
         }
         @catch (NSException *exception){            
             //数据操作失败
-            self.failure(task, nil, successMessage, url);
+            self.failure(task, nil, serverMessage, url);
         }
     }else{
         // 返回数据为nil
-        self.success(task, nil, successMessage, url);
+        self.success(task, nil, serverMessage, url);
         
     
     }

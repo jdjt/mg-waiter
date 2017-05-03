@@ -11,7 +11,7 @@
 #import "FootCell.h"
 #import "MapViewController.h"
 #import "AlterViewController.h"
-@interface MainViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface MainViewController ()<UITableViewDelegate,UITableViewDataSource,FMKLocationServiceManagerDelegate>
 @property (strong, nonatomic) TaskListCell * taskListCell;
 @property (weak, nonatomic) FootCell * footcCell;
 @property (weak, nonatomic) IBOutlet UITableView *taskTableView;
@@ -38,12 +38,21 @@
 @property (strong, nonatomic) NSMutableArray * dataSource;
 
 @property (nonatomic, assign)BOOL isDown;
+
+
+
+// 地图GPS相关
+@property (strong, nonatomic) NSString *mapPath;
+@property (strong, nonatomic) NSTimer * gpsTimer;
+@property (strong, nonatomic) NSMutableDictionary * gpsParams;
+@property (strong, nonatomic) FMZoneManager * myZoneManager;
 @end
 
 @implementation MainViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self getMacAndStartLocationService];
     self.ishiddenFoot = NO;
     
     self.serviceTimeView.hidden = YES;
@@ -574,6 +583,72 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     
+}
+
+
+
+
+
+
+//获取MAC地址并且开启定位服务
+- (void)getMacAndStartLocationService
+{
+    _mapPath = [[NSBundle mainBundle] pathForResource:@"79980.fmap" ofType:nil];
+    __block NSString *macAddress;
+    FMKLocationServiceManager * locationManager = [FMKLocationServiceManager shareLocationServiceManager];
+    locationManager.delegate = self;
+    
+    if (!macAddress || [macAddress isEqualToString:@""])
+    {
+        [[FMDHCPNetService shareDHCPNetService] localMacAddress:^(NSString *macAddr)
+         {
+             if (macAddr != nil && ![macAddr isEqualToString:@""])
+             {
+                 macAddress = macAddr;
+             }
+             dispatch_async(dispatch_get_main_queue(), ^{
+                 [locationManager startLocateWithMacAddress:macAddress mapPath:_mapPath];
+             });
+         }];
+    }else
+    {
+        [locationManager startLocateWithMacAddress:macAddress mapPath:_mapPath];
+    }
+    
+    if (!self.gpsTimer) {
+        self.gpsTimer = [NSTimer timerWithTimeInterval:10 target:self selector:@selector(locationInformation) userInfo:nil repeats:YES];
+        [[NSRunLoop currentRunLoop] addTimer: self.gpsTimer forMode:NSDefaultRunLoopMode];
+        self.gpsParams = [[NSMutableDictionary alloc]init];
+    }
+    
+    
+}
+/**
+ 位置回调
+ 
+ @param mapCoord 位置
+ */
+- (void)didUpdatePosition:(FMKMapCoord)mapCoord success:(BOOL)success{
+    [self.gpsParams setValue:[NSString stringWithFormat:@"%d",mapCoord.coord.storey] forKey:@"floorNo"];
+    [self.gpsParams setValue:[NSString stringWithFormat:@"%d",mapCoord.mapID] forKey:@"mapNo"];
+    [self.gpsParams setValue:[NSString stringWithFormat:@"%f",mapCoord.coord.mapPoint.x] forKey:@"positionX"];
+    [self.gpsParams setValue:[NSString stringWithFormat:@"%f",mapCoord.coord.mapPoint.y] forKey:@"positionY"];
+    [self.gpsParams setValue:[NSString stringWithFormat:@"%d",mapCoord.coord.storey] forKey:@"positionZ"];
+}
+- (FMZoneManager *)myZoneManager{
+    if (!_myZoneManager){
+        _myZoneManager = [[FMZoneManager alloc] initWithMangroveMapView:nil];
+    }
+    return _myZoneManager;
+}
+-(void)locationInformation{
+    [self.gpsParams setValue:@"2" forKey:@"hotelCode"];
+    [self.gpsParams setValue:[self.myZoneManager getCurrentZone].zone_name forKey:@"areaName"];
+    [[NetworkRequestManager defaultManager] POST_Url:URI_WAITER_UpdateMapInfo Params:self.gpsParams withByUser:NO Success:^(NSURLSessionTask *task, id dataSource, NSString *message, NSString *url) {
+        NSLog(@"上传位置---%@",message);
+    } Failure:^(NSURLSessionTask *task, NSString *message, NSString *status, NSString *url) {
+        NSLog(@"上传位置---%@",message);
+    }];
 }
 
 
