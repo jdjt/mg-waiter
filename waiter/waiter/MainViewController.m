@@ -65,7 +65,7 @@
 
 }
 -(void)wwwwwwww:(NSNotification *)notion{
-
+    
     if ([EBCALL002 isEqualToString:[notion.userInfo objectForKey:@"type"]])
     {
         [self performSegueWithIdentifier:@"goLogin" sender:nil];
