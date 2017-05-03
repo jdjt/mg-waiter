@@ -59,17 +59,24 @@
     UITapGestureRecognizer * chatTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(goChatImageAction:)];
     [self.goChatImage addGestureRecognizer:chatTap];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(wwwwwwww:) name:WAITER_RECEIVED_PUSH object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushTypeAction:) name:WAITER_RECEIVED_PUSH object:nil];
     
     self.dataSource = [[NSMutableArray alloc]initWithCapacity:10];
 
+//    [_timer1 setFireDate:[NSDate date]];//开始 .备用
 }
--(void)wwwwwwww:(NSNotification *)notion{
 
-    if ([EBCALL002 isEqualToString:[notion.userInfo objectForKey:@"type"]])
+-(void)pushTypeAction:(NSNotification *)notion
+{
+    NSLog(@"%@",notion);
+    NSDictionary *dic =  notion.object;
+    if ([EBCALL002 isEqualToString:[dic objectForKey:@"messType"]])
     {
         [self performSegueWithIdentifier:@"goLogin" sender:nil];
-       
+    }
+    if ([CusAddTaskK isEqualToString:[dic objectForKey:@"messType"]])
+    {
+        NSLog(@"新任务");
     }
 
 
@@ -82,7 +89,6 @@
     self.empNoLabel.text = self.userInfo.empNo;
     self.nameLabel.text = self.userInfo.name;
     self.depNameLabel.text = self.userInfo.depName;
-    
     [self workingTime];
     [self NET_attendStatus];
 }
@@ -228,7 +234,7 @@
                     self.tableTop.constant = 59.0f;
                     self.ishiddenFoot = YES;//显示foot
                     self.serviceTimeView.hidden = NO;//显示服务时长的View
-                    
+                    self.taskTableView.mj_header = nil;
                     self.stateView.backgroundColor = [UIColor colorWithRed:137/255.0f green:137/255.0f blue:137/255.0f alpha:1];
                     self.taskingLabel.text = @"进行中任务（1）";
                     self.stateButton.backgroundColor = [UIColor colorWithRed:137/255.0f green:137/255.0f blue:137/255.0f alpha:1];
@@ -267,6 +273,22 @@
                 
                 _footcCell.completeButton.backgroundColor = [UIColor grayColor];
                 _footcCell.completeButton.enabled = NO;
+                //服务时长暂停计时
+                [_timer1 setFireDate:[NSDate distantFuture]];
+                
+                //获取根据任务号获取信息，为了拿到完成时间，去跟系统时间对比，做30分钟倒计时功能。
+                [[NetworkRequestManager defaultManager] POST_Url:URI_WAITER_GetTaskInfoByTaskCode Params:params withByUser:YES Success:^(NSURLSessionTask *task, id dataSource, NSString *message, NSString *url) {
+                    NSLog(@"服务员根据任务号获取任务信息成功 --- %@",dataSource);
+
+                    self.taskList = dataSource;
+                    
+                    NSLog(@"抢单时间：%@",[self timeWithTimeIntervalString:self.taskList.finishTime]);
+                    NSLog(@"系统时间:%@",[self timeWithTimeIntervalString:self.taskList.nowDate]);
+                    
+                    
+                } Failure:^(NSURLSessionTask *task, NSString *message, NSString *status, NSString *url) {
+                    NSLog(@"服务员根据任务号获取任务信息失败 --- %@",message);
+                }];
                 
                 [self.stateButton setTitle:@"停止接单" forState:UIControlStateNormal];
                 self.stateButton.backgroundColor = [UIColor grayColor];
@@ -314,11 +336,12 @@
             {
                 NSLog(@"可以获取任务列表了");
                 NSMutableDictionary * params = [[NSMutableDictionary alloc]init];
-                [self instantMessaging];
                 //获取任务列表
                 [[NetworkRequestManager defaultManager] POST_Url:URI_WAITER_TaskAfterAccept Params:params withByUser:YES Success:^(NSURLSessionTask *task, id dataSource, NSString *message, NSString *url) {
                     NSLog(@"dataSource --- %@",dataSource);
+                    [self.dataSource removeAllObjects];
                     [self.dataSource addObjectsFromArray:dataSource];
+                    [JDMJRefreshManager headerWithRefreshingTarget:self refreshingAction:@selector(PullDownRefresh) view:self.taskTableView];
                     NSLog(@"%@",self.dataSource);
                     [self.taskTableView reloadData];
                 } Failure:^(NSURLSessionTask *task, NSString *message, NSString *status, NSString *url) {
@@ -327,6 +350,7 @@
             }
             else
             {
+                self.taskTableView.mj_header = nil;
                 [self.dataSource removeAllObjects];
                 [self.taskTableView reloadData];
             }
@@ -355,6 +379,7 @@
         [[NetworkRequestManager defaultManager] POST_Url:URI_WAITER_WaiterInfoByWaiterId Params:nil withByUser:YES Success:^(NSURLSessionTask *task, id dataSource, NSString *message, NSString *url) {
             _userInfo = dataSource;
             [[DataBaseManager defaultInstance]saveContext];
+            [self instantMessaging];
             NSLog(@"%@",_userInfo.workStatus);
             /* 0-挂起(默认); 1 任务中;2-待命 */
             if ([_userInfo.workStatus isEqualToString:@"0"])
@@ -362,6 +387,9 @@
                 self.stateButton.backgroundColor = [UIColor colorWithRed:42/255.0f green:160/255.0f blue:235/255.0f alpha:1];;
                 [self.stateButton setTitle:@"开始接单" forState:UIControlStateNormal];
                 self.isDown = NO;
+                self.stateButton.enabled = YES;
+                self.taskTableView.mj_header = nil;
+                self.navigationItem.leftBarButtonItem.enabled = YES;
                 [self.dataSource removeAllObjects];
                 
             }else if ([_userInfo.workStatus isEqualToString:@"1"])
@@ -372,6 +400,7 @@
                 self.tableTop.constant = 59.0f;
                 self.serviceTimeView.hidden = NO;//显示服务时长的View
                 self.ishiddenFoot = YES;//显示foot
+                self.taskTableView.mj_header = nil;
                 self.stateView.backgroundColor = [UIColor colorWithRed:137/255.0f green:137/255.0f blue:137/255.0f alpha:1];
                 self.taskingLabel.text = @"进行中任务（1）";
                 self.stateButton.backgroundColor = [UIColor colorWithRed:137/255.0f green:137/255.0f blue:137/255.0f alpha:1];
@@ -381,7 +410,6 @@
                 NSLog(@"任务进行中***********");
                 NSMutableDictionary * params = [[NSMutableDictionary alloc]init];
                 [params setObject:@"1" forKey:@"taskStatus"];
-                
                 [[NetworkRequestManager defaultManager] POST_Url:URI_WAITER_GetTaskInfo Params:params withByUser:YES Success:^(NSURLSessionTask *task, id dataSource, NSString *message, NSString *url) {
                     NSLog(@"dataSource --- %@",dataSource);
                     [self.dataSource removeAllObjects];
@@ -396,12 +424,16 @@
             }
             else
             {
+                [JDMJRefreshManager headerWithRefreshingTarget:self refreshingAction:@selector(PullDownRefresh) view:self.taskTableView];
                 [self.stateButton setTitle:@"停止接单" forState:UIControlStateNormal];
                 self.stateButton.backgroundColor = [UIColor colorWithRed:242/255.0f green:69/255.0f blue:41/255.0f alpha:1];
                 self.stateView.backgroundColor = [UIColor colorWithRed:210/255.0f green:210/255.0f blue:210/255.0f alpha:1];
                 self.isDown = NO;
                 self.tableTop.constant = 0.0f;
                 self.ishiddenFoot = NO;//不显示foot
+                [JDMJRefreshManager headerWithRefreshingTarget:self refreshingAction:@selector(PullDownRefresh) view:self.taskTableView];
+                self.stateButton.enabled = YES;//开始接单
+                self.navigationItem.leftBarButtonItem.enabled = YES;
                 self.serviceTimeView.hidden = YES;//隐藏服务时长的View
                 NSMutableDictionary * params = [[NSMutableDictionary alloc]init];
                 //获取任务列表
@@ -567,6 +599,26 @@
 {
     YWPerson * person = [[YWPerson alloc]initWithPersonId:self.taskList.cImAccount appKey:@"23758144"];
     [[SPKitExample sharedInstance] exampleOpenConversationViewControllerWithPerson:person fromNavigationController:self.navigationController];
+}
+
+#pragma mark - MJRefresh
+-(void)PullDownRefresh{
+    [self updateDataWithRef:YES withByUser:NO];
+}
+-(void)updateDataWithRef:(BOOL)isRef withByUser:(BOOL)byUser
+{
+    NSMutableDictionary * params = [[NSMutableDictionary alloc]init];
+    //获取任务列表
+    [[NetworkRequestManager defaultManager] POST_Url:URI_WAITER_TaskAfterAccept Params:params withByUser:YES Success:^(NSURLSessionTask *task, id dataSource, NSString *message, NSString *url) {
+        NSLog(@"dataSource --- %@",dataSource);
+        [self.dataSource removeAllObjects];
+        [self.dataSource addObjectsFromArray:dataSource];
+        NSLog(@"%@",self.dataSource);
+        [self.taskTableView.mj_header endRefreshing];
+        [self.taskTableView reloadData];
+    } Failure:^(NSURLSessionTask *task, NSString *message, NSString *status, NSString *url) {
+        NSLog(@"message --- %@",message);
+    }];
 }
 
 #pragma mark - Navigation

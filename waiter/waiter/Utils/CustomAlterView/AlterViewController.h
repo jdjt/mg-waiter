@@ -18,6 +18,7 @@ typedef NS_ENUM(NSInteger, AlterViewStype) {
     AlterViewGuestUnfinished,       /*住客确认未完成*/
     AlterViewGuestGiveUp,           /*住客超时未确认*/
     AlterViewLogoOut,               /*退出登录*/
+    AlterViewPwdError               /*工号或者密码错误*/
 };
 
 /**

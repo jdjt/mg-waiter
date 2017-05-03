@@ -7,6 +7,7 @@
 //
 
 #import "LoginViewController.h"
+#import "AlterViewController.h"
 
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
@@ -24,8 +25,8 @@
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     self.loginButton.layer.cornerRadius = 5.0f;
     
-    self.userIDField.text = @"321342";
-    self.pwdField.text = @"wwwwww";
+    self.userIDField.text = @"";
+    self.pwdField.text = @"123456";
 }
 
 - (void)didReceiveMemoryWarning {
@@ -87,6 +88,14 @@
 
     } Failure:^(NSURLSessionTask *task, NSString *message, NSString *status, NSString *url) {
         NSLog(@"message --- %@",message);
+//        if ([message isEqualToString:@"工号或者密码错误"])
+//        {
+//            [AlterViewController alterViewOwner:self WithAlterViewStype:AlterViewPwdError WithMessageCount:nil WithAlterViewBlock:^(UIButton *button, NSInteger buttonIndex)
+//             {
+//                 [self.userIDField resignFirstResponder];
+//                 [self.pwdField resignFirstResponder];
+//             }];
+//        }
     }];
 }
 

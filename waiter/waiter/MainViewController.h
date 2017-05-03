@@ -24,4 +24,12 @@
 @property (nonatomic, strong)NSString * serviceSecondString;
 @property (nonatomic, strong)NSString * serviceMinuteString;
 @property (nonatomic, strong)NSString * serviceHourString;
+
+@property (nonatomic, strong)NSTimer *timer2;
+@property (nonatomic, assign)NSInteger completeSecond;
+@property (nonatomic, assign)NSInteger completeMinute;
+@property (nonatomic, assign)NSInteger completeHour;
+@property (nonatomic, strong)NSString * completeSecondString;
+@property (nonatomic, strong)NSString * completeMinuteString;
+@property (nonatomic, strong)NSString * completeHourString;
 @end

@@ -71,6 +71,7 @@
         [UMessage sendClickReportForRemoteNotification:userInfo];
         //必须加这句代码
         [UMessage didReceiveRemoteNotification:userInfo];
+        NSLog(@"%@",userInfo);
         [self userPushNotification:userInfo];
     }else{
         //应用处于前台时的本地推送接受
@@ -93,7 +94,7 @@
 }
 -(void)userPushNotification:(NSDictionary *)userInfo{
 
-    [[NSNotificationCenter defaultCenter] postNotificationName:WAITER_RECEIVED_PUSH object:nil userInfo:userInfo];
+    [[NSNotificationCenter defaultCenter] postNotificationName:WAITER_RECEIVED_PUSH object:userInfo userInfo:userInfo];
 
 }
 - (void)applicationWillResignActive:(UIApplication *)application {

@@ -74,7 +74,7 @@
 
 
 //  入住客人发送任务
-#define CusAddTaskK                     @"cusAddTask"
+#define CusAddTaskK                     @"CusAddTask"
 //  入住客人取消任务
 #define CusCancelTask                   @"cusCancelTask"
 //  入住客人确认任务 （完成)

@@ -92,6 +92,9 @@
         case AlterViewGuestGiveUp:
             view = [self creatCustomStyleMessage:@"住客超时未确认,系统默认服务完成!" Title:@"确认"];
             break;
+        case AlterViewPwdError:
+            view = [self creatCustomStyleMessage:@"工号或者密码错误!" Title:@"确认"];
+            break;
             
         default:
             view = [self creatSystemStyleMessage:@"您确认下班?" leftTitle:@"还要继续" rightTitle:@"我要下班"];
