@@ -33,9 +33,12 @@
 @property (assign, nonatomic) BOOL ishiddenFoot;
 @property (weak, nonatomic) IBOutlet UIImageView *goMapImage;
 @property (weak, nonatomic) IBOutlet UIImageView *goChatImage;
+@property (weak, nonatomic) IBOutlet UILabel *messageCountLabel;
 @property (strong, nonatomic) DBWaiterInfo * userInfo;
 @property (strong, nonatomic) TaskList * taskList;
 @property (strong, nonatomic) NSMutableArray * dataSource;
+
+@property (nonatomic, strong) YWConversation * conversation;
 
 @property (nonatomic, assign)BOOL isDown;
 @end
@@ -53,6 +56,8 @@
     
     self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    self.messageCountLabel.layer.cornerRadius = 10.0f;
+    self.messageCountLabel.layer.masksToBounds = YES;
     
     UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(goMapImageAction:)];
     [self.goMapImage addGestureRecognizer:tap];
@@ -60,20 +65,31 @@
     [self.goChatImage addGestureRecognizer:chatTap];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(wwwwwwww:) name:WAITER_RECEIVED_PUSH object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(newMessage:) name:@"NotiNewIMMessage" object:nil];
     
     self.dataSource = [[NSMutableArray alloc]initWithCapacity:10];
 
 }
--(void)wwwwwwww:(NSNotification *)notion{
 
+-(void)wwwwwwww:(NSNotification *)notion
+{
     if ([EBCALL002 isEqualToString:[notion.userInfo objectForKey:@"type"]])
     {
         [self performSegueWithIdentifier:@"goLogin" sender:nil];
        
     }
-
-
 }
+
+-  (void)newMessage:(NSNotification *)noti
+{
+    if (self.conversation)
+    {
+        self.messageCountLabel.text = [NSString stringWithFormat:@"%@",self.conversation.conversationUnreadMessagesCount];
+        if (self.conversation.conversationUnreadMessagesCount.integerValue != 0)
+            self.messageCountLabel.hidden = NO;
+    }
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -84,6 +100,8 @@
     self.depNameLabel.text = self.userInfo.depName;
     
     [self workingTime];
+    if (self.conversation.conversationUnreadMessagesCount.integerValue == 0)
+        self.messageCountLabel.hidden = YES;
     [self NET_attendStatus];
 }
 
@@ -222,6 +240,15 @@
                     [self.dataSource addObject:dataSource];
                     NSLog(@"%ld",self.dataSource.count);
                     
+                    if ([(NSArray *)dataSource count] > 0)
+                    {
+                        self.taskList = [dataSource lastObject];
+                        self.conversation = [YWP2PConversation fetchConversationByPerson:[[YWPerson alloc]initWithPersonId:self.taskList.cImAccount appKey:@"23758144"] creatIfNotExist:YES baseContext:[SPKitExample sharedInstance].ywIMKit.IMCore];
+                        self.messageCountLabel.text = [NSString stringWithFormat:@"%@",self.conversation.conversationUnreadMessagesCount];
+                        if (self.conversation.conversationUnreadMessagesCount.integerValue != 0)
+                            self.messageCountLabel.hidden = NO;
+                    }
+                    
                     NSLog(@"抢单时间：%@",[self timeWithTimeIntervalString:self.taskList.acceptTime]);
                     NSLog(@"系统时间:%@",[self timeWithTimeIntervalString:self.taskList.nowDate]);
                     
@@ -267,6 +294,7 @@
                 
                 _footcCell.completeButton.backgroundColor = [UIColor grayColor];
                 _footcCell.completeButton.enabled = NO;
+                
                 
                 [self.stateButton setTitle:@"停止接单" forState:UIControlStateNormal];
                 self.stateButton.backgroundColor = [UIColor grayColor];
@@ -341,6 +369,13 @@
     }];
 }
 
+// 任务流程结束后重置conversation和消息数label
+- (void)resetConversationAndNewMessage
+{
+    [self.conversation markConversationAsRead];
+    self.messageCountLabel.hidden = YES;
+}
+
 //检查上班状态 是否上班
 - (void)NET_attendStatus
 {
@@ -355,6 +390,7 @@
         [[NetworkRequestManager defaultManager] POST_Url:URI_WAITER_WaiterInfoByWaiterId Params:nil withByUser:YES Success:^(NSURLSessionTask *task, id dataSource, NSString *message, NSString *url) {
             _userInfo = dataSource;
             [[DataBaseManager defaultInstance]saveContext];
+            [self instantMessaging];
             NSLog(@"%@",_userInfo.workStatus);
             /* 0-挂起(默认); 1 任务中;2-待命 */
             if ([_userInfo.workStatus isEqualToString:@"0"])
@@ -363,6 +399,7 @@
                 [self.stateButton setTitle:@"开始接单" forState:UIControlStateNormal];
                 self.isDown = NO;
                 [self.dataSource removeAllObjects];
+                [self resetConversationAndNewMessage];
                 
             }else if ([_userInfo.workStatus isEqualToString:@"1"])
             {
@@ -386,7 +423,14 @@
                     NSLog(@"dataSource --- %@",dataSource);
                     [self.dataSource removeAllObjects];
                     [self.dataSource addObjectsFromArray:dataSource];
-                    
+                    if ([(NSArray *)dataSource count] > 0)
+                    {
+                        self.taskList = [dataSource lastObject];
+                        self.conversation = [YWP2PConversation fetchConversationByPerson:[[YWPerson alloc]initWithPersonId:self.taskList.cImAccount appKey:@"23758144"] creatIfNotExist:YES baseContext:[SPKitExample sharedInstance].ywIMKit.IMCore];
+                        self.messageCountLabel.text = [NSString stringWithFormat:@"%@",self.conversation.conversationUnreadMessagesCount];
+                        if (self.conversation.conversationUnreadMessagesCount.integerValue != 0)
+                            self.messageCountLabel.hidden = NO;
+                    }
                     NSLog(@"%@",self.dataSource);
                     [self.taskTableView reloadData];
                     
@@ -403,6 +447,7 @@
                 self.tableTop.constant = 0.0f;
                 self.ishiddenFoot = NO;//不显示foot
                 self.serviceTimeView.hidden = YES;//隐藏服务时长的View
+                [self resetConversationAndNewMessage];
                 NSMutableDictionary * params = [[NSMutableDictionary alloc]init];
                 //获取任务列表
                 [[NetworkRequestManager defaultManager] POST_Url:URI_WAITER_TaskAfterAccept Params:params withByUser:YES Success:^(NSURLSessionTask *task, id dataSource, NSString *message, NSString *url) {
