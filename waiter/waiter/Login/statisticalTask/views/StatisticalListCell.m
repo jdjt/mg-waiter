@@ -51,15 +51,19 @@
     else
        [self.triangleButton setImage:[UIImage imageNamed:@"toTriangle"] forState:UIControlStateNormal];
     
-    
+    NSLog(@"-------  %@",model.scoreVal);
     if (isSelect == 8) {
         //已完成
         self.customScoreView.scoreValue = [model.scoreVal intValue];
         //完成时间
-        self.canceTimeContentLable.text = model.finishTime;
+        self.canceTimeContentLable.text = [Util timeStampConversionStandardTime:model.finishTime WithFormatter:nil];
+        self.isScoreLable.text = @"待评价";
+        if (model.scoreVal != nil) {
+            self.isScoreLable.text = @"已评价";
+        }
     }else{
         //取消时间
-        self.canceTimeContentLable.text = model.causeTime;
+        self.canceTimeContentLable.text = [Util timeStampConversionStandardTime:model.causeTime WithFormatter:nil];
     }
     
     
@@ -71,11 +75,11 @@
         self.orderFormLable.text = @"管理员派单";
  
     //下单时间
-    self.PlaceOrderTimeLable.text = model.produceTime;
+    self.PlaceOrderTimeLable.text = [Util timeStampConversionStandardTime:model.produceTime WithFormatter:nil];
     //接单时间
-    self.orderTimeLable.text = model.acceptTime;
+    self.orderTimeLable.text = [Util timeStampConversionStandardTime:model.acceptTime WithFormatter:nil];
     //服务时长
-    self.serviceTimeLable.text = model.finishEndTime;
+    self.serviceTimeLable.text = [Util timeStampConversionStandardTime:model.finishEndTime WithFormatter:@"HH:mm:ss"];
     //客人姓名
     self.guestNameLable.text = model.customerName;
     //房间号码

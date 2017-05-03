@@ -190,19 +190,18 @@
             NSDictionary * canDic = [dic objectForKey:@"cancelDetail"];
             [taskModel setValuesForKeysWithDictionary:canDic];
     }
-    if ([[dic objectForKey:@"scoreDetail"] isKindOfClass:[NSDictionary class]]) {
-        NSDictionary * canDic = [dic objectForKey:@"scoreDetail"];
+    if ([[dic objectForKey:@"scoreDesc"] isKindOfClass:[NSDictionary class]]) {
+        NSDictionary * canDic = [dic objectForKey:@"scoreDesc"];
         [taskModel setValuesForKeysWithDictionary:canDic];
     }
     
-    
+    taskModel.isAnOpen = NO;
     UIFont * font = [UIFont systemFontOfSize:15];
     if (IS_LESS5) {
         font = [UIFont systemFontOfSize:13];
     }
     CGFloat taskContentHerght = [NSString heightFromString:taskModel.taskContent withFont:font constraintToWidth:kScreenWidth - 107];
-    taskModel.callContentHeight = taskContentHerght < 15 ? 15 : taskContentHerght;
-   
+    taskModel.callContentHeight = taskContentHerght < 15 ? 15 : taskContentHerght + 1;
     return taskModel;
 
 }

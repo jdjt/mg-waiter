@@ -12,6 +12,7 @@
 #import "DataBaseManager+Category.h"
 #import "JDMJRefreshManager.h"
 #import "HistoricalStatistics+CoreDataClass.h"
+#import "ChatMessageTableViewController.h"
 @interface StatisticalViewController ()<CalendarDelegate>
 // 日历所选择日期的字符串（xxxx-xx-xx）
 @property(nonatomic,copy)NSString * selectDateString;
@@ -256,8 +257,10 @@
 }
 -(void)cellChatRecordButton:(UIButton *)button{
     NSLog(@"%ld",(long)button.tag);
-   [AlterViewController alterViewOwner:self WithAlterViewStype:AlterViewGuestGiveUp WithMessageCount:nil WithAlterViewBlock:^(UIButton *button, NSInteger buttonIndex) {
-    }];
+     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    ChatMessageTableViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"chatMessage"];
+        vc.selectDateString = self.selectDateString;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 #pragma mark - Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
