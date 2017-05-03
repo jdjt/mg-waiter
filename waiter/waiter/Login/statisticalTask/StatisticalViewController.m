@@ -110,13 +110,17 @@
         }
     }
 }
-#pragma mark 网络请求
+#pragma mark - 网络请求
 /**
  @param isRef 是否刷新
  @param byUser 是否需要加载等待动画
  */
 -(void)updateDataWithRef:(BOOL)isRef withByUser:(BOOL)byUser{
-    if (isRef)self.currentPage = 1;
+    if (isRef)
+    {
+        self.currentPage = 1;
+        [self.tableView.mj_footer resetNoMoreData];
+    }
     NSMutableDictionary * parmst = [[NSMutableDictionary alloc]init];
     [parmst setValue:[NSString stringWithFormat:@"%ld",(long)self.isSelectComplete] forKey:@"taskStatus"];
     [parmst setValue:[NSString stringWithFormat:@"%@",[Util standardTimeConversionTimeStamp:[NSString stringWithFormat:@"%@ %@",self.selectDateString,@"00:00:00"] WithFormatter:nil]] forKey:@"taskStartTime"];
@@ -132,30 +136,15 @@
         }
         [self.dataArray addObjectsFromArray:dataSource];
         [self exchangeOrderSystemPushOrderRateText];
-        [self.tableView.mj_footer endRefreshing];
-        [self.tableView.mj_header endRefreshing];
-        [self exchangemj_footerState];
+        if (((NSArray *)dataSource).count < 20)
+            [self.tableView.mj_footer endRefreshingWithNoMoreData];
         [self.tableView reloadData];
     } Failure:^(NSURLSessionTask *task, NSString *message, NSString *status, NSString *url) {
-        [self.tableView.mj_footer endRefreshing];
-        [self.tableView.mj_header endRefreshing];
-        [self exchangemj_footerState];
         [self systemAlterView:message];
        
     }];
-    
-    
+}
 
-}
-//修改加载更多文字状态
--(void)exchangemj_footerState{
-    HistoricalStatistics * hsModel = [[DataBaseManager defaultInstance] getWaiterInfo:nil].hasHistoriceStatiscs;
-    if ([hsModel.count intValue]/20 <= [hsModel.pageNo intValue]) {
-        self.tableView.mj_footer.state = MJRefreshStateNoMoreData;
-    }else{
-        self.tableView.mj_footer.state = MJRefreshStateIdle;
-    }
-}
 //解析网络接单、未接单、系统推送、接单率数据/******/全部，自主 管理员派单按钮的currentTitle
 -(void)exchangeOrderSystemPushOrderRateText{
     HistoricalStatistics * hsModel = [[DataBaseManager defaultInstance] getWaiterInfo:nil].hasHistoriceStatiscs;
