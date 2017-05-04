@@ -136,10 +136,14 @@
         }
         [self.dataArray addObjectsFromArray:dataSource];
         [self exchangeOrderSystemPushOrderRateText];
+        [self.tableView.mj_header endRefreshing];
+        [self.tableView.mj_footer endRefreshing];
         if (((NSArray *)dataSource).count < 20)
             [self.tableView.mj_footer endRefreshingWithNoMoreData];
         [self.tableView reloadData];
     } Failure:^(NSURLSessionTask *task, NSString *message, NSString *status, NSString *url) {
+        [self.tableView.mj_header endRefreshing];
+        [self.tableView.mj_footer endRefreshing];
         [self systemAlterView:message];
        
     }];
