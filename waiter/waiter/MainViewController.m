@@ -55,7 +55,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self getMacAndStartLocationService];
+//    [self getMacAndStartLocationService];
     self.ishiddenFoot = NO;
     
     self.serviceTimeView.hidden = YES;
@@ -135,11 +135,11 @@
     _taskListCell.roomNumber.text = [NSString stringWithFormat:@"%@-%@",self.taskList.floorNo,self.taskList.taskCode];
     _taskListCell.callArea.text = self.taskList.areaName;
     _taskListCell.callContent.text = self.taskList.taskContent;
-    _taskListCell.orderTime.text = [self timeWithTimeIntervalString:self.taskList.produceTime];
+    _taskListCell.orderTime.text = [self timeWithTimeIntervalString:self.taskList.produceTime BOOL:1];
     _taskListCell.pickSingleButton.tag = indexPath.row;
     NSLog(@"%@",self.taskList.taskStatus);
     
-    //服务时长
+    //服务时长,计算下单时间和系统时间的时间间隔
     NSString * strData = [self compareTwoTime:[self.taskList.acceptTime longLongValue] time2:[self.taskList.nowDate longLongValue]];
     [self serverTime:strData];
     if (self.isDown) {
@@ -250,8 +250,8 @@
                             self.messageCountLabel.hidden = NO;
                     }
                     
-                    NSLog(@"抢单时间：%@",[self timeWithTimeIntervalString:self.taskList.acceptTime]);
-                    NSLog(@"系统时间:%@",[self timeWithTimeIntervalString:self.taskList.nowDate]);
+//                    NSLog(@"抢单时间：%@",[self timeWithTimeIntervalString:self.taskList.acceptTime]);
+//                    NSLog(@"系统时间:%@",[self timeWithTimeIntervalString:self.taskList.nowDate]);
                     
                     self.tableTop.constant = 59.0f;
                     self.ishiddenFoot = YES;//显示foot
@@ -304,9 +304,11 @@
 
                     self.taskList = dataSource;
                     
-                    NSLog(@"抢单时间：%@",[self timeWithTimeIntervalString:self.taskList.finishTime]);
-                    NSLog(@"系统时间:%@",[self timeWithTimeIntervalString:self.taskList.nowDate]);
-                    
+//                    NSLog(@"抢单时间：%@",[self timeWithTimeIntervalString:self.taskList.finishTime]);
+//                    NSLog(@"系统时间：%@",[self timeWithTimeIntervalString:self.taskList.nowDate]);
+                    NSString * strData = [self compareTwoTime:[self.taskList.finishTime longLongValue] time2:[self.taskList.nowDate longLongValue]];
+                    NSLog(@"%@",strData);
+                    [self completeCountdownTime:strData];
                     
                 } Failure:^(NSURLSessionTask *task, NSString *message, NSString *status, NSString *url) {
                     NSLog(@"服务员根据任务号获取任务信息失败 --- %@",message);
@@ -314,7 +316,7 @@
                 
                 [self.stateButton setTitle:@"停止接单" forState:UIControlStateNormal];
                 self.stateButton.backgroundColor = [UIColor grayColor];
-                self.stateView.backgroundColor = [UIColor colorWithRed:210/255.0f green:210/255.0f blue:210/255.0f alpha:1];
+                self.stateView.backgroundColor = [UIColor colorWithRed:137/255.0f green:137/255.0f blue:137/255.0f alpha:1];
                // [self.taskTableView reloadData];//此处不能刷新table，否则完成按钮颜色改变不了
             } Failure:^(NSURLSessionTask *task, NSString *message, NSString *status, NSString *url) {
                 NSLog(@"message --- %@",message);
@@ -408,6 +410,7 @@
                 self.isDown = NO;
                 self.stateButton.enabled = YES;
                 self.taskTableView.mj_header = nil;
+                self.taskingLabel.text = @"进行中任务（0）";
                 self.navigationItem.leftBarButtonItem.enabled = YES;
                 [self.dataSource removeAllObjects];
                 [self resetConversationAndNewMessage];
@@ -434,6 +437,7 @@
                     NSLog(@"dataSource --- %@",dataSource);
                     [self.dataSource removeAllObjects];
                     [self.dataSource addObjectsFromArray:dataSource];
+                    
                     if ([(NSArray *)dataSource count] > 0)
                     {
                         self.taskList = [dataSource lastObject];
@@ -443,6 +447,19 @@
                             self.messageCountLabel.hidden = NO;
                     }
                     NSLog(@"%@",self.dataSource);
+                    NSLog(@"完成时间%@",[self timeWithTimeIntervalString:self.taskList.finishTime BOOL:0]);//13:32:59
+                    NSLog(@"%@,%@",self.taskList.finishTime,self.taskList.nowDate);
+                    NSLog(@"%@",self.taskList.taskStatus);
+                    //客人确认：不认可
+                    if ([self.taskList.taskStatus isEqualToString:@"7"] || [self.taskList.taskStatus isEqualToString:@"1"])
+                    {
+                        self.taskingLabel.text = @"进行中任务(1)";
+                        [_timer2 setFireDate:[NSDate distantFuture]];
+                        [self.taskTableView reloadData];
+                        return ;
+                    }
+                    NSString * strDataSum = [self compareTwoTime:[self.taskList.finishTime longLongValue] time2:[self.taskList.nowDate longLongValue]];
+                    [self completeCountdownTime:strDataSum];
                     [self.taskTableView reloadData];
                     
                 } Failure:^(NSURLSessionTask *task, NSString *message, NSString *status, NSString *url) {
@@ -458,6 +475,8 @@
                 self.isDown = NO;
                 self.tableTop.constant = 0.0f;
                 self.ishiddenFoot = NO;//不显示foot
+                self.taskingLabel.text = @"进行中任务（0）";
+                [_timer2 setFireDate:[NSDate distantFuture]];
                 [JDMJRefreshManager headerWithRefreshingTarget:self refreshingAction:@selector(PullDownRefresh) view:self.taskTableView];
                 self.stateButton.enabled = YES;//开始接单
                 self.navigationItem.leftBarButtonItem.enabled = YES;
@@ -477,14 +496,17 @@
 }
 
 //时间戳转换成时间
-- (NSString *)timeWithTimeIntervalString:(NSString *)timeString
+- (NSString *)timeWithTimeIntervalString:(NSString *)timeString BOOL:(BOOL)isYMD
 {
     // 格式化时间
     NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
     formatter.timeZone = [NSTimeZone timeZoneWithName:@"shanghai"];
     [formatter setDateStyle:NSDateFormatterMediumStyle];
     [formatter setTimeStyle:NSDateFormatterShortStyle];
-    [formatter setDateFormat:@"yyyy年MM月dd日 HH:mm:ss"];
+    if (isYMD == 1)
+        [formatter setDateFormat:@"yyyy年MM月dd日 HH:mm:ss"];
+    else
+        [formatter setDateFormat:@"HH:mm:ss"];
     
     // 毫秒值转化为秒
     NSDate* date = [NSDate dateWithTimeIntervalSince1970:[timeString doubleValue]/ 1000.0];
@@ -508,6 +530,7 @@
 -(void)pushTypeAction:(NSNotification *)notion
 {
     NSLog(@"%@",notion);
+    
     NSDictionary *dic =  notion.object;
     if ([EBCALL002 isEqualToString:[dic objectForKey:@"messType"]])
     {
@@ -522,25 +545,36 @@
     {
         NSLog(@"客人取消任务");
         [self NET_attendStatus];
+        [self.navigationController popToRootViewControllerAnimated:YES];
+        [AlterViewController alterViewOwner:self WithAlterViewStype:AlterViewGuestCancel WithMessageCount:nil WithAlterViewBlock:^(UIButton *button, NSInteger buttonIndex) {
+        }];
     }
     if ([CusConfirmTaskComplete isEqualToString:[dic objectForKey:@"messType"]])
     {
         NSLog(@"客人确认，完成");
         [self NET_attendStatus];
+        [AlterViewController alterViewOwner:self WithAlterViewStype:AlterViewGuestComplete WithMessageCount:nil WithAlterViewBlock:^(UIButton *button, NSInteger buttonIndex) {
+        }];
     }
     if ([CusConfirmTaskUnComplete isEqualToString:[dic objectForKey:@"messType"]])
     {
         NSLog(@"客人确认，未完成");
         [self NET_attendStatus];
+        [AlterViewController alterViewOwner:self WithAlterViewStype:AlterViewGuestUnfinished WithMessageCount:nil WithAlterViewBlock:^(UIButton *button, NSInteger buttonIndex) {
+        }];
     }
     if ([CusScoreTask isEqualToString:[dic objectForKey:@"messType"]])
     {
         NSLog(@"客人评价了任务");
+        [AlterViewController alterViewOwner:self WithAlterViewStype:AlterViewGuestUnfinished WithMessageCount:nil WithAlterViewBlock:^(UIButton *button, NSInteger buttonIndex) {
+        }];
     }
     if ([SystemAutoConfirmTaskToWaiter isEqualToString:[dic objectForKey:@"messType"]])
     {
         NSLog(@"30分钟客人没点认可和不认可时的推送");
         [self NET_attendStatus];
+        [AlterViewController alterViewOwner:self WithAlterViewStype:AlterViewGuestGiveUp WithMessageCount:nil WithAlterViewBlock:^(UIButton *button, NSInteger buttonIndex) {
+        }];
     }
     if ([ManagerSendTask isEqualToString:[dic objectForKey:@"messType"]])
     {
@@ -551,7 +585,13 @@
     {
         NSLog(@"管理员催单");
     }
+    if ([startAPP isEqualToString:[dic objectForKey:@"messType"]])
+    {
+        NSLog(@"启动app");
+        [self NET_attendStatus];
+    }
 }
+
 
 #pragma mark - 获取任务列表
 - (void)Net_taskInfoList
@@ -638,6 +678,58 @@
     self.serviceTimeLabel.text = [NSString stringWithFormat:@"%02ld:%02ld:%02ld",(long)self.serviceHour,(long)self.serviceMinute,(long)self.serviceSecond];
 }
 
+#pragma mark - 完成服务 倒计时
+- (void)completeCountdownTime:(NSString *)strDataSum
+{
+    NSLog(@"完成时间%@",[self timeWithTimeIntervalString:self.taskList.finishTime BOOL:0]);//13:32:59
+    NSLog(@"系统时间：%@",[self timeWithTimeIntervalString:self.taskList.nowDate BOOL:0]);
+    
+//    NSString * strDataSum = [self compareTwoTime:[self.taskList.finishTime longLongValue] time2:[self.taskList.nowDate longLongValue]];
+    NSLog(@"完成时间和系统时间的比对：%@",strDataSum);//00:00:00
+    NSRange ange = {3,2};
+    NSString * min = [strDataSum substringWithRange:ange];//截取分
+//
+    NSRange ange1= {6,2};
+    NSString * second =[strDataSum substringWithRange:ange1];//截取秒
+    
+    [self completeTime:[NSString stringWithFormat:@"%@:%02ld:%02ld",@"00",29-[min integerValue],59-[second integerValue]]];
+    
+}
+
+- (void)completeTime:(NSString *)dataStr
+{
+    if (dataStr != nil){
+        NSMutableString * time=[[NSMutableString alloc]initWithString:dataStr];
+        NSRange ange={0,2};
+        _completeHourString=[time substringWithRange:ange];//截取时
+        NSRange ange1={3,2};
+        _completeMinuteString =[time substringWithRange:ange1];//截取分
+        NSRange ange2={6,2};
+        _completeSecondString =[time substringWithRange:ange2];//截取秒
+        self.completeSecond = [self.completeSecondString integerValue];
+        self.completeMinute = [self.completeMinuteString integerValue];
+        self.completeHour   = [self.completeHourString integerValue];
+    }
+    self.taskingLabel.text = [NSString stringWithFormat:@"完成待确认(%02ld:%02ld)",self.completeMinute,self.completeSecond];
+    [self.timer2 invalidate];
+    self.timer2 = nil;
+    self.timer2 = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(completeTimeTimer) userInfo:nil repeats:YES];
+}
+
+- (void)completeTimeTimer{
+    self.completeSecond--;
+    if (self.completeSecond == -1){
+        self.completeSecond = 59;
+        self.completeMinute --;
+    }
+    if (self.completeMinute == 00 && self.completeSecond == 00) {
+        [_timer2 setFireDate:[NSDate distantFuture]];
+        [self NET_attendStatus];
+        return;
+    }
+    self.taskingLabel.text = [NSString stringWithFormat:@"完成待确认(%02ld:%02ld)",(long)self.completeMinute,(long)self.completeSecond];
+}
+
 #pragma mark - ------
 
 - (void)didReceiveMemoryWarning {
@@ -659,6 +751,7 @@
 // 即时通讯登录
 - (void)instantMessaging
 {
+    NSLog(@"%@",self.userInfo.imAccount);
     if (self.userInfo.imAccount != nil && ![self.userInfo.imAccount isEqualToString:@""])
     {
         [[SPKitExample sharedInstance]callThisAfterISVAccountLoginSuccessWithYWLoginId:self.userInfo.imAccount passWord:@"sjlh2017" preloginedBlock:nil successBlock:^{

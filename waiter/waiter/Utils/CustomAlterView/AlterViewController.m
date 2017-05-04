@@ -95,6 +95,9 @@
         case AlterViewPwdError:
             view = [self creatCustomStyleMessage:@"工号或者密码错误!" Title:@"确认"];
             break;
+        case AlterViewEvaluation:
+            view = [self creatCustomStyleMessage:@"客人已评价" Title:@"确认"];
+            break;
             
         default:
             view = [self creatSystemStyleMessage:@"您确认下班?" leftTitle:@"还要继续" rightTitle:@"我要下班"];
