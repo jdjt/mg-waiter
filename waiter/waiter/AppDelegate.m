@@ -39,6 +39,7 @@
     
     // 友盟即时通讯sdk初始化
     [[SPKitExample sharedInstance] callThisInDidFinishLaunching];
+    
     return YES;
 }
 
@@ -49,7 +50,6 @@
     DBDeviceInfo * deviceInfo = [[DataBaseManager defaultInstance] getDeviceInfo];
     deviceInfo.deviceToken = device;
     [[DataBaseManager defaultInstance] saveContext];
-    
     NSLog(@"deviceToken：--> %@",device);
 }
 //iOS10以前使用这个方法接收通知
@@ -111,6 +111,8 @@
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+    //启动app
+    [self userPushNotification:@{@"messType":@"startAPP"}];
     
 }
 

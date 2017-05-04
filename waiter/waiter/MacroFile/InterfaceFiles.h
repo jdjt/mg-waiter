@@ -72,7 +72,8 @@
 //  登录失效
 #define EBCALL002                       @"EBCALL002"
 
-
+//  启动app
+#define startAPP                        @"startAPP"
 //  入住客人发送任务
 #define CusAddTaskK                     @"CusAddTask"
 //  入住客人取消任务
