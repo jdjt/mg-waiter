@@ -53,17 +53,21 @@
     
     NSLog(@"-------  %@",model.scoreVal);
     if (isSelect == 8) {
-        //已完成
+        //已完成评星
         self.customScoreView.scoreValue = [model.scoreVal intValue];
         //完成时间
         self.canceTimeContentLable.text = [Util timeStampConversionStandardTime:model.confirmTime WithFormatter:nil];
         self.isScoreLable.text = @"待评价";
-        if (model.scoreVal != nil) {
+        if ([model.scoreVal intValue] > 0) {
             self.isScoreLable.text = @"已评价";
         }
+        //服务时长
+        self.serviceTimeLable.text = [Util timeStampsLongTime:model.produceTime nowTime:model.confirmTime];
     }else{
         //取消时间
         self.canceTimeContentLable.text = [Util timeStampConversionStandardTime:model.causeTime WithFormatter:nil];
+        //服务时长
+        self.serviceTimeLable.text = [Util timeStampsLongTime:model.produceTime nowTime:model.causeTime];
     }
     
     
@@ -78,8 +82,6 @@
     self.PlaceOrderTimeLable.text = [Util timeStampConversionStandardTime:model.produceTime WithFormatter:nil];
     //接单时间
     self.orderTimeLable.text = [Util timeStampConversionStandardTime:model.acceptTime WithFormatter:nil];
-    //服务时长
-    self.serviceTimeLable.text = [Util timeStampsLongTime:model.produceTime nowTime:model.confirmTime];
     //客人姓名
     self.guestNameLable.text = model.customerName;
     //房间号码

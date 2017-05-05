@@ -55,7 +55,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    [self getMacAndStartLocationService];
+   // [self getMacAndStartLocationService];
     self.ishiddenFoot = NO;
     
     self.serviceTimeView.hidden = YES;
@@ -852,6 +852,7 @@
  @param mapCoord 位置
  */
 - (void)didUpdatePosition:(FMKMapCoord)mapCoord success:(BOOL)success{
+    NSLog(@"success---------===== >  %d",success);
     [self.gpsParams setValue:[NSString stringWithFormat:@"%d",mapCoord.coord.storey] forKey:@"floorNo"];
     [self.gpsParams setValue:[NSString stringWithFormat:@"%d",mapCoord.mapID] forKey:@"mapNo"];
     [self.gpsParams setValue:[NSString stringWithFormat:@"%f",mapCoord.coord.mapPoint.x] forKey:@"positionX"];
@@ -866,11 +867,13 @@
 }
 -(void)locationInformation{
     [self.gpsParams setValue:@"2" forKey:@"hotelCode"];
+   // [self.gpsParams setValue:@"庆木的酒店" forKey:@"areaName"];
     [self.gpsParams setValue:[self.myZoneManager getCurrentZone].zone_name forKey:@"areaName"];
+    [self.gpsParams setValue:[self.myZoneManager getCurrentZone].zone_code forKey:@"areaCode"];
     [[NetworkRequestManager defaultManager] POST_Url:URI_WAITER_UpdateMapInfo Params:self.gpsParams withByUser:NO Success:^(NSURLSessionTask *task, id dataSource, NSString *message, NSString *url) {
-        NSLog(@"上传位置---%@",message);
+        NSLog(@"上传位置-s--%@",message);
     } Failure:^(NSURLSessionTask *task, NSString *message, NSString *status, NSString *url) {
-        NSLog(@"上传位置---%@",message);
+        NSLog(@"上传位置-f--%@",message);
     }];
 }
 
