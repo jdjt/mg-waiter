@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 typedef NS_ENUM(NSInteger, AlterViewStype) {
     AlterViewGrabSingle = 0,        /*抢单*/
-    AlterViewOthersGrabSingle,       /*已被其他人抢走*/
+    AlterViewOthersGrabSingle,      /*已被其他人抢走*/
     AlterViewServiceComplete,       /*服务完成*/
     AlterViewServiceStop,           /*停止接单*/
     AlterViewAdminSendSingle,       /*管理员派单*/

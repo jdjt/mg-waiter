@@ -203,15 +203,18 @@
 {
     if ([self.userInfo.workStatus isEqualToString:@"2"])
     {
-        UIColor * color = [UIColor colorWithRed:42/255.0f green:160/255.0f blue:235/255.0f alpha:1];
-        [self changeWaiterStatus:@"2" statusName:@"开始接单" color:color];
-        
+        [AlterViewController alterViewOwner:self WithAlterViewStype:AlterViewServiceStop WithMessageCount:nil WithAlterViewBlock:^(UIButton *button, NSInteger buttonIndex) {
+            if (buttonIndex == 1)
+            {
+                UIColor * color = [UIColor colorWithRed:42/255.0f green:160/255.0f blue:235/255.0f alpha:1];
+                [self changeWaiterStatus:@"2" statusName:@"开始接单" color:color];
+            }
+        }];
     }
     else
     {
         UIColor * color = [UIColor colorWithRed:242/255.0f green:69/255.0f blue:41/255.0f alpha:1];
         [self changeWaiterStatus:@"1" statusName:@"停止接单" color:color];
-        
     }
 }
 
@@ -357,6 +360,7 @@
 {
     NSMutableDictionary * params = [[NSMutableDictionary alloc]init];
     [params setObject:waiterStatus forKey:@"workStatus"];
+    
     
     //切换服务员状态
     [[NetworkRequestManager defaultManager] POST_Url:URI_WAITER_SetWorkStatus Params:params withByUser:NO Success:^(NSURLSessionTask *task, id dataSource, NSString *message, NSString *url) {

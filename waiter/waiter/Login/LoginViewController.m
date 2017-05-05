@@ -69,9 +69,12 @@
     {
         [self.userIDField resignFirstResponder];
         [self.pwdField resignFirstResponder];
-        [AlterViewController alterViewOwner:self WithAlterViewStype:alterViewUserIdandPwdNULL WithMessageCount:nil WithAlterViewBlock:^(UIButton *button, NSInteger buttonIndex) {
-            
+        
+        UIAlertController * alert = [UIAlertController alertControllerWithTitle:nil message:@"账号或密码不能为空!" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction * action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         }];
+        [alert addAction:action];
+        [self presentViewController:alert animated:YES completion:nil];
         return;
     }
     
@@ -100,12 +103,12 @@
         NSLog(@"message --- %@",message);
         [self.userIDField resignFirstResponder];
         [self.pwdField resignFirstResponder];
-        if ([message isEqualToString:@"工号或者密码错误"])
-        {
-            [AlterViewController alterViewOwner:self WithAlterViewStype:AlterViewPwdError WithMessageCount:nil WithAlterViewBlock:^(UIButton *button, NSInteger buttonIndex) {
-                
-            }];
-        }
+        UIAlertController * alert = [UIAlertController alertControllerWithTitle:nil message:message preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction * action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        }];
+        [alert addAction:action];
+        [self presentViewController:alert animated:YES completion:nil];
+        
     }];
 }
 
