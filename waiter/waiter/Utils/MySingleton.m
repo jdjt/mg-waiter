@@ -60,13 +60,16 @@
 }
 
 
-+(void)systemAlterView:(NSString *)message ower:(id)tager{
++(void)systemAlterViewOwner:(id)owner WithMessage:(NSString *)message{
     UIAlertController * alert = [UIAlertController alertControllerWithTitle:nil message:message preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction * action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
     }];
     [alert addAction:action];
-    UIViewController * vc = tager;
-    [vc presentViewController:alert animated:YES completion:nil];
+    if ([owner isKindOfClass:[UIViewController class]]) {
+        UIViewController * vc = owner;
+        [vc presentViewController:alert animated:YES completion:nil];
+    }
+      
 }
 
 

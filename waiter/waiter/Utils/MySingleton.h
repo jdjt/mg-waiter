@@ -22,6 +22,13 @@
 
 @property (nonatomic,readonly) NSString *weixinInterfaceUrl;
 
-+(void)systemAlterView:(NSString *)message ower:(id)tager;
+
+/**
+ 系统提示框 （只做提示作用，没有事件响应）
+
+ @param message 提示信息
+ @param owner 传UIViewController对象（默认self）
+ */
++(void)systemAlterViewOwner:(id)owner WithMessage:(NSString *)message;
 
 @end

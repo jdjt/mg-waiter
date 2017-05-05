@@ -144,7 +144,7 @@
     } Failure:^(NSURLSessionTask *task, NSString *message, NSString *status, NSString *url) {
         [self.tableView.mj_header endRefreshing];
         [self.tableView.mj_footer endRefreshing];
-        [MySingleton systemAlterView:message ower:self];
+        [MySingleton systemAlterViewOwner:self WithMessage:message];
        
     }];
 }

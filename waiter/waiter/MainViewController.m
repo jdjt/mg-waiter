@@ -270,7 +270,7 @@
                     
                 } Failure:^(NSURLSessionTask *task, NSString *message, NSString *status, NSString *url) {
                     NSLog(@"服务员根据任务号获取任务信息失败 --- %@",message);
-                     [MySingleton systemAlterView:message ower:self];
+                    [MySingleton systemAlterViewOwner:self WithMessage:message];
                 }];
             } Failure:^(NSURLSessionTask *task, NSString *message, NSString *status, NSString *url) {
                 NSLog(@"抢单失败 --- %@",message);
@@ -322,7 +322,7 @@
                     
                 } Failure:^(NSURLSessionTask *task, NSString *message, NSString *status, NSString *url) {
                     NSLog(@"服务员根据任务号获取任务信息失败 --- %@",message);
-                     [MySingleton systemAlterView:message ower:self];
+                    [MySingleton systemAlterViewOwner:self WithMessage:message];
                 }];
                 
                 [self.stateButton setTitle:@"停止接单" forState:UIControlStateNormal];
@@ -331,7 +331,7 @@
                // [self.taskTableView reloadData];//此处不能刷新table，否则完成按钮颜色改变不了
             } Failure:^(NSURLSessionTask *task, NSString *message, NSString *status, NSString *url) {
                 NSLog(@"message --- %@",message);
-                 [MySingleton systemAlterView:message ower:self];
+                [MySingleton systemAlterViewOwner:self WithMessage:message];
             }];
         }
     }];
@@ -351,7 +351,7 @@
                 [self performSegueWithIdentifier:@"goLogin" sender:nil];
             } Failure:^(NSURLSessionTask *task, NSString *message, NSString *status, NSString *url) {
                 NSLog(@"message --- %@",message);
-                 [MySingleton systemAlterView:message ower:self];
+                [MySingleton systemAlterViewOwner:self WithMessage:message];
             }];
         }
     }];
@@ -393,7 +393,7 @@
         }];
     } Failure:^(NSURLSessionTask *task, NSString *message, NSString *status, NSString *url) {
         NSLog(@"message --- %@",message);
-         [MySingleton systemAlterView:message ower:self];
+        [MySingleton systemAlterViewOwner:self WithMessage:message];
     }];
 }
 
@@ -482,7 +482,7 @@
                     
                 } Failure:^(NSURLSessionTask *task, NSString *message, NSString *status, NSString *url) {
                     NSLog(@"message --- %@",message);
-                     [MySingleton systemAlterView:message ower:self];
+                    [MySingleton systemAlterViewOwner:self WithMessage:message];
                 }];
             }
             else
@@ -627,7 +627,7 @@
         [self.taskTableView reloadData];
     } Failure:^(NSURLSessionTask *task, NSString *message, NSString *status, NSString *url) {
         NSLog(@"message --- %@",message);
-         [MySingleton systemAlterView:message ower:self];
+        [MySingleton systemAlterViewOwner:self WithMessage:message];
     }];
 }
 
@@ -817,7 +817,7 @@
         [self.taskTableView reloadData];
     } Failure:^(NSURLSessionTask *task, NSString *message, NSString *status, NSString *url) {
         [self.taskTableView.mj_header endRefreshing];
-         [MySingleton systemAlterView:message ower:self];
+        [MySingleton systemAlterViewOwner:self WithMessage:message];
         NSLog(@"message --- %@",message);
     }];
 }

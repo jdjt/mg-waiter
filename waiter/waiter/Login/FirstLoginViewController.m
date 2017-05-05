@@ -76,7 +76,7 @@
         [self dismissViewControllerAnimated:YES completion:nil];
     } Failure:^(NSURLSessionTask *task, NSString *message, NSString *status, NSString *url) {
         NSLog(@"message --- %@",message);
-         [MySingleton systemAlterView:message ower:self];
+        [MySingleton systemAlterViewOwner:self WithMessage:message];
     }];
 }
 
