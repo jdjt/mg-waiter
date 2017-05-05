@@ -65,6 +65,16 @@
 
 - (IBAction)loginPressed:(id)sender
 {
+    if ([self.userIDField.text isEqualToString:@""] || [self.pwdField.text isEqualToString:@""])
+    {
+        [self.userIDField resignFirstResponder];
+        [self.pwdField resignFirstResponder];
+        [AlterViewController alterViewOwner:self WithAlterViewStype:alterViewUserIdandPwdNULL WithMessageCount:nil WithAlterViewBlock:^(UIButton *button, NSInteger buttonIndex) {
+            
+        }];
+        return;
+    }
+    
     DBDeviceInfo * deviceInfo = [[DataBaseManager defaultInstance] getDeviceInfo];
     NSMutableDictionary * params = [[NSMutableDictionary alloc]init];
     [params setObject:self.userIDField.text forKey:@"empNo"];
@@ -88,14 +98,14 @@
 
     } Failure:^(NSURLSessionTask *task, NSString *message, NSString *status, NSString *url) {
         NSLog(@"message --- %@",message);
-//        if ([message isEqualToString:@"工号或者密码错误"])
-//        {
-//            [AlterViewController alterViewOwner:self WithAlterViewStype:AlterViewPwdError WithMessageCount:nil WithAlterViewBlock:^(UIButton *button, NSInteger buttonIndex)
-//             {
-//                 [self.userIDField resignFirstResponder];
-//                 [self.pwdField resignFirstResponder];
-//             }];
-//        }
+        [self.userIDField resignFirstResponder];
+        [self.pwdField resignFirstResponder];
+        if ([message isEqualToString:@"工号或者密码错误"])
+        {
+            [AlterViewController alterViewOwner:self WithAlterViewStype:AlterViewPwdError WithMessageCount:nil WithAlterViewBlock:^(UIButton *button, NSInteger buttonIndex) {
+                
+            }];
+        }
     }];
 }
 

@@ -67,6 +67,9 @@
         case AlterViewGrabSingle:
             view = [self creatSystemStyleMessage:@"请确认抢单?" leftTitle:@"放弃" rightTitle:@"确认"];
             break;
+        case AlterViewOthersGrabSingle:
+            view = [self creatCustomStyleMessage:@"抢单失败，该任务已被接单或住客已取消呼叫服务" Title:@"确认"];
+            break;
         case AlterViewServiceComplete:
             view = [self creatSystemStyleMessage:@"请确认已完成当前任务" leftTitle:@"取消" rightTitle:@"确认"];
             break;
@@ -77,7 +80,6 @@
             view = [self creatCustomStyleMessage:@"管理员给您派送了一个呼叫任务,\n请及时处理!" Title:@"确认"];
             break;
         case AlterViewAdminReminder:
-            
              view = [self creatCustomStyleMessage:[NSString stringWithFormat:@"当前任务已超时,管理员给您发送了（%@）次催单,请尽快完成!",subMessage] Title:@"确认"];
             break;
         case AlterViewGuestCancel:
@@ -95,8 +97,14 @@
         case AlterViewPwdError:
             view = [self creatCustomStyleMessage:@"工号或者密码错误!" Title:@"确认"];
             break;
+        case alterViewUserIdandPwdNULL:
+            view = [self creatCustomStyleMessage:@"账号或密码不能为空!" Title:@"确认"];
+            break;
         case AlterViewEvaluation:
-            view = [self creatCustomStyleMessage:@"客人已评价" Title:@"确认"];
+            view = [self creatCustomStyleMessage:@"客人已评价！" Title:@"确认"];
+            break;
+        case alterViewNetError:
+            view = [self creatCustomStyleMessage:@"网络错误,请稍后再试!" Title:@"确认"];
             break;
             
         default:

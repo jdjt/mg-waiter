@@ -270,6 +270,12 @@
                 }];
             } Failure:^(NSURLSessionTask *task, NSString *message, NSString *status, NSString *url) {
                 NSLog(@"抢单失败 --- %@",message);
+                if ([message isEqualToString:@"抢单失败,该单已被抢"]) {
+                    [AlterViewController alterViewOwner:self WithAlterViewStype:AlterViewOthersGrabSingle WithMessageCount:nil WithAlterViewBlock:^(UIButton *button, NSInteger buttonIndex) {
+                        if (buttonIndex == 1)
+                            [self NET_attendStatus];
+                    }];
+                }
             }];
         }
     }];
@@ -346,6 +352,7 @@
 
 
 #pragma mark - 方法
+//切换开始接单、停止接单
 - (void)changeWaiterStatus:(NSString *)waiterStatus statusName:(NSString *)statusName color:(UIColor *)color
 {
     NSMutableDictionary * params = [[NSMutableDictionary alloc]init];
@@ -373,6 +380,8 @@
             [self.stateButton setTitle:statusName forState:UIControlStateNormal];
         } Failure:^(NSURLSessionTask *task, NSString *message, NSString *status, NSString *url) {
             NSLog(@"message --- %@",message);
+            if ([message isEqualToString:@"查不到此服务员信息"])
+                [self performSegueWithIdentifier:@"goLogin" sender:nil];
         }];
     } Failure:^(NSURLSessionTask *task, NSString *message, NSString *status, NSString *url) {
         NSLog(@"message --- %@",message);
@@ -489,6 +498,8 @@
             
         } Failure:^(NSURLSessionTask *task, NSString *message, NSString *status, NSString *url) {
             NSLog(@"message --- %@",message);
+            if ([message isEqualToString:@"查不到此服务员信息"])
+                [self performSegueWithIdentifier:@"goLogin" sender:nil];
         }];
         
         
@@ -563,12 +574,7 @@
         [AlterViewController alterViewOwner:self WithAlterViewStype:AlterViewGuestUnfinished WithMessageCount:nil WithAlterViewBlock:^(UIButton *button, NSInteger buttonIndex) {
         }];
     }
-    if ([CusScoreTask isEqualToString:[dic objectForKey:@"messType"]])
-    {
-        NSLog(@"客人评价了任务");
-        [AlterViewController alterViewOwner:self WithAlterViewStype:AlterViewGuestUnfinished WithMessageCount:nil WithAlterViewBlock:^(UIButton *button, NSInteger buttonIndex) {
-        }];
-    }
+    
     if ([SystemAutoConfirmTaskToWaiter isEqualToString:[dic objectForKey:@"messType"]])
     {
         NSLog(@"30分钟客人没点认可和不认可时的推送");
@@ -580,10 +586,15 @@
     {
         NSLog(@"管理员派单");
         [self NET_attendStatus];
+        [AlterViewController alterViewOwner:self WithAlterViewStype:AlterViewAdminSendSingle WithMessageCount:nil WithAlterViewBlock:^(UIButton *button, NSInteger buttonIndex) {
+        }];
     }
     if ([ManagerRemindeTask isEqualToString:[dic objectForKey:@"messType"]])
     {
         NSLog(@"管理员催单");
+        [AlterViewController alterViewOwner:self WithAlterViewStype:AlterViewAdminReminder WithMessageCount:nil WithAlterViewBlock:^(UIButton *button, NSInteger buttonIndex) {
+            
+        }];
     }
     if ([startAPP isEqualToString:[dic objectForKey:@"messType"]])
     {
