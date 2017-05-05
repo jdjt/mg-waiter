@@ -22,6 +22,6 @@
 
 @property (nonatomic,readonly) NSString *weixinInterfaceUrl;
 
-
++(void)systemAlterView:(NSString *)message ower:(id)tager;
 
 @end
