@@ -55,5 +55,5 @@
 @dynamic haschatmessage;
 @dynamic belongHistoricalStatics;
 @dynamic customerRoomNum;
-
+@dynamic confirmTime;
 @end

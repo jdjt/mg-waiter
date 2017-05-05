@@ -261,6 +261,7 @@
         CalendarViewController * vc = segue.destinationViewController;
         vc.delegate = self;
         vc.selectDateString = self.selectDateString;
+        self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     }
 }
 #pragma mark - 统计选择日期——delegate

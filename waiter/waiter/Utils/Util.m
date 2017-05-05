@@ -485,4 +485,22 @@ static NSString* macadd;
     return [NSString stringWithFormat:@"%.0f",newTineSc];
     
 }
+
+//2个时间戳的差值
++(NSString *)timeStampsLongTime:(NSString *)longTime nowTime:(NSString *)nowTime{
+    
+    NSDate * longDate = [[NSDate alloc]initWithTimeIntervalSince1970:[longTime doubleValue]/1000];
+    NSDate * nowDate = [[NSDate alloc]initWithTimeIntervalSince1970:[nowTime doubleValue]/1000];
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSCalendarUnit unit = NSCalendarUnitYear | NSCalendarUnitWeekOfMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
+    
+    NSDateComponents *cmps = [calendar components:unit fromDate:longDate toDate:nowDate options:0];
+    
+    NSString * hourHerder = cmps.hour < 10 ? @"0" : @"";
+    NSString * minuteHerder = cmps.minute < 10 ? @"0" : @"";
+    NSString * secondHerder = cmps.second < 10 ? @"0" : @"";
+    
+    return [NSString stringWithFormat:@"%@%ld:%@%ld:%@%ld",hourHerder,(long)cmps.hour,minuteHerder,(long)cmps.minute,secondHerder,(long)cmps.second];
+    
+}
 @end

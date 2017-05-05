@@ -54,6 +54,7 @@
         <attribute name="causeTime" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="cImAccount" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="comeFrom" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="confirmTime" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="customerDeviceId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="customerId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="customerName" optional="YES" attributeType="String" syncable="YES"/>
@@ -91,6 +92,6 @@
         <element name="DBDeviceInfo" positionX="180" positionY="-162" width="128" height="75"/>
         <element name="DBWaiterInfo" positionX="-542" positionY="-441" width="128" height="388"/>
         <element name="HistoricalStatistics" positionX="-351" positionY="-414" width="128" height="180"/>
-        <element name="TaskList" positionX="-189" positionY="-351" width="128" height="658"/>
+        <element name="TaskList" positionX="-189" positionY="-351" width="128" height="675"/>
     </elements>
 </model>
