@@ -201,8 +201,10 @@
         font = [UIFont systemFontOfSize:13];
     }
     CGFloat taskContentHerght = [NSString heightFromString:taskModel.taskContent withFont:font constraintToWidth:kScreenWidth - 107];
-    taskModel.callContentHeight = taskContentHerght <= 15 ? 15 : taskContentHerght + 1;
+    taskModel.callContentHeight = taskContentHerght <= 15 ? 15 : ceil(taskContentHerght) ;
     NSLog(@"taskContentHerght---> %f",taskContentHerght);
+    NSLog(@"taskModel.callContentHeight---> %f",taskModel.callContentHeight);
+    
     return taskModel;
 
 }
