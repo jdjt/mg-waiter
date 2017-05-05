@@ -12,6 +12,7 @@
 #import "DataBaseManager+Category.h"
 #import "JDMBProressHUD.h"
 #import "AppDelegate.h"
+#import "AlterViewController.h"
 #import "LoginViewController.h"
 @interface NetworkRequestManager ()
 
@@ -96,6 +97,9 @@
      /* 无响应：网络连接失败 */
     if (headerStatus == nil || headerMessage == nil) {
         self.failure(task, headerMessage,nil ,url);
+        [AlterViewController alterViewOwner:self WithAlterViewStype:alterViewNetError WithMessageCount:nil WithAlterViewBlock:^(UIButton *button, NSInteger buttonIndex) {
+            
+        }];
         return;
     }
     

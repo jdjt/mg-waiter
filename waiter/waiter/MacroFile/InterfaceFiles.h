@@ -82,7 +82,7 @@
 #define CusConfirmTaskComplete          @"CusConfirmTaskComplete"
 //  入住客人确认任务 (未完成)
 #define CusConfirmTaskUnComplete        @"CusConfirmTaskUnComplete"
-//  入住客人评价任务
+//  入住客人评价任务 (不要了)
 #define CusScoreTask                    @"CusScoreTask"
 //  服务员点击完成后，客人在超过规定时间范围后，还没有点击确认(认可，不认可)的情况下，系统自动客人确认认可,推送给服务员
 #define SystemAutoConfirmTaskToWaiter   @"SystemAutoConfirmTaskToWaiter"

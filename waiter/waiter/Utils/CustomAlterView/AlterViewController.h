@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 typedef NS_ENUM(NSInteger, AlterViewStype) {
     AlterViewGrabSingle = 0,        /*抢单*/
+    AlterViewOthersGrabSingle,       /*已被其他人抢走*/
     AlterViewServiceComplete,       /*服务完成*/
     AlterViewServiceStop,           /*停止接单*/
     AlterViewAdminSendSingle,       /*管理员派单*/
@@ -19,7 +20,9 @@ typedef NS_ENUM(NSInteger, AlterViewStype) {
     AlterViewGuestGiveUp,           /*住客超时未确认*/
     AlterViewLogoOut,               /*退出登录*/
     AlterViewPwdError,              /*工号或者密码错误*/
-    AlterViewEvaluation             /*客人已评价*/
+    alterViewUserIdandPwdNULL,      /*用户名或密码不能为空*/
+    AlterViewEvaluation,            /*客人已评价*/
+    alterViewNetError               /*网络错误*/
 };
 
 /**
