@@ -56,12 +56,18 @@
             _waiterId = [ user objectForKey:@"waiterId"];
         }
     } 
-    NSLog(@"waiterId --- > %@",_waiterId);
     return _waiterId;
 }
 
 
-
++(void)systemAlterView:(NSString *)message ower:(id)tager{
+    UIAlertController * alert = [UIAlertController alertControllerWithTitle:nil message:message preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction * action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    }];
+    [alert addAction:action];
+    UIViewController * vc = tager;
+    [vc presentViewController:alert animated:YES completion:nil];
+}
 
 
 

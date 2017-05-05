@@ -156,7 +156,6 @@
     float acceptTaskCount = [hsModel.acceptTaskCount floatValue];
     float noOrder = pushTaskCount - acceptTaskCount;
     NSString * orderRateText = [NSString stringWithFormat:@"%.0f",pushTaskCount<= 0 ? 0 : acceptTaskCount / pushTaskCount * 100];
-    NSLog(@"orderRateText --- >  %f",pushTaskCount);
     [self setOrderText:hsModel.acceptTaskCount NoOrderText:[NSString stringWithFormat:@"%.0f",noOrder] SystemPushText:hsModel.pushTaskCount OrderRateText:orderRateText];
     [self.allButton setTitle:[NSString stringWithFormat:@"全部(%@)",hsModel.allCount] forState:UIControlStateNormal];
     [self.independentButton setTitle:[NSString stringWithFormat:@"自主接单(%@)",hsModel.selfCount] forState:UIControlStateNormal];

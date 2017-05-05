@@ -809,6 +809,7 @@
         [self.taskTableView.mj_header endRefreshing];
         [self.taskTableView reloadData];
     } Failure:^(NSURLSessionTask *task, NSString *message, NSString *status, NSString *url) {
+        [self.taskTableView.mj_header endRefreshing];
         NSLog(@"message --- %@",message);
     }];
 }
