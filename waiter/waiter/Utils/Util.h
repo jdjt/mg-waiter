@@ -109,4 +109,9 @@
  * @abstract 日期格式转为时间戳
  */
 +(NSString *)standardTimeConversionTimeStamp:(NSString *)standardTime WithFormatter:(NSString *)formatter;
+
+/**
+ * @abstract 2个时间戳的差值
+ */
++(NSString *)timeStampsLongTime:(NSString *)longTime nowTime:(NSString *)nowTime;
 @end

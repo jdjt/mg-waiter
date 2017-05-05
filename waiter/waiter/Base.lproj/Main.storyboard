@@ -456,7 +456,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="统计" id="vdS-1J-05b">
                             <connections>
-                                <segue destination="aBb-DV-DJL" kind="push" id="aWG-9k-ioH"/>
+                                <segue destination="aBb-DV-DJL" kind="push" identifier="goCalendar" id="aWG-9k-ioH"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

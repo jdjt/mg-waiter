@@ -53,6 +53,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, copy) NSString *waiteTime;
 @property (nullable, nonatomic, copy) NSString *wImAccount;
 @property (nullable, nonatomic, copy) NSString *customerRoomNum;
+@property (nullable, nonatomic, copy) NSString *confirmTime;
 @property (nullable, nonatomic, retain) DBWaiterInfo *belongWaiterInfor;
 @property (nullable, nonatomic, retain) NSOrderedSet<ChatMessage *> *haschatmessage;
 @property (nullable, nonatomic, retain) HistoricalStatistics *belongHistoricalStatics;
