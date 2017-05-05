@@ -273,12 +273,12 @@
                 }];
             } Failure:^(NSURLSessionTask *task, NSString *message, NSString *status, NSString *url) {
                 NSLog(@"抢单失败 --- %@",message);
-                if ([message isEqualToString:@"抢单失败,该单已被抢"]) {
-                    [AlterViewController alterViewOwner:self WithAlterViewStype:AlterViewOthersGrabSingle WithMessageCount:nil WithAlterViewBlock:^(UIButton *button, NSInteger buttonIndex) {
-                        if (buttonIndex == 1)
-                            [self NET_attendStatus];
-                    }];
-                }
+                UIAlertController * alert = [UIAlertController alertControllerWithTitle:nil message:message preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction * action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    [self NET_attendStatus];
+                }];
+                [alert addAction:action];
+                [self presentViewController:alert animated:YES completion:nil];
             }];
         }
     }];
