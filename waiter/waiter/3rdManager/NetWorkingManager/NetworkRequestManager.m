@@ -96,7 +96,7 @@
     NSString *unicodeMessage = nil;
      /* 无响应：网络连接失败 */
     if (headerStatus == nil || headerMessage == nil) {
-        self.failure(task, headerMessage,nil ,url);
+        self.failure(task, @"网络错误,请稍后再试!",nil ,url);
         return;
     }
     
