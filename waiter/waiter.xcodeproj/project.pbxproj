@@ -300,6 +300,7 @@
 		D53577FE1EAEEA7200465DA6 /* WXOUIModule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D53577F61EAEEA7200465DA6 /* WXOUIModule.framework */; };
 		D53577FF1EAEEA7200465DA6 /* WXOUIModuleResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D53577F71EAEEA7200465DA6 /* WXOUIModuleResources.bundle */; };
 		D53578001EAEEA7200465DA6 /* yw_1222.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D53577F81EAEEA7200465DA6 /* yw_1222.jpg */; };
+		D53CF7C81EBC508D005AE5CB /* TextLocationLable.m in Sources */ = {isa = PBXBuildFile; fileRef = D53CF7C71EBC508D005AE5CB /* TextLocationLable.m */; };
 		D54164741EA7009D009D35C8 /* NSManagedObject+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = D54164731EA7009D009D35C8 /* NSManagedObject+Category.m */; };
 		D543F7531EB0A735004FFAE7 /* DBWaiterInfo+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = D543F7501EB0A735004FFAE7 /* DBWaiterInfo+CoreDataClass.m */; };
 		D543F7541EB0A735004FFAE7 /* DBWaiterInfo+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D543F7521EB0A735004FFAE7 /* DBWaiterInfo+CoreDataProperties.m */; };
@@ -784,6 +785,8 @@
 		D53577F61EAEEA7200465DA6 /* WXOUIModule.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WXOUIModule.framework; sourceTree = "<group>"; };
 		D53577F71EAEEA7200465DA6 /* WXOUIModuleResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = WXOUIModuleResources.bundle; sourceTree = "<group>"; };
 		D53577F81EAEEA7200465DA6 /* yw_1222.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = yw_1222.jpg; sourceTree = "<group>"; };
+		D53CF7C61EBC508D005AE5CB /* TextLocationLable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextLocationLable.h; sourceTree = "<group>"; };
+		D53CF7C71EBC508D005AE5CB /* TextLocationLable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextLocationLable.m; sourceTree = "<group>"; };
 		D54164721EA7009D009D35C8 /* NSManagedObject+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObject+Category.h"; sourceTree = "<group>"; };
 		D54164731EA7009D009D35C8 /* NSManagedObject+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObject+Category.m"; sourceTree = "<group>"; };
 		D543F74F1EB0A735004FFAE7 /* DBWaiterInfo+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DBWaiterInfo+CoreDataClass.h"; sourceTree = "<group>"; };
@@ -1899,6 +1902,8 @@
 				D59E62431EA07F7100DFDE85 /* CalendarCollectionCell.m */,
 				D59E62451EA0984400DFDE85 /* CalendarReusableViewCell.h */,
 				D59E62461EA0984400DFDE85 /* CalendarReusableViewCell.m */,
+				D53CF7C61EBC508D005AE5CB /* TextLocationLable.h */,
+				D53CF7C71EBC508D005AE5CB /* TextLocationLable.m */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -2327,6 +2332,7 @@
 				D543F7601EB0A75D004FFAE7 /* TaskList+CoreDataProperties.m in Sources */,
 				D59E62371EA0730500DFDE85 /* CalendarViewController.m in Sources */,
 				D5865F061E9F818C00E070D4 /* NSString+Addtions.m in Sources */,
+				D53CF7C81EBC508D005AE5CB /* TextLocationLable.m in Sources */,
 				D51C8A131EA5C47C0047FE6C /* DBDeviceInfo+CoreDataClass.m in Sources */,
 				D51C8A041EA5C3900047FE6C /* DataBaseManager+Category.m in Sources */,
 				D51C8A141EA5C47C0047FE6C /* DBDeviceInfo+CoreDataProperties.m in Sources */,

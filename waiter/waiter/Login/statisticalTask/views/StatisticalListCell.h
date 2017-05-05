@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "CustomScoreView.h"
 #import "TaskList+CoreDataClass.h"
+#import "TextLocationLable.h"
 @interface StatisticalListCell : UITableViewCell
 
 
@@ -47,7 +48,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *areaLable;//呼叫区域
 @property (weak, nonatomic) IBOutlet UILabel *areaText;
 
-@property (weak, nonatomic) IBOutlet UILabel *areaContentLable;//呼叫内容
+@property (weak, nonatomic) IBOutlet TextLocationLable *areaContentLable;//呼叫内容
 @property (weak, nonatomic) IBOutlet UILabel *areaContentText;
 
 @property (weak, nonatomic) IBOutlet UIButton *chatRecordButton;//聊天记录按钮
