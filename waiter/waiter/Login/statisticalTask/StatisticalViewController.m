@@ -144,7 +144,7 @@
     } Failure:^(NSURLSessionTask *task, NSString *message, NSString *status, NSString *url) {
         [self.tableView.mj_header endRefreshing];
         [self.tableView.mj_footer endRefreshing];
-        [self systemAlterView:message];
+        [MySingleton systemAlterView:message ower:self];
        
     }];
 }
@@ -270,11 +270,5 @@
     self.timeLable.text = [NSString stringWithFormat:@"日期  %@",self.selectDateString];
     [self updateDataWithRef:YES withByUser:YES];
 }
--(void)systemAlterView:(NSString *)message{
-    UIAlertController * alert = [UIAlertController alertControllerWithTitle:nil message:message preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction * action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-    }];
-    [alert addAction:action];
-    [self presentViewController:alert animated:YES completion:nil];
-}
+
 @end
