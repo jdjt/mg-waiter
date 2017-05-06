@@ -26,7 +26,7 @@
     self.loginButton.layer.cornerRadius = 5.0f;
     
     self.userIDField.text = @"";
-    self.pwdField.text = @"123456";
+    self.pwdField.text = @"";
 }
 
 - (void)didReceiveMemoryWarning {
@@ -69,13 +69,11 @@
     {
         [self.userIDField resignFirstResponder];
         [self.pwdField resignFirstResponder];
-        
-        UIAlertController * alert = [UIAlertController alertControllerWithTitle:nil message:@"账号或密码不能为空!" preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction * action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        }];
-        [alert addAction:action];
-        [self presentViewController:alert animated:YES completion:nil];
+        [MySingleton systemAlterViewOwner:self WithMessage:@"账号或密码不能为空!"];
         return;
+    }
+    if (self.pwdField.text.length < 6 || self.pwdField.text.length > 18) {
+        [MySingleton systemAlterViewOwner:self WithMessage:@"密码不能小于6位或者大于18位！"];
     }
     
     DBDeviceInfo * deviceInfo = [[DataBaseManager defaultInstance] getDeviceInfo];

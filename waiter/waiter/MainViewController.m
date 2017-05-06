@@ -132,7 +132,7 @@
         self.taskList = self.dataSource[indexPath.row];
     }
     _taskListCell.userName.text = self.taskList.customerName;
-    _taskListCell.roomNumber.text = [NSString stringWithFormat:@"%@-%@",self.taskList.floorNo,self.taskList.taskCode];
+    _taskListCell.roomNumber.text = self.taskList.floorNo;
     _taskListCell.callArea.text = self.taskList.areaName;
     _taskListCell.callContent.text = self.taskList.taskContent;
     _taskListCell.orderTime.text = [self timeWithTimeIntervalString:self.taskList.produceTime BOOL:1];
@@ -408,7 +408,7 @@
 - (void)NET_attendStatus
 {
     NSLog(@"%@",self.userInfo.attendStatus);
-    if ([self.userInfo.attendStatus isEqualToString:@"0"] || self.userInfo.attendStatus == nil)
+    if ([self.userInfo.attendStatus isEqualToString:@"0"] || self.userInfo.attendStatus == nil || [self.userInfo.resetPwdDiv isEqualToString:@"0"])
     {
         [self performSegueWithIdentifier:@"goLogin" sender:nil];
     }
@@ -510,6 +510,8 @@
             NSLog(@"message --- %@",message);
             if ([message isEqualToString:@"查不到此服务员信息"])
                 [self performSegueWithIdentifier:@"goLogin" sender:nil];
+            
+            [MySingleton systemAlterViewOwner:self WithMessage:message];
         }];
         
         
@@ -560,7 +562,10 @@
     if ([CusAddTaskK isEqualToString:[dic objectForKey:@"messType"]])
     {
         NSLog(@"新任务");
-        [self Net_taskInfoList];
+        if ([self.userInfo.workStatus isEqualToString:@"2"])
+        {
+            [self Net_taskInfoList];
+        }
     }
     if ([CusCancelTask isEqualToString:[dic objectForKey:@"messType"]])
     {

@@ -61,6 +61,11 @@
 
 
 +(void)systemAlterViewOwner:(id)owner WithMessage:(NSString *)message{
+    
+    
+    if (message.length < 1) {
+        return;
+    }
     UIAlertController * alert = [UIAlertController alertControllerWithTitle:nil message:message preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction * action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
     }];
