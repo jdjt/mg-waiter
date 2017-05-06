@@ -247,10 +247,11 @@
                     if (dataSource != nil)
                     {
                         self.taskList = dataSource;
-                        self.conversation = [YWP2PConversation fetchConversationByPerson:[[YWPerson alloc]initWithPersonId:self.taskList.cImAccount appKey:@"23758144"] creatIfNotExist:YES baseContext:[SPKitExample sharedInstance].ywIMKit.IMCore];
+                        self. = [YWP2PConversation fetchConversationByPerson:[[YWPerson alloc]initWithPersonId:self.taskList.cImAccount appKey:@"23758144"] creatIfNotExist:YES baseContext:[SPKitExample sharedInstance].ywIMKit.IMCore];
                         self.messageCountLabel.text = [NSString stringWithFormat:@"%@",self.conversation.conversationUnreadMessagesCount];
                         if (self.conversation.conversationUnreadMessagesCount.integerValue != 0)
                             self.messageCountLabel.hidden = NO;
+                        [self.conversation asyncSendMessageBody:[[YWMessageBodyText alloc] initWithMessageText:[NSString stringWithFormat:@"%@您好，我是服务员%@，很高兴为您服务！",self.taskList.customerName,self.userInfo.name]] controlParameters:nil progress:nil completion:nil];
                     }
                     
 //                    NSLog(@"抢单时间：%@",[self timeWithTimeIntervalString:self.taskList.acceptTime]);
@@ -767,6 +768,7 @@
 - (void)goMapImageAction:(UITapGestureRecognizer *)tap
 {
     MapViewController *map = [[MapViewController alloc] init];
+    map.title = @"进行中的任务";
     [self.navigationController pushViewController:map animated:YES];
 }
 
