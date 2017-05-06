@@ -32,4 +32,5 @@
 @property (nonatomic, strong)NSString * completeSecondString;
 @property (nonatomic, strong)NSString * completeMinuteString;
 @property (nonatomic, strong)NSString * completeHourString;
+- (void)instantMessageingFormation;
 @end

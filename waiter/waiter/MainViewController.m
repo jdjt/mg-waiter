@@ -578,7 +578,8 @@
     if ([CusConfirmTaskComplete isEqualToString:[dic objectForKey:@"messType"]])
     {
         NSLog(@"客人确认，完成");
-        [self NET_attendStatus];
+        [self Net_taskInfoList];
+        [self.navigationController popToRootViewControllerAnimated:YES];
         [AlterViewController alterViewOwner:self WithAlterViewStype:AlterViewGuestComplete WithMessageCount:nil WithAlterViewBlock:^(UIButton *button, NSInteger buttonIndex) {
         }];
     }
