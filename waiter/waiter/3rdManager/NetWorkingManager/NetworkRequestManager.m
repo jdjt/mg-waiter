@@ -108,7 +108,7 @@
     
     
     NSString * serverMessage = messageArray.count > 1 ? messageArray[1] : @"";//提示语
-    
+    NSLog(@"serverMessage---===------%@",serverMessage);
     /* 网络数据失败 */
     if ([headerStatus isEqualToString:@"ERR"]){
         
@@ -138,7 +138,7 @@
                     self.success(task, nil, serverMessage, url);
                 }else{
                     //数据操作失败
-                    self.failure(task, nil, serverMessage, url);
+                    self.failure(task, serverMessage, headerStatus, url);
                 }
                 
                 return;
@@ -146,15 +146,12 @@
             // 有返回数据的请求
              self.success(task, dataSource, serverMessage, url);
         }
-        @catch (NSException *exception){            
-            //数据操作失败
-            self.failure(task, nil, serverMessage, url);
+        @catch (NSException *exception){
         }
     }else{
         // 返回数据为nil
         self.success(task, nil, serverMessage, url);
         
-    
     }
 
 }
