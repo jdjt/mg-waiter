@@ -247,7 +247,7 @@
                     if (dataSource != nil)
                     {
                         self.taskList = dataSource;
-                        self. = [YWP2PConversation fetchConversationByPerson:[[YWPerson alloc]initWithPersonId:self.taskList.cImAccount appKey:@"23758144"] creatIfNotExist:YES baseContext:[SPKitExample sharedInstance].ywIMKit.IMCore];
+                        self.conversation = [YWP2PConversation fetchConversationByPerson:[[YWPerson alloc]initWithPersonId:self.taskList.cImAccount appKey:@"23758144"] creatIfNotExist:YES baseContext:[SPKitExample sharedInstance].ywIMKit.IMCore];
                         self.messageCountLabel.text = [NSString stringWithFormat:@"%@",self.conversation.conversationUnreadMessagesCount];
                         if (self.conversation.conversationUnreadMessagesCount.integerValue != 0)
                             self.messageCountLabel.hidden = NO;
