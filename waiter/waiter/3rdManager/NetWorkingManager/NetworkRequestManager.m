@@ -112,12 +112,13 @@
     /* 网络数据失败 */
     if ([headerStatus isEqualToString:@"ERR"]){
         
-         self.failure(task, serverMessage, headerStatus, url);
+        
         if ([messageArray.firstObject isEqualToString:EBCALL002]) {
             //登录失效
             [[NSNotificationCenter defaultCenter] postNotificationName:WAITER_RECEIVED_PUSH object:@{@"messType":EBCALL002} userInfo:@{@"messType":EBCALL002}];
             return;
         }
+        self.failure(task, serverMessage, headerStatus, url);
         return;
     }
     
