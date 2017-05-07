@@ -883,7 +883,6 @@
  @param mapCoord 位置
  */
 - (void)didUpdatePosition:(FMKMapCoord)mapCoord success:(BOOL)success{
-    NSLog(@"success---------===== >  %d",success);
     [self.gpsParams setValue:[NSString stringWithFormat:@"%d",mapCoord.coord.storey] forKey:@"floorNo"];
     [self.gpsParams setValue:[NSString stringWithFormat:@"%d",mapCoord.mapID] forKey:@"mapNo"];
     [self.gpsParams setValue:[NSString stringWithFormat:@"%f",mapCoord.coord.mapPoint.x] forKey:@"positionX"];
