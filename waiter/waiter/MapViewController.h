@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MainViewController.h"
 
 @interface MapViewController : UIViewController
+@property (strong, nonatomic) MainViewController * mainVC;
 
 @end

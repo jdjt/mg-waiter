@@ -8,7 +8,6 @@
 
 #import "MapViewController.h"
 #import "FMIndoorMapVC.h"
-
 @interface MapViewController ()<FMKLocationServiceManagerDelegate,FMKMapViewDelegate,FMKLayerDelegate,FMLocationManagerDelegate>
 
 @property (assign, nonatomic) BOOL showFinish;
@@ -42,11 +41,13 @@ int const kCallingServiceCountTwo = 5;
 //    self.inTaskView.backgroundColor = [UIColor whiteColor];
 //    self.inTaskView.alpha = 0.7;
     self.count = 0;
-
     self.title = @"当前执行中任务";
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(backMainViewController:) name:@"backMainViewController" object:nil];
 
+    UIBarButtonItem *chatView = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"chaticon"] style:UIBarButtonItemStylePlain target:self action:@selector(goChatView)];
+    self.navigationItem.rightBarButtonItem = chatView;
+    
 //    self.alertController = [UIAlertController alertControllerWithTitle:@"消息通知" message:@"您的距离客人距离十米，请完成当前任务吧 ！" preferredStyle:UIAlertControllerStyleAlert];
 //    __weak typeof (self) weakSelf = self;
 //    UIAlertAction * action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -174,6 +175,13 @@ int const kCallingServiceCountTwo = 5;
 - (void)backMainViewController:(NSNotificationCenter *)noti
 {
     [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
+//去聊天页面
+- (void)goChatView
+{
+    [self.navigationController popToRootViewControllerAnimated:NO];
+    [self.mainVC instantMessageingFormation];
 }
 
 #pragma mark - FMMap

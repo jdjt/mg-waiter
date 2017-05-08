@@ -385,7 +385,7 @@ UIAlertViewDelegate>
  */
 - (void)exampleOpenConversationViewControllerWithConversation:(YWConversation *)aConversation fromNavigationController:(UINavigationController *)aNavigationController
 {
-
+    self.navigationController = aNavigationController;
     UINavigationController *conversationNavigationController = nil;
 //    if (aNavigationController) {
         conversationNavigationController = aNavigationController;
@@ -449,33 +449,41 @@ UIAlertViewDelegate>
  *  创建某个会话Controller，在这个Demo中仅用于iPad SplitController中显示会话
  */
 - (YWConversationViewController *)exampleMakeConversationViewControllerWithConversation:(YWConversation *)conversation {
-    YWConversationViewController *conversationController = nil;
-
-    conversationController = [YWConversationViewController makeControllerWithIMKit:self.ywIMKit conversation:conversation];
-    [self.ywIMKit addDefaultInputViewPluginsToMessagesListController:conversationController];
+//    YWConversationViewController *conversationController = nil;
+    self.conversationController = nil;
+    self.conversationController = [YWConversationViewController makeControllerWithIMKit:self.ywIMKit conversation:conversation];
+    [self.ywIMKit addDefaultInputViewPluginsToMessagesListController:self.conversationController];
     
     if ([conversation isKindOfClass:[YWP2PConversation class]]) {
         UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStyleDone target:nil action:nil];
-        conversationController.disableTitleAutoConfig = YES;
-        conversationController.title = @"进行中任务";
-        conversationController.navigationItem.backBarButtonItem = barButtonItem;
-        conversationController.disableTextShowInFullScreen = YES;
+        self.conversationController.disableTitleAutoConfig = YES;
+        self.conversationController.title = @"进行中任务";
+        self.conversationController.navigationItem.backBarButtonItem = barButtonItem;
+        self.conversationController.disableTextShowInFullScreen = YES;
+        self.conversationController = self.conversationController;
+        UIBarButtonItem *goMapView = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"mapicon"] style:UIBarButtonItemStylePlain target:self action:@selector(goMapView)];
+        self.conversationController.navigationItem.rightBarButtonItem = goMapView;
     }
 
     /// 添加自定义插件
-    [self exampleAddInputViewPluginToConversationController:conversationController];
+    [self exampleAddInputViewPluginToConversationController:self.conversationController];
 
     /// 添加自定义表情
-    [self exampleShowCustomEmotionWithConversationController:conversationController];
+    [self exampleShowCustomEmotionWithConversationController:self.conversationController];
 
     /// 设置消息长按菜单
-    [self exampleSetMessageMenuToConversationController:conversationController];
+    [self exampleSetMessageMenuToConversationController:self.conversationController];
 
-    conversationController.hidesBottomBarWhenPushed = YES;
+    self.conversationController.hidesBottomBarWhenPushed = YES;
 
-    return conversationController;
+    return self.conversationController;
 }
 
+- (void)goMapView
+{
+    [self.conversationController.navigationController popToRootViewControllerAnimated:NO];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"goMapView" object:nil];
+}
 #pragma mark - Customize
 
 - (void)exampleEnableTribeAtMessage
@@ -486,7 +494,7 @@ UIAlertViewDelegate>
 - (void)exampleEnableReadFlag
 {
     // 开启单聊已读未读显示开关，如果应用场景不需要，可以关闭
-    [[self.ywIMKit.IMCore getConversationService] setEnableMessageReadFlag:YES];
+    [[self.ywIMKit.IMCore getConversationService] setEnableMessageReadFlag:NO];
 }
 
 #pragma mark - 聊天页面自定义

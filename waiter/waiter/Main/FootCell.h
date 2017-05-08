@@ -11,5 +11,5 @@
 @interface FootCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIView *footView;
 @property (weak, nonatomic) IBOutlet UIButton *completeButton;
-
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *completeButtonHeight;
 @end

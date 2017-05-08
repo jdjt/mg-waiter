@@ -10,7 +10,8 @@
 
 #import <WXOpenIMSDKFMWK/YWFMWK.h>
 #import <WXOUIModule/YWUIFMWK.h>
-
+#import "MainViewController.h"
+#import "MapViewController.h"
 /// 定义用于自定义消息内部类型的key
 #define kSPCustomizeMessageType @"customizeMessageType"
 
@@ -62,7 +63,8 @@
  *  用户即将退出登录时调用
  */
 - (void)callThisBeforeISVAccountLogout;
-
+@property (nonatomic, strong) UINavigationController * navigationController;
+@property (strong, nonatomic)YWConversationViewController *conversationController;
 
 #pragma mark - basic
 

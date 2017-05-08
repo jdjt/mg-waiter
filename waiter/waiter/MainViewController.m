@@ -42,8 +42,6 @@
 
 @property (nonatomic, assign)BOOL isDown;
 
-
-
 // 地图GPS相关
 @property (strong, nonatomic) NSString *mapPath;
 @property (strong, nonatomic) NSTimer * gpsTimer;
@@ -57,7 +55,6 @@
     [super viewDidLoad];
    // [self getMacAndStartLocationService];
     self.ishiddenFoot = NO;
-    
     self.serviceTimeView.hidden = YES;
     self.tableTop.constant = 0.0f;
 
@@ -74,11 +71,27 @@
     [self.goChatImage addGestureRecognizer:chatTap];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushTypeAction:) name:WAITER_RECEIVED_PUSH object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(goMapView:) name:@"goMapView" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(newMessage:) name:@"NotiNewIMMessage" object:nil];
     
     self.dataSource = [[NSMutableArray alloc]initWithCapacity:10];
 
 //    [_timer1 setFireDate:[NSDate date]];//开始 .备用
+    
+    if (IS_LESS5){
+        self.workTimeViewHeight.constant = 45;
+        self.grayLeineViewTop.constant = 45;
+        self.empNoTop.constant = 10;
+        self.nameTop.constant = 10;
+        self.depNameTop.constant = 10;
+        self.headViewHeight.constant = 200;
+        self.stateViewHeight.constant = 40;
+        self.serviceTimeViewHeight.constant = 40;
+        self.tableTop.constant = 54;
+        self.stateButtonWidth.constant = 110;
+        self.stateButtonHeight.constant = 40;
+        self.footcCell.completeButtonHeight.constant = 44;
+    }
 }
 
 
@@ -256,8 +269,13 @@
                     
 //                    NSLog(@"抢单时间：%@",[self timeWithTimeIntervalString:self.taskList.acceptTime]);
 //                    NSLog(@"系统时间:%@",[self timeWithTimeIntervalString:self.taskList.nowDate]);
-                    
-                    self.tableTop.constant = 59.0f;
+                    if (IS_LESS5) {
+                        self.tableTop.constant = 54;
+                    }
+                    else
+                    {
+                        self.tableTop.constant = 59.0f;
+                    }
                     self.ishiddenFoot = YES;//显示foot
                     self.serviceTimeView.hidden = NO;//显示服务时长的View
                     self.taskTableView.mj_header = nil;
@@ -419,6 +437,7 @@
         [[NetworkRequestManager defaultManager] POST_Url:URI_WAITER_WaiterInfoByWaiterId Params:nil withByUser:YES Success:^(NSURLSessionTask *task, id dataSource, NSString *message, NSString *url) {
             _userInfo = dataSource;
             [[DataBaseManager defaultInstance]saveContext];
+            
             [self instantMessaging];
             NSLog(@"%@",_userInfo.workStatus);
             /* 0-挂起(默认); 1 任务中;2-待命 */
@@ -428,6 +447,8 @@
                 [self.stateButton setTitle:@"开始接单" forState:UIControlStateNormal];
                 self.isDown = NO;
                 self.stateButton.enabled = YES;
+                self.ishiddenFoot = NO;//隐藏foot
+                self.serviceTimeView.hidden = YES;//隐藏服务时长的View
                 self.taskTableView.mj_header = nil;
                 self.taskingLabel.text = @"进行中任务（0）";
                 self.navigationItem.leftBarButtonItem.enabled = YES;
@@ -439,7 +460,13 @@
                 //获取任务信息(恢复任务）
                 self.isDown = YES;
                 [self.stateButton setTitle:@"停止接单" forState:UIControlStateNormal];
-                self.tableTop.constant = 59.0f;
+                if (IS_LESS5) {
+                    self.tableTop.constant = 54;
+                }
+                else
+                {
+                    self.tableTop.constant = 59.0f;
+                }
                 self.serviceTimeView.hidden = NO;//显示服务时长的View
                 self.ishiddenFoot = YES;//显示foot
                 self.taskTableView.mj_header = nil;
@@ -579,7 +606,7 @@
     if ([CusConfirmTaskComplete isEqualToString:[dic objectForKey:@"messType"]])
     {
         NSLog(@"客人确认，完成");
-        [self Net_taskInfoList];
+        [self NET_attendStatus];
         [self.navigationController popToRootViewControllerAnimated:YES];
         [AlterViewController alterViewOwner:self WithAlterViewStype:AlterViewGuestComplete WithMessageCount:nil WithAlterViewBlock:^(UIButton *button, NSInteger buttonIndex) {
         }];
@@ -618,8 +645,13 @@
         NSLog(@"启动app");
         [self NET_attendStatus];
     }
+    
 }
 
+- (void)goMapView:(NSNotification *)noti
+{
+    [self goMapViewController];
+}
 
 #pragma mark - 获取任务列表
 - (void)Net_taskInfoList
@@ -768,8 +800,14 @@
 
 - (void)goMapImageAction:(UITapGestureRecognizer *)tap
 {
+    [self goMapViewController];
+}
+
+- (void)goMapViewController
+{
     MapViewController *map = [[MapViewController alloc] init];
     map.title = @"进行中的任务";
+    map.mainVC = self;
     [self.navigationController pushViewController:map animated:YES];
 }
 

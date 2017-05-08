@@ -50,6 +50,8 @@
     DBDeviceInfo * deviceInfo = [[DataBaseManager defaultInstance] getDeviceInfo];
     deviceInfo.deviceToken = device;
     [[DataBaseManager defaultInstance] saveContext];
+    [UMessage registerDeviceToken:deviceToken];
+    [[[YWAPI sharedInstance] getGlobalPushService] setDeviceToken:deviceToken];
     NSLog(@"deviceToken：--> %@",device);
 }
 //iOS10以前使用这个方法接收通知
