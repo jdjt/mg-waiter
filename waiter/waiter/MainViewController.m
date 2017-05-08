@@ -251,6 +251,7 @@
                         self.messageCountLabel.text = [NSString stringWithFormat:@"%@",self.conversation.conversationUnreadMessagesCount];
                         if (self.conversation.conversationUnreadMessagesCount.integerValue != 0)
                             self.messageCountLabel.hidden = NO;
+                        [self.conversation asyncSendMessageBody:[[YWMessageBodyText alloc] initWithMessageText:[NSString stringWithFormat:@"%@您好，我是服务员%@，很高兴为您服务！",self.taskList.customerName,self.userInfo.name]] controlParameters:nil progress:nil completion:nil];
                     }
                     
 //                    NSLog(@"抢单时间：%@",[self timeWithTimeIntervalString:self.taskList.acceptTime]);
@@ -768,6 +769,7 @@
 - (void)goMapImageAction:(UITapGestureRecognizer *)tap
 {
     MapViewController *map = [[MapViewController alloc] init];
+    map.title = @"进行中的任务";
     [self.navigationController pushViewController:map animated:YES];
 }
 
@@ -882,7 +884,6 @@
  @param mapCoord 位置
  */
 - (void)didUpdatePosition:(FMKMapCoord)mapCoord success:(BOOL)success{
-    NSLog(@"success---------===== >  %d",success);
     [self.gpsParams setValue:[NSString stringWithFormat:@"%d",mapCoord.coord.storey] forKey:@"floorNo"];
     [self.gpsParams setValue:[NSString stringWithFormat:@"%d",mapCoord.mapID] forKey:@"mapNo"];
     [self.gpsParams setValue:[NSString stringWithFormat:@"%f",mapCoord.coord.mapPoint.x] forKey:@"positionX"];

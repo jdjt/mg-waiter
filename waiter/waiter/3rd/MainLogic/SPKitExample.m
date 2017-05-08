@@ -457,7 +457,7 @@ UIAlertViewDelegate>
     if ([conversation isKindOfClass:[YWP2PConversation class]]) {
         UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStyleDone target:nil action:nil];
         conversationController.disableTitleAutoConfig = YES;
-        conversationController.title = @"呼叫服务";
+        conversationController.title = @"进行中任务";
         conversationController.navigationItem.backBarButtonItem = barButtonItem;
         conversationController.disableTextShowInFullScreen = YES;
     }

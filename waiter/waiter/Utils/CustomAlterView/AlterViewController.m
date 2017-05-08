@@ -71,7 +71,7 @@
             view = [self creatCustomStyleMessage:@"抢单失败，该任务已被接单或住客已取消呼叫服务" Title:@"确认"];
             break;
         case AlterViewServiceComplete:
-            view = [self creatSystemStyleMessage:@"请确认已完成当前任务" leftTitle:@"取消" rightTitle:@"确认"];
+            view = [self creatSystemStyleMessage:@"确认发送给住客已完成当前任务?" leftTitle:@"取消" rightTitle:@"确认"];
             break;
         case AlterViewServiceStop:
             view = [self creatSystemStyleMessage:@"请确认停止接单" leftTitle:@"取消" rightTitle:@"确认"];
