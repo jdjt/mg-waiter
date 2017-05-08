@@ -25,6 +25,8 @@
     [UMessage startWithAppkey:@"56f23615e0f55a8fc400053b" launchOptions:launchOptions httpsEnable:YES];
     //注册通知
     [UMessage registerForRemoteNotifications];
+    
+    
     //iOS10必须加下面这段代码。
     UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
     center.delegate=self;
