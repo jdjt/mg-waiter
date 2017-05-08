@@ -149,7 +149,6 @@ static NSString * collectionReusableCell = @"reusableCell";
         self.selectYear = model.year;
         self.selecMonth = model.month;
         self.selectDay = subModel.day;
-        NSLog(@"%ld-%ld-%ld",(long)self.selectYear,(long)self.selecMonth,(long)self.selectDay);
         [self.collectionView reloadData];
     }
     
@@ -158,9 +157,7 @@ static NSString * collectionReusableCell = @"reusableCell";
 - (IBAction)SureButtonClick:(UIButton *)sender {
     
     if ([self.delegate respondsToSelector:@selector(calendarSelectDateString:)]) {
-        NSString * month = self.selecMonth < 10 ? [NSString stringWithFormat:@"0%ld",(long)self.selecMonth] : [NSString stringWithFormat:@"%ld",(long)self.selecMonth];
-        NSString * day = self.selectDay < 10 ? [NSString stringWithFormat:@"0%ld",(long)self.selectDay] : [NSString stringWithFormat:@"%ld",(long)self.selectDay];
-        [self.delegate calendarSelectDateString:[NSString stringWithFormat:@"%ld-%@-%@",(long)self.selectYear,month,day]];
+        [self.delegate calendarSelectDateString:[NSString stringWithFormat:@"%ld-%02ld-%02ld",(long)self.selectYear,(long)self.selecMonth,(long)self.selectDay]];
     }
     
     [self.navigationController popViewControllerAnimated:YES];

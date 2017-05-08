@@ -60,11 +60,13 @@
 {
     if (_passWordTextField.text.length<6||_passWordTextField.text.length>18 || _NPassWordTextField.text.length<6||_NPassWordTextField.text.length>18) {
         NSLog(@"请输入6-18位的密码");
+        [MySingleton systemAlterViewOwner:self WithMessage:@"请输入6-18位的密码"];
         return;
     }
     if (![_NPassWordTextField.text isEqualToString:_passWordTextField.text])
     {
         NSLog(@"两次密码不一致");
+        [MySingleton systemAlterViewOwner:self WithMessage:@"两次密码不一致"];
         return;
     }
     NSMutableDictionary * params = [[NSMutableDictionary alloc]init];

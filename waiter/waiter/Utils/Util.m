@@ -496,11 +496,7 @@ static NSString* macadd;
     
     NSDateComponents *cmps = [calendar components:unit fromDate:longDate toDate:nowDate options:0];
     
-    NSString * hourHerder = cmps.hour < 10 ? @"0" : @"";
-    NSString * minuteHerder = cmps.minute < 10 ? @"0" : @"";
-    NSString * secondHerder = cmps.second < 10 ? @"0" : @"";
-    
-    return [NSString stringWithFormat:@"%@%ld:%@%ld:%@%ld",hourHerder,(long)cmps.hour,minuteHerder,(long)cmps.minute,secondHerder,(long)cmps.second];
+    return [NSString stringWithFormat:@"%02ld:%02ld:%02ld",(long)cmps.hour,(long)cmps.minute,(long)cmps.second];
     
 }
 @end
