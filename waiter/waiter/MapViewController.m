@@ -44,7 +44,7 @@ int const kCallingServiceCountTwo = 5;
 //    self.inTaskView.backgroundColor = [UIColor whiteColor];
 //    self.inTaskView.alpha = 0.7;
     self.count = 0;
-    self.title = @"当前执行中任务";
+    self.title = @"进行中的任务";
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(backMainViewController:) name:@"backMainViewController" object:nil];
 

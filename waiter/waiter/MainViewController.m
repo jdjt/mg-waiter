@@ -145,7 +145,7 @@
         self.taskList = self.dataSource[indexPath.row];
     }
     _taskListCell.userName.text = self.taskList.customerName;
-    _taskListCell.roomNumber.text = self.taskList.floorNo;
+    _taskListCell.roomNumber.text = self.taskList.customerRoomNum;
     _taskListCell.callArea.text = self.taskList.areaName;
     _taskListCell.callContent.text = self.taskList.taskContent;
     _taskListCell.orderTime.text = [self timeWithTimeIntervalString:self.taskList.produceTime BOOL:1];
@@ -264,7 +264,9 @@
                         self.messageCountLabel.text = [NSString stringWithFormat:@"%@",self.conversation.conversationUnreadMessagesCount];
                         if (self.conversation.conversationUnreadMessagesCount.integerValue != 0)
                             self.messageCountLabel.hidden = NO;
-                        [self.conversation asyncSendMessageBody:[[YWMessageBodyText alloc] initWithMessageText:[NSString stringWithFormat:@"%@您好，我是服务员%@，很高兴为您服务！",self.taskList.customerName,self.userInfo.name]] controlParameters:nil progress:nil completion:nil];
+                        //只能发一次默认消息
+                        [[NSUserDefaults standardUserDefaults] setValue:@"1" forKey:@"isFirstMessage"];
+                        [self.conversation asyncSendMessageBody:[[YWMessageBodyText alloc] initWithMessageText:[NSString stringWithFormat:@"您好，我是服务员%@，很高兴为您服务！",self.userInfo.name]] controlParameters:nil progress:nil completion:nil];
                     }
                     
 //                    NSLog(@"抢单时间：%@",[self timeWithTimeIntervalString:self.taskList.acceptTime]);
@@ -491,6 +493,12 @@
                         self.messageCountLabel.text = [NSString stringWithFormat:@"%@",self.conversation.conversationUnreadMessagesCount];
                         if (self.conversation.conversationUnreadMessagesCount.integerValue != 0)
                             self.messageCountLabel.hidden = NO;
+                        //只能发一次默认消息
+                        if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"isFirstMessage"] isEqualToString:@"0"])
+                        {
+                            [self.conversation asyncSendMessageBody:[[YWMessageBodyText alloc] initWithMessageText:[NSString stringWithFormat:@"您好，我是服务员%@，很高兴为您服务！",self.userInfo.name]] controlParameters:nil progress:nil completion:nil];
+                            [[NSUserDefaults standardUserDefaults] setObject:@"1" forKey:@"isFirstMessage"];
+                        }
                     }
                     NSLog(@"%@",self.dataSource);
                     NSLog(@"完成时间%@",[self timeWithTimeIntervalString:self.taskList.finishTime BOOL:0]);//13:32:59
@@ -628,6 +636,7 @@
     if ([ManagerSendTask isEqualToString:[dic objectForKey:@"messType"]])
     {
         NSLog(@"管理员派单");
+        [[NSUserDefaults standardUserDefaults] setObject:@"0" forKey:@"isFirstMessage"];
         [self NET_attendStatus];
         [AlterViewController alterViewOwner:self WithAlterViewStype:AlterViewAdminSendSingle WithMessageCount:nil WithAlterViewBlock:^(UIButton *button, NSInteger buttonIndex) {
         }];
@@ -635,7 +644,7 @@
     if ([ManagerRemindeTask isEqualToString:[dic objectForKey:@"messType"]])
     {
         NSLog(@"管理员催单");
-        [AlterViewController alterViewOwner:self WithAlterViewStype:AlterViewAdminReminder WithMessageCount:nil WithAlterViewBlock:^(UIButton *button, NSInteger buttonIndex) {
+        [AlterViewController alterViewOwner:self WithAlterViewStype:AlterViewAdminReminder WithMessageCount:[dic objectForKey:@"count"] WithAlterViewBlock:^(UIButton *button, NSInteger buttonIndex) {
             
         }];
     }
