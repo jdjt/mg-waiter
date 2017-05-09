@@ -524,7 +524,6 @@
                 self.ishiddenFoot = NO;//不显示foot
                 self.taskingLabel.text = @"进行中任务（0）";
                 [_timer2 setFireDate:[NSDate distantFuture]];
-                [JDMJRefreshManager headerWithRefreshingTarget:self refreshingAction:@selector(PullDownRefresh) view:self.taskTableView];
                 self.stateButton.enabled = YES;//开始接单
                 self.navigationItem.leftBarButtonItem.enabled = YES;
                 self.serviceTimeView.hidden = YES;//隐藏服务时长的View

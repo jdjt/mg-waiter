@@ -148,6 +148,9 @@
              self.success(task, dataSource, serverMessage, url);
         }
         @catch (NSException *exception){
+            
+            //数据操作失败
+            self.failure(task, nil, headerStatus, url);
         }
     }else{
         // 返回数据为nil

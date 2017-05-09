@@ -18,7 +18,9 @@
     [header setTitle:@"松开立即刷新" forState:MJRefreshStatePulling];
     [header setTitle:@"正在刷新数据中..." forState:MJRefreshStateRefreshing];
     
-    tableView.mj_header = header;
+    if (tableView.mj_header == nil) {
+        tableView.mj_header = header;
+    }
     
     return header;
 
@@ -40,7 +42,10 @@
     //footer.stateLabel.textColor = [UIColor blueColor];
     
     // 设置footer
-    tableView.mj_footer = footer;
+    if (tableView.mj_footer == nil) {
+        tableView.mj_footer = footer;
+    }
+    
     
     return footer;
     
