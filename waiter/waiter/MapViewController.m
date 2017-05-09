@@ -200,9 +200,11 @@ int const kCallingServiceCountTwo = 5;
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.view addSubview:_mangroveMapView];
     });
-    [_mangroveMapView zoomWithScale:2.6];
-    [_mangroveMapView rotateWithAngle:45.0];
-    [_mangroveMapView setInclineAngle:60.0];
+    [_mangroveMapView zoomWithScale:1.8];
+    [_mangroveMapView setRotateWithAngle:0.0];
+    // 默认加载90度
+    [_mangroveMapView inclineWithAngle:60.0f];
+    
     FMKExternalModelLayer * modelLayer = [self.mangroveMapView.map getExternalModelLayerWithGroupID:@"1"];
     modelLayer.delegate = self;
     [[FMLocationManager shareLocationManager] setMapView:nil];
