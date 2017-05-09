@@ -813,6 +813,8 @@
 
 - (void)goMapViewController
 {
+    UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStyleDone target:nil action:nil];
+    self.navigationItem.backBarButtonItem = barButtonItem;
     MapViewController *map = [[MapViewController alloc] init];
     map.title = @"进行中的任务";
     map.mainVC = self;
@@ -850,6 +852,8 @@
 // 创建及时通讯界面
 - (void)instantMessageingFormation
 {
+    UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStyleDone target:nil action:nil];
+    self.navigationItem.backBarButtonItem = barButtonItem;
     YWPerson * person = [[YWPerson alloc]initWithPersonId:self.taskList.cImAccount appKey:@"23758144"];
     [[SPKitExample sharedInstance] exampleOpenConversationViewControllerWithPerson:person fromNavigationController:self.navigationController];
 }
