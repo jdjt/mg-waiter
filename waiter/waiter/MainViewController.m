@@ -941,9 +941,9 @@
     //服务器说不需要传--areaCode--
     //[self.gpsParams setValue:[self.myZoneManager getCurrentZone].zone_code forKey:@"areaCode"];
     [[NetworkRequestManager defaultManager] POST_Url:URI_WAITER_UpdateMapInfo Params:self.gpsParams withByUser:NO Success:^(NSURLSessionTask *task, id dataSource, NSString *message, NSString *url) {
-        NSLog(@"上传位置-s--%@",message);
+        NSLog(@"上传位置----Success-----%@",message);
     } Failure:^(NSURLSessionTask *task, NSString *message, NSString *status, NSString *url) {
-        NSLog(@"上传位置-f--%@",message);
+        NSLog(@"上传位置----Failure-----%@",message);
     }];
 }
 

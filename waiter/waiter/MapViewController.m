@@ -8,6 +8,9 @@
 
 #import "MapViewController.h"
 #import "FMIndoorMapVC.h"
+#import "MBProgressHUD.h"
+#import "AppDelegate.h"
+
 @interface MapViewController ()<FMKLocationServiceManagerDelegate,FMKMapViewDelegate,FMKLayerDelegate,FMLocationManagerDelegate>
 
 @property (assign, nonatomic) BOOL showFinish;
@@ -84,6 +87,10 @@ int const kCallingServiceCountTwo = 5;
     [[FMLocationManager shareLocationManager] setMapView:nil];
     [FMLocationManager shareLocationManager].delegate = self;
     [[FMLocationManager shareLocationManager] setMapView:self.mangroveMapView];
+    
+    MBProgressHUD *HUD =[MBProgressHUD showHUDAddedTo:[AppDelegate sharedDelegate].window animated:YES];
+    HUD.labelText = @"正在加载地图，请稍等";
+    [HUD show:YES];
 
 }
 - (void)viewDidDisappear:(BOOL)animated
@@ -193,9 +200,11 @@ int const kCallingServiceCountTwo = 5;
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.view addSubview:_mangroveMapView];
     });
-    [_mangroveMapView zoomWithScale:2.6];
-    [_mangroveMapView rotateWithAngle:45.0];
-    [_mangroveMapView setInclineAngle:60.0];
+    [_mangroveMapView zoomWithScale:1.8];
+    [_mangroveMapView setRotateWithAngle:0.0];
+    // 默认加载90度
+    [_mangroveMapView inclineWithAngle:60.0f];
+    
     FMKExternalModelLayer * modelLayer = [self.mangroveMapView.map getExternalModelLayerWithGroupID:@"1"];
     modelLayer.delegate = self;
     [[FMLocationManager shareLocationManager] setMapView:nil];
@@ -366,6 +375,9 @@ int const kCallingServiceCountTwo = 5;
 }
 - (void)mapViewDidFinishLoadingMap:(FMKMapView *)mapView
 {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [MBProgressHUD hideAllHUDsForView:[AppDelegate sharedDelegate].window animated:YES];
+    });
 }
 #pragma mark - FMLocationManagerDelegate
 
