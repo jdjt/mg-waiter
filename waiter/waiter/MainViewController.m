@@ -369,6 +369,7 @@
 //                self.userInfo.attendStatus = @"0";
                 [[DataBaseManager defaultInstance] deleteFromCoreData:self.userInfo];
                 [[DataBaseManager defaultInstance] saveContext];
+                [[SPKitExample sharedInstance] exampleLogout];
                 [self performSegueWithIdentifier:@"goLogin" sender:nil];
             } Failure:^(NSURLSessionTask *task, NSString *message, NSString *status, NSString *url) {
                 NSLog(@"message --- %@",message);

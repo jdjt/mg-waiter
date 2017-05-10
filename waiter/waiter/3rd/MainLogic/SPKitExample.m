@@ -307,8 +307,10 @@ UIAlertViewDelegate>
     [[self.ywIMKit.IMCore getLoginService] asyncLoginWithCompletionBlock:^(NSError *aError, NSDictionary *aResult) {
         if (aError.code == 0 || [[self.ywIMKit.IMCore getLoginService] isCurrentLogined]) {
             // 登录成功
+            NSLog(@"登录成功");
         } else {
             // 登录失败
+            NSLog(@"登录失败");
             if (aFailedBlock) {
                 aFailedBlock(aError);
             }
@@ -342,8 +344,8 @@ UIAlertViewDelegate>
 
         if (aStatus == YWIMConnectionStatusForceLogout || aStatus == YWIMConnectionStatusMannualLogout || aStatus == YWIMConnectionStatusAutoConnectFailed) {
             /// 手动登出、被踢、自动连接失败，都退出到登录页面
-            if (aStatus != YWIMConnectionStatusMannualLogout) {
-        
+            if (aStatus == YWIMConnectionStatusForceLogout) {
+                [self exampleLogout];
             }
 
         }
