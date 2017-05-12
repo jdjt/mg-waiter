@@ -440,7 +440,7 @@
         [[NetworkRequestManager defaultManager] POST_Url:URI_WAITER_WaiterInfoByWaiterId Params:nil withByUser:YES Success:^(NSURLSessionTask *task, id dataSource, NSString *message, NSString *url) {
             _userInfo = dataSource;
             [[DataBaseManager defaultInstance]saveContext];
-            
+            [self startNSTimer];
             [self instantMessaging];
             NSLog(@"%@",_userInfo.workStatus);
             /* 0-挂起(默认); 1 任务中;2-待命 */
@@ -921,13 +921,23 @@
         [locationManager startLocateWithMacAddress:macAddress mapPath:_mapPath];
     }
     
+    
+}
+-(void)startNSTimer{
+
     if (!self.gpsTimer) {
-        self.gpsTimer = [NSTimer timerWithTimeInterval:10 target:self selector:@selector(locationInformation) userInfo:nil repeats:YES];
+        NSTimeInterval tr = [self.userInfo.uploadPerSecond doubleValue];
+        if (tr < 1) tr = 10;
+        self.gpsTimer = [NSTimer timerWithTimeInterval:tr target:self selector:@selector(locationInformation) userInfo:nil repeats:YES];
         [[NSRunLoop currentRunLoop] addTimer: self.gpsTimer forMode:NSDefaultRunLoopMode];
-        self.gpsParams = [[NSMutableDictionary alloc]init];
     }
-    
-    
+
+}
+-(NSMutableDictionary *)gpsParams{
+    if (_gpsParams == nil) {
+        _gpsParams = [[NSMutableDictionary alloc]init];
+    }
+    return _gpsParams;
 }
 /**
  位置回调
