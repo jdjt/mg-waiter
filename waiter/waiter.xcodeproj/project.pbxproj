@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		408CCC3A1EC55EAF00D46179 /* SecurityGuardSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 408CCC321EC55EAF00D46179 /* SecurityGuardSDK.framework */; };
+		408CCC3B1EC55EAF00D46179 /* SGMain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 408CCC331EC55EAF00D46179 /* SGMain.framework */; };
+		408CCC3C1EC55EAF00D46179 /* UTMini.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 408CCC341EC55EAF00D46179 /* UTMini.framework */; };
+		408CCC3D1EC55EAF00D46179 /* WXOpenIMSDKFMWK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 408CCC351EC55EAF00D46179 /* WXOpenIMSDKFMWK.framework */; };
+		408CCC3E1EC55EAF00D46179 /* WXOpenIMSDKResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 408CCC361EC55EAF00D46179 /* WXOpenIMSDKResource.bundle */; };
+		408CCC3F1EC55EAF00D46179 /* WXOUIModule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 408CCC371EC55EAF00D46179 /* WXOUIModule.framework */; };
+		408CCC401EC55EAF00D46179 /* WXOUIModuleResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 408CCC381EC55EAF00D46179 /* WXOUIModuleResources.bundle */; };
+		408CCC411EC55EAF00D46179 /* yw_1222.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 408CCC391EC55EAF00D46179 /* yw_1222.jpg */; };
 		9C1995231E9F0F5400AC34DB /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C1995221E9F0F5400AC34DB /* MainViewController.m */; };
 		9C1995271E9F149C00AC34DB /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C1995261E9F149C00AC34DB /* LoginViewController.m */; };
 		9C19952D1E9F177F00AC34DB /* FirstLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C19952C1E9F177F00AC34DB /* FirstLoginViewController.m */; };
@@ -292,14 +300,6 @@
 		D51C8A141EA5C47C0047FE6C /* DBDeviceInfo+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D51C8A0C1EA5C47C0047FE6C /* DBDeviceInfo+CoreDataProperties.m */; };
 		D51C8A191EA5D5C20047FE6C /* PDKeyChain.m in Sources */ = {isa = PBXBuildFile; fileRef = D51C8A181EA5D5C20047FE6C /* PDKeyChain.m */; };
 		D51C8A1C1EA5D60D0047FE6C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D51C8A1B1EA5D60D0047FE6C /* Security.framework */; };
-		D53577F91EAEEA7200465DA6 /* SecurityGuardSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D53577F11EAEEA7200465DA6 /* SecurityGuardSDK.framework */; };
-		D53577FA1EAEEA7200465DA6 /* SGMain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D53577F21EAEEA7200465DA6 /* SGMain.framework */; };
-		D53577FB1EAEEA7200465DA6 /* UTMini.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D53577F31EAEEA7200465DA6 /* UTMini.framework */; };
-		D53577FC1EAEEA7200465DA6 /* WXOpenIMSDKFMWK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D53577F41EAEEA7200465DA6 /* WXOpenIMSDKFMWK.framework */; };
-		D53577FD1EAEEA7200465DA6 /* WXOpenIMSDKResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D53577F51EAEEA7200465DA6 /* WXOpenIMSDKResource.bundle */; };
-		D53577FE1EAEEA7200465DA6 /* WXOUIModule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D53577F61EAEEA7200465DA6 /* WXOUIModule.framework */; };
-		D53577FF1EAEEA7200465DA6 /* WXOUIModuleResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D53577F71EAEEA7200465DA6 /* WXOUIModuleResources.bundle */; };
-		D53578001EAEEA7200465DA6 /* yw_1222.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D53577F81EAEEA7200465DA6 /* yw_1222.jpg */; };
 		D53CF7C81EBC508D005AE5CB /* TextLocationLable.m in Sources */ = {isa = PBXBuildFile; fileRef = D53CF7C71EBC508D005AE5CB /* TextLocationLable.m */; };
 		D54164741EA7009D009D35C8 /* NSManagedObject+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = D54164731EA7009D009D35C8 /* NSManagedObject+Category.m */; };
 		D543F7531EB0A735004FFAE7 /* DBWaiterInfo+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = D543F7501EB0A735004FFAE7 /* DBWaiterInfo+CoreDataClass.m */; };
@@ -371,6 +371,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		408CCC321EC55EAF00D46179 /* SecurityGuardSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SecurityGuardSDK.framework; sourceTree = "<group>"; };
+		408CCC331EC55EAF00D46179 /* SGMain.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SGMain.framework; sourceTree = "<group>"; };
+		408CCC341EC55EAF00D46179 /* UTMini.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UTMini.framework; sourceTree = "<group>"; };
+		408CCC351EC55EAF00D46179 /* WXOpenIMSDKFMWK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WXOpenIMSDKFMWK.framework; sourceTree = "<group>"; };
+		408CCC361EC55EAF00D46179 /* WXOpenIMSDKResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = WXOpenIMSDKResource.bundle; sourceTree = "<group>"; };
+		408CCC371EC55EAF00D46179 /* WXOUIModule.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WXOUIModule.framework; sourceTree = "<group>"; };
+		408CCC381EC55EAF00D46179 /* WXOUIModuleResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = WXOUIModuleResources.bundle; sourceTree = "<group>"; };
+		408CCC391EC55EAF00D46179 /* yw_1222.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = yw_1222.jpg; sourceTree = "<group>"; };
 		9C1995211E9F0F5400AC34DB /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainViewController.h; path = waiter/MainViewController.h; sourceTree = SOURCE_ROOT; };
 		9C1995221E9F0F5400AC34DB /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainViewController.m; path = waiter/MainViewController.m; sourceTree = SOURCE_ROOT; };
 		9C1995251E9F149C00AC34DB /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -777,14 +785,6 @@
 		D51C8A181EA5D5C20047FE6C /* PDKeyChain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDKeyChain.m; sourceTree = "<group>"; };
 		D51C8A1A1EA5D5C70047FE6C /* waiter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = waiter.entitlements; sourceTree = "<group>"; };
 		D51C8A1B1EA5D60D0047FE6C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		D53577F11EAEEA7200465DA6 /* SecurityGuardSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SecurityGuardSDK.framework; sourceTree = "<group>"; };
-		D53577F21EAEEA7200465DA6 /* SGMain.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SGMain.framework; sourceTree = "<group>"; };
-		D53577F31EAEEA7200465DA6 /* UTMini.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UTMini.framework; sourceTree = "<group>"; };
-		D53577F41EAEEA7200465DA6 /* WXOpenIMSDKFMWK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WXOpenIMSDKFMWK.framework; sourceTree = "<group>"; };
-		D53577F51EAEEA7200465DA6 /* WXOpenIMSDKResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = WXOpenIMSDKResource.bundle; sourceTree = "<group>"; };
-		D53577F61EAEEA7200465DA6 /* WXOUIModule.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WXOUIModule.framework; sourceTree = "<group>"; };
-		D53577F71EAEEA7200465DA6 /* WXOUIModuleResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = WXOUIModuleResources.bundle; sourceTree = "<group>"; };
-		D53577F81EAEEA7200465DA6 /* yw_1222.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = yw_1222.jpg; sourceTree = "<group>"; };
 		D53CF7C61EBC508D005AE5CB /* TextLocationLable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextLocationLable.h; sourceTree = "<group>"; };
 		D53CF7C71EBC508D005AE5CB /* TextLocationLable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextLocationLable.m; sourceTree = "<group>"; };
 		D54164721EA7009D009D35C8 /* NSManagedObject+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObject+Category.h"; sourceTree = "<group>"; };
@@ -929,16 +929,16 @@
 				9CD637881EADEC740091C495 /* CoreMotion.framework in Frameworks */,
 				9CD637861EADEC6E0091C495 /* AssetsLibrary.framework in Frameworks */,
 				9CD637841EADEC670091C495 /* AVFoundation.framework in Frameworks */,
-				D53577FC1EAEEA7200465DA6 /* WXOpenIMSDKFMWK.framework in Frameworks */,
+				408CCC3D1EC55EAF00D46179 /* WXOpenIMSDKFMWK.framework in Frameworks */,
 				9CD637821EADEC600091C495 /* AudioToolbox.framework in Frameworks */,
-				D53577FB1EAEEA7200465DA6 /* UTMini.framework in Frameworks */,
+				408CCC3C1EC55EAF00D46179 /* UTMini.framework in Frameworks */,
 				A8E132871EA4608100644161 /* ImageIO.framework in Frameworks */,
 				9CD637801EADEC520091C495 /* MobileCoreServices.framework in Frameworks */,
 				A8E130011EA45E2300644161 /* libresolv.tbd in Frameworks */,
 				A8E130091EA45E6A00644161 /* libsqlite3.0.tbd in Frameworks */,
 				A8E130031EA45E4900644161 /* libstdc++.6.0.9.tbd in Frameworks */,
-				D53577FA1EAEEA7200465DA6 /* SGMain.framework in Frameworks */,
-				D53577F91EAEEA7200465DA6 /* SecurityGuardSDK.framework in Frameworks */,
+				408CCC3B1EC55EAF00D46179 /* SGMain.framework in Frameworks */,
+				408CCC3A1EC55EAF00D46179 /* SecurityGuardSDK.framework in Frameworks */,
 				A8E132891EA461B400644161 /* libz.tbd in Frameworks */,
 				D5865F0F1E9F820D00E070D4 /* CoreData.framework in Frameworks */,
 				9CD6377E1EADEBF50091C495 /* CoreTelephony.framework in Frameworks */,
@@ -948,7 +948,7 @@
 				9CD637781EADEBCE0091C495 /* UIKit.framework in Frameworks */,
 				D5A4F7D91EADAD4A000B7B7D /* libUMessage_Sdk_1.5.0a.a in Frameworks */,
 				A8E132831EA4605400644161 /* libFMMapKit.a in Frameworks */,
-				D53577FE1EAEEA7200465DA6 /* WXOUIModule.framework in Frameworks */,
+				408CCC3F1EC55EAF00D46179 /* WXOUIModule.framework in Frameworks */,
 				A8E1300D1EA45E7C00644161 /* libxml2.tbd in Frameworks */,
 				A8E1300B1EA45E7400644161 /* libc++.tbd in Frameworks */,
 				A8E130091EA45E6A00644161 /* libsqlite3.0.tbd in Frameworks */,
@@ -965,6 +965,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		408CCC311EC55EAF00D46179 /* WXFrameworks */ = {
+			isa = PBXGroup;
+			children = (
+				408CCC321EC55EAF00D46179 /* SecurityGuardSDK.framework */,
+				408CCC331EC55EAF00D46179 /* SGMain.framework */,
+				408CCC341EC55EAF00D46179 /* UTMini.framework */,
+				408CCC351EC55EAF00D46179 /* WXOpenIMSDKFMWK.framework */,
+				408CCC361EC55EAF00D46179 /* WXOpenIMSDKResource.bundle */,
+				408CCC371EC55EAF00D46179 /* WXOUIModule.framework */,
+				408CCC381EC55EAF00D46179 /* WXOUIModuleResources.bundle */,
+				408CCC391EC55EAF00D46179 /* yw_1222.jpg */,
+			);
+			path = WXFrameworks;
+			sourceTree = "<group>";
+		};
 		9C1995241E9F148D00AC34DB /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -1561,21 +1576,6 @@
 			path = TaskListModels;
 			sourceTree = "<group>";
 		};
-		D53577F01EAEEA7200465DA6 /* WXFrameworks */ = {
-			isa = PBXGroup;
-			children = (
-				D53577F11EAEEA7200465DA6 /* SecurityGuardSDK.framework */,
-				D53577F21EAEEA7200465DA6 /* SGMain.framework */,
-				D53577F31EAEEA7200465DA6 /* UTMini.framework */,
-				D53577F41EAEEA7200465DA6 /* WXOpenIMSDKFMWK.framework */,
-				D53577F51EAEEA7200465DA6 /* WXOpenIMSDKResource.bundle */,
-				D53577F61EAEEA7200465DA6 /* WXOUIModule.framework */,
-				D53577F71EAEEA7200465DA6 /* WXOUIModuleResources.bundle */,
-				D53577F81EAEEA7200465DA6 /* yw_1222.jpg */,
-			);
-			path = WXFrameworks;
-			sourceTree = "<group>";
-		};
 		D543F74E1EB0A6ED004FFAE7 /* Historical statisticsModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -1751,7 +1751,7 @@
 		D5865EC51E9F51F700E070D4 /* 3rd */ = {
 			isa = PBXGroup;
 			children = (
-				D53577F01EAEEA7200465DA6 /* WXFrameworks */,
+				408CCC311EC55EAF00D46179 /* WXFrameworks */,
 				9CD637891EADF0650091C495 /* Customize */,
 				9CD637AD1EADF0650091C495 /* MainLogic */,
 				D5A4F7D61EADAD4A000B7B7D /* UMessage_Sdk_1.5.0a */,
@@ -2029,7 +2029,7 @@
 				A8E131011EA4600900644161 /* 120009.fmi in Resources */,
 				A8E131B31EA4600900644161 /* 79980.fmap in Resources */,
 				A8E131521EA4600900644161 /* 190000.fmi in Resources */,
-				D53577FF1EAEEA7200465DA6 /* WXOUIModuleResources.bundle in Resources */,
+				408CCC401EC55EAF00D46179 /* WXOUIModuleResources.bundle in Resources */,
 				A8E131BC1EA4600900644161 /* mangrove.sqlite in Resources */,
 				A8E131461EA4600900644161 /* 170001.fmi in Resources */,
 				A8E131331EA4600900644161 /* 150006.fmi in Resources */,
@@ -2053,7 +2053,7 @@
 				A8E130FF1EA4600900644161 /* 120007.fmi in Resources */,
 				A8E131BA1EA4600900644161 /* jiantou.png in Resources */,
 				A8E131081EA4600900644161 /* 130005.fmi in Resources */,
-				D53578001EAEEA7200465DA6 /* yw_1222.jpg in Resources */,
+				408CCC411EC55EAF00D46179 /* yw_1222.jpg in Resources */,
 				A8E131771EA4600900644161 /* hongmofang.fmi in Resources */,
 				A8E131BD1EA4600900644161 /* nodeassociation.json in Resources */,
 				A8E131051EA4600900644161 /* 130002.fmi in Resources */,
@@ -2105,7 +2105,7 @@
 				A8E131B01EA4600900644161 /* 70146.fmap in Resources */,
 				A8E131A31EA4600900644161 /* veromoda.fmi in Resources */,
 				A8E130F61EA4600900644161 /* 110004.fmi in Resources */,
-				D53577FD1EAEEA7200465DA6 /* WXOpenIMSDKResource.bundle in Resources */,
+				408CCC3E1EC55EAF00D46179 /* WXOpenIMSDKResource.bundle in Resources */,
 				A8E131301EA4600900644161 /* 150003.fmi in Resources */,
 				A8E130F71EA4600900644161 /* 110005.fmi in Resources */,
 				A8E131611EA4600900644161 /* coco.fmi in Resources */,
