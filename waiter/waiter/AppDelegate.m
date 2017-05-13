@@ -41,13 +41,7 @@
     
     // 友盟即时通讯sdk初始化
     [[SPKitExample sharedInstance] callThisInDidFinishLaunching];
-    // 处理推送启动app 推送消息处理
-    NSDictionary* remoteNotification = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
-    if (remoteNotification)
-    {
-        [[NSUserDefaults standardUserDefaults] setObject:remoteNotification forKey:@"remoteNotification"];
-        [self userPushNotification:remoteNotification];
-    }
+    
     return YES;
 }
 
