@@ -56,7 +56,6 @@
     
     self.uploadPerSecond = 0;
     
-    [self getMacAndStartLocationService];
     self.ishiddenFoot = NO;
     self.serviceTimeView.hidden = YES;
     self.tableTop.constant = 0.0f;
@@ -443,7 +442,7 @@
         [[NetworkRequestManager defaultManager] POST_Url:URI_WAITER_WaiterInfoByWaiterId Params:nil withByUser:YES Success:^(NSURLSessionTask *task, id dataSource, NSString *message, NSString *url) {
             _userInfo = dataSource;
             [[DataBaseManager defaultInstance]saveContext];
-//            [self startNSTimer];
+            [self getMacAndStartLocationService];
             [self instantMessaging];
             NSLog(@"%@",_userInfo.workStatus);
             /* 0-挂起(默认); 1 任务中;2-待命 */
@@ -982,6 +981,8 @@
     //[self.gpsParams setValue:@"大堂后院" forKey:@"areaName"];
     //服务器说不需要传--areaCode--
     //[self.gpsParams setValue:[self.myZoneManager getCurrentZone].zone_code forKey:@"areaCode"];
+    if (!self.userInfo) return;
+    
     [[NetworkRequestManager defaultManager] POST_Url:URI_WAITER_UpdateMapInfo Params:self.gpsParams withByUser:NO Success:^(NSURLSessionTask *task, id dataSource, NSString *message, NSString *url) {
         NSLog(@"上传位置----Success-----%@",message);
     } Failure:^(NSURLSessionTask *task, NSString *message, NSString *status, NSString *url) {
