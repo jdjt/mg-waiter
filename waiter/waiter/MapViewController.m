@@ -30,6 +30,7 @@
 @property (nonatomic, assign) BOOL resultDistance;
 @property (nonatomic, assign) NSInteger countZero;
 @property (nonatomic, assign) NSInteger count;
+@property (nonatomic, assign) double distance;
 
 
 @end
@@ -375,7 +376,8 @@ int const kCallingServiceCountTwo = 5;
 - (void)testDistanceWithResult:(BOOL)result distance:(double)distance
 {
     NSLog(@"+++++++++++++++++++++++++++++++++++++++++++++++++");
-    self.resultDistance = result;
+//    self.resultDistance = result;
+    self.distance = distance;
 }
 - (void)updateLocPosition:(FMKMapCoord)mapCoord macAddress:(NSString * )macAddress
 {
@@ -396,11 +398,20 @@ int const kCallingServiceCountTwo = 5;
     
     NSLog(@"%d",mapCoord.mapID);
 #warning 暂时注释
-    if (macAddress != [[DataBaseManager defaultInstance] getDeviceInfo].deviceId && mapCoord.mapID != kOutdoorMapID)
+    if (macAddress != [[DataBaseManager defaultInstance] getDeviceInfo].deviceId)
     {
-        _locationMarker.hidden = YES;
-        self.currentMapCoord = mapCoord;
-        self.showChangeMap = YES;
+        if (mapCoord.mapID != kOutdoorMapID)
+        {
+            _locationMarker.hidden = YES;
+            self.currentMapCoord = mapCoord;
+            self.showChangeMap = YES;
+        }else
+        {
+            if (self.distance <= 10.00)
+            {
+                self.resultDistance = YES;
+            }
+        }
     }
 }
 - (void)setResultDistance:(BOOL)resultDistance

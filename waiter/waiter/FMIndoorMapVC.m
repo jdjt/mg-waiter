@@ -22,6 +22,7 @@
 @property (nonatomic, assign) NSInteger countZero;
 @property (nonatomic, assign) NSInteger count;
 @property (nonatomic, strong) UIButton *enableLocateBtn;
+@property (nonatomic, assign) double distance;
 @end
 int const kCallingServiceCount = 5;
 @implementation FMIndoorMapVC
@@ -310,7 +311,8 @@ int const kCallingServiceCount = 5;
 - (void)testDistanceWithResult:(BOOL)result distance:(double)distance
 {
     NSLog(@"__________________________________");
-    self.isDistance = result;
+//    self.isDistance = result;
+    self.distance = distance;
    
 }
 - (void)updateLocPosition:(FMKMapCoord)mapCoord macAddress:(NSString * )macAddress
@@ -331,40 +333,52 @@ int const kCallingServiceCount = 5;
         return;
     NSLog(@"_________________%d____________________%d",mapCoord.mapID, [FMKLocationServiceManager shareLocationServiceManager].currentMapCoord.mapID);
     
-    NSLog(@"第一个楼层数：%@  第二个楼层数%@",@(mapCoord.coord.storey).stringValue,@(self.currentMapCoord.coord.storey).stringValue);
+//    NSLog(@"第一个楼层数：%@  第二个楼层数%@",@(mapCoord.coord.storey).stringValue,@(self.currentMapCoord.coord.storey).stringValue);
     
     //|| @(mapCoord.coord.storey).stringValue != @(self.currentMapCoord.coord.storey).stringValue
 #warning 暂时去掉
     // 1.首选判断当前返回的mac地址是否是客人的
-//    if (macAddress != [[DataManager defaultInstance] getWaiterInfor].deviceId)
-//    {
+    if (macAddress != [[DataBaseManager defaultInstance] getDeviceInfo].deviceId)
+    {
         self.currentMapCoord = mapCoord;
         // 2.mapid  不同的话直接切换地图
-//        if ([FMKLocationServiceManager shareLocationServiceManager].currentMapCoord.mapID != self.mapID.intValue)
-//        {
-//            self.showChangeMap = YES;
-//        }else
-//        {
+        if ([FMKLocationServiceManager shareLocationServiceManager].currentMapCoord.mapID != self.mapID.intValue)
+        {
+            self.showChangeMap = YES;
+        }else
+        {
 //            // 3.mapid 相同  groupid 不相同 ，直接切换楼层
-//            if (![@(mapCoord.coord.storey).stringValue isEqualToString:_displayGroupID])
-//            {
-//                [self switchToOtherIndoorByMapCoord:self.currentMapCoord];
-//            }
-//        }
+            if (![@(mapCoord.coord.storey).stringValue isEqualToString:_displayGroupID])
+            {
+                [self switchToOtherIndoorByMapCoord:self.currentMapCoord];
+                if (self.distance <= 10.00)
+                {
+                    self.isDistance = YES;
+                }
+            }else if ([@(mapCoord.coord.storey).stringValue isEqualToString:_displayGroupID])
+            {
+                if (self.distance <= 10.00)
+                {
+                    self.isDistance = YES;
+                }
+            }
+        }
         [self enableLocationInOutdoor];
-        
-        
-//    }
+    }
     
-//    //客人楼层改变时
-//    if (@(mapCoord.coord.storey).stringValue != @(self.currentMapCoord.coord.storey).stringValue)
-//    {
-//        [self switchToOtherIndoorByMapCoord:self.currentMapCoord];
-//
-////        self.showChangeMap = YES;
-////        self.currentMapCoord = mapCoord;
-//    }
+    //客人楼层改变时
+    if (@(mapCoord.coord.storey).stringValue != @(self.currentMapCoord.coord.storey).stringValue)
+    {
+        [self switchToOtherIndoorByMapCoord:self.currentMapCoord];
+        if (self.distance <= 10.00)
+        {
+            self.isDistance = YES;
+        }
+//        self.showChangeMap = YES;
+//        self.currentMapCoord = mapCoord;
+    }
     _locationMarker.hidden = YES;
+    
 }
 - (void)setIsDistance:(BOOL)isDistance
 {

@@ -94,7 +94,15 @@
         self.stateButtonHeight.constant = 40;
         self.footcCell.completeButtonHeight.constant = 44;
     }
+   
     
+    
+    
+    [[FMDHCPNetService shareDHCPNetService] localMacAddress:^(NSString *macAddr)
+     {
+         NSLog(@"__________________%@",macAddr);
+         
+     }];
    
 }
 
