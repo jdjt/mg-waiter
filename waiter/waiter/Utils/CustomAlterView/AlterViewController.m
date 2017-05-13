@@ -29,6 +29,13 @@
         self.backgroundColor = [UIColor colorWithRed:0/255.0f green:0/255.0f blue:0/255.0f alpha:0.8];
         
         self.frame = app.window.bounds;
+        for (UIView *view in app.window.subviews)
+        {
+            if ([view isKindOfClass:[self class]])
+            {
+                [view removeFromSuperview];
+            }
+        }
         [app.window addSubview:self];
         
     }
