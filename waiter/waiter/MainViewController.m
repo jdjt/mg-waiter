@@ -907,8 +907,8 @@
     __block NSString *macAddress;
     FMKLocationServiceManager * locationManager = [FMKLocationServiceManager shareLocationServiceManager];
     locationManager.delegate = self;
-    
-    if (!macAddress || [macAddress isEqualToString:@""])
+    macAddress = [[DataBaseManager defaultInstance] getDeviceInfo].deviceId;
+    if (!macAddress || [macAddress isEqualToString:@""] ||[macAddress rangeOfString:@":"].location == NSNotFound)
     {
         [[FMDHCPNetService shareDHCPNetService] localMacAddress:^(NSString *macAddr)
          {
@@ -950,7 +950,7 @@
 - (void)didUpdatePosition:(FMKMapCoord)mapCoord success:(BOOL)success
 {
     
-    NSLog(@"%d",self.uploadPerSecond);
+    NSLog(@"——————————————————————%d",self.uploadPerSecond);
     
     if (self.uploadPerSecond == [self.userInfo.uploadPerSecond intValue])
     {
