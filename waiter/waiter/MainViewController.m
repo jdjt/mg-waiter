@@ -94,6 +94,8 @@
         self.stateButtonHeight.constant = 40;
         self.footcCell.completeButtonHeight.constant = 44;
     }
+    
+   
 }
 
 
