@@ -8,6 +8,7 @@
 
 #import "LoginViewController.h"
 #import "AlterViewController.h"
+#import "PDKeyChain.h"
 
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
@@ -65,6 +66,40 @@
 
 - (IBAction)loginPressed:(id)sender
 {
+    DBDeviceInfo *deviceInfo = [[DataBaseManager defaultInstance] getDeviceInfo];
+    if (deviceInfo.deviceId && [deviceInfo.deviceId rangeOfString:@":"].location != NSNotFound)
+    {
+        [self login];
+    }else
+    {
+        [[FMDHCPNetService shareDHCPNetService] localMacAddress:^(NSString *macAddr)
+        {
+            if (macAddr)
+            {
+                deviceInfo.deviceId = macAddr;
+                [[DataBaseManager defaultInstance] saveContext];
+            }else
+            {
+                NSString * deviceId = @"";
+                if (![PDKeyChain keyChainLoad])
+                {
+                    deviceId = [Util getUUID];
+                    [PDKeyChain keyChainSave:deviceId];
+                }else
+                {
+                    deviceId = [PDKeyChain keyChainLoad];
+                }
+                deviceInfo.deviceId = deviceId;
+            }
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self login];
+            });
+            
+        }];
+    }
+}
+- (void)login
+{
     if ([self.userIDField.text isEqualToString:@""] || [self.pwdField.text isEqualToString:@""])
     {
         [self.userIDField resignFirstResponder];
@@ -96,7 +131,7 @@
         {
             [self dismissViewControllerAnimated:YES completion:nil];
         }
-
+        
     } Failure:^(NSURLSessionTask *task, NSString *message, NSString *status, NSString *url) {
         NSLog(@"message --- %@",message);
         [self.userIDField resignFirstResponder];
@@ -108,8 +143,8 @@
         [self presentViewController:alert animated:YES completion:nil];
         
     }];
-}
 
+}
 /*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];

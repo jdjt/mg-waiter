@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "MainViewController.h"
+#import "TaskList+CoreDataClass.h"
 
 @interface MapViewController : UIViewController
+
 @property (strong, nonatomic) MainViewController * mainVC;
+@property (strong, nonatomic) TaskList *currentTask;
 
 @end

@@ -45,7 +45,10 @@ int const kCallingServiceCountTwo = 5;
 //    self.inTaskView.alpha = 0.7;
     self.count = 0;
     self.title = @"进行中的任务";
-
+    MBProgressHUD *HUD =[MBProgressHUD showHUDAddedTo:[AppDelegate sharedDelegate].window animated:YES];
+    HUD.labelText = @"正在加载地图，请稍等";
+    [HUD show:YES];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(backMainViewController:) name:@"backMainViewController" object:nil];
 
     UIBarButtonItem *chatView = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"chaticon"] style:UIBarButtonItemStylePlain target:self action:@selector(goChatView)];
@@ -63,7 +66,7 @@ int const kCallingServiceCountTwo = 5;
 //    [self.alertController addAction:cancelAction];
 //    [self.alertController addAction:action];
 #warning 暂时注释
-//    [self addUserLocationMark];
+    [self addUserLocationMark];
     self.view.backgroundColor = [UIColor whiteColor];
     [self getMacAndStartLocationService];
     
@@ -87,10 +90,6 @@ int const kCallingServiceCountTwo = 5;
     [[FMLocationManager shareLocationManager] setMapView:nil];
     [FMLocationManager shareLocationManager].delegate = self;
     [[FMLocationManager shareLocationManager] setMapView:self.mangroveMapView];
-    
-    MBProgressHUD *HUD =[MBProgressHUD showHUDAddedTo:[AppDelegate sharedDelegate].window animated:YES];
-    HUD.labelText = @"正在加载地图，请稍等";
-    [HUD show:YES];
 
 }
 - (void)viewDidDisappear:(BOOL)animated
@@ -225,29 +224,24 @@ int const kCallingServiceCountTwo = 5;
     _mapPath = [[NSBundle mainBundle] pathForResource:@"79980.fmap" ofType:nil];
     __block NSString *macAddress;
 #warning 暂时注释
-//    macAddress = [[DataManager defaultInstance] getParameter].diviceId;
+    macAddress = self.currentTask.waiterDeviceId;
     
     FMKLocationServiceManager * locationManager = [FMKLocationServiceManager shareLocationServiceManager];
     locationManager.delegate = self;
     
     if (!macAddress || [macAddress isEqualToString:@""])
     {
-        //		dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
         [[FMDHCPNetService shareDHCPNetService] localMacAddress:^(NSString *macAddr)
          {
              if (macAddr != nil && ![macAddr isEqualToString:@""])
              {
                  macAddress = macAddr;
-//                 [[DataManager defaultInstance] getParameter].diviceId = macAddr;
-//                 [[DataManager defaultInstance] saveContext];
              }
              dispatch_async(dispatch_get_main_queue(), ^{
                  [locationManager startLocateWithMacAddress:macAddress mapPath:_mapPath];
              });
              
-             //			dispatch_semaphore_signal(semaphore);
          }];
-        //		dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
     }else
     {
         [locationManager startLocateWithMacAddress:macAddress mapPath:_mapPath];
@@ -255,33 +249,30 @@ int const kCallingServiceCountTwo = 5;
 }
 
 #warning 暂时注释
-/*
+
 - (void)addUserLocationMark
 {
     [FMNaviAnalyserTool shareNaviAnalyserTool].returnNaviResult = ^(NSArray * result, NSString * mapID)
     {
     };
-    //拿到coredata里的数据
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"waiterStatus = 1"];
-    DBTaskList *waiterTaskList = (DBTaskList *)[[[DataManager defaultInstance] arrayFromCoreData:@"DBTaskList" predicate:predicate limit:NSIntegerMax offset:0 orderBy:nil] lastObject];
+    
     self.userBuilderInfo = [[FMLocationBuilderInfo alloc] init];
-    self.userBuilderInfo.loc_mac = waiterTaskList.userDiviceld;
+    self.userBuilderInfo.loc_mac = self.currentTask.positionZ;
     self.userBuilderInfo.loc_desc = @"客人位置";
     self.userBuilderInfo.loc_icon = @"clien_icon.png";
     
-    DBWaiterInfor *waiterInfo = [[DataManager defaultInstance] getWaiterInfor];
 
     self.myselfInfo = [[FMLocationBuilderInfo alloc] init];
-    self.myselfInfo.loc_mac = waiterInfo.deviceId;
+    self.myselfInfo.loc_mac = self.currentTask.waiterDeviceId;
     self.myselfInfo.loc_desc = @"我的位置";
-    self.myselfInfo.loc_icon = @"waiter.png";
+    self.myselfInfo.loc_icon = @"waiter_lcon.png";
     _locationMarker.hidden = YES;
     [FMLocationManager shareLocationManager].delegate = self;
     [[FMLocationManager shareLocationManager] addLocOnMap:self.myselfInfo];
     [[FMLocationManager shareLocationManager] addLocOnMap:self.userBuilderInfo];
     [[FMLocationManager shareLocationManager] testDistanceWithLocation1:self.myselfInfo location2:self.userBuilderInfo distance:10];
 }
-*/
+
 - (void)removeLocation
 {
     [[FMLocationManager shareLocationManager] removeLocOnMap:self.myselfInfo];
@@ -405,12 +396,12 @@ int const kCallingServiceCountTwo = 5;
     
     NSLog(@"%d",mapCoord.mapID);
 #warning 暂时注释
-//    if (macAddress != [[DataManager defaultInstance] getWaiterInfor].deviceId && mapCoord.mapID != kOutdoorMapID)
-//    {
-//        _locationMarker.hidden = YES;
-//        self.currentMapCoord = mapCoord;
-//        self.showChangeMap = YES;
-//    }
+    if (macAddress != [[DataBaseManager defaultInstance] getDeviceInfo].deviceId && mapCoord.mapID != kOutdoorMapID)
+    {
+        _locationMarker.hidden = YES;
+        self.currentMapCoord = mapCoord;
+        self.showChangeMap = YES;
+    }
 }
 - (void)setResultDistance:(BOOL)resultDistance
 {

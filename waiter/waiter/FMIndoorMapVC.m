@@ -43,12 +43,12 @@ int const kCallingServiceCount = 5;
     self.count = 0;
     self.isDistance = NO;
     [self addLocationMarker];//定位图标
-    //室内地图的左上角完成按钮
-    UIBarButtonItem *leftBarItem = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStylePlain target:self action:@selector(reloadTask:)];
-    self.navigationItem.leftBarButtonItem = leftBarItem;
-    //室内地图右上角的刷新按钮
-    UIBarButtonItem *rightBarItem = [[UIBarButtonItem alloc] initWithTitle:@"刷新" style:UIBarButtonItemStylePlain target:self action:@selector(refreshTask:)];
-    self.navigationItem.rightBarButtonItem = rightBarItem;
+//    //室内地图的左上角完成按钮
+//    UIBarButtonItem *leftBarItem = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStylePlain target:self action:@selector(reloadTask:)];
+//    self.navigationItem.leftBarButtonItem = leftBarItem;
+//    //室内地图右上角的刷新按钮
+//    UIBarButtonItem *rightBarItem = [[UIBarButtonItem alloc] initWithTitle:@"刷新" style:UIBarButtonItemStylePlain target:self action:@selector(refreshTask:)];
+//    self.navigationItem.rightBarButtonItem = rightBarItem;
 }
 - (void)viewWillAppear:(BOOL)animated
 {

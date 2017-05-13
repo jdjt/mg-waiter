@@ -2,7 +2,7 @@
 //  TaskList+CoreDataProperties.h
 //  waiter
 //
-//  Created by new on 2017/4/26.
+//  Created by chao liu on 2017/5/12.
 //  Copyright © 2017年 liuchao. All rights reserved.
 //
 
@@ -25,9 +25,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, copy) NSString *causeTime;
 @property (nullable, nonatomic, copy) NSString *cImAccount;
 @property (nullable, nonatomic, copy) NSString *comeFrom;
+@property (nullable, nonatomic, copy) NSString *confirmTime;
 @property (nullable, nonatomic, copy) NSString *customerDeviceId;
 @property (nullable, nonatomic, copy) NSString *customerId;
 @property (nullable, nonatomic, copy) NSString *customerName;
+@property (nullable, nonatomic, copy) NSString *customerRoomNum;
 @property (nullable, nonatomic, copy) NSString *finishEndTime;
 @property (nullable, nonatomic, copy) NSString *finishTime;
 @property (nullable, nonatomic, copy) NSString *floorNo;
@@ -35,9 +37,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) BOOL isAnOpen;
 @property (nullable, nonatomic, copy) NSString *mapNo;
 @property (nullable, nonatomic, copy) NSString *nowDate;
-@property (nullable, nonatomic, copy) NSString *posionX;
+@property (nullable, nonatomic, copy) NSString *positionX;
 @property (nullable, nonatomic, copy) NSString *positionY;
-@property (nullable, nonatomic, copy) NSString *postionZ;
+@property (nullable, nonatomic, copy) NSString *positionZ;
 @property (nullable, nonatomic, copy) NSString *produceTime;
 @property (nullable, nonatomic, copy) NSString *scoreMod;
 @property (nullable, nonatomic, copy) NSString *scoreTime;
@@ -52,11 +54,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, copy) NSString *waiterName;
 @property (nullable, nonatomic, copy) NSString *waiteTime;
 @property (nullable, nonatomic, copy) NSString *wImAccount;
-@property (nullable, nonatomic, copy) NSString *customerRoomNum;
-@property (nullable, nonatomic, copy) NSString *confirmTime;
+@property (nullable, nonatomic, retain) HistoricalStatistics *belongHistoricalStatics;
 @property (nullable, nonatomic, retain) DBWaiterInfo *belongWaiterInfor;
 @property (nullable, nonatomic, retain) NSOrderedSet<ChatMessage *> *haschatmessage;
-@property (nullable, nonatomic, retain) HistoricalStatistics *belongHistoricalStatics;
 
 @end
 

@@ -86,7 +86,7 @@ static NSInteger const FMCurrentPgaeUnknown = 10000;
         button.backgroundColor = [UIColor clearColor];
         [button setTitle: [oriArr[i] uppercaseString] forState: UIControlStateNormal];
         
-        [button setTitleColor:BBColor(81, 161, 113) forState: UIControlStateNormal];
+        [button setTitleColor:BBColor(237, 130, 86) forState: UIControlStateNormal];
         button.titleLabel.font = [UIFont boldSystemFontOfSize:14];
         [button addTarget:self action:@selector(changeFloorNum:) forControlEvents:UIControlEventTouchUpInside];
         [scrollView addSubview:button];
@@ -158,7 +158,7 @@ static NSInteger const FMCurrentPgaeUnknown = 10000;
         }
         else {
             button.titleLabel.font = [UIFont boldSystemFontOfSize:14];
-            [button setTitleColor:BBColor(81, 161, 113) forState: UIControlStateNormal];
+            [button setTitleColor:BBColor(237, 130, 86) forState: UIControlStateNormal];
         }
     }
 }

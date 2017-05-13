@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16D32" minimumToolsVersion="Automatic" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16A323" minimumToolsVersion="Automatic" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
     <entity name="ChatMessage" representedClassName="ChatMessage" syncable="YES">
         <relationship name="belongTaskList" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TaskList" inverseName="haschatmessage" inverseEntity="TaskList" syncable="YES"/>
     </entity>
@@ -66,9 +66,9 @@
         <attribute name="isAnOpen" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="mapNo" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="nowDate" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="posionX" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="positionX" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="positionY" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="postionZ" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="positionZ" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="produceTime" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="scoreMod" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="scoreTime" optional="YES" attributeType="String" syncable="YES"/>

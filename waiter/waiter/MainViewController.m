@@ -43,16 +43,19 @@
 @property (nonatomic, assign)BOOL isDown;
 
 // 地图GPS相关
-@property (strong, nonatomic) NSString *mapPath;
 @property (strong, nonatomic) NSTimer * gpsTimer;
 @property (strong, nonatomic) NSMutableDictionary * gpsParams;
 @property (strong, nonatomic) FMZoneManager * myZoneManager;
+@property (assign, nonatomic) int uploadPerSecond;
 @end
 
 @implementation MainViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.uploadPerSecond = 0;
+    
     [self getMacAndStartLocationService];
     self.ishiddenFoot = NO;
     self.serviceTimeView.hidden = YES;
@@ -440,7 +443,7 @@
         [[NetworkRequestManager defaultManager] POST_Url:URI_WAITER_WaiterInfoByWaiterId Params:nil withByUser:YES Success:^(NSURLSessionTask *task, id dataSource, NSString *message, NSString *url) {
             _userInfo = dataSource;
             [[DataBaseManager defaultInstance]saveContext];
-            [self startNSTimer];
+//            [self startNSTimer];
             [self instantMessaging];
             NSLog(@"%@",_userInfo.workStatus);
             /* 0-挂起(默认); 1 任务中;2-待命 */
@@ -819,6 +822,7 @@
     MapViewController *map = [[MapViewController alloc] init];
     map.title = @"进行中的任务";
     map.mainVC = self;
+    map.currentTask = self.taskList;
     [self.navigationController pushViewController:map animated:YES];
 }
 
@@ -899,7 +903,7 @@
 //获取MAC地址并且开启定位服务
 - (void)getMacAndStartLocationService
 {
-    _mapPath = [[NSBundle mainBundle] pathForResource:@"79980.fmap" ofType:nil];
+    NSString *_mapPath = [[NSBundle mainBundle] pathForResource:@"79980.fmap" ofType:nil];
     __block NSString *macAddress;
     FMKLocationServiceManager * locationManager = [FMKLocationServiceManager shareLocationServiceManager];
     locationManager.delegate = self;
@@ -920,9 +924,8 @@
     {
         [locationManager startLocateWithMacAddress:macAddress mapPath:_mapPath];
     }
-    
-    
 }
+
 -(void)startNSTimer{
 
     if (!self.gpsTimer) {
@@ -931,8 +934,8 @@
         self.gpsTimer = [NSTimer timerWithTimeInterval:tr target:self selector:@selector(locationInformation) userInfo:nil repeats:YES];
         [[NSRunLoop currentRunLoop] addTimer: self.gpsTimer forMode:NSDefaultRunLoopMode];
     }
-
 }
+
 -(NSMutableDictionary *)gpsParams{
     if (_gpsParams == nil) {
         _gpsParams = [[NSMutableDictionary alloc]init];
@@ -944,12 +947,27 @@
  
  @param mapCoord 位置
  */
-- (void)didUpdatePosition:(FMKMapCoord)mapCoord success:(BOOL)success{
-    [self.gpsParams setValue:[NSString stringWithFormat:@"%d",mapCoord.coord.storey] forKey:@"floorNo"];
-    [self.gpsParams setValue:[NSString stringWithFormat:@"%d",mapCoord.mapID] forKey:@"mapNo"];
-    [self.gpsParams setValue:[NSString stringWithFormat:@"%f",mapCoord.coord.mapPoint.x] forKey:@"positionX"];
-    [self.gpsParams setValue:[NSString stringWithFormat:@"%f",mapCoord.coord.mapPoint.y] forKey:@"positionY"];
-    [self.gpsParams setValue:[NSString stringWithFormat:@"%d",mapCoord.coord.storey] forKey:@"positionZ"];
+- (void)didUpdatePosition:(FMKMapCoord)mapCoord success:(BOOL)success
+{
+    
+    NSLog(@"%d",self.uploadPerSecond);
+    
+    if (self.uploadPerSecond == [self.userInfo.uploadPerSecond intValue])
+    {
+        [self.gpsParams setValue:[NSString stringWithFormat:@"%d",mapCoord.coord.storey] forKey:@"floorNo"];
+        [self.gpsParams setValue:[NSString stringWithFormat:@"%d",mapCoord.mapID] forKey:@"mapNo"];
+        [self.gpsParams setValue:[NSString stringWithFormat:@"%f",mapCoord.coord.mapPoint.x] forKey:@"positionX"];
+        [self.gpsParams setValue:[NSString stringWithFormat:@"%f",mapCoord.coord.mapPoint.y] forKey:@"positionY"];
+        [self.gpsParams setValue:[NSString stringWithFormat:@"%d",mapCoord.coord.storey] forKey:@"positionZ"];
+        
+        [self locationInformation];
+        
+    }else if (self.uploadPerSecond > [self.userInfo.uploadPerSecond intValue])
+    {
+        self.uploadPerSecond = 0;
+    }
+    self.uploadPerSecond++;
+
 }
 - (FMZoneManager *)myZoneManager{
     if (!_myZoneManager){

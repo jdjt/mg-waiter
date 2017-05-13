@@ -16,16 +16,6 @@
     if (result.count<= 0 || result == nil)
     {
         deviceInfo = (DBDeviceInfo *)[self insertIntoCoreData:@"DBDeviceInfo"];
-        NSString * deviceId = @"";
-                if (![PDKeyChain keyChainLoad])
-                {
-                    deviceId = [Util getUUID];
-                    [PDKeyChain keyChainSave:deviceId];
-                }else
-                {
-                    deviceId = [PDKeyChain keyChainLoad];
-                }
-        deviceInfo.deviceId = deviceId;
         deviceInfo.deviceToken = @"1";
     }
     else
