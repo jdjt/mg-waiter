@@ -12,8 +12,10 @@
 #import "MapViewController.h"
 #import "AlterViewController.h"
 @interface MainViewController ()<UITableViewDelegate,UITableViewDataSource,FMKLocationServiceManagerDelegate>
+
 @property (strong, nonatomic) TaskListCell * taskListCell;
 @property (weak, nonatomic) FootCell * footcCell;
+
 @property (weak, nonatomic) IBOutlet UITableView *taskTableView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableTop;
 @property (weak, nonatomic) IBOutlet UIView *stateView;//状态View
@@ -26,20 +28,19 @@
 @property (weak, nonatomic) IBOutlet UILabel *workTimeCalLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel *taskingLabel;
-
 @property (weak, nonatomic) IBOutlet UIButton *stateButton;//开始接单
 
 @property (assign, nonatomic) BOOL isWorkingState;
 @property (assign, nonatomic) BOOL ishiddenFoot;
+
 @property (weak, nonatomic) IBOutlet UIImageView *goMapImage;
 @property (weak, nonatomic) IBOutlet UIImageView *goChatImage;
 @property (weak, nonatomic) IBOutlet UILabel *messageCountLabel;
+
 @property (strong, nonatomic) DBWaiterInfo * userInfo;
 @property (strong, nonatomic) TaskList * taskList;
 @property (strong, nonatomic) NSMutableArray * dataSource;
-
 @property (nonatomic, strong) YWConversation * conversation;
-
 @property (nonatomic, assign)BOOL isDown;
 
 // 地图GPS相关
@@ -51,7 +52,8 @@
 
 @implementation MainViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     
     self.uploadPerSecond = 0;
@@ -95,26 +97,6 @@
         self.footcCell.completeButtonHeight.constant = 44;
     }
    
-    
-    
-    
-    [[FMDHCPNetService shareDHCPNetService] localMacAddress:^(NSString *macAddr)
-     {
-         NSLog(@"__________________%@",macAddr);
-         
-     }];
-   
-}
-
-
--  (void)newMessage:(NSNotification *)noti
-{
-    if (self.conversation)
-    {
-        self.messageCountLabel.text = [NSString stringWithFormat:@"%@",self.conversation.conversationUnreadMessagesCount];
-        if (self.conversation.conversationUnreadMessagesCount.integerValue != 0)
-            self.messageCountLabel.hidden = NO;
-    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -136,6 +118,18 @@
     [super viewWillDisappear:animated];
 }
 
+#pragma mark - NSNotification
+
+-  (void)newMessage:(NSNotification *)noti
+{
+    if (self.conversation)
+    {
+        self.messageCountLabel.text = [NSString stringWithFormat:@"%@",self.conversation.conversationUnreadMessagesCount];
+        if (self.conversation.conversationUnreadMessagesCount.integerValue != 0)
+            self.messageCountLabel.hidden = NO;
+    }
+}
+
 #pragma mark - tableview代理
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -145,7 +139,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSLog(@"%ld",self.dataSource.count);
+    NSLog(@"%ld",(unsigned long)self.dataSource.count);
     return self.dataSource.count;
 }
 
@@ -178,7 +172,6 @@
     }
     return _taskListCell;
 }
-
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -333,7 +326,8 @@
             [params setObject:deviceInfo.deviceToken forKey:@"deviceToken"];
             [params setObject:self.taskList.taskCode forKey:@"taskCode"];
             
-            [[NetworkRequestManager defaultManager] POST_Url:URI_WAITER_ConfirmTask Params:params withByUser:YES Success:^(NSURLSessionTask *task, id dataSource, NSString *message, NSString *url) {
+            [[NetworkRequestManager defaultManager] POST_Url:URI_WAITER_ConfirmTask Params:params withByUser:YES Success:^(NSURLSessionTask *task, id dataSource, NSString *message, NSString *url)
+            {
                 NSLog(@"dataSource --- %@",dataSource);
                 
                 _footcCell.completeButton.backgroundColor = [UIColor grayColor];
@@ -342,18 +336,15 @@
 //                [_timer1 setFireDate:[NSDate distantFuture]];//备用
                 
                 //获取根据任务号获取信息，为了拿到完成时间，去跟系统时间对比，做30分钟倒计时功能。
-                [[NetworkRequestManager defaultManager] POST_Url:URI_WAITER_GetTaskInfoByTaskCode Params:params withByUser:YES Success:^(NSURLSessionTask *task, id dataSource, NSString *message, NSString *url) {
+                [[NetworkRequestManager defaultManager] POST_Url:URI_WAITER_GetTaskInfoByTaskCode Params:params withByUser:YES Success:^(NSURLSessionTask *task, id dataSource, NSString *message, NSString *url)
+                {
                     NSLog(@"服务员根据任务号获取任务信息成功 --- %@",dataSource);
-
                     self.taskList = dataSource;
-                    
-//                    NSLog(@"抢单时间：%@",[self timeWithTimeIntervalString:self.taskList.finishTime]);
-//                    NSLog(@"系统时间：%@",[self timeWithTimeIntervalString:self.taskList.nowDate]);
                     NSString * strData = [self compareTwoTime:[self.taskList.finishTime longLongValue] time2:[self.taskList.nowDate longLongValue]];
-                    NSLog(@"%@",strData);
                     [self completeCountdownTime:strData];
                     
-                } Failure:^(NSURLSessionTask *task, NSString *message, NSString *status, NSString *url) {
+                } Failure:^(NSURLSessionTask *task, NSString *message, NSString *status, NSString *url)
+                {
                     NSLog(@"服务员根据任务号获取任务信息失败 --- %@",message);
                     [MySingleton systemAlterViewOwner:self WithMessage:message];
                 }];
@@ -362,7 +353,8 @@
                 self.stateButton.backgroundColor = [UIColor grayColor];
                 self.stateView.backgroundColor = [UIColor colorWithRed:137/255.0f green:137/255.0f blue:137/255.0f alpha:1];
                // [self.taskTableView reloadData];//此处不能刷新table，否则完成按钮颜色改变不了
-            } Failure:^(NSURLSessionTask *task, NSString *message, NSString *status, NSString *url) {
+            } Failure:^(NSURLSessionTask *task, NSString *message, NSString *status, NSString *url)
+            {
                 NSLog(@"message --- %@",message);
                 [MySingleton systemAlterViewOwner:self WithMessage:message];
             }];
@@ -390,7 +382,6 @@
         }
     }];
 }
-
 
 #pragma mark - 方法
 //切换开始接单、停止接单
@@ -473,24 +464,6 @@
             }else if ([_userInfo.workStatus isEqualToString:@"1"])
             {
                 //获取任务信息(恢复任务）
-                self.isDown = YES;
-                [self.stateButton setTitle:@"停止接单" forState:UIControlStateNormal];
-                if (IS_LESS5) {
-                    self.tableTop.constant = 54;
-                }
-                else
-                {
-                    self.tableTop.constant = 59.0f;
-                }
-                self.serviceTimeView.hidden = NO;//显示服务时长的View
-                self.ishiddenFoot = YES;//显示foot
-                self.taskTableView.mj_header = nil;
-                self.stateView.backgroundColor = [UIColor colorWithRed:137/255.0f green:137/255.0f blue:137/255.0f alpha:1];
-                self.taskingLabel.text = @"进行中任务（1）";
-                self.stateButton.backgroundColor = [UIColor colorWithRed:137/255.0f green:137/255.0f blue:137/255.0f alpha:1];
-                self.stateButton.enabled = NO;
-                self.navigationItem.leftBarButtonItem.enabled = NO;
-                
                 NSLog(@"任务进行中***********");
                 NSMutableDictionary * params = [[NSMutableDictionary alloc]init];
                 [params setObject:@"1" forKey:@"taskStatus"];
@@ -501,6 +474,24 @@
                     
                     if ([(NSArray *)dataSource count] > 0)
                     {
+                        self.isDown = YES;
+                        [self.stateButton setTitle:@"停止接单" forState:UIControlStateNormal];
+                        if (IS_LESS5) {
+                            self.tableTop.constant = 54;
+                        }
+                        else
+                        {
+                            self.tableTop.constant = 59.0f;
+                        }
+                        self.serviceTimeView.hidden = NO;//显示服务时长的View
+                        self.ishiddenFoot = YES;//显示foot
+                        self.taskTableView.mj_header = nil;
+                        self.stateView.backgroundColor = [UIColor colorWithRed:137/255.0f green:137/255.0f blue:137/255.0f alpha:1];
+                        self.taskingLabel.text = @"进行中任务（1）";
+                        self.stateButton.backgroundColor = [UIColor colorWithRed:137/255.0f green:137/255.0f blue:137/255.0f alpha:1];
+                        self.stateButton.enabled = NO;
+                        self.navigationItem.leftBarButtonItem.enabled = NO;
+
                         self.taskList = [dataSource lastObject];
                         self.conversation = [YWP2PConversation fetchConversationByPerson:[[YWPerson alloc]initWithPersonId:self.taskList.cImAccount appKey:@"23758144"] creatIfNotExist:YES baseContext:[SPKitExample sharedInstance].ywIMKit.IMCore];
                         self.messageCountLabel.text = [NSString stringWithFormat:@"%@",self.conversation.conversationUnreadMessagesCount];
@@ -512,6 +503,20 @@
                             [self.conversation asyncSendMessageBody:[[YWMessageBodyText alloc] initWithMessageText:[NSString stringWithFormat:@"您好，我是服务员%@，很高兴为您服务！",self.userInfo.name]] controlParameters:nil progress:nil completion:nil];
                             [[NSUserDefaults standardUserDefaults] setObject:@"1" forKey:@"isFirstMessage"];
                         }
+                    }
+                    else
+                    {
+                        self.stateButton.backgroundColor = [UIColor colorWithRed:42/255.0f green:160/255.0f blue:235/255.0f alpha:1];;
+                        [self.stateButton setTitle:@"开始接单" forState:UIControlStateNormal];
+                        self.isDown = NO;
+                        self.stateButton.enabled = YES;
+                        self.ishiddenFoot = NO;//隐藏foot
+                        self.serviceTimeView.hidden = YES;//隐藏服务时长的View
+                        self.taskTableView.mj_header = nil;
+                        self.taskingLabel.text = @"进行中任务（0）";
+                        self.navigationItem.leftBarButtonItem.enabled = YES;
+                        [self.dataSource removeAllObjects];
+                        [self resetConversationAndNewMessage];
                     }
                     NSLog(@"%@",self.dataSource);
                     NSLog(@"完成时间%@",[self timeWithTimeIntervalString:self.taskList.finishTime BOOL:0]);//13:32:59
@@ -585,6 +590,7 @@
     return dateString;
 }
 
+#warning 此处有蹊跷。回去自己改
 //两个时间戳计算间隔
 - (NSString*)compareTwoTime:(long long)time1 time2:(long long)time2
 {
@@ -675,6 +681,7 @@
 }
 
 #pragma mark - 获取任务列表
+
 - (void)Net_taskInfoList
 {
     //获取任务列表
@@ -692,6 +699,7 @@
 }
 
 #pragma mark - 工作时长
+
 - (void)workingTime
 {
     if (self.userInfo.workTimeCal != nil){
@@ -712,7 +720,8 @@
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(workingTimeTimer) userInfo:nil repeats:YES];
 }
 
-- (void)workingTimeTimer{
+- (void)workingTimeTimer
+{
     self.second++;
     if (self.second==60){
         self.second=00;
@@ -747,7 +756,8 @@
     self.timer1 = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(serverTimeTimer) userInfo:nil repeats:YES];
 }
 
-- (void)serverTimeTimer{
+- (void)serverTimeTimer
+{
     self.serviceSecond++;
     if (self.serviceSecond==60){
         self.serviceSecond=00;
@@ -766,7 +776,6 @@
     NSLog(@"完成时间%@",[self timeWithTimeIntervalString:self.taskList.finishTime BOOL:0]);//13:32:59
     NSLog(@"系统时间：%@",[self timeWithTimeIntervalString:self.taskList.nowDate BOOL:0]);
     
-//    NSString * strDataSum = [self compareTwoTime:[self.taskList.finishTime longLongValue] time2:[self.taskList.nowDate longLongValue]];
     NSLog(@"完成时间和系统时间的比对：%@",strDataSum);//00:00:00
     NSRange ange = {3,2};
     NSString * min = [strDataSum substringWithRange:ange];//截取分
@@ -798,7 +807,8 @@
     self.timer2 = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(completeTimeTimer) userInfo:nil repeats:YES];
 }
 
-- (void)completeTimeTimer{
+- (void)completeTimeTimer
+{
     self.completeSecond--;
     if (self.completeSecond == -1){
         self.completeSecond = 59;
@@ -814,7 +824,8 @@
 
 #pragma mark - ------
 
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
@@ -873,9 +884,11 @@
 }
 
 #pragma mark - MJRefresh
--(void)PullDownRefresh{
+-(void)PullDownRefresh
+{
     [self updateDataWithRef:YES withByUser:NO];
 }
+
 -(void)updateDataWithRef:(BOOL)isRef withByUser:(BOOL)byUser
 {
     NSMutableDictionary * params = [[NSMutableDictionary alloc]init];
@@ -904,11 +917,6 @@
     }
 }
 
-
-
-
-
-
 //获取MAC地址并且开启定位服务
 - (void)getMacAndStartLocationService
 {
@@ -935,7 +943,8 @@
     }
 }
 
--(void)startNSTimer{
+-(void)startNSTimer
+{
 
     if (!self.gpsTimer) {
         NSTimeInterval tr = [self.userInfo.uploadPerSecond doubleValue];
@@ -945,7 +954,8 @@
     }
 }
 
--(NSMutableDictionary *)gpsParams{
+-(NSMutableDictionary *)gpsParams
+{
     if (_gpsParams == nil) {
         _gpsParams = [[NSMutableDictionary alloc]init];
     }

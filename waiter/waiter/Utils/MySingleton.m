@@ -32,8 +32,8 @@
     self = [super init];
     if (self)
     {
-        //_baseInterfaceUrl = @"mws.mymhotel.com";
-        _baseInterfaceUrl = @"rc-ws.mymhotel.com";
+        _baseInterfaceUrl = @"mws.mymhotel.com";
+        //_baseInterfaceUrl = @"rc-ws.mymhotel.com";
 //        _baseInterfaceUrl = @"192.168.1.45:8181";
 //        _baseInterfaceUrl = @"192.168.10.56:8080";//王达本机
        // _baseInterfaceUrl = @"192.168.10.56:8080";
