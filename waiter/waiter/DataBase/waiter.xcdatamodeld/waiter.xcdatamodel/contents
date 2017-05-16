@@ -22,6 +22,7 @@
         <attribute name="imAccount" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="nowTime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="parentDepName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="resetPwdDiv" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="sex" optional="YES" attributeType="String" syncable="YES"/>
@@ -90,7 +91,7 @@
     <elements>
         <element name="ChatMessage" positionX="79" positionY="239" width="128" height="58"/>
         <element name="DBDeviceInfo" positionX="180" positionY="-162" width="128" height="75"/>
-        <element name="DBWaiterInfo" positionX="-542" positionY="-441" width="128" height="388"/>
+        <element name="DBWaiterInfo" positionX="-542" positionY="-441" width="128" height="405"/>
         <element name="HistoricalStatistics" positionX="-351" positionY="-414" width="128" height="180"/>
         <element name="TaskList" positionX="-189" positionY="-351" width="128" height="675"/>
     </elements>

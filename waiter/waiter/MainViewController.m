@@ -106,7 +106,7 @@
     NSLog(@"time : %@",self.userInfo.workTimeCal);
     self.empNoLabel.text = self.userInfo.empNo;
     self.nameLabel.text = self.userInfo.name;
-    self.depNameLabel.text = self.userInfo.depName;
+    self.depNameLabel.text = [NSString stringWithFormat:@"%@ - %@",self.userInfo.parentDepName, self.userInfo.depName];
     [self workingTime];
     if (self.conversation.conversationUnreadMessagesCount.integerValue == 0)
         self.messageCountLabel.hidden = YES;

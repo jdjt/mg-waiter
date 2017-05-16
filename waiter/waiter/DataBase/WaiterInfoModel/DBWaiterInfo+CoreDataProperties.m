@@ -2,20 +2,17 @@
 //  DBWaiterInfo+CoreDataProperties.m
 //  waiter
 //
-//  Created by new on 2017/4/26.
+//  Created by chao liu on 2017/5/16.
 //  Copyright © 2017年 liuchao. All rights reserved.
 //
 
 #import "DBWaiterInfo+CoreDataProperties.h"
-#import <objc/runtime.h>
+
 @implementation DBWaiterInfo (CoreDataProperties)
 
 + (NSFetchRequest<DBWaiterInfo *> *)fetchRequest {
 	return [[NSFetchRequest alloc] initWithEntityName:@"DBWaiterInfo"];
 }
-
-
-
 
 @dynamic attendStatus;
 @dynamic attribute;
@@ -38,11 +35,8 @@
 @dynamic waiterId;
 @dynamic workStatus;
 @dynamic workTimeCal;
-@dynamic hasTaskList;
+@dynamic parentDepName;
 @dynamic hasHistoriceStatiscs;
-
-
-
-
+@dynamic hasTaskList;
 
 @end
