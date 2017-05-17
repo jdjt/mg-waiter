@@ -114,4 +114,11 @@
  * @abstract 2个时间戳的差值
  */
 +(NSString *)timeStampsLongTime:(NSString *)longTime nowTime:(NSString *)nowTime;
+
+/**
+ * @abstract 秒转换成时分秒
+ */
++ (NSString *)timeFormatted:(int)totalSeconds;
+//时分秒转为秒数
++ (NSTimeInterval)stringFormattedSeconds:(NSString *)formattedString;
 @end

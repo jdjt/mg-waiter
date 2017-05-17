@@ -96,7 +96,6 @@
         self.stateButtonHeight.constant = 40;
         self.footcCell.completeButtonHeight.constant = 44;
     }
-   
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -159,8 +158,8 @@
     NSLog(@"%@",self.taskList.taskStatus);
     
     //服务时长,计算下单时间和系统时间的时间间隔
-    NSString * strData = [self compareTwoTime:[self.taskList.acceptTime longLongValue] time2:[self.taskList.nowDate longLongValue]];
-    [self serverTime:strData];
+    NSInteger intData = [self.taskList.nowDate longLongValue] - [self.taskList.acceptTime longLongValue];
+    [self serverTime:intData/1000];
     if (self.isDown) {
         _taskListCell.pickSingleButton.hidden = YES;//隐藏抢单按钮
         _taskListCell.separatedView.hidden = YES;//分隔符
@@ -255,49 +254,10 @@
             NSLog(@"抢到的单号：%@",self.taskList.taskCode);
             [[NetworkRequestManager defaultManager] POST_Url:URI_WAITER_AcceptTask Params:params withByUser:YES Success:^(NSURLSessionTask *task, id dataSource, NSString *message, NSString *url) {
                 NSLog(@"抢单成功 --- %@",dataSource);
-                [[NetworkRequestManager defaultManager] POST_Url:URI_WAITER_GetTaskInfoByTaskCode Params:params withByUser:YES Success:^(NSURLSessionTask *task, id dataSource, NSString *message, NSString *url) {
-                    NSLog(@"服务员根据任务号获取任务信息成功 --- %@",dataSource);
-                    self.isDown = YES;
-                    [self.dataSource removeAllObjects];
-                    [self.dataSource addObject:dataSource];
-                    NSLog(@"%ld",self.dataSource.count);
-                    
-                    if (dataSource != nil)
-                    {
-                        self.taskList = dataSource;
-                        self.conversation = [YWP2PConversation fetchConversationByPerson:[[YWPerson alloc]initWithPersonId:self.taskList.cImAccount appKey:@"23758144"] creatIfNotExist:YES baseContext:[SPKitExample sharedInstance].ywIMKit.IMCore];
-                        self.messageCountLabel.text = [NSString stringWithFormat:@"%@",self.conversation.conversationUnreadMessagesCount];
-                        if (self.conversation.conversationUnreadMessagesCount.integerValue != 0)
-                            self.messageCountLabel.hidden = NO;
-                        //只能发一次默认消息
-                        [[NSUserDefaults standardUserDefaults] setValue:@"1" forKey:@"isFirstMessage"];
-                        [self.conversation asyncSendMessageBody:[[YWMessageBodyText alloc] initWithMessageText:[NSString stringWithFormat:@"您好，我是服务员%@，很高兴为您服务！",self.userInfo.name]] controlParameters:nil progress:nil completion:nil];
-                    }
-                    
-//                    NSLog(@"抢单时间：%@",[self timeWithTimeIntervalString:self.taskList.acceptTime]);
-//                    NSLog(@"系统时间:%@",[self timeWithTimeIntervalString:self.taskList.nowDate]);
-                    if (IS_LESS5) {
-                        self.tableTop.constant = 54;
-                    }
-                    else
-                    {
-                        self.tableTop.constant = 59.0f;
-                    }
-                    self.ishiddenFoot = YES;//显示foot
-                    self.serviceTimeView.hidden = NO;//显示服务时长的View
-                    self.taskTableView.mj_header = nil;
-                    self.stateView.backgroundColor = [UIColor colorWithRed:137/255.0f green:137/255.0f blue:137/255.0f alpha:1];
-                    self.taskingLabel.text = @"进行中任务（1）";
-                    self.stateButton.backgroundColor = [UIColor colorWithRed:137/255.0f green:137/255.0f blue:137/255.0f alpha:1];
-                    self.stateButton.enabled = NO;
-                    self.navigationItem.leftBarButtonItem.enabled = NO;
-                    
-                    [self.taskTableView reloadData];
-                    
-                } Failure:^(NSURLSessionTask *task, NSString *message, NSString *status, NSString *url) {
-                    NSLog(@"服务员根据任务号获取任务信息失败 --- %@",message);
-                    [MySingleton systemAlterViewOwner:self WithMessage:message];
-                }];
+                
+                //获取任务信息
+                [self Net_CodeGetTaskInfo];
+                
             } Failure:^(NSURLSessionTask *task, NSString *message, NSString *status, NSString *url) {
                 NSLog(@"抢单失败 --- %@",message);
                 UIAlertController * alert = [UIAlertController alertControllerWithTitle:nil message:message preferredStyle:UIAlertControllerStyleAlert];
@@ -334,20 +294,8 @@
                 _footcCell.completeButton.enabled = NO;
                 //服务时长暂停计时
 //                [_timer1 setFireDate:[NSDate distantFuture]];//备用
-                
-                //获取根据任务号获取信息，为了拿到完成时间，去跟系统时间对比，做30分钟倒计时功能。
-                [[NetworkRequestManager defaultManager] POST_Url:URI_WAITER_GetTaskInfoByTaskCode Params:params withByUser:YES Success:^(NSURLSessionTask *task, id dataSource, NSString *message, NSString *url)
-                {
-                    NSLog(@"服务员根据任务号获取任务信息成功 --- %@",dataSource);
-                    self.taskList = dataSource;
-                    NSString * strData = [self compareTwoTime:[self.taskList.finishTime longLongValue] time2:[self.taskList.nowDate longLongValue]];
-                    [self completeCountdownTime:strData];
-                    
-                } Failure:^(NSURLSessionTask *task, NSString *message, NSString *status, NSString *url)
-                {
-                    NSLog(@"服务员根据任务号获取任务信息失败 --- %@",message);
-                    [MySingleton systemAlterViewOwner:self WithMessage:message];
-                }];
+
+                [self NET_attendStatus];
                 
                 [self.stateButton setTitle:@"停止接单" forState:UIControlStateNormal];
                 self.stateButton.backgroundColor = [UIColor grayColor];
@@ -393,29 +341,30 @@
     
     //切换服务员状态
     [[NetworkRequestManager defaultManager] POST_Url:URI_WAITER_SetWorkStatus Params:params withByUser:NO Success:^(NSURLSessionTask *task, id dataSource, NSString *message, NSString *url) {
-        //获取服务员信息
-        [[NetworkRequestManager defaultManager] POST_Url:URI_WAITER_WaiterInfoByWaiterId Params:nil withByUser:YES Success:^(NSURLSessionTask *task, id dataSource, NSString *message, NSString *url) {
-            _userInfo = dataSource;
-            if ([_userInfo.workStatus isEqualToString:@"2"])
-            {
-                NSLog(@"可以获取任务列表了");
-                //获取任务列表
-                [self Net_taskInfoList];
-            }
-            else
-            {
-                self.taskTableView.mj_header = nil;
-                [self.dataSource removeAllObjects];
-                [self.taskTableView reloadData];
-            }
-            [[DataBaseManager defaultInstance] saveContext];
-            self.stateButton.backgroundColor = color;
-            [self.stateButton setTitle:statusName forState:UIControlStateNormal];
-        } Failure:^(NSURLSessionTask *task, NSString *message, NSString *status, NSString *url) {
-            NSLog(@"message --- %@",message);
-            if ([message isEqualToString:@"查不到此服务员信息"])
-                [self performSegueWithIdentifier:@"goLogin" sender:nil];
-        }];
+//        //获取服务员信息
+//        [[NetworkRequestManager defaultManager] POST_Url:URI_WAITER_WaiterInfoByWaiterId Params:nil withByUser:YES Success:^(NSURLSessionTask *task, id dataSource, NSString *message, NSString *url) {
+//            _userInfo = dataSource;
+//            if ([_userInfo.workStatus isEqualToString:@"2"])
+//            {
+//                NSLog(@"可以获取任务列表了");
+//                //获取任务列表
+//                [self Net_taskInfoList];
+//            }
+//            else
+//            {
+//                self.taskTableView.mj_header = nil;
+//                [self.dataSource removeAllObjects];
+//                [self.taskTableView reloadData];
+//            }
+//            [[DataBaseManager defaultInstance] saveContext];
+//            self.stateButton.backgroundColor = color;
+//            [self.stateButton setTitle:statusName forState:UIControlStateNormal];
+//        } Failure:^(NSURLSessionTask *task, NSString *message, NSString *status, NSString *url) {
+//            NSLog(@"message --- %@",message);
+//            if ([message isEqualToString:@"查不到此服务员信息"])
+//                [self performSegueWithIdentifier:@"goLogin" sender:nil];
+//        }];
+        [self NET_attendStatus];
     } Failure:^(NSURLSessionTask *task, NSString *message, NSString *status, NSString *url) {
         NSLog(@"message --- %@",message);
         [MySingleton systemAlterViewOwner:self WithMessage:message];
@@ -465,79 +414,7 @@
             {
                 //获取任务信息(恢复任务）
                 NSLog(@"任务进行中***********");
-                NSMutableDictionary * params = [[NSMutableDictionary alloc]init];
-                [params setObject:@"1" forKey:@"taskStatus"];
-                [[NetworkRequestManager defaultManager] POST_Url:URI_WAITER_GetTaskInfo Params:params withByUser:YES Success:^(NSURLSessionTask *task, id dataSource, NSString *message, NSString *url) {
-                    NSLog(@"dataSource --- %@",dataSource);
-                    [self.dataSource removeAllObjects];
-                    [self.dataSource addObjectsFromArray:dataSource];
-                    
-                    if ([(NSArray *)dataSource count] > 0)
-                    {
-                        self.isDown = YES;
-                        [self.stateButton setTitle:@"停止接单" forState:UIControlStateNormal];
-                        if (IS_LESS5) {
-                            self.tableTop.constant = 54;
-                        }
-                        else
-                        {
-                            self.tableTop.constant = 59.0f;
-                        }
-                        self.serviceTimeView.hidden = NO;//显示服务时长的View
-                        self.ishiddenFoot = YES;//显示foot
-                        self.taskTableView.mj_header = nil;
-                        self.stateView.backgroundColor = [UIColor colorWithRed:137/255.0f green:137/255.0f blue:137/255.0f alpha:1];
-                        self.taskingLabel.text = @"进行中任务（1）";
-                        self.stateButton.backgroundColor = [UIColor colorWithRed:137/255.0f green:137/255.0f blue:137/255.0f alpha:1];
-                        self.stateButton.enabled = NO;
-                        self.navigationItem.leftBarButtonItem.enabled = NO;
-
-                        self.taskList = [dataSource lastObject];
-                        self.conversation = [YWP2PConversation fetchConversationByPerson:[[YWPerson alloc]initWithPersonId:self.taskList.cImAccount appKey:@"23758144"] creatIfNotExist:YES baseContext:[SPKitExample sharedInstance].ywIMKit.IMCore];
-                        self.messageCountLabel.text = [NSString stringWithFormat:@"%@",self.conversation.conversationUnreadMessagesCount];
-                        if (self.conversation.conversationUnreadMessagesCount.integerValue != 0)
-                            self.messageCountLabel.hidden = NO;
-                        //只能发一次默认消息
-                        if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"isFirstMessage"] isEqualToString:@"0"])
-                        {
-                            [self.conversation asyncSendMessageBody:[[YWMessageBodyText alloc] initWithMessageText:[NSString stringWithFormat:@"您好，我是服务员%@，很高兴为您服务！",self.userInfo.name]] controlParameters:nil progress:nil completion:nil];
-                            [[NSUserDefaults standardUserDefaults] setObject:@"1" forKey:@"isFirstMessage"];
-                        }
-                    }
-                    else
-                    {
-                        self.stateButton.backgroundColor = [UIColor colorWithRed:42/255.0f green:160/255.0f blue:235/255.0f alpha:1];;
-                        [self.stateButton setTitle:@"开始接单" forState:UIControlStateNormal];
-                        self.isDown = NO;
-                        self.stateButton.enabled = YES;
-                        self.ishiddenFoot = NO;//隐藏foot
-                        self.serviceTimeView.hidden = YES;//隐藏服务时长的View
-                        self.taskTableView.mj_header = nil;
-                        self.taskingLabel.text = @"进行中任务（0）";
-                        self.navigationItem.leftBarButtonItem.enabled = YES;
-                        [self.dataSource removeAllObjects];
-                        [self resetConversationAndNewMessage];
-                    }
-                    NSLog(@"%@",self.dataSource);
-                    NSLog(@"完成时间%@",[self timeWithTimeIntervalString:self.taskList.finishTime BOOL:0]);//13:32:59
-                    NSLog(@"%@,%@",self.taskList.finishTime,self.taskList.nowDate);
-                    NSLog(@"%@",self.taskList.taskStatus);
-                    //客人确认：不认可
-                    if ([self.taskList.taskStatus isEqualToString:@"7"] || [self.taskList.taskStatus isEqualToString:@"1"])
-                    {
-                        self.taskingLabel.text = @"进行中任务(1)";
-                        [_timer2 setFireDate:[NSDate distantFuture]];
-                        [self.taskTableView reloadData];
-                        return ;
-                    }
-                    NSString * strDataSum = [self compareTwoTime:[self.taskList.finishTime longLongValue] time2:[self.taskList.nowDate longLongValue]];
-                    [self completeCountdownTime:strDataSum];
-                    [self.taskTableView reloadData];
-                    
-                } Failure:^(NSURLSessionTask *task, NSString *message, NSString *status, NSString *url) {
-                    NSLog(@"message --- %@",message);
-                    [MySingleton systemAlterViewOwner:self WithMessage:message];
-                }];
+                [self Net_Tasking];
             }
             else
             {
@@ -569,6 +446,132 @@
         
         
     }
+}
+
+//通过任务号获取任务信息
+- (void)Net_CodeGetTaskInfo
+{
+    NSMutableDictionary * params = [[NSMutableDictionary alloc]init];
+    [params setObject:self.taskList.taskCode forKey:@"taskCode"];
+    [[NetworkRequestManager defaultManager] POST_Url:URI_WAITER_GetTaskInfoByTaskCode Params:params withByUser:YES Success:^(NSURLSessionTask *task, id dataSource, NSString *message, NSString *url) {
+        NSLog(@"服务员根据任务号获取任务信息成功 --- %@",dataSource);
+        self.isDown = YES;
+        [self.dataSource removeAllObjects];
+        [self.dataSource addObject:dataSource];
+        NSLog(@"%ld",self.dataSource.count);
+        
+        if (dataSource != nil)
+        {
+            self.taskList = dataSource;
+            self.conversation = [YWP2PConversation fetchConversationByPerson:[[YWPerson alloc]initWithPersonId:self.taskList.cImAccount appKey:@"23758144"] creatIfNotExist:YES baseContext:[SPKitExample sharedInstance].ywIMKit.IMCore];
+            self.messageCountLabel.text = [NSString stringWithFormat:@"%@",self.conversation.conversationUnreadMessagesCount];
+            if (self.conversation.conversationUnreadMessagesCount.integerValue != 0)
+                self.messageCountLabel.hidden = NO;
+            //只能发一次默认消息
+            [[NSUserDefaults standardUserDefaults] setValue:@"1" forKey:@"isFirstMessage"];
+            [self.conversation asyncSendMessageBody:[[YWMessageBodyText alloc] initWithMessageText:[NSString stringWithFormat:@"您好，我是服务员%@，很高兴为您服务！",self.userInfo.name]] controlParameters:nil progress:nil completion:nil];
+        }
+        
+        if (IS_LESS5) {
+            self.tableTop.constant = 54;
+        }
+        else
+        {
+            self.tableTop.constant = 59.0f;
+        }
+        self.ishiddenFoot = YES;//显示foot
+        self.serviceTimeView.hidden = NO;//显示服务时长的View
+        self.taskTableView.mj_header = nil;
+        self.stateView.backgroundColor = [UIColor colorWithRed:137/255.0f green:137/255.0f blue:137/255.0f alpha:1];
+        self.taskingLabel.text = @"进行中任务（1）";
+        self.stateButton.backgroundColor = [UIColor colorWithRed:137/255.0f green:137/255.0f blue:137/255.0f alpha:1];
+        self.stateButton.enabled = NO;
+        self.navigationItem.leftBarButtonItem.enabled = NO;
+        
+        [self.taskTableView reloadData];
+        
+    } Failure:^(NSURLSessionTask *task, NSString *message, NSString *status, NSString *url) {
+        NSLog(@"服务员根据任务号获取任务信息失败 --- %@",message);
+        [MySingleton systemAlterViewOwner:self WithMessage:message];
+    }];
+}
+
+//进行中的任务
+- (void)Net_Tasking
+{
+    NSMutableDictionary * params = [[NSMutableDictionary alloc]init];
+    [params setObject:@"1" forKey:@"taskStatus"];
+    [[NetworkRequestManager defaultManager] POST_Url:URI_WAITER_GetTaskInfo Params:params withByUser:YES Success:^(NSURLSessionTask *task, id dataSource, NSString *message, NSString *url) {
+        NSLog(@"dataSource --- %@",dataSource);
+        [self.dataSource removeAllObjects];
+        [self.dataSource addObjectsFromArray:dataSource];
+        
+        if ([(NSArray *)dataSource count] > 0)
+        {
+            self.isDown = YES;
+            [self.stateButton setTitle:@"停止接单" forState:UIControlStateNormal];
+            if (IS_LESS5) {
+                self.tableTop.constant = 54;
+            }
+            else
+            {
+                self.tableTop.constant = 59.0f;
+            }
+            self.serviceTimeView.hidden = NO;//显示服务时长的View
+            self.ishiddenFoot = YES;//显示foot
+            self.taskTableView.mj_header = nil;
+            self.stateView.backgroundColor = [UIColor colorWithRed:137/255.0f green:137/255.0f blue:137/255.0f alpha:1];
+            self.taskingLabel.text = @"进行中任务（1）";
+            self.stateButton.backgroundColor = [UIColor colorWithRed:137/255.0f green:137/255.0f blue:137/255.0f alpha:1];
+            self.stateButton.enabled = NO;
+            self.navigationItem.leftBarButtonItem.enabled = NO;
+            
+            self.taskList = [dataSource lastObject];
+            self.conversation = [YWP2PConversation fetchConversationByPerson:[[YWPerson alloc]initWithPersonId:self.taskList.cImAccount appKey:@"23758144"] creatIfNotExist:YES baseContext:[SPKitExample sharedInstance].ywIMKit.IMCore];
+            self.messageCountLabel.text = [NSString stringWithFormat:@"%@",self.conversation.conversationUnreadMessagesCount];
+            if (self.conversation.conversationUnreadMessagesCount.integerValue != 0)
+                self.messageCountLabel.hidden = NO;
+            //只能发一次默认消息
+            if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"isFirstMessage"] isEqualToString:@"0"])
+            {
+                [self.conversation asyncSendMessageBody:[[YWMessageBodyText alloc] initWithMessageText:[NSString stringWithFormat:@"您好，我是服务员%@，很高兴为您服务！",self.userInfo.name]] controlParameters:nil progress:nil completion:nil];
+                [[NSUserDefaults standardUserDefaults] setObject:@"1" forKey:@"isFirstMessage"];
+            }
+        }
+        else
+        {
+            self.stateButton.backgroundColor = [UIColor colorWithRed:42/255.0f green:160/255.0f blue:235/255.0f alpha:1];;
+            [self.stateButton setTitle:@"开始接单" forState:UIControlStateNormal];
+            self.isDown = NO;
+            self.stateButton.enabled = YES;
+            self.ishiddenFoot = NO;//隐藏foot
+            self.serviceTimeView.hidden = YES;//隐藏服务时长的View
+            self.taskTableView.mj_header = nil;
+            self.taskingLabel.text = @"进行中任务（0）";
+            self.navigationItem.leftBarButtonItem.enabled = YES;
+            [self.dataSource removeAllObjects];
+            [self resetConversationAndNewMessage];
+        }
+        NSLog(@"%@",self.dataSource);
+        NSLog(@"完成时间%@",[self timeWithTimeIntervalString:self.taskList.finishTime BOOL:0]);//13:32:59
+        NSLog(@"%@,%@",self.taskList.finishTime,self.taskList.nowDate);
+        NSLog(@"%@",self.taskList.taskStatus);
+        //客人确认：不认可
+        if ([self.taskList.taskStatus isEqualToString:@"7"] || [self.taskList.taskStatus isEqualToString:@"1"])
+        {
+            self.taskingLabel.text = @"进行中任务(1)";
+            [_timer2 setFireDate:[NSDate distantFuture]];
+            [self.taskTableView reloadData];
+            return ;
+        }
+        double strData = ([self.taskList.nowDate longLongValue] - [self.taskList.finishTime longLongValue])/1000;
+        [self completeCountdownTime:strData];
+        [self.taskTableView reloadData];
+        
+    } Failure:^(NSURLSessionTask *task, NSString *message, NSString *status, NSString *url) {
+        NSLog(@"message --- %@",message);
+        [MySingleton systemAlterViewOwner:self WithMessage:message];
+    }];
 }
 
 //时间戳转换成时间
@@ -703,123 +706,60 @@
 - (void)workingTime
 {
     if (self.userInfo.workTimeCal != nil){
-        NSMutableString * time=[[NSMutableString alloc]initWithString:self.userInfo.workTimeCal];
-        NSRange ange={0,2};
-        _hourString=[time substringWithRange:ange];//截取时
-        NSRange ange1={3,2};
-        _minuteString =[time substringWithRange:ange1];//截取分
-        NSRange ange2={6,2};
-        _secondString =[time substringWithRange:ange2];//截取秒
-        self.second = [self.secondString integerValue];
-        self.minute = [self.minuteString integerValue];
-        self.hour   = [self.hourString integerValue];
-    }
-    self.workTimeCalLabel.text = self.userInfo.workTimeCal;
-    [self.timer invalidate];
-    self.timer = nil;
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(workingTimeTimer) userInfo:nil repeats:YES];
+        NSLog(@"%@",self.userInfo.workTimeCal);//00：00：00
+        self.second = [Util stringFormattedSeconds:self.userInfo.workTimeCal];
+        self.workTimeCalLabel.text = [Util timeFormatted:(int)self.second];
+        [self.timer invalidate];
+        self.timer = nil;
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(workingTimeTimer) userInfo:nil repeats:YES];
+   }
 }
 
 - (void)workingTimeTimer
 {
     self.second++;
-    if (self.second==60){
-        self.second=00;
-        self.minute++;
-        if (self.minute==60) {
-            self.minute=00;
-            self.hour++;
-        }
-    }
-    self.workTimeCalLabel.text = [NSString stringWithFormat:@"%02ld:%02ld:%02ld",(long)self.hour,(long)self.minute,(long)self.second];
+    self.workTimeCalLabel.text = [Util timeFormatted:(int)self.second];
     self.userInfo.workTimeCal = self.workTimeCalLabel.text;
 }
 
 #pragma mark - 服务时长
-- (void)serverTime:(NSString *)dataStr
+- (void)serverTime:(NSInteger )dataStr
 {
-    if (dataStr != nil){
-        NSMutableString * time=[[NSMutableString alloc]initWithString:dataStr];
-        NSRange ange={0,2};
-        _serviceHourString=[time substringWithRange:ange];//截取时
-        NSRange ange1={3,2};
-        _serviceMinuteString =[time substringWithRange:ange1];//截取分
-        NSRange ange2={6,2};
-        _serviceSecondString =[time substringWithRange:ange2];//截取秒
-        self.serviceSecond = [self.serviceSecondString integerValue];
-        self.serviceMinute = [self.serviceMinuteString integerValue];
-        self.serviceHour   = [self.serviceHourString integerValue];
+    if (dataStr >= 0){
+        self.serviceSecond = dataStr;
+        self.serviceTimeLabel.text = [Util timeFormatted:(int)self.serviceSecond];
+        [self.timer1 invalidate];
+        self.timer1 = nil;
+        self.timer1 = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(serverTimeTimer) userInfo:nil repeats:YES];
     }
-    self.serviceTimeLabel.text = dataStr;
-    [self.timer1 invalidate];
-    self.timer1 = nil;
-    self.timer1 = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(serverTimeTimer) userInfo:nil repeats:YES];
 }
 
 - (void)serverTimeTimer
 {
     self.serviceSecond++;
-    if (self.serviceSecond==60){
-        self.serviceSecond=00;
-        self.serviceMinute++;
-        if (self.serviceMinute==60) {
-            self.serviceMinute=00;
-            self.serviceHour++;
-        }
-    }
-    self.serviceTimeLabel.text = [NSString stringWithFormat:@"%02ld:%02ld:%02ld",(long)self.serviceHour,(long)self.serviceMinute,(long)self.serviceSecond];
+    self.serviceTimeLabel.text = [Util timeFormatted:(int)self.serviceSecond];
 }
 
 #pragma mark - 完成服务 倒计时
-- (void)completeCountdownTime:(NSString *)strDataSum
+- (void)completeCountdownTime:(double)strDataSum
 {
-    NSLog(@"完成时间%@",[self timeWithTimeIntervalString:self.taskList.finishTime BOOL:0]);//13:32:59
-    NSLog(@"系统时间：%@",[self timeWithTimeIntervalString:self.taskList.nowDate BOOL:0]);
-    
-    NSLog(@"完成时间和系统时间的比对：%@",strDataSum);//00:00:00
-    NSRange ange = {3,2};
-    NSString * min = [strDataSum substringWithRange:ange];//截取分
-//
-    NSRange ange1= {6,2};
-    NSString * second =[strDataSum substringWithRange:ange1];//截取秒
-    
-    [self completeTime:[NSString stringWithFormat:@"%@:%02ld:%02ld",@"00",29-[min integerValue],59-[second integerValue]]];
-    
-}
-
-- (void)completeTime:(NSString *)dataStr
-{
-    if (dataStr != nil){
-        NSMutableString * time=[[NSMutableString alloc]initWithString:dataStr];
-        NSRange ange={0,2};
-        _completeHourString=[time substringWithRange:ange];//截取时
-        NSRange ange1={3,2};
-        _completeMinuteString =[time substringWithRange:ange1];//截取分
-        NSRange ange2={6,2};
-        _completeSecondString =[time substringWithRange:ange2];//截取秒
-        self.completeSecond = [self.completeSecondString integerValue];
-        self.completeMinute = [self.completeMinuteString integerValue];
-        self.completeHour   = [self.completeHourString integerValue];
+    self.completeSecond = 1800 - strDataSum;
+    if (self.completeSecond >= 0) {
+        self.taskingLabel.text = [NSString stringWithFormat:@"完成待确认(%02ld:%02ld)",self.completeSecond/60,self.completeSecond%60];
+        [self.timer2 invalidate];
+        self.timer2 = nil;
+        self.timer2 = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(completeTimeTimer) userInfo:nil repeats:YES];
     }
-    self.taskingLabel.text = [NSString stringWithFormat:@"完成待确认(%02ld:%02ld)",self.completeMinute,self.completeSecond];
-    [self.timer2 invalidate];
-    self.timer2 = nil;
-    self.timer2 = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(completeTimeTimer) userInfo:nil repeats:YES];
 }
 
 - (void)completeTimeTimer
 {
     self.completeSecond--;
-    if (self.completeSecond == -1){
-        self.completeSecond = 59;
-        self.completeMinute --;
-    }
-    if (self.completeMinute == 00 && self.completeSecond == 00) {
+    if (self.completeSecond < 0) {
         [_timer2 setFireDate:[NSDate distantFuture]];
-        [self NET_attendStatus];
         return;
     }
-    self.taskingLabel.text = [NSString stringWithFormat:@"完成待确认(%02ld:%02ld)",(long)self.completeMinute,(long)self.completeSecond];
+    self.taskingLabel.text = [NSString stringWithFormat:@"完成待确认(%02ld:%02ld)",self.completeSecond/60,self.completeSecond%60];
 }
 
 #pragma mark - ------
@@ -911,7 +851,6 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    
     if ([segue.identifier isEqualToString:@"goCalendar"]) {
         self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     }
@@ -998,7 +937,7 @@
     [self.gpsParams setValue:@"2" forKey:@"hotelCode"];
     
     [self.gpsParams setValue:[self.myZoneManager getCurrentZone].zone_name forKey:@"areaName"];
-    //[self.gpsParams setValue:@"大堂后院" forKey:@"areaName"];
+    [self.gpsParams setValue:@"大堂后院" forKey:@"areaName"];
     //服务器说不需要传--areaCode--
     //[self.gpsParams setValue:[self.myZoneManager getCurrentZone].zone_code forKey:@"areaCode"];
     if (!self.userInfo) return;

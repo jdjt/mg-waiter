@@ -11,27 +11,13 @@
 @interface MainViewController : UIViewController
 @property (nonatomic, strong)NSTimer *timer;
 @property (nonatomic, assign)NSInteger second;
-@property (nonatomic, assign)NSInteger minute;
-@property (nonatomic, assign)NSInteger hour;
-@property (nonatomic, strong)NSString * secondString;
-@property (nonatomic, strong)NSString * minuteString;
-@property (nonatomic, strong)NSString * hourString;
 
-@property (nonatomic, strong)NSTimer *timer1;
+@property (nonatomic, strong)NSTimer *timer1;//服务时长
 @property (nonatomic, assign)NSInteger serviceSecond;
-@property (nonatomic, assign)NSInteger serviceMinute;
-@property (nonatomic, assign)NSInteger serviceHour;
-@property (nonatomic, strong)NSString * serviceSecondString;
-@property (nonatomic, strong)NSString * serviceMinuteString;
-@property (nonatomic, strong)NSString * serviceHourString;
 
 @property (nonatomic, strong)NSTimer *timer2;
 @property (nonatomic, assign)NSInteger completeSecond;
-@property (nonatomic, assign)NSInteger completeMinute;
-@property (nonatomic, assign)NSInteger completeHour;
-@property (nonatomic, strong)NSString * completeSecondString;
-@property (nonatomic, strong)NSString * completeMinuteString;
-@property (nonatomic, strong)NSString * completeHourString;
+
 
 //给iPhone5加约束
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *workTimeViewHeight;//工作时长的view高度 //6p下是70

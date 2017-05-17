@@ -499,4 +499,28 @@ static NSString* macadd;
     return [NSString stringWithFormat:@"%02ld:%02ld:%02ld",(long)cmps.hour,(long)cmps.minute,(long)cmps.second];
     
 }
+
+//秒转换成时分秒
++ (NSString *)timeFormatted:(int)totalSeconds
+{
+    
+    int seconds = totalSeconds % 60;
+    int minutes = (totalSeconds / 60) % 60;
+    int hours = totalSeconds / 3600;
+    
+    return [NSString stringWithFormat:@"%02d:%02d:%02d",hours, minutes, seconds];
+}
+
+//时分秒转为秒数
++ (NSTimeInterval)stringFormattedSeconds:(NSString *)formattedString
+{
+    
+    NSArray * array = [formattedString componentsSeparatedByString:@":"];
+    int hours = [array.firstObject intValue] * 3600;
+    int minutes = [array[1] intValue] * 60;
+    int seconds = [array.lastObject intValue];
+    return hours+minutes+seconds;
+}
+
+
 @end
