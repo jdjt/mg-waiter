@@ -783,7 +783,7 @@
     NSRange ange1= {6,2};
     NSString * second =[strDataSum substringWithRange:ange1];//截取秒
     
-    [self completeTime:[NSString stringWithFormat:@"%@:%02ld:%02ld",@"00",29-[min integerValue],59-[second integerValue]]];
+    [self completeTime:[NSString stringWithFormat:@"%@:%02ld:%02ld",@"00",4-[min integerValue],59-[second integerValue]]];
     
 }
 
