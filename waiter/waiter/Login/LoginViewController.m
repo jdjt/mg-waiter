@@ -66,6 +66,7 @@
 
 - (IBAction)loginPressed:(id)sender
 {
+    self.loginButton.enabled = NO;
     DBDeviceInfo *deviceInfo = [[DataBaseManager defaultInstance] getDeviceInfo];
     if (deviceInfo.deviceId && [deviceInfo.deviceId rangeOfString:@":"].location != NSNotFound)
     {
@@ -74,7 +75,7 @@
     {
         [[FMDHCPNetService shareDHCPNetService] localMacAddress:^(NSString *macAddr)
         {
-            if (macAddr)
+            if (macAddr && ![macAddr isEqualToString:@""])
             {
                 deviceInfo.deviceId = macAddr;
                 [[DataBaseManager defaultInstance] saveContext];
@@ -90,6 +91,7 @@
                     deviceId = [PDKeyChain keyChainLoad];
                 }
                 deviceInfo.deviceId = deviceId;
+                [[DataBaseManager defaultInstance] saveContext];
             }
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self login];
@@ -100,6 +102,7 @@
 }
 - (void)login
 {
+    self.loginButton.enabled = YES;
     if ([self.userIDField.text isEqualToString:@""] || [self.pwdField.text isEqualToString:@""])
     {
         [self.userIDField resignFirstResponder];
