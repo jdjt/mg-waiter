@@ -593,19 +593,6 @@
     return dateString;
 }
 
-#warning 此处有蹊跷。回去自己改
-//两个时间戳计算间隔
-- (NSString*)compareTwoTime:(long long)time1 time2:(long long)time2
-{
-    NSTimeInterval balance = time2 /1000- time1 /1000;
-    NSString*timeString = [[NSString alloc]init];
-    NSInteger hour = ((int)balance)%(3600*24)/3600;
-    NSInteger mint = ((int)balance)%(3600*24)%3600/60;
-    NSInteger seconds = ((int)balance)%(3600*24)%3600%60;
-    timeString = [NSString stringWithFormat:@"%02ld:%02ld:%02ld",(long)hour,(long)mint,(long)seconds];
-    return timeString;
-}
-
 #pragma mark - 通知
 -(void)pushTypeAction:(NSNotification *)notion
 {
